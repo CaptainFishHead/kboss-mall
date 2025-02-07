@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # dsf-boss
 
 - 项目：康老板
@@ -48,3 +49,6 @@
   - 2、调用 wxUtils.js->templatePushAuthorization 函数（参数传 const/index.js->MESSAGE_TEMPLATE.get(key).TEMPLATE_ID）
   - 3、调用 messageModel.js->authorizePushTemp
   - 4、立即支付 wxUtils.js->wxPay
+=======
+# kboss-mall
+>>>>>>> kboss-mall/main
