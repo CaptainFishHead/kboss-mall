@@ -1,0 +1,70 @@
+<import src="./../../components/toast/index.wxml"/>
+
+<view class="recommend {{columnInfo.templateType === 1 && 'bg'}}">
+  <navigation-bar ext-class="navigation" title="{{columnInfo.columnName}}" background="#ffffff" />
+  
+  <!-- 轮播图 -->
+  <view class="recommend-swiper" wx:if="{{adList.length}}">
+    <ad-swiper list="{{adList}}"/>
+  </view>
+
+  <!-- 栏目下分类 -->
+  <view class="recommend-tabbar" style="--top:{{topHei}}px" id="tabbar" wx:if="{{columnInfo.categorys && columnInfo.categorys.length > 1}}">
+    <scroll-tabbar ext-class="{{isFixed && 'fixed'}}" isRecommend="{{isRecommend}}" list="{{columnInfo.categorys}}" bindchange="changeClassify"/>
+  </view>
+
+  <block wx:if="{{recommentData.list && recommentData.list.length && !loading}}">
+    <!-- 横版列表 -->
+    <view class="recommend-list" wx:if="{{columnInfo.templateType === 1}}">
+      <block wx:for="{{recommentData.list}}" wx:key="index" wx:for-index="index">
+        <imgText-card
+          direction="{{columnInfo.templateType}}"
+          info="{{item}}"
+          imgClass="{{(!index && columnInfo.templateType === 3) && 'first-recommend'}}"
+          bind:go="goDetail"
+        >
+          <release-time time="{{item.createdTime}}" />
+        </imgText-card>
+      </block>
+    </view>
+
+    <!-- 固定瀑布式、自由瀑布式 -->
+    <view class="recommend-waterfall" wx:else>
+      <view class="recommend-clumns" wx:for="{{2}}" wx:for-index="column" wx:key="column">
+        <block wx:for="{{recommentData.list}}" wx:key="index" wx:for-index="index" wx:if="{{ index%2 === column}}">
+          <imgText-card
+            direction="{{columnInfo.templateType}}"
+            info="{{item}}"
+            imgClass="{{(!index && columnInfo.templateType === 3) && 'first-recommend'}}"
+            bind:go="goDetail"
+          >
+            <view class="operation-btn" wx:if="{{item.type !== 3}}" catch:tap>
+              <view-volume value="{{item.pv}}"></view-volume>
+              <operation
+                icon="https://static.tojoyshop.com/images/wxapp-boss/recommend/fabulous-{{item.isLike ? 'active' : 'grey'}}.png"
+                num="{{item.likeCount}}"
+                data-item="{{item}}"
+                bind:operation="onPraise"
+              />
+            </view>
+          </imgText-card>
+        </block>
+      </view>
+    </view>
+
+    <!-- 全部加载完样式 -->
+    <view class="recommend-more" wx:if="{{recommentData.currPage >= recommentData.totalPage}}">没有更多了</view>
+  </block>
+  <block wx:elif="{{loading}}">
+    <empty
+      imgUrl="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/empty-recommend.png"
+      empotyDesc="糟糕，内容不见了"
+      buttonTxt="返回"
+      bindbuttonTap="handBack"
+    />
+  </block>
+</view>
+
+<login-promise id="authorize" removeSlot/>
+
+<template is="toast" data="{{...tj_toast}}"/>

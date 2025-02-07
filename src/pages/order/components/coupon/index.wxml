@@ -1,0 +1,34 @@
+
+<mp-half-screen-dialog
+        class="coupon"
+        maskClosable="{{false}}"
+        bindclose="close"
+        show="{{couponVisbale}}"
+        title="优惠券"
+        catchtouchmove="touchMove">
+    <view slot="desc">
+        <view class="content">
+            <mp-tabbar ext-class="order-tab coupon-tab" list="{{tabList}}" current='{{currentTab}}' bindchange="tabChange"/>
+            <scroll-view scroll-y class="content-list" wx:if="{{couponList.length}}">
+                <block wx:for="{{couponList}}" wx:for-item="coupon" wx:key="id">
+                    <voucher voucher="{{coupon}}" index="{{index}}" scene="2" bind:tapCurItem="onTapCurItem" bind:showCurCouponRule="onShowCurCouponRule" />
+                </block>
+            </scroll-view>
+            <view wx:else class="empty">
+                <empty ext-class="empty-box"  empotyDesc="没有相关优惠券记录" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-voucher-empty.png"/>
+            </view>
+        </view>
+        <view style="{{systemInfo.platform==='android'?'margin-bottom:30rpx;':''}}">
+          <view class="footer">
+              <block wx:if="{{couponUsedStatus !== 2}}">
+                <view class="footer-text">优惠券优惠：<text class="footer-text-price price">￥{{usedCouponTotalPriceFormat}}</text></view>
+                <button class="footer-btn" type="primary" bind:tap="confrimCoupon">确认</button>
+              </block>
+              <block wx:else>
+                <button class="footer-close" type="primary" bind:tap="close">确认</button>
+              </block>
+          </view>
+        </view>
+    </view>
+
+</mp-half-screen-dialog>

@@ -1,0 +1,154 @@
+<view class="container-obh">
+  <view class="obh-loading-masker" wx:if="{{showSourceLoading}}">
+    <view class="loading-masker-cnt">
+      <view class="loading-masker-circle"></view>
+      <view class="loading-masker-text">资源加载中...</view>
+    </view>
+  </view>
+  <view wx:if="{{bgType==1}}" class="obh-wrap video-wrap" style="background-image:url({{videoInfo.videoBgUrl}})"></view>
+  <view wx:else class="obh-wrap container-obh-cnt" style="background-image:url({{skinList[current%skinList.length].bg}});">
+    <view class="wrap-masker" style="background:{{skinList[current%skinList.length].maskerBg}};"></view>
+  </view>
+  <view class="wrap-cnt obh-wrap{{videoShowCnt?' video-show-cnt':''}}">
+    <myTopBar showHeight="{{true}}" fixed="{{true}}" titleText="" iconHeight="24" iconWidth="24" bind:back="backHandler" background="rgba(0,0,0,0)" backIcon="{{videoShowCnt?'https://static.tojoyshop.com/images/wxapp-obh/buy/close-video-page20221110.png':'https://static.tojoyshop.com/images/wxapp-obh/buy/back-white-arrow.png'}}" />
+    <view class="time-wrap{{timeInfo.remainingDuration?' time-wrap-on':''}}">
+      <view class="time-cnt0" wx:if="{{timeInfo.remainingDuration}}">
+        <view class="time-text">剩余</view>
+        <view class="time-box">
+          <view class="time-text1" wx:if="{{topTimeShowJson.h}}">{{topTimeShowJson.h}}</view>
+          <view class="time-text2" wx:if="{{topTimeShowJson.h}}">时</view>
+          <view class="time-text-w" wx:if="{{topTimeShowJson.h&&topTimeShowJson.m}}"></view>
+          <view class="time-text1" wx:if="{{topTimeShowJson.m}}">
+            {{topTimeShowJson.m<10&&topTimeShowJson.h?'0':''}}{{topTimeShowJson.m}} </view>
+              <view class="time-text2" wx:if="{{topTimeShowJson.m}}">分</view>
+              <view class="time-text-w" wx:if="{{topTimeShowJson.s&&topTimeShowJson.m}}"></view>
+              <view class="time-text1" wx:if="{{topTimeShowJson.s&&(!topTimeShowJson.h||topTimeShowJson.h&&!topTimeShowJson.m)}}">
+                {{topTimeShowJson.s<10?'0':''}}{{topTimeShowJson.s}} </view>
+                  <view class="time-text2" wx:if="{{topTimeShowJson.s&&(!topTimeShowJson.h||topTimeShowJson.h&&!topTimeShowJson.m)}}">
+                    秒
+                  </view>
+              </view>
+          </view>
+          <view class="time-cnt1" wx:elif="{{list[current]&&list[current].type&&list[current].type==2}}">
+            <view class="time-box">
+              <view class="time-text1">{{list[current].price}}</view>
+              <view class="time-text2">元</view>
+            </view>
+          </view>
+          <view class="time-cnt1" wx:else>
+            <view class="time-box">
+              <view class="time-text1" wx:if="{{topTimeShowJson.h}}">{{topTimeShowJson.h}}</view>
+              <view class="time-text2" wx:if="{{topTimeShowJson.h}}">小时</view>
+              <view class="time-text-w" wx:if="{{topTimeShowJson.h&&topTimeShowJson.m}}"></view>
+              <view class="time-text1" wx:if="{{topTimeShowJson.m}}">
+                {{topTimeShowJson.m<10&&topTimeShowJson.h?'0':''}}{{topTimeShowJson.m}} </view>
+                  <view class="time-text2" wx:if="{{topTimeShowJson.m}}">分钟</view>
+                  <view class="time-text-w" wx:if="{{topTimeShowJson.s&&topTimeShowJson.m}}"></view>
+                  <view class="time-text1" wx:if="{{topTimeShowJson.s&&(!topTimeShowJson.h||topTimeShowJson.h&&!topTimeShowJson.m)}}">
+                    {{topTimeShowJson.s<10?'0':''}}{{topTimeShowJson.s}} </view>
+                      <view class="time-text2" wx:if="{{topTimeShowJson.s&&(!topTimeShowJson.h||topTimeShowJson.h&&!topTimeShowJson.m)}}">
+                        秒
+                      </view>
+                  </view>
+              </view>
+              <view class='progress_box' wx:if="{{timeInfo.remainingDuration}}">
+                <canvas class="progress_canvas" type="2d" id="canvasProgress" canvas-id="canvasProgress"></canvas>
+                <canvas class="progress_bg" type="2d" id="canvasProgressbg" canvas-id="canvasProgressbg"></canvas>
+              </view>
+            </view>
+            <view class="video-item-wrap" wx:if="{{bgType==1}}">
+              <view class="obh-wrap video-wrap-cnt">
+                <video id="myVideo" bindfullscreenchange="fullscreenchange" class="obh-wrap video-element" src="{{videoInfo.videoUrl}}" bindprogress="bindprogressVideo" muted="{{muted}}" autoplay="{{autoplay}}" loop="{{false}}" show-center-play-btn='{{false}}' show-play-btn="{{isFullScreen}}" controls="{{videoShowCnt?true:false}}" show-fullscreen-btn="{{false}}" bindended="endVideo" bindplay="playHandler" bindpause="pauseHandler" object-fit="fill">
+                </video>
+                <view class="cover-play{{playStatus==1?' cover-play-hide':''}}" catchtap="clickPlay"></view>
+                <view class="cover-video" style="background-image:url({{playStatus==1?videoInfo.videoSmallCoverScale:videoInfo.videoSmallCover}});" catchtap="showVideo"></view>
+              </view>
+              <view class="nav-bar-item nav-bar-item" style="background-image:url({{skinList[0].selectBgOff}});" data-item="" data-index="-1" catchtap="showInfoPopHandler">
+                <view class="nav-bar-text nav-bar-text3">神奇的森林氧吧</view>
+                <view class="nav-bar-text nav-bar-text4">去了解</view>
+              </view>
+              <view class="full-screen" catchtap="fullScreenHandler">全屏观看</view>
+              <view class="obh-muted" style="background-image:url({{muted?videoInfo.mutedOff:videoInfo.mutedOn}})" catchtap="changeMuted">{{muted?'声音已关':'声音已开'}}</view>
+              <view class="close-video" catchtap="hideVideo" style="background-image:url({{videoInfo.closeVideo||'https://static.tojoyshop.com/images/wxapp-obh/buy/close-video20221110.png'}})">关闭页面</view>
+            </view>
+            <view class="video-item-h" wx:if="{{bgType==0}}"></view>
+            <navBanner bgType="{{bgType}}" wx:if="{{!videoShowCnt}}" tip="{{tip}}" skinList="{{skinList}}" current="{{current}}" list="{{list}}" bind:selectItem="selectItemHandler"></navBanner>
+            <view class="bottom-container-obh" wx:if="{{!videoShowCnt}}">
+              <view class="agreement" bindtap="toggleProtocol">
+                <image src="{{isProtocolChecked ? 'https://static.tojoyshop.com/images/wxapp-obh/buy/select-on.png' : 'https://static.tojoyshop.com/images/wxapp-obh/buy/select-off20221110.png'}}" class="protocol-icon" />
+                <text class='text1'>阅读并同意</text>
+                <text class='text2' data-type="1" catchtap='isShowAgreement'>《氧吧酒店用户端服务协议》</text>
+              </view>
+              <view class="button-box">
+                <button class="button login-btn" wx:if="{{!isProtocolChecked}}" bindtap="showProtocolToast">
+                  <view class="btn-buy">
+                    立即{{timeInfo.remainingDuration?'续费':'购买'}} 立享健康 支付¥{{selectInfo.price||0}}
+                  </view>
+                </button>
+                <authorize wx:else ext-class="login-btn" optimization bind:logged="authoBuyHandler" bind:success="authoBuyHandler" data-login-type="1">
+                  <view class="btn-buy">
+                    立即{{timeInfo.remainingDuration?'续费':'购买'}} 立享健康 支付¥{{selectInfo.price||0}}
+                  </view>
+                </authorize>
+              </view>
+              <view class="record-box">
+                <view class="record" wx:if="{{0&&isLogin}}" catchtap="goRecord">服务购买记录</view>
+                <authorize wx:else ext-class="login-btn" optimization bind:logged="authoBuyHandler" bind:success="authoBuyHandler" data-login-type="2">
+                  <view class="record">服务购买记录</view>
+                </authorize>
+              </view>
+              <iphoneXBottomHeight />
+            </view>
+          </view>
+          <popDialog showCancel="{{false}}" title="温馨提示" btnConfirmText="知道了" showPopup="{{showPopup}}" bind:callBack="closePopHandler">
+            <view class="obh-wrap">
+              <view class="pop-cnt">
+                <view class="pop-cnt-text1">
+                  该免费体验卡购买超过限制(
+                  <text class="pop-red">{{errorTime}}</text>
+                  该房间只能免费体验一次)
+                </view>
+                <view class="pop-cnt-text2">如需体验氧吧服务请购买其他付费服务产品享受氧吧服务</view>
+              </view>
+            </view>
+          </popDialog>
+          <view class="pop-info-wrap" catchtap="closePopInfoHandler" wx:if="{{showInfoPop}}">
+            <view class="pop-info-box" style="bottom:{{popCntBottom}}px" catchtap="stopHandler" animation="{{animationData}}">
+              <view class="pop-info-head" bindtouchend="mytouchEnd" bindtouchstart="mytouchStart" bindtouchmove="mytouchMove">
+                <view class="info-head-bar"></view>
+                <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-obh/buy/pop-title-20221212.png" class="info-head-img"></image>
+              </view>
+              <scroll-view enhanced binddragend="popInfobinddragend" binddragging="popInfobinddragging" class="pop-info-cnt" scroll-into-view="{{intoView}}" scroll-y>
+                <view class="pop-info-cnt-wrap" id="intoId0">
+                  <image wx:for="{{popInfoList}}" wx:key="unique" mode="widthFix" src="{{item}}" class="info-cnt-img"></image>
+                </view>
+                <view class="pop-goods-wrap" id="intoId1">
+                    <view class="goods-title">立享健康 立见神奇</view>
+                    <view class="goods-title-des">请选择购买款式（可多选）</view>
+                    <view class="goods-list">
+                      <view class="goods-item" wx:for="{{skuList}}" wx:key="unique">
+                        <view class="goods-select{{item.selected?' on':''}}" catchtap="selectGoods" data-index="{{index}}"></view>
+                        <image src="{{item.imgurl}}" class="goods-img"></image>
+                        <view class="goods-name hide-one">{{item.name}}</view>
+                        <view class="goods-des hide-one">{{item.ruleVal}}{{item.natureVal}}</view>
+                        <view class="goods-price">{{item.firstPrice||0}}</view>
+                        <view class="goods-num-box">
+                          <view class="goods-minus{{item.productNum>1?' on':''}}" data-index="{{index}}" catchtap="minusHandler"></view>
+                          <input type="number" data-index="{{index}}" value="{{item.productNum}}" class="goods-num" bindinput="handleInput" bindblur="handleBlur" />
+                          <view class="goods-add{{item.sinceMax>item.productNum?' on':''}}" data-index="{{index}}" catchtap="addHandler"></view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+              </scroll-view>
+              <view class="info-btn-wrap{{showLoginPop?' show-login-pop':''}}">
+                <view class="info-btn1" catchtap="closePopInfoHandler">购买氧吧服务</view>
+                <authorize ext-class="login-btn" optimization bind:logged="buyProduct"
+                bind:popStatus="popStatus"
+                bind:success="buyProduct" data-login-type="1">
+                  <view class="info-btn2">购买氧吧设备</view>
+                </authorize>
+              </view>
+            </view>
+          </view>
+        </view>

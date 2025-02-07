@@ -1,0 +1,11 @@
+<view class="pop-bg" wx:if="{{showPopup}}">
+ <view class="pop-box">
+ <view class="title" wx:if="{{title}}">{{title}}</view>
+  <rich-text wx:if="tipTxt" class="tip-txt" style="{{tipTxtStyle}}" nodes="{{tipTxt}}"></rich-text> 
+  <slot></slot>
+  <view class="footer">
+    <view class="cancel" wx:if="{{showCancel}}" bindtap="cancelFuc">{{ btnCancelText }}</view>
+    <view class="{{showCancel ? 'confirm' : 'alert-confirm'}}" bindtap="callback">{{ btnConfirmText }}</view>
+  </view>
+</view>
+</view>

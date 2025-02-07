@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "cpgoodslist": "../../../../components/order/cpgoodslist/index",
+    "product-dialog": "../../../../components/product/dialog/index"
+  }
+}

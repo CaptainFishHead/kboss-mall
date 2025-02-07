@@ -1,0 +1,13 @@
+<!--pages/order/components/receipt-dialog/index.wxml-->
+<mp-dialog
+    ext-class="dialog-common receipt-dialog dialog-overflow-visible"
+    show="{{visible}}"
+    bindbuttontap="receiptDlgHandle"
+    title="温馨提示"
+    buttons="{{receiptBtns}}"
+    catchtouchmove="touchMove"
+  >
+  <image class="icon-close" bind:tap="close"
+          src="https://static.tojoyshop.com/images/wxapp-boss/order/close.png"/>
+  <text>你是否收到订单中的全部商品？</text>
+</mp-dialog>

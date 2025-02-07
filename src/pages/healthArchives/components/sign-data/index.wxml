@@ -1,0 +1,20 @@
+<navigator class="sign-box" hover-class="navigator-hover" open-type="navigate">
+  <image class="body-img" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/body.png" mode="widthFix"/>
+
+  <view class="btns">
+    <block wx:for="{{ tagGroups }}" wx:key="index">
+      <view class="btn-box" style="{{ item.styleOffset }}">
+        <view hover-class="none" class="left {{ item.group[0].className }}" bind:tap="navigateToBmi" data-metric="{{ item.group[0] }}">
+          <image wx:if="{{ item.group[0].className === 'un_normal' }}" class="warn-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_warning.png?v=1.0.0" mode="widthFix"/>
+          <image wx:if="{{ item.group[0].className !== 'un_normal' && item.group[0].className !== 'not_entered'}}" class="check-img" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/check.png?v=1.0.0" mode="widthFix"/>
+          {{ item.group[0].indexName }}
+        </view>
+        <view hover-class="none" class="right {{ item.group[1].className }}" bind:tap="navigateToBmi" data-metric="{{ item.group[1] }}">
+          <image wx:if="{{ item.group[1].className === 'un_normal' }}" class="warn-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_warning.png?v=1.0.0" mode="widthFix"/>
+          <image wx:if="{{ item.group[1].className !== 'un_normal' && item.group[1].className !== 'not_entered' }}" class="check-img" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/check.png?v=1.0.0" mode="widthFix"/>
+          {{ item.group[1].indexName }}
+        </view>
+      </view>
+    </block>
+  </view>
+</navigator>

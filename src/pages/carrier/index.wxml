@@ -1,0 +1,35 @@
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+
+<navigation-bar back="{{isBack}}" class="theme-{{theme.tabBar}}" bindback="goBack"/>
+
+<empty ext-class="empty-box" wx:if="{{showEmpty}}"
+       imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722"
+       empotyDesc="{{msg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="reloadHandler"/>
+
+<scroll-view scroll-y wx:else style="background-color:{{theme.backgroundColor}}" class="carrier" id="carrier" enhanced
+             bind:touchstart="start" bind:touchend="end" bind:scroll="pageScrolling"
+><!-- bind:scroll="scrollHandler"-->
+  <block wx:for="{{columns}}" wx:key="columnId" wx:for-item="column" wx:for-index="columnIndex">
+    <include src="./../../components/carrier/current/index.wxml" wx:if="{{column.componentId !== 1902}}"/>
+    <include src="./../../components/carrier/swiper/index.wxml" wx:else/>
+  </block>
+
+  <global-back isScrolling="{{isScrolling}}"/>
+</scroll-view>
+
+<view class="right-btn-box" style="bottom:80rpx;" wx:if="{{!!theme.isShare}}">
+  <share-entry
+    pageId="{{pageId}}"
+    pageName="{{title}}"
+    bind:createPoster="createPoster"
+    bind:createShareCode="createShareCode"
+  >
+    <view class="share com-btn">
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-share.png" mode="aspectFit"/>分享
+    </view>
+  </share-entry>
+</view>
+
+<login-promise id="authorize" removeSlot/>

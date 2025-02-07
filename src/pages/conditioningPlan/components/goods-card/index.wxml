@@ -1,0 +1,22 @@
+<wxs module="filter" src="../../../../utils/filter.wxs"/>
+<view class="goods_cart_container">
+  <view class="navigator_nav" bindtap="navigateToGoodsDetails">
+    <view class="img-box {{ cardDate.className }}">
+      <image class="good_img" src="{{cardDate.productBriefVO.itemCoverImage}}" mode="heightFix"/>
+    </view>
+    <view class="goods_item_info {{ cardDate.className }}">
+      <view class="goods_item_info_left">
+        <text class="goods_item_info_name">{{cardDate.name}}</text>
+        <text class="goods_item_info_promo">{{cardDate.productBriefVO.itemBriefIntro}}</text>
+      </view>
+      <view class="goods_item_info_bottom">
+        <view class="goods_item_info_price {{ cardDate.className }}"  wx:if="{{ cardDate.type !== 5 }}">
+          <text class="left" wx:if="{{ cardDate.type !== 4 }}">{{ cardDate.leftTxt }}</text>
+          <text class="right" wx:if="{{cardDate.type == 1}}">{{ filter.transformNum(cardDate.rightTxt) }}</text>
+          <text class="right" wx:else>{{ cardDate.rightTxt }}</text>
+        </view>
+        <view class="goods_item_info_btn">{{ cardDate.btnName }}</view>
+      </view>
+    </view>
+  </view>
+</view>

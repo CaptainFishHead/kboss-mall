@@ -1,0 +1,49 @@
+# 忽略 node_modules 目录
+node_modules/
+
+# 忽略打包后的产物
+dist/
+build/
+
+# 忽略配置文件
+*.config.js
+
+# 忽略环境变量文件
+.env
+.env.*
+
+
+# 忽略日志文件
+*.log
+
+# 忽略图片、音频、视频等二进制文件
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.webp
+*.ico
+*.svg
+*.mp3
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# 忽略文档文件
+*.md
+*.pdf
+*.docx
+*.xlsx
+
+# 忽略 IDE 和编辑器的配置文件
+.vscode/
+.idea/
+
+# 忽略静态资源文件
+assets/
+static/
+
+# 忽略特定的文件和目录
+path/to/specific/file/or/directory

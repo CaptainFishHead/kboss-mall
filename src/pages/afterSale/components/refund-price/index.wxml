@@ -1,0 +1,24 @@
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<view class="refund">
+    <view class="refund-title">
+        <view class="refund-title-des">退款总额</view>
+        <view class="refund-title-price price">{{filter.formatAmount(detailInfo.totalRefundPrice)}}</view>
+    </view>
+    <view class="refund-info">
+        <view class="refund-info-amount">
+            <text>退还商品金额</text>
+            <text class="price-size price"><text style="font-size:24rpx;">¥</text> {{filter.formatAmount(detailInfo.refundProductPrice)}}</text>
+        </view>
+        <view class="refund-info-amount">
+            <text>退还配送邮费</text>
+            <text class="price-size price"><text style="font-size:24rpx;">¥</text> {{filter.formatAmount(detailInfo.refundPostagePrice)}}</text>
+        </view>
+        <view class="refund-info-bean">
+            <text>退还康豆</text>
+            <text class="price-size price">{{detailInfo.refundBeanNum}}</text>
+        </view>
+        <view class="refund-info-tips">
+            退款总额为系统预估，实际退款金额以到账为准，退款后将扣除您本单获赠康豆，【如康豆余额不足时，我们将按照1:1的比例从您现金货款中扣除】，请您悉知，如有疑问请联系客服。
+        </view>
+    </view>
+</view>

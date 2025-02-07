@@ -1,0 +1,30 @@
+/* plugin/components/live/player/index.wxss */
+.decorate{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  &-0, &-1, &-2{
+    position: absolute;
+    z-index: 1;
+  }
+  &-0{
+    top: 0;
+    left: 0;
+    width: 750rpx;
+    max-height: 550rpx;
+  }
+  &-1{
+    top: 267rpx;
+    right: 0;
+    width: 200rpx;
+    max-height: 400rpx;
+  }
+  &-2{
+    bottom: 0;
+    left: 0;
+    width: 750rpx;
+    max-height: 550rpx;
+  }
+}

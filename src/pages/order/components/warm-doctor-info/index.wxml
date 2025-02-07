@@ -1,0 +1,50 @@
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<view class="doctor">
+  <view class="doctor-avatar">
+    <image class="img" mode="aspectFill" src="{{doctorInfo.imageUrl}}"></image>
+  </view>
+  <view class="doctor-info">
+    <text class="doctor-info-name">{{doctorInfo.doctorName}}·{{doctorInfo.doctorTitleName}}</text>
+    <text class="doctor-info-ascr">{{doctorInfo.hospitalName}}</text>
+    <text class="doctor-info-vocation">{{doctorInfo.deptName}}</text>
+  </view>
+</view>
+
+<view class="reservation-info" bind:tap="openTimeDialog">
+  <text class="reservation-info-label">预约信息</text>
+  <text class="reservation-info-value">{{reducibleDateInfo.reducibleDate || ''}} {{reducibleDateInfo.reducibleTime || ''}}</text>
+</view>
+
+<block wx:for="{{goodsList}}" wx:key="storeId">
+  <view class="package">
+    <view class="package-title">{{item.storeName}}</view>
+    <view class="package-box" wx:for="{{item.skuList}}" wx:key="skuId" wx:for-index="idx" wx:for-item="prod">
+      <view class="package-box-avatar">
+        <image class="prod-img" src="{{prod.skuImg}}"></image>
+      </view>
+      <view class="package-box-info">
+        <text class="title">{{prod.spuName}}</text>
+        <view class="price-info">
+          <text class="price">¥ {{filter.formatAmount(prod.sellPrice)}}</text>
+          <text class="num"><text>x</text> {{prod.skuNum}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="uesermsg">
+    <text class="uesermsg-title">留言</text>
+    <textarea
+      class="uesermsg-message"
+      auto-height
+      cursor-spacing="{{50}}"
+      maxlength="50"
+      placeholder="给商家备注留言信息"
+      data-storeid="{{item.storeId}}"
+      bindinput="onEditMessage"
+    />
+  </view>
+</block>
+
+
+

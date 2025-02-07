@@ -1,0 +1,31 @@
+<!--plugin/components/live-goods-card.wxml-->
+<wxs src="./../../../../../utils/filter.wxs" module="filter" />
+<view class="end">
+  <view class="end-title">直播已结束</view>
+  <view class="end-time">直播时长<text class="end-time-value">{{dataInfo.viewTime}}</text></view>
+  <flex class="end-info" justifyContent="space-around" alignItems="center">
+    <flex-item>
+      <flex class="end-info-item" direction="column" alignItems="center">
+        <flex-item class="end-info-icon"><image class="icon"  src="https://static.tojoyshop.com/images/wxapp-boss/live/live-user-icon.png"/></flex-item>
+        <flex-item class="end-info-num">{{dataInfo.viewPerson}}</flex-item>
+        <flex-item class="end-info-label">观看人数</flex-item>
+      </flex>
+    </flex-item>
+    <flex-item>
+      <flex class="end-info-item" direction="column" justifyContent="space-between" alignItems="center">
+        <flex-item class="end-info-icon"><image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/live-view-icon.png"/></flex-item>
+        <flex-item class="end-info-num">{{dataInfo.viewCount}}</flex-item>
+        <flex-item class="end-info-label">观看次数</flex-item>
+      </flex>
+    </flex-item>
+    <flex-item>
+      <flex class="end-info-item" direction="column" justifyContent="space-between" alignItems="center">
+        <flex-item class="end-info-icon"><image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/live-sentiment-icon.png"/></flex-item>
+        <flex-item class="end-info-num">{{filter.moneyNumber(dataInfo.hotNum)}}</flex-item>
+        <flex-item class="end-info-label">本场人气</flex-item>
+      </flex>
+    </flex-item>
+  </flex>
+  <slot name="end-recommend" ></slot>
+  <!-- <live-remind liveInfo="{{trailerLiveInfo}}"/> -->
+</view>

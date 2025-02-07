@@ -1,0 +1,30 @@
+<view class="searchbar-box isLink {{extClass}}">
+
+  <view class="searchbar">
+    <view class="searchbar-lf" bindtap="toSearchPage">
+      <view class="searchbar-input">
+        <view class="icon-search" />
+        <!-- <block wx:else>
+          <view class="icon-search" />
+          <input type="text" placeholder="{{placeholder}}" focus="{{isFocus}}" value="{{inputVal}}" confirm-type="search" bindconfirm="onConfirm" bindfocus="onFocus" bindblur="onBlur" bindinput="onEdit" />
+          <view class="icon-clear" bindtap="onClear" wx:if="{{inputVal}}" />
+        </block> -->
+      </view>
+
+      <swiper class="swiper" vertical circular autoplay="{{!isFocus && !inputVal}}" current="{{curIndex}}" interval="6000" easing-function="easeOutCubic" bindchange="swiperChange" bindtransition="swiperTransition" style="opacity: {{!isFocus && !inputVal ? 1 : 0}}">
+        <block wx:for="{{placeholderList}}" wx:key="index">
+          <swiper-item>
+            <view class="swiper-item" style="opacity: {{opacity}}">{{item.wordName}}</view>
+          </swiper-item>
+        </block>
+      </swiper>
+
+    </view>
+
+    <view class="searchbar-rg" bindtap="toSearchPage">
+      <button type="primary" size="mini" bindtap="onConfirm">搜索</button>
+    </view>
+  </view>
+
+
+</view>

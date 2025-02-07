@@ -1,0 +1,130 @@
+/* pages/chatai/components/chat-left-item/index.wxss */
+@import "../../../../components/toast/index.wxss";
+.chat-root {
+	display: flex;
+	margin-top: 40rpx;
+	margin-left: 27rpx;
+	margin-bottom: 5rpx;
+
+
+	&-item {
+		max-width: 80%;
+	}
+
+	&-top {
+		background: #FFFFFF;
+		box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(76, 144, 137, 0.47);
+		color: #535353;
+		padding-top: 24rpx;
+		border-radius: 0rpx 20rpx 20rpx 20rpx;
+	}
+
+	&-text {
+		min-height: 30rpx;
+		margin-left: 34rpx;
+		margin-right: 34rpx;
+		padding-bottom: 24rpx;
+		/* 允许在任意字符间断开 */
+		word-break: break-all;
+		/* 确保在单词边界换行 */
+		overflow-wrap: break-word;
+	}
+
+	&-bottomicon {
+		width: 20rpx;
+		height: 20rpx;
+		margin-left: 10rpx;
+	}
+
+	&-more {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: auto;
+		color: #666666;
+		font-size: 26rpx;
+		padding-bottom: 20rpx;
+	}
+
+	&-btn {
+		width: auto;
+		height: 60rpx;
+		background-color: #09BDAC;
+		border-radius: 30rpx;
+		margin-left: 30rpx;
+		margin-right: 30rpx;
+		color: white;
+		line-height: 60rpx;
+		text-align: center;
+		font-size: 26rpx;
+	}
+
+	&-btndesc {
+		color: #CFAF65;
+		font-size: 24rpx;
+		margin-top: 14rpx;
+		margin-left: 35rpx;
+		padding-bottom: 24rpx;
+	}
+
+	&-relayout {
+		display: flex;
+		flex-direction: row;
+		width: auto;
+		margin-left: 34rpx;
+	}
+
+	&-reItem {
+		padding-left: 26rpx;
+		padding-right: 36rpx;
+		height: 49rpx;
+		border-radius: 25rpx;
+		border: 1rpx solid #979797;
+		margin-right: 24rpx;
+		margin-top: 6rpx;
+		margin-bottom: 30rpx;
+		color: #4A4A4A;
+		font-size: 26rpx;
+		line-height: 49rpx;
+		white-space: nowrap;
+	}
+
+	&-bottom {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	&-bottom-layout {
+		display: flex;
+		align-items: center;
+		width: 204rpx;
+		height: 65rpx;
+		background: #FFFFFF;
+		box-shadow: 0rpx 2rpx 8rpx 0rpx rgba(77, 124, 87, 0.31);
+		border-radius: 10rpx;
+		margin-top: 16rpx;
+	}
+
+	&-bottom-layout-praise {
+		width: 30rpx;
+		height: 30rpx;
+		margin-left: 24rpx;
+	}
+
+	&-praise-text {
+		color: #4A4A4A;
+		font-size: 26rpx;
+		margin-left: 13rpx;
+	}
+
+	&-unpraise-line {
+		color: #979797;
+		margin-left: 15rpx;
+		margin-right: 15rpx;
+	}
+
+	&-unpraise-icon {
+		width: 30rpx;
+		height: 30rpx;
+	}
+}

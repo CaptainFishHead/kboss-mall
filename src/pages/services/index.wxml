@@ -1,0 +1,28 @@
+<import src="../../components/toast/index" />
+<template is="toast" data="{{...tj_toast}}" />
+<!-- head -->
+<navigation-bar title="我的服务" background="#FFF" id="navbar"  back="{{false}}">
+  <view slot="left" class="back-icon" bind:tap="goBackCustomize"></view>
+</navigation-bar>
+<view class="service-tab" id="tabBar">
+  <view class="service-head">
+    <view class="service-item {{orderType=='1'?'active':''}}" bindtap="serviceOnline">线上服务</view>
+    <view class="service-item {{orderType=='2'?'active':''}}" bindtap="serviceStore">到店服务</view>
+  </view>
+  <mp-tabbar ext-class="order-tab services-tab" list="{{tabBar[orderType]}}" current='{{current}}' bindchange="tabChange" />
+</view>
+<!-- containers -->
+<blcok wx:if="{{isLogged}}">
+  <view class="containers"style="--barHeight:{{barHeight}}px;--tabHeight:{{tabHeight}}px;">
+    <block wx:if="{{serviceData.list.length}}">
+      <view wx:for="{{serviceData.list}}" wx:key="index">
+        <service-item serviceInfo="{{item}}" orderType="{{orderType}}" current="{{current}}" bind:refresh="onRefresh" />
+      </view>
+    </block>
+    <empty wx:if="{{serviceData.list.length === 0 && !isLoading}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/order/empty-order.png?v=1.0.0" empotyDesc="暂无{{tabBar[orderType][current].text}}哦～" />
+    <mp-loading tips="正在加载" show="{{isLoading}}" type="circle" />
+  </view>
+</blcok>
+<view class="login" wx:else>
+  <login bind:success="bindSuccess" bind:fail="bindFail" bind:close="bindClose" hideClose />
+</view>

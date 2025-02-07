@@ -1,0 +1,63 @@
+@import "./../../../components/toast/index.wxss";
+
+page {
+  background: #f6f6f6;
+}
+
+.container {
+  text-align: center;
+  color: #000;
+  background: #fff;
+
+  .title {
+    margin: 60rpx 0 10rpx;
+    font-size: 32rpx;
+    letter-spacing: 1rpx;
+  }
+
+  .money {
+    font-size: 54rpx;
+    text-shadow: 0 2rpx 2rpx rgba(194, 110, 19, 0.1);
+  }
+
+  .list {
+    width: 100%;
+    padding: 100rpx 40rpx 30rpx;
+    box-sizing: border-box;
+
+    &-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 50rpx;
+      font-size: 26rpx;
+
+      &-lf {
+        color: #666;
+      }
+
+      &-rg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: right;
+        font-weight: bold;
+        color: #333;
+
+        .copy-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: auto;
+          height: 24rpx;
+          padding: 0 8rpx;
+          margin-left: 10rpx;
+          font-size: 18rpx;
+          border-radius: 2rpx;
+          border: 1px solid #333;
+        }
+      }
+    }
+  }
+}

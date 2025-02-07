@@ -1,0 +1,56 @@
+/* pages/chatai/components/chat-report-view/index.wxss */
+.report-root {
+	width: auto;
+	height: 133rpx;
+	background: linear-gradient(129deg, #F1FFFC 0%, #FFFFFF 27%, #FFFFFF 55%, #FFFFFF 70%, #FFF8EA 100%);
+	border-radius: 10rpx;
+	border: 2rpx solid #FFF8EA;
+	margin-top: 24rpx;
+	margin-left: 27rpx;
+	margin-right: 27rpx;
+	display: flex;
+	align-items: center;
+
+	&-head {
+		border-radius: 100rpx;
+		width: 100rpx;
+		height: 100rpx;
+		background: chartreuse;
+		margin-left: 25rpx;
+	}
+
+	&-content {
+		display: flex;
+		justify-content: space-between;
+		flex-grow: 1;
+		margin-left: 35rpx;
+		align-items: center;
+	}
+
+	&-layout {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&-title {
+		font-size: 28rpx;
+		color: #404040;
+	}
+
+	&-desc {
+		font-size: 24rpx;
+		color: #666666;
+	}
+
+	&-btn {
+		width: 169rpx;
+		height: 56rpx;
+		background: linear-gradient(180deg, #FFEAC9 0%, #FFC569 100%);
+		border-radius: 30rpx;
+		text-align: center;
+		line-height: 56rpx;
+		color: #554623;
+		font-size: 26rpx;
+		margin-right: 40rpx;
+	}
+}

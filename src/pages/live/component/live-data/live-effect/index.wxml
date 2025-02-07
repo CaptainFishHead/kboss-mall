@@ -1,0 +1,35 @@
+<view class="live-effect">
+  <flex class="data-info" justifyContent="space-around" alignItems="center">
+    <flex-item>
+      <flex class="data-info-item" direction="column" alignItems="center">
+        <flex-item class="data-info-icon"><image class="icon"  src="https://static.tojoyshop.com/images/wxapp-boss/live/live-user-icon.png"/></flex-item>
+        <flex-item class="data-info-num">{{dataInfo.viewPerson}}</flex-item>
+        <flex-item class="data-info-label">观看人数</flex-item>
+      </flex>
+    </flex-item>
+    <flex-item>
+      <flex class="data-info-item" direction="column" justifyContent="space-between" alignItems="center">
+        <flex-item class="data-info-icon"><image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/live-online-icon.png"/></flex-item>
+        <flex-item class="data-info-num">{{dataInfo.maxOnline}}</flex-item>
+        <flex-item class="data-info-label">最高在线</flex-item>
+      </flex>
+    </flex-item>
+    <flex-item>
+      <flex class="data-info-item" direction="column" justifyContent="space-between" alignItems="center">
+        <flex-item class="data-info-icon"><image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/live-view-icon.png"/></flex-item>
+        <flex-item class="data-info-num">{{dataInfo.viewCount}}</flex-item>
+        <flex-item class="data-info-label">观看次数</flex-item>
+      </flex>
+    </flex-item>
+  </flex>
+  <view class="chart-data">
+      <view class="charts">
+      <view class="charts-title">在线人数趋势</view>
+      <ec-canvas class="canvas" ec="{{ peopleNumChartEC }}"></ec-canvas>
+    </view>
+    <view class="charts">
+      <view class="charts-title">直播活跃趋势</view>
+      <ec-canvas class="canvas" ec="{{ activeChartEC }}"></ec-canvas>
+    </view>
+  </view>
+</view>

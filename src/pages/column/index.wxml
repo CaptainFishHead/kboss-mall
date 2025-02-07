@@ -1,0 +1,105 @@
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<!-- bindback="goBack" -->
+<!-- <navigation-bar back="{{false}}" class="theme-{{theme.tabBar}}" /> -->
+<navigation-bar back="{{false}}" style="z-index:4000;--menuButtonHeight:{{navBar.menuButtonHeight}}px" ext-class="nav">
+  <view slot="center" class="center">
+    <searchbar hotPosition="3" extClass="br-36" isLink bind:open-page="searchbarOpenPage" />
+  </view>
+</navigation-bar>
+<view class="headBg">
+  <image src="https://static.tojoyshop.com/images/wxapp-boss/home/column_bg.png" mode="" />
+</view>
+<view class="wrap">
+  <empty ext-class="empty-box" wx:if="{{showEmpty}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722" empotyDesc="{{msg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="reloadHandler" />
+  <scroll-view class="carrier page-index homescroll" id="carrier" style="padding-top:{{navBar.navBarHeight + 14}}px;" scroll-y wx:else enhanced bind:touchstart="start" bind:touchend="end" bind:scroll="pageScrolling" scroll-top="{{scrollTop}}">
+    <view class="padBox">
+      <!-- 专栏推荐 -->
+      <view class="recommend">
+        <view class="recommend-title">专栏推荐</view>
+        <view class="recommend-label">知识科普 | 健康课堂 | 了解常见病</view>
+      </view>
+      <!-- 健康早知道 -->
+      <view class="healthyKnow">
+        <view class="healthyKnow-top">
+          <view class="healthyKnow-top-title">健康早知道</view>
+          <!-- clickPrevious -->
+          <view class="healthyKnow-top-datetime" data-type='WQSJ' bind:tap="isNeedLogin">
+            <view class="healthyKnow-top-datetime-day">{{healthKnow.day}}</view>
+            <view class="healthyKnow-top-datetime-xian"></view>
+            <view class="healthyKnow-top-datetime-monthtime">
+              <view class="healthyKnow-top-datetime-monthtime-month">{{healthKnow.month}}月</view>
+              <view class="healthyKnow-top-datetime-monthtime-week">{{healthKnow.week}}</view>
+            </view>
+            <image class="healthyKnow-top-datetime-rightIcons" src="https://static.tojoyshop.com/images/wxapp-boss/icons/icon_more_green.png" mode="" />
+          </view>
+        </view>
+        <view class="healthyKnow-bottom">
+          <image class="healthyKnow-bottom-column_calendar1 dian" src="https://static.tojoyshop.com/images/wxapp-boss/home/column_calendar.png" mode=""/>
+          <image class="healthyKnow-bottom-column_calendar2 dian" src="https://static.tojoyshop.com/images/wxapp-boss/home/column_calendar.png" mode=""/>
+          <view class="healthyKnow-bottom-bpttBox" data-type='QWNR' bind:tap="isNeedLogin">
+            <view class="healthyKnow-bottom-bpttBox-title">{{healthKnow.title}}</view>
+            <view class="healthyKnow-bottom-bpttBox-abstractTitle">
+              <text>{{healthKnow.abstractTitle}}</text>
+            </view>
+          </view>
+          <!-- 音频播放 -->
+          <view class="healthyKnow-bottom-audiobox" wx:if="{{healthKnow.audioUrl}}">
+            <audio style="width:100%;" bind:playEnd="playEnd" bind:timeUpdate="timeUpdate" isstopAudio="{{isstopAudio}}" audiosrc="{{healthKnow.audioUrl}}"></audio>
+          </view>
+          <view class="healthyKnow-bottom-detailBtn" data-type='QWNR' bind:tap="isNeedLogin">
+            <text>查看全文</text>
+            <image class="healthyKnow-bottom-detailBtn-icon_more_white" src="https://static.tojoyshop.com/images/wxapp-boss/icons/icon_more_green.png" mode="" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- bind:scroll="scrollHandler"-->
+    <block wx:for="{{columns}}" wx:key="columnId" wx:for-item="column" wx:for-index="columnIndex">
+      <include src="./../../components/carrier/current/index.wxml" wx:if="{{column.componentId !== 1902}}" />
+      <include src="./../../components/carrier/swiper/index.wxml" wx:else />
+    </block>
+  </scroll-view>
+</view>
+<!-- 底部tab -->
+<tab-bar />
+<global-back isScrolling="{{isScrolling}}" />
+<view class="right-btn-box">
+  <!-- 客服 -->
+  <block wx:if="{{theme.isShowCustomer}}">
+    <authorize ext-class="service-btn" optimization bind:success="">
+      <service-btn bind:showServices="showServices" serviceVisible="{{serviceVisible}}">
+        <view class="service com-btn" bindtap="showService">
+          <image class="service-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_test_services.png?v=1.0.0" mode="aspectFit" />
+        </view>
+      </service-btn>
+    </authorize>
+  </block>
+  <!-- 回到顶部 -->
+  <block wx:if="{{showTop}}">
+    <view class="com-btn" bindtap="goTop">
+      <image class="top-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-top.png" mode="aspectFit" />顶部
+    </view>
+  </block>
+  <!-- 分享 -->
+  <block wx:if="{{!!theme.isShare}}">
+    <share-entry pageId="{{pageId}}" pageName="{{title}}" bind:createPoster="createPoster" bind:createShareCode="createShareCode">
+      <view class="share com-btn">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-share.png" mode="aspectFit" />
+        分享
+      </view>
+    </share-entry>
+  </block>
+  <!-- 康豆 -->
+  <block wx:if="{{theme.isShowBeans}}">
+    <authorize ext-class="service-btn clear-margin" style="margin:0;" optimization bind:success="">
+      <view class="service com-btn btn-exchange" bindtap="navigateToMiniHongCuBao">
+        <image class="service-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-beans-exchange.png" mode="aspectFit" />
+      </view>
+    </authorize>
+  </block>
+</view>
+<authorize ext-class="authorize-btn" isShowAuth id="authHealthCoponents" bind:success="" />
+<privacy id="privacy" />
+<login-promise id="authorize" removeSlot />

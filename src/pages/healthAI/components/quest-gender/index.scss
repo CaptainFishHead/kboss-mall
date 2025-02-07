@@ -1,0 +1,55 @@
+@import "../../../../styles/animfade.scss";
+.containerCommonBox {
+  width:100%;
+  height:auto;
+  overflow: hidden;
+  border-radius: 10rpx;
+  overflow: hidden;
+  background-color: #fff;
+  .sexTest {
+    width:100%;
+    height:auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin:45rpx 0;
+    &-item {
+      width:200rpx;
+      height:200rpx;
+      border:1px solid rgb(245,247,248);
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-icon{
+      width:200rpx;
+      height:200rpx;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      box-sizing: border-box;
+    }
+    &-selected {
+      background-color: rgb(237,250,248);
+      border:1px solid #09BDAC;
+      color:#09BDAC;
+    }
+  }
+  .containerCommonFooter {
+    width: 100%;
+    box-sizing: border-box;
+    padding:38rpx 75rpx;
+  }
+
+.success {
+  height: 94rpx;
+  background: linear-gradient( 180deg, #A2E4DE 0%, #09BDAC 100%);
+  border-radius: 4rpx;
+  font-weight: 700;
+  font-size: 30rpx;
+  color: #333333;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+}

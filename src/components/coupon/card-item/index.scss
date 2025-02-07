@@ -1,0 +1,241 @@
+.card {
+  position: relative;
+  z-index: 111;
+  width: 687rpx;
+  height: 350rpx;
+  padding: 80rpx 30rpx 0 30rpx;
+  margin: 0 auto 20rpx;
+  font-size: 24rpx;
+  color: #FFDEB2;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-sizing: border-box;
+
+  &-gift {
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/coupon/card-bg-gift.png?v=20231114);
+  }
+
+  &-gift.card-disable {
+    color: rgba(0, 0, 0, 0.3);
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/coupon/card-bg-disable-gift.png?v=20231114);
+  }
+
+  &-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 114;
+    width: 500rpx;
+    height: 100%;
+  }
+
+  &-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 113;
+    width: 100%;
+    height: 100%;
+    background: rgba(59, 59, 59, 0.4);
+  }
+
+  &-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 36rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+    line-height: 36rpx;
+
+    text {
+      display: block;
+      max-width: 420rpx;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-info {
+      position: relative;
+      z-index: 115;
+      display: flex;
+      align-items: center;
+      width: 60rpx;
+      height: 50rpx;
+      background: url(https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-info.png) 10rpx center no-repeat;
+      background-size: 30rpx 30rpx;
+
+      &-disable {
+        background-image: url(https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-info-disable.png);
+      }
+    }
+  }
+
+  &-subtitle {
+    width: 100%;
+    height: 28rpx;
+    line-height: 28rpx;
+    margin: 24rpx 0;
+    font-size: 26rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: .89;
+  }
+
+  &-time {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    height: 60rpx;
+    line-height: 38rpx;
+
+    text {
+      display: block;
+      max-width: 460rpx;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      opacity: .74;
+    }
+
+    .btn {
+      position: relative;
+      z-index: 119;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 160rpx;
+      height: 60rpx;
+      margin-left: 10rpx;
+      text-align: center;
+      font-size: 26rpx;
+      font-weight: bold;
+      border-radius: 100rpx;
+
+      &-active {
+        color: #000;
+        background: linear-gradient(132deg, #FAF0E1 0%, #FFF1DD 16%, #FFDEB2 100%);
+      }
+
+      &-use {
+        background: linear-gradient(144deg, #FAF0E1 0%, rgba(255, 241, 221, 0) 12%, rgba(170, 154, 134, 0.58) 100%);
+        border: 1px solid #FFDEB2;
+      }
+
+      &-cancle {
+        opacity: .7;
+      }
+    }
+  }
+
+  &-foot {
+    position: absolute;
+    bottom: 2rpx;
+    left: 30rpx;
+    right: 30rpx;
+    z-index: 112;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56rpx;
+    line-height: 56rpx;
+
+    .btn {
+      display: flex;
+      align-items: center;
+      line-height: 20rpx;
+
+      image {
+        width: 20rpx;
+        height: 20rpx;
+      }
+    }
+  }
+
+  &-status {
+    position: absolute;
+    top: 20rpx;
+    right: 30rpx;
+    z-index: 112;
+    width: 138rpx;
+    height: 130rpx;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+
+.dialog {
+
+  &-body {
+    padding: 40rpx 30rpx;
+
+    .title {
+      line-height: 1.5;
+      font-size: 30rpx;
+      font-weight: bold;
+      // color: #FFFFFF;
+    }
+
+    .flex {
+      display: flex;
+      align-items: center;
+
+      &.between {
+        justify-content: space-between;
+      }
+    }
+
+    .tips {
+      position: relative;
+      font-size: 26rpx;
+      color: #909090;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -30rpx;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 1rpx;
+        background: #F1F1F1;
+      }
+    }
+
+    .copy-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      height: 24rpx;
+      padding: 0 8rpx;
+      margin-left: 10rpx;
+      font-size: 18rpx;
+      border-radius: 2rpx;
+      border: 1px solid #1C1C1C;
+    }
+  }
+
+}
+
+.mt20 {
+  margin-top: 20rpx;
+}
+
+.mt30 {
+  margin-top: 30rpx;
+}
+
+.mt40 {
+  margin-top: 40rpx;
+}
+
+.mt50 {
+  margin-top: 50rpx;
+}

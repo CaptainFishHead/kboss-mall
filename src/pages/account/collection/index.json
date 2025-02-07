@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "empty": "/components/empty/index",
+    "operation": "/components/recommend/operation/index",
+    "scroll-tabbar": "./scroll-tabbar/index",
+    "imgText-card": "/components/recommend/imgText-card/index",
+    "release-time": "/components/recommend/release-time/index",
+    "view-volume": "/components/recommend/view-volume/index"
+  }
+}

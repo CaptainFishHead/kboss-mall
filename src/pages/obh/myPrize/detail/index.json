@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "prize-info":"../components/prize-info/index",
+    "card-title":"../components/card-title/index",
+    "prize-card":"../components/prize-card/index",
+    "goods-item":"../components/goods-item/index",
+    "share-users":"../components/share-users/index",
+    "service-btn": "/components/service-btn/index",
+    "logistics": "../components/logistics/index",
+    "logistics-detail": "../components/logistics-detail/index"
+  }
+}

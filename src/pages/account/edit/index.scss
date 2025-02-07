@@ -1,0 +1,147 @@
+/* pages/user/index.wxss */
+@import "../../../components/toast/index.wxss";
+page {
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: calc(120rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  position: relative;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .item-label {
+    text-align: left;
+    font-size: 32rpx;
+    color: #333;
+    margin-left: 60rpx;
+    font-weight: 700;
+  }
+
+  .desc {
+    font-size: 26rpx;
+    color: #999;
+    margin-left: 6rpx;
+  }
+}
+
+.label {
+  text-align: left;
+  font-size: 32rpx;
+  color: #333;
+  margin-left: 60rpx;
+  font-weight: 700;
+  margin-top: 70rpx;
+}
+
+.avatar-container {
+  padding-top: 80rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .avatar  {
+    height: 188rpx;
+    width: 188rpx;
+    border-radius: 94rpx;
+  }
+
+  .avatar-cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 30rpx;
+    height: 30rpx;
+    margin-top: 16rpx;
+    color: #B58209;
+    margin-bottom: 93rpx;
+    .ic-camera {
+      width: 30rpx;
+      height: 30rpx;
+      margin-right: 8rpx;
+    }
+  }
+}
+
+.submit-btn {
+  width: 540rpx;
+  height: 94rpx;
+  position: fixed;
+  left: 50%;
+  bottom: calc(20rpx + constant(safe-area-inset-bottom));
+  bottom: calc(20rpx + env(safe-area-inset-bottom));
+  transform: translate(-50%, 0);
+  // margin: 165rpx auto 0;
+}
+
+.input-normal {
+  caret-color:#CFAF65;
+  max-width: 630rpx;
+  height: 96rpx;
+  margin: 32rpx 60rpx 0;
+  line-height: 96rpx;
+  padding: 0 60rpx 0 32rpx;
+  border: 1rpx #999 solid;
+  border-radius: 4rpx;
+  outline-style: none;
+}
+
+.input-active{
+  border: 2rpx #CFAF65 solid;
+  caret-color:#CFAF65;
+  max-width: 630rpx;
+  height: 96rpx;
+  line-height: 92rpx;
+  margin: 32rpx 60rpx 0;
+  padding-left: 32rpx;
+  border-radius: 4rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  outline-style: none;
+
+  .float-clear {
+    position: absolute;
+    right: 0;
+    height: 96rpx;
+    top: 0;
+    width: 96rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20rpx;
+
+    image {
+      width: 32rpx;
+      height: 32rpx;
+    }
+  }
+}
+
+.cont {
+  font-size: 30rpx;
+  color: #666;
+  margin: 20rpx 60rpx 0;
+}
+
+.dis_btn {
+  opacity: .5;
+}
+
+input {
+  width: 520rpx;
+}

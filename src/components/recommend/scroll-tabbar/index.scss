@@ -1,0 +1,77 @@
+/* components/recommend/scroll-tabbar/index.wxss */
+.scroll-tabbar{
+  width: 100%;
+  white-space: nowrap;
+  // font-family: 'FZZZHONGJW';
+  margin: 0 16rpx;
+  &_item{
+    text-align: center;
+    margin: 0 15rpx;
+    display: inline-block;
+    font-size: 30rpx;
+    color: #999999;
+    padding: 20rpx 0;
+    &.on{
+      font-size: 34rpx;
+      color: #B58209;
+      position: relative;
+      font-weight: bold;
+      &::after{
+        content: "";
+        width: 30rpx;
+        height: 5rpx;
+        display: block;
+        background: linear-gradient(270deg, #EFD8A6 0%, #CFAF65 100%);
+        position: absolute;
+        left: 50%;
+        bottom: 18rpx;
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+  &.news-tabbar{
+    margin: 0;
+    background-color: #fff !important;
+    padding-top: 20rpx;
+    .scroll-tabbar_item{
+      color: #333333;
+      margin: 0 27rpx;
+      padding: 0;
+      height: 67rpx;
+      line-height: 50rpx;
+      overflow: hidden;
+      transition: font-size 0.1s linear;
+      will-change: transform;
+      &.on{
+        color: #049C9C;
+        font-size: 36rpx;
+        &::after{
+          content: "";
+          width: 38rpx;
+          margin-left: -19rpx;
+          height: 14rpx;
+          display: block;
+          background-image: url(https://static.tojoyshop.com/images/wxapp-boss/recommend/tabbar-point.png);
+          background-size: 100%;
+          bottom: 3rpx;
+          animation: expand .3s linear forwards;
+          transform:none;
+          transform-origin: center; /* 设置变换的中心点为元素中心 */
+          opacity: 0;
+        }
+      }
+    }
+    
+  }
+}
+
+@keyframes expand {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}

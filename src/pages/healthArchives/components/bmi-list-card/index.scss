@@ -1,0 +1,63 @@
+.content-box {
+  width: 100%;
+  padding-bottom: 24rpx;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  background: #f3f4f6;
+  border-radius: 10rpx;
+  justify-content: space-between;
+  padding: 40rpx 35rpx 40rpx 26rpx;
+  box-sizing: border-box;
+  
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .name {
+      font-weight: 400;
+      font-size: 32rpx;
+      color: #2d2d2d;
+    }
+    .num_value {
+      font-weight: 400;
+      font-size: 26rpx;
+      color: #666666;
+    }
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 48rpx;
+    color: #333333;
+    .num_value_up,
+    .num_value_down {
+      position: relative;
+      margin-right: 30rpx;
+    }
+    .num_value_up::after,
+    .num_value_down::after {
+      content: '';
+      position: absolute;
+      right: -40rpx;
+      top: 50%;
+      width: 28rpx;
+      height: 28rpx;
+      background: url('https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/icon-arrow-up.png')
+        center center no-repeat;
+      background-size: contain;
+      transform: translate3d(0, -50%, 0);
+    }
+    .num_value_down::after{
+      background-image: url('https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/icon-arrow-down.png');
+    }
+    .details {
+      font-weight: 400;
+      font-size: 28rpx;
+      color: #07a495;
+    }
+  }
+}

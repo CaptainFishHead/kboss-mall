@@ -1,0 +1,34 @@
+<view class="containerCommonBox" wx:if="{{!isShow}}">
+  <view class="page-body">
+    <div class="timeText">{{year}}年{{month}}月{{day}}日</div>
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+      <picker-view-column>
+        <view wx:for="{{years}}" wx:for-item="item" wx:key="index" data-index="{{index}}" style="line-height: 50px; text-align: center;">
+          <view class="dateValueItem">
+            <view>{{item}}</view>
+            <view class="markUnit {{index==yIndex ? '':'noneDateValue'}}">年</view>
+          </view>
+        </view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{months}}" wx:for-item="item" wx:key="index" data-index="{{index}}" style="line-height: 50px; text-align: center;">
+          <view class="dateValueItem">
+            <view>{{item}}</view>
+            <view class="markUnit {{index==mIndex ? '':'noneDateValue'}}">月</view>
+          </view>
+        </view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{days}}" wx:for-item="item" wx:key="index" data-index="{{index}}" style="line-height: 50px; text-align: center;">
+          <view class="dateValueItem">
+            <view>{{item}}</view>
+            <view class="markUnit {{index==dIndex ? '':'noneDateValue'}}">日</view>
+          </view>
+        </view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+  <view class="containerCommonFooter">
+    <button class="success" bind:tap="handleEmit">确认</button>
+  </view>
+</view>

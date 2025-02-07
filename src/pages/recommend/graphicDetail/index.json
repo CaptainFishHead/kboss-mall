@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "bedienfeld": "/components/recommend/bedienfeld/index",
+    "empty": "/components/empty/index",
+    "SmallPrice": "/components/smallPrice/index",
+    "release-time": "/components/recommend/release-time/index",
+    "audio-content": "/components/recommend/audio-content/index",
+    "mp-html": "mp-html"
+  }
+}

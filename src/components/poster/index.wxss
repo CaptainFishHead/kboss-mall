@@ -1,0 +1,58 @@
+
+.poster {
+    position: relative;
+    padding-top: 90rpx;
+}
+
+canvas,
+.poster-img {
+    display: block;
+    margin: 0 auto 60rpx;
+    width: 600rpx;
+    height: 1000rpx;
+    box-shadow: 0 0 11rpx 0 rgba(0, 0, 0, .06);
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate3d(-200%, -200%, 0);
+}
+
+.poster-footer {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+}
+
+.poster-footer button:not([size=mini]) {
+    width: 300rpx;
+    height: 94rpx;
+    line-height: 94rpx;
+    padding: 0;
+    margin: 0 auto;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-radius: 4rpx;
+    color: #000;
+    border-color: #000;
+    background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+}
+
+.poster-footer button:not([size=mini]).button-hover {
+    color: #ddd;
+    border-color: #111;
+    background: #333;
+}
+
+.poster-footer button[type=default] {
+    color: #000;
+    background: transparent;
+}
+
+.poster-footer button[type=default].button-hover {
+    color: #333;
+    border-color: #666;
+    background: rgba(0, 0, 0, .05);
+}

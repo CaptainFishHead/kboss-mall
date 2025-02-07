@@ -1,0 +1,39 @@
+<!-- 物流卡片 -->
+<view class="logistics">
+	<view class="logistics-hrad">
+		<view class="title">
+			<text class="title-text">
+				<text class="text-name">{{logisticsInfo.deliveryName}}</text>
+				<text class="text-value"> {{logisticsInfo.deliveryId}}  </text>
+				<text class="text-copy" data-sn="{{logisticsInfo.deliveryId}}" bindtap="bindCopy">复制</text>
+			</text>
+			<text class="title-handle" bindtap="showLogistic">查看详情</text>
+		</view>
+	</view>
+
+	<view class="logistics-box">
+		<view class="group-box" wx:key="unique">
+			<view class="left-box">
+				<image src="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/logistics.png" class="pic"/>
+			</view>
+			<view class="right-box">
+				<!-- <view class="status1">已签收</view> -->
+				<view class="text2" wx:if="{{logisticsInfo.list[0]}}">{{logisticsInfo.list[0].context}}</view>
+				<view class="text2 empty" wx:else>物流信息暂未更新</view>
+				<view class="text1">{{logisticsInfo.list[0] ? logisticsInfo.list[0].time : ''}}</view>
+			</view>
+		</view>
+		<view class="group-box" wx:key="unique">
+			<view class="left-box">
+				<view class="dot"></view>
+			</view>
+			<view class="right-box">
+				<view class="status2">送至</view>
+				<view class="text2">{{logisticsInfo.receiveProvinceName + logisticsInfo.receiveCityName + logisticsInfo.receiveCountyName + logisticsInfo.receiveAddress || ''}}</view>
+				<!-- <view class="text2">{{logisticsInfo.receiveAddress || ''}}</view> -->
+				<view class="text1">{{logisticsInfo.receiveName || ''}} {{logisticsInfo.receivePhone || ''}}</view>
+				<view class="text3" bindtap="showService">地址有误？请联系客服处理</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,104 @@
+<!--pages/recommend/videoDetail/index.wxml-->
+<import src="./../../../components/toast/index.wxml" />
+<!--<page-meta background-color="#000000"></page-meta>-->
+<navigation-bar
+  ext-class="navigation"
+  title="{{!currentVideo.state && !loading ? '人气爆款' : ''}}"
+  color="{{!currentVideo.state && !loading ? '#000000' : '#ffffff'}}"
+  bindback="goBack"
+/>
+<view class="recommend-detail" wx:if="{{recommendVideoList.length && currentVideo.state}}">
+  <swiper
+    vertical="{{true}}"
+    easing-function="default"
+    duration="{{500}}"
+    circular="{{true}}"
+    class="recommend-detail_swiper"
+    bind:animationfinish="onchange"
+  >
+    <!--
+    bindanimationfinish="swiperAnimationFinish"
+   -->
+    <swiper-item
+      wx:for="{{recommendVideoList}}"
+      wx:key="index"
+      data-index="{{index}}"
+      item-id="{{item.unionId}}"
+    >
+      <block wx:if="{{(index === currentPage - 1||index === currentPage || index === currentPage + 1) }}">
+        <view class="recommend-detail_video recommend-video" id="recommend-detail_video_{{item.unionId}}">
+          <view
+            class="recommend-video_bg"
+            style="background-image: url({{item.coverImgUrl}});"
+            catchtap="videoSwitch"
+          ></view>
+          <video
+            id="video_{{item.unionId}}"
+            catchtap="videoSwitch"
+            style="height:{{item.video_height||'100%'}}"
+            class="video-container"
+            src="{{item.videoUrl}}"
+            loop
+            data-video="{{item}}"
+            data-index="{{index}}"
+            show-center-play-btn="{{false}}"
+            controls="{{false}}"
+            custom-cache
+            bindtimeupdate="videoUpdate"
+            bindloadedmetadata="loadedmetadata"
+            bindwaiting="waiting"
+            bindended="videoEnded"
+          >
+            <image
+              src="https://static.tojoyshop.com/images/wxapp-boss/toast/loading.gif?k=2"
+              class="video-container_loading"
+              wx:if="{{item.isBuffer}}"
+            />
+          </video>
+          <video-content item="{{item}}" isShowCont="{{currentVideo.unionId === item.unionId}}" />
+          <!-- wx:if="{{item.ishorizontal === 1}}"-->
+          <!--currentVideo.unionId === item.unionId && -->
+          <view
+            wx:if="{{!isPlay}}"
+            class="recommend-video_play {{currentVideo.unionId === item.unionId && !isPlay?'recommend-video_play_visible':''}}"
+            catchtap="videoSwitch"
+          />
+          <slider
+            wx:if="{{currentVideo.unionId === item.unionId}}"
+            class="recommend-video_slider"
+            catchchange="sliderChange"
+            catchchanging="sliderChanging"
+            value="{{sliderValue}}"
+            backgroundColor="#383838"
+            activeColor="#cfaf65"
+            block-color="#cfaf65"
+            block-size="12"
+          />
+        </view>
+        <!-- 操作区 -->
+        <view class="video-footer">
+          <bedienfeld
+            wx:if="{{currentVideo.unionId === item.unionId}}"
+            info="{{item}}"
+            theme="black"
+            id="footerHandle"
+            bind:update="updateNum"
+            bind:loginSuccess="loginSuccess"
+          />
+        </view>
+      </block>
+    </swiper-item>
+  </swiper>
+</view>
+
+<empty
+  wx:elif="{{ !currentVideo.state && !loading}}"
+  imgUrl="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/empty-recommend.png"
+  empotyDesc="糟糕，内容不见了"
+  buttonTxt="返回"
+  bindbuttonTap="handBack"
+/>
+<!-- wetoast -->
+<template is="toast" data="{{...tj_toast}}" />
+<login-promise id="authorize" removeSlot/>
+

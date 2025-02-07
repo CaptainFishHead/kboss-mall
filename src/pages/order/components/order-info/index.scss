@@ -1,0 +1,45 @@
+/* pages/order/components/order-info/index.wxss */
+.order-info{
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  padding: 32rpx 33rpx;
+  margin-top: 17rpx;
+  &-title{
+    font-size: 30rpx;
+    color: #0D0E15;
+    font-weight: bold;
+  }
+  &-content{
+    padding-top: 3rpx;
+    .rows{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      line-height: 1;
+      padding-top: 30rpx;
+      font-size: 26rpx;
+      &-label{
+        color: #333333;
+      }
+      &-value{
+        color: #999999;
+        display: flex;
+        align-items: center;
+        .copy-btn{
+          width: 50rpx;
+          height: 26rpx;
+          line-height: 26rpx;
+          border-radius: 2rpx;
+          border: 1rpx solid #979797;
+          font-size: 20rpx;
+          color: #333333;
+          margin-left: 15rpx;
+          text-align: center;
+        }
+      }
+      &-number{
+        color: #333333;
+      }
+    }
+  }
+}

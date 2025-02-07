@@ -1,0 +1,59 @@
+.chat-input-wrap {
+  width: 100%;
+  max-width: 320rpx;
+  height: 66rpx;
+  display: inline-block;
+  // margin-left: 20rpx;
+  box-sizing: border-box;
+  transform: translate3d(0, 0, 0);
+  will-change: height;
+  transition: height ease-in-out .05s;
+  // transition: transform ease-in-out .3s, max-width ease-in-out .3s,background-color ease-in-out .3s;
+
+  &.focus {
+    width: 750rpx;
+    max-width: 750rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 30rpx;
+    background-color: rgba($color: #fff, $alpha: 1);
+    // margin: 0;
+    height: 148rpx;
+    z-index: 100;
+    overflow: hidden;
+    transform: translate3d(0, var(--ty), 0);
+    border-radius: 10rpx 10rpx 0 0;
+    .chat-input {
+      margin-bottom: 30rpx;
+      border-radius: 6rpx;
+      background-color: #f5f5f5;
+      line-height: 88rpx;
+      color: #333;
+      padding: 22rpx 56rpx 22rpx 27rpx;
+      box-sizing: border-box;
+      caret-color: #CFAF65;
+    }
+    .input-placeholder {
+      font-size: 30rpx;
+      color: #999;
+      line-height: 88rpx;
+    }
+  }
+
+  .chat-input {
+    height: 100%;
+    border-radius: 33rpx;
+    background-color: rgba(0, 0, 0, 0.28);
+    // background-color: #000;
+    // opacity: 0.28;
+    padding: 0 20rpx;
+    color: #999999;
+  }
+
+  .input-placeholder {
+    line-height: 33rpx;
+    font-size: 28rpx;
+    color: rgba($color: #fff, $alpha: 0.82);
+  }
+}

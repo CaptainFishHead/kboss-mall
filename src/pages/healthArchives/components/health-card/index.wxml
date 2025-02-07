@@ -1,0 +1,13 @@
+<navigator class="content" bind:tap="navigateToBmi" hover-class="navigator-hover" open-type="navigate" hover-class="none">
+  <view class="consult-title">
+    <text class="title {{ nMetric.indexLevel ? 'titles' : '' }}">{{ nMetric.indexName }}</text>
+    <image wx:if="{{ nMetric.indexLevel }}" class="consult-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_warning.png?v=1.0.0" mode="aspectFit"/>
+  </view>
+  <view class="consult">
+    <view class="consult-box">
+      <text class="consult-num">{{ nMetric.str }}</text>
+      <text class="consult-unit">{{ nMetric.indexUnit }}</text>
+    </view>
+  </view>
+  <text class="add-btn"></text>
+</navigator>

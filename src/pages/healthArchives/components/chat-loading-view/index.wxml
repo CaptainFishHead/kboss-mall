@@ -1,0 +1,12 @@
+<!--pages/chatai/components/chat-loading-view/index.wxml-->
+<view class="loading-root">
+	<image class="loading-root-icon" src="{{loadingIcon}}" mode="widthFix"></image>
+	<text class="loading-root-title">{{loadingTitle}}</text>
+	<view class="container">
+		<view class="loading-dots">
+			<view class="dot"></view>
+			<view class="dot"></view>
+			<view class="dot"></view>
+		</view>
+	</view>
+</view>

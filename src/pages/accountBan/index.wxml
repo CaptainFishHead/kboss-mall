@@ -1,0 +1,8 @@
+<view class="ban">
+  <navigation-bar ext-class="navigation" title="我的" />
+  <image src="https://static.tojoyshop.com/images/wxapp-boss/ban/title.png" class="ban-title" />
+  <view class="ban-desc">系统检测您的手机号存在异常风险，现已停止服务，如需申诉请联系客服进行处理，我们会尽快为您解决!</view>
+  <button type="primary" open-type="contact" hover-class="none" class="ban-btn">联系在线客服</button>
+  <view class="ban-time">服务时段：周一至周日 09:00 - 18:00</view>
+  <image src="https://static.tojoyshop.com/images/wxapp-boss/ban/bg-img.png" class="ban-bg" />
+</view>

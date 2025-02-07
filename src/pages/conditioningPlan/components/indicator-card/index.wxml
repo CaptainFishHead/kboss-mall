@@ -1,0 +1,6 @@
+<view class="card" wx:if="{{detailItem.dec}}">
+  <text class="title">{{ detailItem.title }}</text>
+  <view class="describe" wx:if="{{ detailItem.dec }}">
+    <text>{{ detailItem.dec }}</text>
+  </view>
+</view>

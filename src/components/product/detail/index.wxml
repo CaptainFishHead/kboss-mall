@@ -1,0 +1,78 @@
+<wxs src="./../../../utils/filter.wxs" module="filter" />
+
+<!-- product -->
+<view class="{{ extClass }} product-wrap">
+  <!-- 直播中 -->
+  <product-video-entry wx:if="{{productliveState.length > 0}}" bind:handleClick="onJoinRoom">直播中</product-video-entry>
+  <!-- 讲解视频 -->
+  <product-video-entry wx:elif="{{!!productVideo.introUrl}}" bind:handleClick="onJoinVideo">直播讲解</product-video-entry>
+  <!-- swiper -->
+  <product-swiper
+    id="productSwiper"
+    product="{{product}}"
+    productImages="{{productImages}}"
+    picHeight="{{picHeight}}"
+  />
+
+  <slot name="activity" wx:if="{{isLogged}}" />
+  <!-- 活动slot -->
+  <slot name="coupon" wx:if="{{isLogged}}" />
+  <!-- 优惠券slot -->
+
+  <view class="container {{isPage ? 'border' : 'notPage'}} coupon1">
+    <view class="title-box">
+      <view class="title">
+        <view>{{product.name}}</view>
+      </view>
+      <view class="title-sub">{{product.subhead}}</view>
+      <slot name="share" />
+      <!-- 分享slot -->
+    </view>
+    <!-- 参加活动isJoinPromotion: 0不参加 1参加， 是否优惠券 isHasCoupon: 0无 1有-->
+    <view class="money-box" wx:if="{{(isPage&&((!sku.kangBossActivityInfo.isJoinPromotion && !sku.couponGoodsDetailDto.isHasCoupon)||!isLogged))}}">
+      <view class="money price">
+        <text class="price-unit">￥</text>
+        <text wx:for="{{filter.moneyArr(filter.moneyNumber(sku.sellPrice || totalPrice || '0'))}}" wx:key="index"><text>{{index ? '.' : ''}}</text>
+        <text>{{item}}</text>
+        </text>
+      </view>
+      <view class="num" wx:if="{{!isSuit}}">已售
+        <text>{{product.sellNum || '0'}}</text>
+      </view>
+    </view>
+    <slot name="beans-usable" />
+    <!-- 可抵扣康豆slot -->
+    <slot name="beans-tip" />
+    <!-- 奖励康豆slot -->
+    <slot name="offline-stores" />
+    <!-- 线下门店 slot -->
+  </view>
+
+  <view class="container padding" wx:if="{{isReal}}">
+
+    <view class="type-box" wx:if="{{!isSuit&&product.spuKind!==1}}">
+      <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-type.png" />
+      <text class="title">规格</text>
+      <slot name="sku" />
+      <!-- sku slot -->
+      <view class="name">{{(sku.ruleVal || '') + ' ' + (sku.natureVal || '')}}</view>
+    </view>
+
+    <slot name="address" />
+    <!-- 地址slot -->
+
+    <slot name="combination" /> <!-- 多商品slot -->
+  </view>
+  <!-- 大家都在用 -->
+  <product-recommended product="{{product}}" wx:if="{{!isWarpGoods}}"/>
+
+  <view>
+    <!-- 详情简介 -->
+    <view class="description {{isPage ? '' : 'notPage'}}">
+      <view class="title" wx:if="{{isSuit || product.spuKind === 1}}">礼包介绍</view>
+      <view class="title" wx:else>商品信息</view>
+      <mp-html content="{{product.content}}" lazy-load/>
+    </view>
+  </view>
+</view>
+

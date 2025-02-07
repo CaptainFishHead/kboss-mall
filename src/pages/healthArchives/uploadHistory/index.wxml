@@ -1,0 +1,22 @@
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<navigation-bar title="历史记录" background="#fff" />
+<view class="containe">
+  <block wx:if="{{historyData.list.length}}">
+    <view class="timeline-item" wx:for="{{historyData.list}}" wx:key="index">
+      <view class="timeline-marker"></view>
+      <view class="timeline-date">{{item.createdTime}}</view>
+      <view class="timeline-content" wx:for="{{item.list}}" wx:key="index">
+        <view class="timeline-time">{{item.formattedMonth}}</view>
+        <view class="timeline-time">{{item.formattedTime}}</view>
+        <view class="timeline-action">上传</view>
+        <view class="timeline-link" bindtap="onViewDetails" data-id="{{item.id}}" data-url="{{item.reportUrl}}">
+          查看详情 >
+        </view>
+      </view>
+    </view>
+  </block>
+  <empty wx:if="{{historyData.list.length == 0 && !isLoading}}"
+    imgUrl="https://static.tojoyshop.com/images/wxapp-boss/order/empty-order.png?v=1.0.0" empotyDesc="暂无历史记录～" />
+  <mp-loading tips="正在加载" show="{{isLoading}}" type="circle" />
+</view>

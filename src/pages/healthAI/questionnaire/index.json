@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "quest-main": "../components/quest-main/index"
+  }  
+}

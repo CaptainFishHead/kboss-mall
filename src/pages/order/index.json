@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "mp-loading": "weui-miniprogram/loading/loading",
+    "order-list":"./components/order-list/index",
+    "tab-bar": "./../../components/tab-bar",
+    "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
+    "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "empty": "./../../components/empty/index",
+    "login": "./../../components/login/index"
+  }
+}

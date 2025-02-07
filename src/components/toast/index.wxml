@@ -1,0 +1,17 @@
+<!-- toast.wxml -->
+<template name="toast">
+	<view class="tj-toast {{reveal ? 'tj-toast_show' : ''}} tj-toast-{{type}}">
+		<view class="tj-toast__mask" catchtouchmove></view>
+		<view class="tj-toast__bd" animation="{{animationData}}" style="{{(title || icon) ? 'padding: 34rpx 30rpx' : ''}}">
+			<block wx:if="{{icon}}">
+				<view class="tj-toast__bd__img {{iconClassName || ''}}">
+					<image class="tj-toast__bd__img_desc" src="{{icon}}" mode="{{imgMode}}"></image>
+				</view>
+			</block>
+			<block wx:if="{{title}}">
+				<view class="tj-toast__bd__title {{titleClassName || ''}}">{{title}}</view>
+				<view wx:if="{{desc}}" class="tj-toast__bd__desc {{titleClassName || ''}}">{{desc}}</view>
+			</block>
+		</view>
+	</view>
+</template>

@@ -1,0 +1,10 @@
+<view class="adviser">
+  <view class="adviser-avatar">
+    <image mode="aspectFill" src="{{avatar||''}}" class="img"/>
+  </view>
+  <view class="adviser-info">
+    <text class="title">您的健康专属管家</text>
+    <text class="desc">遇到任何问题，点我咨询～</text>
+  </view>
+  <view class="adviser-consult" bind:tap="goWaiter">免费咨询</view>
+</view>

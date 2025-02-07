@@ -1,0 +1,40 @@
+
+
+.pointer {
+  width: 240rpx;
+  height: 240rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 175rpx;
+  left: 195rpx;
+}
+
+.gift-container {
+  width: 140rpx;
+  height: 140rpx;
+  position: absolute;
+  right: 0;
+  top: 375rpx;
+  z-index: 1;
+}
+
+button[type=default] {
+  background: none;
+  padding: 0;
+}
+button[type=default].button-hover {
+  background: none;
+  padding: 0;
+}
+button[type=default].button-active {
+  background: none;
+  padding: 0;
+}
+
+.share-container {
+  height: 180rpx;
+  width: 100%;
+  z-index: 1;
+}

@@ -1,0 +1,45 @@
+@import "../../../components/toast/index.wxss";
+page {
+    background-color: #fff;
+    min-height: 100vh;
+}
+.empty-box{
+    height: calc(100vh - 100px )!important;
+}
+.service {
+    padding: 50rpx 30rpx;
+    &-title {
+        display: block;
+        overflow-wrap: break-word;
+        color: rgba(13, 14, 21, 1);
+        font-size: 32rpx;
+        white-space: nowrap;
+        line-height: 45rpx;
+    }
+    &-list {
+        padding: 20rpx 0 40rpx;
+        border-bottom: 1rpx solid #E4E4E4;
+    }
+}
+
+.type-title {
+    overflow-wrap: break-word;
+    color: rgba(13, 14, 21, 1);
+    font-size: 32rpx;
+    white-space: nowrap;
+    text-align: left;
+    margin: 80rpx 0 60rpx;
+}
+
+.select-item {
+    height: 100rpx;
+    border: 1rpx solid rgba(233, 233, 233, 1);
+    margin-bottom: 40rpx;
+    padding-left: 30rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #0D0E15;
+    line-height: 100rpx;
+    background: url("https://static.tojoyshop.com/images/wxapp-boss/refund/arrow-right-black.png") no-repeat 612rpx center;
+    background-size: auto 17rpx;
+}

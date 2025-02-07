@@ -1,0 +1,29 @@
+.bean-balance {
+
+  .close {
+    position: absolute;
+    top: -6rpx;
+    right: 0;
+    z-index: 100;
+    transform: translate3d(0, -100%, 0);
+
+    image {
+      width: 40rpx;
+    }
+  }
+
+  .dialog-balance {
+    color: #0D0E15;
+
+    &-title {
+      font-size: 34rpx;
+      font-weight: bold;
+      margin: 10rpx 0 50rpx;;
+    }
+
+    &-desc {
+      margin-bottom: 40rpx;
+      font-size: 30rpx;
+    }
+  }
+}

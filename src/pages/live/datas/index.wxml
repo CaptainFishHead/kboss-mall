@@ -1,0 +1,3 @@
+<!--pages/live/datas/index.wxml-->
+<navigation-bar ext-class="navigation" color="#333333" title="{{roomName}}" background="#ffffff" back="{{true}}" />
+<live-data roomId="{{roomId}}" liveState="{{liveState}}"></live-data>

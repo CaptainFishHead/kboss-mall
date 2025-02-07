@@ -1,0 +1,23 @@
+<view class="share-users">
+    <view class='user-avater' wx:if="{{allNum >= 5 }}">
+        <view class="avater-list">
+            <image class="user-avater-icon margin-offset" wx:for="{{3}}" wx:key="index" src="{{userList[2 - index] ? (userList[2 - index].toUserHeadIcourl?userList[2 - index].toUserHeadIcourl: defaultHead) : headImg}}"/>
+        </view>
+        <view class="points">
+            <view class="points-item"></view>
+            <view class="points-item"></view>
+            <view class="points-item"></view>
+        </view>
+        <image class="user-avater-icon" src="{{userList[allNum-1] ? (userList[allNum-1].toUserHeadIcourl?userList[allNum-1].toUserHeadIcourl: defaultHead): headImg}}"/>
+    </view>
+    <view class='user-avater' wx:else>
+        <view class="avater-list">
+            <image class="user-avater-icon margin-offset" wx:for="{{allNum}}" wx:key="index" src="{{userList[allNum - index - 1] ? (userList[allNum - index - 1].toUserHeadIcourl?userList[allNum - index - 1].toUserHeadIcourl: defaultHead) : headImg}}"/>
+        </view>
+    </view>
+    <view class="share-text {{allNum >= 5 ? 'max-width' : ''}}" wx:if="{{userList.length >= allNum}}">任务已达成，购买下方任意商品后得奖品</view>
+    <view class="share-text" wx:else>还差{{allNum - userList.length}}人，请尽快分享达成目标</view>
+</view>
+
+
+

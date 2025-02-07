@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "member-upgrade-dialog": "../../components/order/upgrade-dialog/index",
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "subscribe-info": "./components/subscribe-info/index",
+    "adviser-entry": "./components/adviser-entry/index"
+  }
+}

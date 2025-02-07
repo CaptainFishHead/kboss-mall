@@ -1,0 +1,97 @@
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<view class="orderprice">
+    <view class="orderprice-cell">
+        <text class="orderprice-cell-title">商品总价</text>
+        <text class="price">¥ {{filter.formatAmount(orderPayInfo.orderProductPrice)}}</text>
+    </view>
+    <view class="orderprice-cell">
+        <text class="orderprice-cell-title">配送邮费</text>
+        <text class="price">¥ {{filter.formatAmount(orderPayInfo.orderPostagePrice)}}</text>
+    </view>
+    <!--卡兑换不展示-商品优惠/康豆优惠-->
+    <block wx:if="{{type!==3}}">
+        <view class="orderprice-cell" wx:if="{{orderPayInfo.orderPromotionPrice>0}}">
+            <text class="orderprice-cell-title">活动优惠</text>
+            <text class="price discount-color">- ¥ {{filter.formatAmount(orderPayInfo.orderPromotionPrice)}}</text>
+        </view>
+        <!--1:没有优惠券 2:无可用优惠券 3:已使用优惠 4:不使用优惠券-->
+        <view class="orderprice-cell" wx:if="{{orderCouponInfo.couponUsedStatus!==1}}">
+            <text class="orderprice-cell-title">优惠券</text>
+            <view class="discount-handle unuse" wx:if="{{orderCouponInfo.couponUsedStatus===2}}"
+                  bindtap="showCouponList">无可用优惠券
+            </view>
+            <view class="discount-handle unuse" wx:if="{{orderCouponInfo.couponUsedStatus===4}}"
+                  bindtap="showCouponList">不使用优惠券
+            </view>
+            <view class="price discount-color used-coupon" wx:if="{{orderCouponInfo.couponUsedStatus===3}}"
+                  bindtap="showCouponList">
+                <view class="used-coupon-num">已使用{{orderCouponInfo.usedCouponList.length}}张券</view>
+                <view class="discount-handle use">- ¥ {{filter.formatAmount(orderCouponInfo.orderCouponPriceFormat)}}</view>
+            </view>
+        </view>
+        <!---------------康豆---------------->
+        <!-- orderBeanInfo.isSupportBean&&orderBeanInfo.orderBeanPrice>0.1 -->
+        <view class="orderprice-cell">
+            <text class="orderprice-cell-title">康豆优惠</text>
+            <view wx:if="{{orderBeanInfo.beanBalance <= 0}}">无可用康豆</view>
+            <view class="discount-handle unuse" wx:elif="{{!orderBeanInfo.beanFlag}}" bindtap="selectBean"> 不使用康豆
+            </view>
+            <view class="price discount-color discount-handle use" wx:else bindtap="selectBean">- ¥
+                {{filter.formatAmount(orderBeanInfo.orderBeanPrice)}}
+            </view>
+        </view>
+    </block>
+    <view class="total_wrap">
+        <text class="total_wrap-left">合计</text>
+        <text class="price">¥ {{filter.formatAmount(orderPayInfo.orderPayPrice)}}</text>
+    </view>
+</view>
+<view class="spacing"/>
+
+<!-- 康豆弹窗 -->
+<mp-half-screen-dialog ext-class=""
+                       class="dialog-bean"
+                       maskClosable="{{false}}"
+                       bindclose="closeBeanDialog"
+                       show="{{ beanVisbale }}">
+    <view slot="title" class="dialog-bean-title">
+        <view class="dialog-bean-title-balance">康豆
+            <text class="desc">（ 剩余 <text class="price" style="font-weight: bold;">{{orderBeanInfo.beanBalance}}</text> ）</text>
+        </view>
+    </view>
+    <view slot="desc" class="dialog-bean-body">
+        <view class="content">
+            <view class="content-tips">系统会计算您本单最大可用康豆数，按照下单顺序依次抵扣商品金额</view>
+            <view class="content-beans">
+                <view class="content-beans-discount">
+                    <view class="content-beans-discount-num">
+                        康豆优惠
+                        <text wx:if="{{beanFlagVal}}">（使用 <text class="price">{{orderBeanInfo.orderBeans}}</text> 康豆 ）</text>
+                    </view>
+                    <view class="content-beans-discount-deduction">
+                        <text wx:if="{{beanFlagVal}}">抵扣 <text class="price">{{filter.formatAmount(orderBeanInfo.orderBeans)}}</text> 元</text>
+                        <mp-checkbox-group ext-class="bean_checkbox" multi="{{false}}" catchtap="handleUseBeans"
+                                           data-flag="{{1}}">
+                            <checkbox color="#B58209" checked="{{beanFlagVal}}"/>
+                        </mp-checkbox-group>
+                    </view>
+                </view>
+                <view class="content-beans-real">
+                    <text class="content-beans-real-txt">不使用康豆优惠</text>
+                    <mp-checkbox-group ext-class="bean_checkbox" multi="{{false}}" catchtap="handleUseBeans"
+                                       data-flag="{{0}}">
+                        <checkbox color="#B58209" checked="{{!beanFlagVal}}"/>
+                    </mp-checkbox-group>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view slot="footer">
+        <button class="right-btn" type="primary" bind:tap="handleDeduction">确定</button>
+    </view>
+
+</mp-half-screen-dialog>
+
+<!--  优惠券弹窗  -->
+<order-coupon id="couponComponents" bind:success="checkedCoupon" bind:close="closeCouponDialog"/>
+

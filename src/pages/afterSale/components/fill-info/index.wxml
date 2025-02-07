@@ -1,0 +1,18 @@
+<view class="address">
+    <view class="address-des">请将退回的货物寄到如下地址：</view>
+    <view class="address-cnt">
+        <view class="address-cnt-title">
+            <view class="address-cnt-title-name">{{brandInfo.brandAddress.receiveName||'无名称'}}</view>
+            <view class="address-cnt-title-mobile">{{brandInfo.brandAddress.receiveMobile||'无手机号'}}</view>
+        </view>
+        <view class="address-cnt-detail">{{brandInfo.brandAddress.fullAddress||'无地址'}}</view>
+    </view>
+</view>
+<view class="code">
+  <view class="code-title">填写退货物流单号：</view>
+  <view class="code-cnt" wx:for="{{logistics}}" wx:key="index">
+    <input data-index="{{index}}" class="code-cnt-input" bindinput="fillHandler" placeholder="请填写退货的物流单号" value="{{item}}" />
+    <view class="del-btn" data-index="{{index}}" catch:tap="onDelLogis" wx:if="{{index}}"></view>
+  </view>
+  <view class="code-create" bind:tap="createLogis">新增物流</view>
+</view>

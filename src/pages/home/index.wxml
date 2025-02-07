@@ -1,0 +1,83 @@
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<!-- 网络错误 -->
+<empty ext-class="empty-box" wx:if="{{showEmpty}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722" empotyDesc="{{errMsg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="reloadHandler" />
+<block wx:else>
+  <navigation-bar back="{{false}}" style="z-index:4000;--menuButtonHeight:{{navBar.menuButtonHeight}}px" ext-class="nav" background="{{theme.backgroundColor}}"><!-- background="rgba(255,255,255, {{opacity||0}})"-->
+    <view class="nav-bar" slot="left" wx:if="{{theme.tabBar}}">
+      <image mode="heightFix" style="height:{{navBar.menuButtonHeight + 2}}px" class="logo" src="https://static.tojoyshop.com/images/wxapp-boss/home-logo-v2-{{theme.tabBar}}.png?v=20220720" />
+    </view>
+    <view slot="center" class="center">
+      <searchbar hotPosition="1" extClass="br-36" isBlack="{{theme.tabBar !== 1}}" isLink bind:open-page="searchbarOpenPage" />
+<!--      <view style="height:2px"/>-->
+    </view>
+  </navigation-bar>
+
+  <scroll-view scroll-y enhanced fast-deceleration show-scrollbar="{{false}}" style="background-color:{{theme.backgroundColor}}" class="carrier page-index" id="carrier" bind:touchstart="start" bind:touchend="end" bind:scroll="pageScrolling">
+    <view style="height:{{navBar.navBarHeight}}px" />
+    <!-- bind:scroll="scrollHandler"-->
+    <block wx:for="{{columns}}" wx:key="columnId" wx:for-item="column" wx:for-index="columnIndex">
+      <include src="./../../components/carrier/current/index.wxml" wx:if="{{column.componentId !== 1902}}" />
+      <include src="./../../components/carrier/swiper/index.wxml" wx:else />
+    </block>
+  </scroll-view>
+
+  <view class="right-btn-box">
+    <block wx:if="{{showTop}}">
+      <view class="com-btn" bindtap="goTop">
+        <image class="top-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-top.png" mode="aspectFit" />
+        顶部
+      </view>
+    </block>
+    <block wx:if="{{!!theme.isShare}}">
+      <share-entry
+        pageId="{{pageId}}"
+        pageName="{{title}}"
+        bind:createPoster="createPoster"
+        bind:createShareCode="createShareCode"
+      >
+        <view class="share com-btn">
+          <image src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-share.png" mode="aspectFit" />
+          分享
+        </view>
+      </share-entry>
+    </block>
+    <block wx:if="{{theme.isShowCustomer}}">
+      <authorize ext-class="service-btn" optimization bind:success="">
+        <service-btn bind:showServices="showServices" serviceVisible="{{serviceVisible}}">
+          <view class="service com-btn" bindtap="showService">
+            <image class="service-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-servers.png" mode="aspectFit" />
+          </view>
+        </service-btn>
+      </authorize>
+    </block>
+    <block wx:if="{{theme.isShowBeans}}">
+      <authorize ext-class="service-btn clear-margin" style="margin:0;" optimization bind:success="">
+          <view class="service com-btn btn-exchange" bindtap="navigateToMiniHongCuBao">
+            <image class="service-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-beans-exchange.png" mode="aspectFit" />
+          </view>
+      </authorize>
+    </block>
+  </view>
+
+  <!-- <block wx:if="{{!!theme.isShare}}">
+    <share-entry bind:createPoster="createPoster" bind:createShareCode="createShareCode">
+      <view class="share">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-share.png" mode="aspectFit" />
+        分享
+      </view>
+    </share-entry>
+  </block> -->
+
+
+  <global-back isScrolling="{{isScrolling}}" isShowScan="{{true}}" />
+
+  <!-- 底部tab -->
+  <tab-bar />
+</block>
+
+<privacy id="privacy" />
+
+<login-promise id="authorize" removeSlot/>

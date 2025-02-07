@@ -1,0 +1,140 @@
+<import src="../../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<view class="orderlist">
+  <view class="orderlist-title" wx:if="{{!((orderType=='1' && current == 1) || (orderType=='2' && current == 0))}}">
+    服务单号：{{serviceInfo.serviceOrderCode||''}}
+  </view>
+  <view class="orderlist-head" wx:if="{{ orderType=='1' && current == 0}}">
+    {{serviceInfo.serviceName}}
+  </view>
+  <block wx:if="{{orderType=='1'}}">
+    <view class="orderlist-items">
+      <block wx:if="{{current == 0}}">
+        <view class="orderlist-items-img">
+          <image src="{{serviceInfo.imageUrl}}" class="img"></image>
+        </view>
+        <view class="info info_s">
+          <view class="info-doctor">{{serviceInfo.doctorName}}•{{serviceInfo.doctorTitleName}}</view>
+          <view class="info-hospital">{{serviceInfo.hospitalName}} {{serviceInfo.facultyName}}</view>
+          <view class="info-time">已预约时间：{{serviceInfo.preBookTime}}</view>
+        </view>
+      </block>
+      <block wx:if="{{current == 1}}">
+        <view class="orderlist-items-img">
+          <image src="{{serviceInfo.serviceImage}}" class="img"></image>
+        </view>
+        <view class="info">
+          <view class="info-title">{{serviceInfo.serviceName}}</view>
+          <view class="wait-time">使用期限：{{serviceInfo.expirationDate}}</view>
+          <view class="specs" bind:tap="tapExplain">
+            <view class="specs-txt">使用说明</view>
+            <image class="specs-ic_arrow" src="https://static.tojoyshop.com/images/wxapp-boss/cart/ic_jiantou.png" />
+          </view>
+          <view wx:if="{{serviceInfo.serviceUseStatus}}" class="expiration">有服务即将到期</view>
+        </view>
+        <view class="orderlist-items-arrow" wx:if="{{serviceInfo.serviceNum >0 && serviceInfo.serviceNum <=99 }}">
+          x {{serviceInfo.serviceNum}}
+        </view>
+        <view class="orderlist-items-arrow" wx:if="{{serviceInfo.serviceNum>99}}">x 99+</view>
+      </block>
+      <block wx:if="{{current == 2}}">
+        <view class="orderlist-items-img">
+          <image src="{{serviceInfo.serviceImage}}" class="img" wx:if="{{serviceInfo.orderStatus==6||serviceInfo.self==1}}"></image>
+          <image src="{{serviceInfo.imageUrl}}" class="img" wx:else></image>
+        </view>
+        <view class="info{{serviceInfo.orderStatus==6||serviceInfo.self==1?' history':''}}">
+          <view class="info-title">{{serviceInfo.serviceName}}</view>
+          <!-- 非自营 -->
+          <block wx:if="{{serviceInfo.orderStatus!=6 && serviceInfo.self==0}}">
+              <view class="info-hospital hospital_s">{{serviceInfo.doctorName}}•{{serviceInfo.doctorTitleName || ''}}{{serviceInfo.facultyName ||'' }}</view>
+            <view class="wait-time">已预约时间：{{serviceInfo.preBookTime ||''}}</view>
+          </block>
+          <!-- 自营 -->
+          <view class="wait-time" wx:if="{{serviceInfo.orderStatus==4 && serviceInfo.self==1}}">
+            使用时间：{{serviceInfo.chargeOffDate||''}}
+          </view>
+          <view class="wait-time" wx:if="{{serviceInfo.orderStatus==6}}">
+            使用期限：{{serviceInfo.expirationDate||''}}
+          </view>
+        </view>
+        <view class="orderlist-items-s_arrow">{{statusObj[serviceInfo.orderStatus]}}</view>
+      </block>
+    </view>
+    <view class="orderlist-btns">
+      <!-- 待服务 -->
+      <block wx:if="{{current == 0}}">
+        <block wx:if="{{serviceInfo.cancelButton}}">
+          <button type="primary" class="orderlist-btns-grey" bind:tap="tapCancel" plain>
+            取消预约
+          </button>
+        </block>
+        <block wx:if="{{serviceInfo.videoButton!=1}}">
+          <button type="primary" class="orderlist-btns-black" bind:tap="toVideo" disabled="{{videoType}}">
+            开始视频
+          </button>
+        </block>
+        <block wx:if="{{serviceInfo.updateUserButton}}">
+          <button type="primary" class="orderlist-btns-black" bind:tap="tapFill">补全信息</button>
+        </block>
+      </block>
+      <!-- 待预约 -->
+      <block wx:if="{{current == 1}}">
+        <button type="primary" plain class="orderlist-btns-yellow" bind:tap="tapAppointment">
+          立即预约
+        </button>
+      </block>
+      <!-- 服务历史 -->
+      <block wx:if="{{current == 2 && serviceInfo.orderStatus==4 && serviceInfo.self==1}}">
+        <button type="primary" plain class="orderlist-btns-yellow" bind:tap="tapHealth">
+          查看健康管家
+        </button>
+      </block>
+    </view>
+  </block>
+  <block wx:if="{{orderType=='2'}}">
+    <block wx:if="{{current == 0}}">
+      <view class="orderlist-items">
+        <view class="orderlist-items-img">
+          <image src="{{serviceInfo.serviceImage}}" class="img"></image>
+        </view>
+        <view class="info">
+          <view class="info-title">{{serviceInfo.serviceName}}</view>
+          <view class="wait-time">使用期限：{{serviceInfo.expirationDate}}</view>
+          <view class="specs" bind:tap="tapExplain">
+            <view class="specs-txt">使用说明</view>
+            <image class="specs-ic_arrow" src="https://static.tojoyshop.com/images/wxapp-boss/cart/ic_jiantou.png" />
+          </view>
+        </view>
+        <view class="orderlist-items-arrow">x {{serviceInfo.serviceNum}}</view>
+      </view>
+      <view class="orderlist-btns">
+        <view wx:if="{{serviceInfo.serviceUseStatus}}" class="expiration_copy">有服务即将到期</view>
+        <button type="primary" plain class="orderlist-btns-grey" bind:tap="tapOutlets">支持门店</button>
+        <button type="primary" plain class="orderlist-btns-yellow" bind:tap="tapCode">查看券码</button>
+      </view>
+    </block>
+    <block wx:if="{{current == 1}}">
+      <view class="orderlist-items">
+        <view class="orderlist-items-img">
+          <image src="{{serviceInfo.serviceImage}}" class="img"></image>
+        </view>
+        <view class="info{{serviceInfo.orderStatus==6?' history':''}}">
+          <view class="info-title">{{serviceInfo.serviceName}}</view>
+          <block wx:if="{{serviceInfo.orderStatus==4}}">
+            <view class="wait-time">使用时间：{{serviceInfo.chargeOffDate}}</view>
+            <view class="wait-time">服务门店：{{serviceInfo.storeName}}</view>
+          </block>
+          <view class="wait-time" wx:if="{{serviceInfo.orderStatus==6}}">
+            使用期限：{{serviceInfo.expirationDate}}
+          </view>
+        </view>
+        <view class="orderlist-items-arrow" wx:if="{{serviceInfo.serviceNum>0 && serviceInfo.serviceNum <=99}}">
+          x {{serviceInfo.serviceNum}}
+        </view>
+        <view class="orderlist-items-arrow" wx:if="{{serviceInfo.serviceNum>99}}">x 99+</view>
+        <view class="orderlist-items-s_arrow">{{statusObj[serviceInfo.orderStatus]}}</view>
+      </view>
+    </block>
+  </block>
+</view>
+<instructions id="instructions" serviceUseExplain="{{serviceInfo.serviceUseExplain||''}}" expirationDetailList="{{serviceInfo.expirationDetailList||[]}}" />

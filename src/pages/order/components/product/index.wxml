@@ -1,0 +1,104 @@
+<wxs module="filter" src="../../../../utils/filter.wxs"/>
+<wxs module="proFilter" src="../../../../utils/productFilter.wxs"/>
+
+<view class="gdslist">
+    <!--商品列表-->
+    <view wx:for="{{orderInfo.storeList}}" wx:key="index" class="gdslist-warp">
+        <view class="gdslist-warp-store">{{item.storeName}}</view>
+        <view class="gdslist-warp-goods" wx:for="{{item.skuList}}" wx:key="skuId" wx:for-item="prod">
+            <view class="gdslist-warp-goods-flex" data-id="{{prod.skuId}}" data-spuid="{{prod.spuId}}" bindtap="productTo">
+                <view class="prod-box">
+                  <image class="prod-box-img" src="{{prod.skuImg}}" mode="aspectFill"></image>
+                  <block wx:if="{{item.skuList.length > 1 && orderInfo.orderStatus === 30}}">
+                    <text class="prod-box-status {{!prod.shipNum && 'grey'}}" wx:if="{{item.skuList[0].spuKind !== 1}}" >{{!prod.shipNum ? '待发货' : '已发货'}}</text>
+                  </block>
+                </view>
+                <view class="product" style="flex:1;">
+                    <view class="product-name">{{prod.spuName}}</view>
+                    <view class="product-top">
+                      <!--判断商品类型 {{prod.attribute === PRODUCT_TYPE.REAL ? prod.skuDesc : ''}} -->
+                        <view class="product-top-attr">
+                          <text style="margin-right:30rpx;">数量：{{prod.skuNum}}</text>
+                          <text wx:if="{{orderInfo.isReal}}">{{prod.skuDesc}}</text>
+                        </view>
+                    </view>
+                    <view class="product-cont">
+                        <view class="product-cont-params">
+                            <!-- 待支付-->
+                            <block wx:if="{{orderInfo.orderStatus === 10 || orderInfo.orderStatus === 60 || orderInfo.orderStatus === 70}}">
+                              <view class="product-cont-params-real_price price">
+                                <text wx:if="{{orderInfo.orderStatus === 10 && orderInfo.isReal}}">需付款：</text>
+                                <text wx:if="{{orderInfo.orderStatus !== 10 && orderInfo.isReal && !orderInfo.orderStatusPay}}">应付款：</text>
+                                ¥ {{filter.formatAmount(prod.skuCashPrice / prod.skuNum)}}
+                              </view>
+                            </block>
+                            <!-- 已支付 -->
+                            <block wx:else>
+                                <view class="product-cont-params-real_price">
+                                  <text wx:if="{{orderInfo.isReal}}">实付单价：</text>
+                                  <text class="price real_price_text">¥ {{filter.formatAmount(prod.skuCashPrice / prod.skuNum)}}</text>
+                                </view>
+                            </block>
+                            <view
+                              wx:if="{{prod.promotionId !== '0'  || prod.orderPoint}}"
+                              class="product-cont-params-price_desc" 
+                              data-item="{{prod}}"
+                              data-sell_price="{{prod.sellPrice}}"
+                              data-promotion_type="{{prod.promotionType}}"
+                              data-discount_price="{{prod.skuPromotionPrice}}"
+                              data-beans="{{prod.orderPointCost}}"
+                              data-real_price="{{prod.skuCashPrice}}"
+                              data-spu_kind="{{prod.spuKind}}"
+                              data-num="{{prod.skuNum}}"
+                              catch:tap="showPriceDesc"
+                            >价格说明</view>
+                        </view>
+                        <view class="product-cont-afterSales" data-orderCode="{{item.storeOrderCode}}" data-skuId="{{prod.skuId}}" data-spuKind="{{prod.spuKind}}" wx:if="{{proFilter.isAfterSales(prod)}}" catch:tap="showAfterSales">售后记录</view>
+                    </view>
+                    <view class="product-beans" wx:if="{{item.orderPoint>0}}">
+                        当前使用{{item.orderPoint}}康豆抵扣¥ {{filter.formatAmount(item.orderPointCost)}}
+                    </view>
+                </view>
+            </view>
+            <cpgoodslist showArrow list="{{prod.subSkuList}}" wx:if="{{prod.spuKind===1}}" catch:showinfo="showDetail"/>
+        </view>
+        <view class="user-message" wx:if="{{item.userMessage}}">
+            <view class="desc">留言</view>
+            <view class="message">{{item.userMessage || '-'}}</view>
+        </view>
+    </view> 
+</view>
+<!-- 价格说明半开弹窗 -->
+<mp-half-screen-dialog ext-class="dialog-price screen-dialog__bd_b0"
+                       class="dialog-price"
+                       show="{{ priceDescVisbale }}"
+                       title="价格说明" catchtouchmove="touchMove">
+    <view slot="desc">
+        <view class="dialog-price-content">
+            <view class="dialog-price-content-rows">
+                <view>商品原价</view>
+                <view class="price price-size">¥ {{filter.formatAmount(orderItem.sellPrice)}}</view>
+            </view>
+            <view class="dialog-price-content-rows" wx:if="{{orderItem.discountPrice && orderItem.spuKind === 2 && orderItem.promotionId !== '0'}}">
+                <view>{{orderItem.promotionType === 2 ? '活动优惠': '券抵优惠'}}</view>
+                <view class="price price-size color-price">- ¥ {{filter.formatAmount(orderItem.discountPrice)}}</view>
+            </view>
+            <view class="dialog-price-content-rows" wx:if="{{orderItem.orderPointCost/orderItem.skuNum}}">
+                <view>康豆抵扣</view>
+                <view class="price price-size color-price">- ¥ {{filter.formatAmount(orderItem.orderPointCost/orderItem.skuNum)}}</view>
+            </view>
+        </view>
+    </view>
+    <view slot="footer">
+        <view class="dialog-price-footer" slot="footer">
+            <view>实付单价</view>
+            <view class="price">¥ {{filter.formatAmount(orderItem.skuCashPrice/orderItem.skuNum)}}</view>
+        </view>
+        <button type="primary" bind:tap="onDelSubmit" class="confirm-btn">确认</button>
+    </view>
+</mp-half-screen-dialog>
+
+<!-- 售后商品半开弹窗 -->
+<afterRecord id="afterRecord" />
+<!-- 产品详情半弹窗 -->
+<product-dialog id="detailComponents"/>

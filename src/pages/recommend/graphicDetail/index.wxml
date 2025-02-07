@@ -1,0 +1,143 @@
+<import src="./../../../components/toast/index.wxml" />
+
+<!-- <page-meta page-style="background-image: linear-gradient(180deg,red 0%, #000 100%)"></page-meta> -->
+<navigation-bar
+  wx:if="{{recommendInfo.state == 0}}"
+  ext-class="navigation fixed"
+  title=""
+  background="{{'#FFFFFF'}}"
+  color="{{'#000'}}"
+  bindback="goBack"
+/>
+<scroll-view scroll-y enhanced bind:scroll="pageScrolling" class="page-container {{isRecommend ? 'recommend' : 'zixun'}}" wx:if="{{recommendInfo.state}}">
+  <view class="recommend-detail" >
+    <navigation-bar
+      wx:if="{{isRecommend}}"
+      ext-class="navigation fixed"
+      title=""
+      background=""
+      color="#ffffff"
+      bindback="goBack"
+    />
+    <navigation-bar
+      wx:else
+      ext-class="navigation"
+      title="{{opacity > 0.2 ? recommendInfo.title : recommendInfo.cmsContentColumnVO.columnName}}"
+      background="linear-gradient( 90deg, rgba(255,255,255, {{opacity}}) 0%, rgba(251, 254, 251, {{opacity}}) 50%, rgba(192, 237, 179, {{opacity}}) 100%)"
+      color="#000"
+      bindback="goBack"
+    />
+
+    <view class="recommend-detail_box" style="height: {{showReadMore ? boxHeight + 'px' : 'auto'}}">
+    <!-- 轮播图 -->
+    <swiper
+      class="recommend-detail_swiper"
+      circular
+      indicator-dots="{{recommendInfo.imgList.length > 1}}"
+      style="--swiperHei: {{recommendInfo.sliderSize.height}}rpx"
+      wx:if="{{recommendInfo.imgList}}"
+    >
+      <swiper-item
+        wx:for="{{recommendInfo.imgList}}"
+        wx:for-item="item"
+        wx:key="elementId"
+        wx:for-index="index"
+        data-index="{{index}}"
+        bindtap="onPreviewImg"
+      >
+        <view class="recommend-detail_swiper_item" style="height: {{recommendInfo.sliderSize.height}}rpx">
+          <image src="{{item}}" mode="aspectFill" />
+        </view>
+      </swiper-item>
+    </swiper>
+
+    <!-- 商品 -->
+    <view
+      class="recommend-detail_goods"
+      wx:if="{{goodsInfo.spuId}}"
+      bindtap="goDetail"
+    >
+      <view class="recommend-detail_goods_pic">
+        <image src="{{goodsInfo.imageUrl}}" mode="aspectFill" />
+      </view>
+      <view class="recommend-detail_goods_info">
+        <view class="recommend-detail_goods_info_name">{{goodsInfo.name || ''}}</view>
+        <view class="recommend-detail_goods_info_desc">{{goodsInfo.subhead || ''}}</view>
+        <view class="recommend-detail_goods_info_edit">
+          <SmallPrice id="small_price" info="{{goodsInfo.skuList[0]}}" />
+          <button type="primary" class="recommend-detail_goods_info_edit_btn">去购买</button>
+        </view>
+      </view>
+    </view>
+
+    <view class="recommend-detail_intro">
+      <!-- 图文标题 -->
+      <view class="recommend-detail_intro_title">{{recommendInfo.title}}</view>
+      <!-- 发布时间 -->
+      <release-time time="{{recommendInfo.createdTime}}" wx:if="{{!isRecommend}}"/>
+      <!-- 音频 -->
+      <audio-content wx:if="{{recommendInfo.audioUrl && !isRecommend}}" bind:playEnd="playEnd" bind:timeUpdate="timeUpdate" audioName="{{recommendInfo.styleObj.audioFileName}}" cover="{{recommendInfo.coverImgUrlAudio}}" title="{{recommendInfo.title}}" src="{{recommendInfo.audioUrl}}"/>
+      <!-- 富文本 -->
+      <view class="recommend-detail_intro_desc">
+        <mp-html content="{{recommendInfo.remark}}" lazy-load/>
+        <!-- <rich-text nodes="{{recommendInfo.remark}}" space="nbsp"></rich-text> -->
+      </view>
+      <!-- 服秘信息 -->
+      <view class="service" wx:if="{{!hasService}}">
+        <image class="opacity-code" show-menu-by-longpress="{{true}}" src="https://static.tojoyshop.com/images/wxapp-boss/recommend/service.jpg?v=1.0.0" mode="scaleToFill"></image>
+        <view class="service-wrap">
+          <view class="service-code">
+            <image class="service-code-img" src="https://static.tojoyshop.com/images/wxapp-boss/recommend/service.jpg?v=1.0.0" mode="aspectFill"></image>
+          </view>
+          <view class="service-info">
+            <view class="service-info-desc">
+              <view class="desc">长按二维码</view>
+              <view class="desc">免费咨询专属顾问</view>
+            </view>
+            <image class="service-info-img" src="https://static.tojoyshop.com/images/wxapp-boss/recommend/changan.png" mode="aspectFill"></image>
+            <!-- <view class="service-info-btn"></view> -->
+          </view>
+        </view>
+      </view>
+    </view>
+    </view>
+    <!-- 查看全文 -->
+    <view class="more" wx:if="{{showReadMore}}">
+      <text bind:tap="readMore">展开全文 剩余{{noReadLength}}</text>
+    </view>
+
+    <!-- 推荐 -->
+    <!-- <view class="recommend-detail_push">
+      <view class="recommend-detail_push_title">相关推荐</view>
+      <view class="recommend-detail_push_goods">
+        <view class="recommend-detail_push_goods_pic"></view>
+        <view class="recommend-detail_push_goods_info">
+          <text class="recommend-detail_push_goods_info_name">茶艺空间，品的是人生学的是做人</text>
+          <text class="recommend-detail_push_goods_info_desc">人类赖以生存的土地为我们奉献出的五谷杂粮，虽然很常见，却是能好，低脂生…</text>
+        </view>
+      </view>
+    </view> -->
+    <!-- 操作区 -->
+    <bedienfeld
+      id="footerHandle"
+      info="{{recommendInfo}}"
+      bindupdate="updateNum"
+      bind:logged="loginSuccess"
+    />
+  </view>
+</scroll-view>
+
+<empty
+  wx:elif="{{!loading}}"
+  imgUrl="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/empty-recommend.png"
+  empotyDesc="糟糕，内容不见了"
+  buttonTxt="返回"
+  bindbuttonTap="handBack"
+/>
+<!-- wetoast -->
+<template is="toast" data="{{...tj_toast}}" />
+
+<global-back/>
+
+<login-promise id="authorize" removeSlot/>
+

@@ -1,0 +1,13 @@
+{
+  "component": true,
+  "usingComponents": {
+    "quest-gender": "../quest-gender/index",
+    "quest-datePick": "../quest-datePick/index",
+    "quest-BIMweight": "../quest-BIMweight/index",
+    "quest-singleSelect": "../quest-singleSelect/index",
+    "quest-single": "../quest-single/index",
+    "quest-multiple": "../quest-multiple/index",
+    "quest-multipleSelect": "../quest-multipleSelect/index",
+    "quest-dateSelect": "../quest-dateSelect/index"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
+    "empty": "./../../components/empty/index",
+    "service-item": "./components/service-item/index",
+    "mp-loading": "weui-miniprogram/loading/loading",
+    "login": "./../../components/login/index"
+  }
+}

@@ -1,0 +1,26 @@
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<view class="lists">
+    <view class="lists-item" wx:for="{{list}}" wx:key="id">
+        <view class="lists-item-row1">
+            <view>服务单号：{{item.refundCode}}</view>
+            <view class="{{item.refundStatus === 30 || item.refundStatus === 50 ?'':'red'}} lists-item-row1-state">
+                {{refundStatusMap[item.refundStatus]}}
+            </view>
+        </view>
+        <view class="lists-item-row2" bindtap="goAfterSaledetail" data-item="{{item}}" wx:key="id"
+              wx:for="{{item.refundSkuList}}" wx:for-item="chindItem">
+            <image src="{{chindItem.skuImg}}" class="lists-item-row2-pic"/>
+            <view class="lists-item-row2-right-box">
+                <view class="lists-item-row2-right-box-title">{{chindItem.spuName}}</view>
+                <view class="lists-item-row2-right-box-content">
+                  <text wx:if="{{item.refundType !== 4}}">数量：{{chindItem.skuNum}}</text>
+                  <text>{{chindItem.skuDesc}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="lists-item-row3" wx:if="{{!tabIndex}}">
+            <button class="lists-item-row3-btn" plain type="default" open-type="contact" session-from="{{sessionFrom}}" bindtap="onService">联系客服</button>
+            <button class="lists-item-row3-btn" plain type="primary" bindtap="goFill" data-item="{{item}}" wx:if="{{item.refundStatus === 70}}">货物寄回</button>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,20 @@
+@import "../../../components/toast/index.wxss";
+
+page {
+  height: 100%;
+}
+.back-icon{
+  width: 40rpx;
+  height: 40rpx;
+  background-image: url(https://static.tojoyshop.com/images/wxapp-boss/top-back.png);
+  background-size: 40rpx 40rpx;
+}
+
+.login {
+  padding-top: 200rpx;
+}
+.lists-item-row4-btn{
+  border: 2rpx solid #B58209!important;
+  border-radius: 4rpx;
+  color:#B58209!important;
+}

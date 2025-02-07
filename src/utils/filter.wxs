@@ -1,0 +1,161 @@
+//过滤 金额格式化 如果num是整数则不展示两位小数
+var moneyFormat = function (num, digit) {
+  // var reg = getRegExp('(\d)(?=(\d{3})+\.)', 'g')
+  // return Number(num).toFixed(digit).replace(reg, '$1,');
+  // return Number(num).toFixed(digit)
+  num = Number(num)
+  if (isNaN(num)) return ''
+  return Number(num.toFixed(digit || 2))
+}
+//金额小数点后面 末尾0不显示
+var moneyNumber = function (num) {
+  return Number(moneyFormat(num, 2))
+}
+//金额小数点后面 ui缩小
+var moneyArr = function (num) {
+  if (typeof num === 'number') num = (num + '')
+  else if (typeof num !== 'string') num = num.toString()
+  return num.split('.')
+}
+// 格式化金额 保留两位小数  不管num是整数还是小树始终展示两位小数
+var formatAmount = function (num) {
+  if (num) {
+    num = Number(num);
+    var reg = getRegExp('(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)')
+    if (!reg.test(num)) { // 小数点超出2位 第三位以后直接舍弃 不四舍五入
+      return (Math.floor(num * 100) / 100).toFixed(2);
+    } else {
+      return num.toFixed(2);
+    }
+  }
+  return '0.00'
+}
+/**
+ * 将时间戳(1570550400)格式转为 yyyy-MM-dd hh:mm:ss格式
+ */
+var formatDate = function (datetime, str) {
+  str = str || '-'
+
+  function add0(m) {
+    return m < 10 ? '0' + m : m
+  }
+
+  if (!datetime) return
+  var date = getDate(datetime);
+  var y = date.getFullYear();
+  var m = date.getMonth() + 1;
+  var d = date.getDate();
+  var h = date.getHours();
+  var mm = date.getMinutes();
+  var s = date.getSeconds();
+  return y + str + add0(m) + str + add0(d) + ' ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
+}
+
+var formatSeconds = function (seconds) {
+  var s = seconds < 60 ? seconds : seconds % 60
+  var m = seconds < 60 ? 0 : seconds / 60
+
+  function add0(m) {
+    return m < 10 ? '0' + m : m
+  }
+  return add0(Math.floor(m)) + ':' + add0(Math.floor(s))
+}
+/**
+ * 数量大于9999 展示以万为单位的小数
+ */
+var transformNum = function (currNum, base, unit) {
+  base = base || 9999
+  unit = unit || 'w'
+  if (currNum > base) {
+    var res = (currNum / 10000).toFixed(1);
+    var splitRes = res.toString().split('.');
+    return splitRes.length && splitRes[1] === '0' ? parseInt(res) + unit : res + unit;
+  }
+  return currNum;
+}
+
+// 去处富文本标签 提取出纯文本
+var getTextFromHtml = function (str) {
+  // var reg = getRegExp("<.[^>]*>", "g") // 剔除标签
+  // var reg1 = getRegExp("&.[^;]*;", "g") // 剔除类似 &nbsp; 等字体
+  // var reg2 = getRegExp('\s', "g") // 剔除空格
+  // var reg3 = getRegExp('\n', "g") // 剔除换行
+  var tagStart = getRegExp('<[a-zA-Z]+.*?>', 'img')
+  var tagEnd = getRegExp('</[a-zA-Z]*?>', 'img')
+  return str.replace(tagStart, '').replace(tagEnd, '').replace('&nbsp;', '');
+}
+
+var formatNumber = function (value, decimal) {
+  var k = 10000
+  var sizes = ['', '万', '亿', '万亿']
+  var i = undefined
+  var str = ''
+  if (value < k) {
+    str = value
+  } else {
+    i = Math.floor(Math.log(value) / Math.log(k))
+    str = ((value / Math.pow(k, i))).toFixed(decimal || 2) + sizes[i]
+  }
+  return str
+}
+
+var stringToArray = function (str) {
+  if (str.indexOf(',') > -1) {
+    return str ? str.split(',') : ''
+  } else {
+    return str ? str.split('，') : ''
+  }
+}
+
+var formatNumber = function (n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+var formatChatData = function (datetime, preDatetime) {
+  if (datetime - preDatetime < 60000) {
+    return ""
+  }
+  var date = getDate(datetime);
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  return [hour, min].map(formatNumber).join(':');
+}
+
+var formatDistance = function (meters) {
+  if (meters < 0) {
+    return '距离不能为负';
+  }
+  var km = meters / 1000;
+  var kmRounded = km.toFixed(2);
+  if (km < 1) {
+    return Math.floor(meters) + ' m';
+  } else if (km < 1000) {
+    return kmRounded + ' km';
+  } else if (km < 10000) {
+    return kmRounded + ' km';
+  } else {
+    return '9999+ km';
+  }
+}
+
+var getSubstring = function (params, count) {
+  return params.substring(0, count)
+}
+
+
+module.exports = {
+  moneyFormat: moneyFormat,
+  moneyNumber: moneyNumber,
+  moneyArr: moneyArr,
+  formatDate: formatDate,
+  transformNum: transformNum,
+  getTextFromHtml: getTextFromHtml,
+  formatAmount: formatAmount,
+  formatNumber: formatNumber,
+  formatSeconds: formatSeconds,
+  stringToArray: stringToArray,
+  formatChatData: formatChatData,
+  formatDistance: formatDistance,
+  getSubstring: getSubstring
+};

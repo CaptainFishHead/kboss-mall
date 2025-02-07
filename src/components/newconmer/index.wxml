@@ -1,0 +1,32 @@
+<!--components/newconmer/newconmer.wxml-->
+<!-- 新人引导弹窗 -->
+<view class="newconmerPack" wx:if="{{newcomerShow}}">
+    <view class="newconmerWrap">
+      <view class="comerHead">
+        <image class="newcomerImg" src="https://static.tojoyshop.com/images/wxapp-boss/home/newcomer.gif" mode="" />
+        <text>告诉我你最近的感受吧</text>
+      </view>
+      <view class="newcomerBox">
+        <image bindtap='closeNewcomer' class="close" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-service-close.png" mode="" />
+        <scroll-view scroll-y enhanced fast-deceleration show-scrollbar="{{false}}" class="newcomerScroll">
+          <block wx:for="{{newcomerList}}" wx:key="index">
+            <view class="newcomerLi {{item.ischecked ? 'selected' : ''}}" data-id='{{item.id}}' bindtap="clickNewmoer">
+              {{item.data}}
+            </view>
+          </block>
+        </scroll-view>
+        <view class="promptBox">
+          <checkbox-group bindchange="checkboxChange">
+            <label class="checkboxLab">
+              <checkbox color="#09BDAC" class="checkbox" checked="{{newChecked}}" />
+              <text class="checkboxText">不再提示</text>
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+      <view class="comerBtn" bindtap='closeNewcomer'>
+        <text>开启健康之旅</text>
+        <image class="icon_more_white" src="https://static.tojoyshop.com/images/wxapp-boss/icons/icon_more_white.png" mode="" />
+      </view>
+    </view>
+  </view>

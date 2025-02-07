@@ -1,0 +1,78 @@
+/* pages/commission/explain/index.wxss */
+.explain-show, .explain-hide{
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 990; 
+}
+.explain-show{
+    visibility: visible;
+    animation: fadeIn 300ms forwards;
+}
+.explain-hide{
+    visibility: hidden;
+}
+@keyframes fadeIn {
+    0% {
+    opacity: 0;
+    }
+    100% {
+    opacity: 1;
+    }
+}
+.explain-title{
+    font-size: 34rpx;
+    height: 142rpx;
+    font-weight: bold;
+    line-height: 142rpx;
+    text-align: center;
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/commission/ex-bg.png);
+    background-size: 660rpx 142rpx;
+    color: #fff;
+}
+.explain-cont{
+    width: 660rpx;
+    background-color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 992; 
+    transform: translateX(-50%) translateY(-45%);
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+.explain-cont text{
+    font-size: 30rpx;
+    color: #333;
+    margin-top: 20rpx;
+    line-height: 46rpx;
+    padding: 0 52rpx;
+    display: block;
+}
+.explain-bg{
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color:rgba(0,0,0,.6);
+    z-index: 991; 
+}
+.explain-body{
+    max-height: 660rpx;
+    margin-top: 30rpx;
+    overflow-y: auto;
+}
+.now-btn{
+    width: 300rpx;
+    height: 90rpx;
+    background-color: #000;
+    color: #fff;
+    font-size: 32rpx;
+    line-height: 90rpx;
+    text-align: center;
+    font-weight: 700;
+    margin: 44rpx auto;
+}

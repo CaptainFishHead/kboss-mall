@@ -1,0 +1,9 @@
+<import src="../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<navigation-bar bindback="goBack" background="#FFF" title="检查结果" />
+<view class="containers">
+  <health-score scoreValue="{{detectScore}}" detectTime="{{detectTime}}" exceedsPercent="{{exceedsPercent}}" />
+  <abnormal-explain indicatorList="{{indicatorList||[]}}" wx:if="{{indicatorList.length}}" />
+  <core-metrics detailList="{{detailList||[]}}" />
+  <view class="foot-box"></view>
+</view>

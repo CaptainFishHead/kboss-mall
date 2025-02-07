@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "health-score":"../components/health-score/index",
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "abnormal-explain": "../components/abnormal-explain/index",
+    "core-metrics": "../components/core-metrics/index"
+  }
+}

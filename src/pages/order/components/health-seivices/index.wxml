@@ -1,0 +1,159 @@
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<view class="service" wx:if="{{serviceList.length}}">
+  <!-- - 线上线下服- 多项服务展示 -->
+  <!--  线下服务-多项服务 -->
+  <block wx:if="{{serviceList.length>1||(serviceList.length===1&&serviceList[0].serviceNum>1) }}">
+    <view class="service-multiple" wx:if="{{orderInfo.orderStatus===40||orderInfo.orderStatus===50}}">
+      <view class="service-multiple-warp">
+        <view class="service-multiple-warp-title">
+          <view>您购买的商品包含{{serviceList.length || 0}}项服务</view>
+          <!-- 展开 -->
+          <block  wx:if="{{serviceList.length>1}}">
+          <view wx:if="{{!isExpand}}" bind:tap="handleExpand">
+            <view class="btn">
+              <text>展开</text>
+              <view class="btn-icon btn-down"></view>
+            </view>
+          </view>
+          <!-- 收起 -->
+          <view class="hide-all" wx:if="{{isExpand}}" bind:tap="handleExpand">
+            <view class="btn">
+              <text>收起</text>
+              <view class="btn-icon btn-up"></view>
+            </view>
+          </view>
+        </block>
+        </view>
+      <!-- 展开内容 -->
+      <view class="abnormal-explain">
+        <view class="abnormal-explain-list {{expandedHeight?'expanded':''}}" style="--max-height:{{expandedHeight}}px">
+          <view class="explain-item" wx:for="{{serviceList}}" wx:key="serviceId">
+          <view>
+            <text>{{item.serviceName}}</text>
+            <text class="explain-rigjt">x {{item.serviceNum || 0}}</text>
+          </view>
+          </view>
+        </view>
+      </view>
+
+      </view>
+    </view>
+  </block>
+  <!--  线上、线下服务-单项展示-->
+  <block wx:else>
+    <!--  线上服务-->
+    <block wx:if="{{serviceList[0].serviceType===1}}">
+      <!--第三方服务--->
+      <block wx:if="{{serviceList[0].self===0}}">
+        <!--  第三方服务-已预约-->
+        <view class="service-doctors" wx:if="{{serviceList[0].reservationStatus==='1'}}" catch:tap="onViewBooking">
+          <view class="service-doctors-top">
+            <image wx:if="{{orderInfo.chargeOffType=== 4}}" src="{{serviceList[0].imageUrl|| ''}}" class="service-doctors-top-img"/>
+            <image wx:else src="{{serviceList[0].serviceConsultantVO.avatar || ''}}" class="service-doctors-top-img"/>
+            <view class="service-doctors-top-desc">
+              <view class="service-doctors-top-desc-name">
+                {{serviceList[0].doctorName}}
+                <view class="service-doctors-top-desc-name-tag">
+                  <image class="service-doctors-top-desc-name-tag-icon" src="https://static.tojoyshop.com/images/wxapp-boss/services/icon-tag.png"/>
+                {{serviceList[0].doctorTitleName}}
+                </view>
+              </view>
+              <view class="service-doctors-top-desc-hospital">{{serviceList[0].hospitalName}}</view>
+              <view class="service-doctors-top-desc-depart">
+              {{serviceList[0].facultyName}}</view>
+            </view>
+          </view>
+          <view class="service-doctors-down">
+            <text class="service-doctors-down-left">预约信息</text>
+            <view class="service-doctors-down-right">{{serviceList[0].reservationInfo}}</view>
+          </view>
+        </view>
+        <!-- 第三方服务-未预约-->
+        <block wx:else>
+          <view class="service-counselors" wx:if="{{orderInfo.orderStatus===40||orderInfo.orderStatus===50}}"
+          catch:tap="onViewCounselors">
+            <view class="service-counselors-tips">
+            专业健康管家为您服务，预约后开始咨询
+            </view>
+            <view class="service-counselors-card">
+              <image src="{{serviceList[0].serviceConsultantVO.avatar || ''}}" class="service-counselors-card-img"/>
+              <view class="service-counselors-card-text">
+                <view class="service-counselors-card-text-up">
+                  您的健康专属管家
+                </view>
+                <view class="service-counselors-card-text-down">
+                遇到任何问题，点我咨询～
+                </view>
+              </view>
+              <view class="service-counselors-card-btn">联系管家</view>
+            </view>
+          </view>
+        </block>
+      </block>
+
+      <!-- 自营服务 -->
+      <block wx:if="{{serviceList[0].self===1}}">
+        <view class="service-counselors"
+              wx:if="{{orderInfo.orderStatus===40||orderInfo.orderStatus===50||orderInfo.orderStatus === 10}}"
+              catch:tap="onViewCounselors">
+          <view class="service-counselors-tips">
+          专业健康管家为您量身订制健康方案
+          </view>
+          <view class="service-counselors-card">
+            <image wx:if="{{orderInfo.orderStatus===40}}" src="{{serviceList[0].serviceConsultantVO.avatar || ''}}" class="service-counselors-card-img"/>
+            <view class="service-counselors-card-text">
+              <view class="service-counselors-card-text-up">
+                您的健康专属管家
+              </view>
+              <view class="service-counselors-card-text-down">
+                遇到任何问题，点我咨询～
+              </view>
+            </view>
+            <view class="service-counselors-card-btn {{orderInfo.orderStatus===10?'un-paid':''}}">
+             <text wx:if="{{orderInfo.orderStatus === 10}}">方案待支付</text>
+              <text wx:else>{{serviceList[0].serviceType ===1&&serviceList[0].self===1&&serviceList[0].reservationStatus==='0'? '订制方案' : '联系管家'}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+
+    </block>
+
+    <!-- 线下服务-->
+    <block wx:else>
+      <!-- 订单完成、订单关闭、待支付 显示 orderStatus 10、40、50、60、70 -->
+      <view class="service-store store" wx:if="{{storeList.length}}">
+        <view class="store-title">
+          <view class="store-title-left">适用门店</view>
+          <view class="store-title-right" wx:if="{{storeList.length>1}}" catch:tap="viewStores">{{storeList.length || 0}}家支持门店</view>
+        </view>
+        <view class="store-info">
+          <view class="store-info-top">
+            <text>{{storeList[0].agentStoreName || ''}}</text>
+            <block wx:if="{{storeList[0].distance}}">
+              <image class="store-info-top-icon" src="https://static.tojoyshop.com/images/wxapp-boss/services/icon-coordinate.png"/>
+              <text class="store-info-top-title">距离您{{filter.formatDistance(storeList[0].distance)}}</text>
+            </block>
+          </view>
+
+          <view class="store-info-bottom">
+            <view class="store-info-bottom-address">{{storeList[0].provinceName || ''}}{{storeList[0].cityName || ''}}{{storeList[0].countyName || ''}}{{storeList[0].agentStoreAddress || ''}}</view>
+            <view class="store-info-bottom-btns">
+              <view class="action" catch:tap="handleNav">
+                <view class="icon nav"/>
+                <view class="nav-text">导航</view>
+              </view>
+              <view class="action" catch:tap="onCallTel">
+                <view class="icon phone"></view>
+                <view class="nav-text">联系方式</view>
+              </view>
+            </view>
+
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </block>
+</view>

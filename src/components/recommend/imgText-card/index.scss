@@ -1,0 +1,140 @@
+/* 横版 */
+.recommend-card{
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10rpx;
+  overflow: hidden;
+  
+  &_icon{
+    width: 50rpx;
+    height: 50rpx;
+    background: url(https://static.tojoyshop.com/images/wxapp-boss/recommend/video-icon.png);
+    background-size: 50rpx 50rpx;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate3d(50%, -50%, 0);
+  }
+  &_pic{
+    width: 220rpx;
+    height: 176rpx;
+    overflow: hidden;
+    flex-shrink: 0;
+    // border-radius: 10rpx;
+    position: relative;
+    image{
+      width: 100%;
+    }
+  }
+  &_info{
+    flex: 1;
+    min-width: 1rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &_title{
+      font-size: 32rpx;
+      color: #333333;
+      line-height: 42rpx;
+      overflow: hidden;
+      text-overflow: ellipsis; 
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      min-height: 86rpx;
+    }
+    &_edit{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  &_status{
+    position: absolute;
+    right: 0;
+    top: 12rpx;
+  }
+}
+
+.recommend-card{
+  // 横版
+  &.horizontal{
+    padding: 28rpx 0 30rpx;
+    border-bottom: 1rpx solid #F1F1F1;
+    .recommend-card_info{
+      margin-right: 16rpx;
+    }
+    .recommend-card_pic{
+      width: 220rpx;
+      height: 176rpx;
+      border-radius: 10rpx;
+      overflow: hidden;
+      image{
+        width: 220rpx;
+        height: 176rpx;
+      }
+    }
+    .recommend-card_status{
+      top: 0;
+    }
+  }
+
+  // 纵版
+  &.vertical{
+    width: 352rpx;
+    flex-direction: column;
+    margin-bottom: 14rpx;
+    .recommend-card_icon{
+      position: absolute;
+      right: 10rpx;
+      top: 10rpx;
+      transform:none;
+    }
+    .recommend-card_info{
+      order: 1;
+      padding: 18rpx 23rpx 24rpx;
+    }
+    .recommend-card_pic{
+      width: 100%;
+      height: 430rpx;
+    }
+  }
+
+  // 直播纵版
+  &.live{
+    width: 352rpx;
+    // height: 600rpx;
+    position: relative;
+    .recommend-card_pic, .recommend-card_pic image{
+      width: 100%;
+      height: 600rpx;
+    }
+    .recommend-card_info{
+      position: absolute;
+      bottom: 0;
+      height: 190rpx;
+      left: 0;
+      width: 100%;
+      padding: 0 26rpx;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+      box-sizing: border-box;
+      z-index: 1;
+      &_title{
+        font-size: 30rpx;
+        color: #fff;
+        margin-top: 128rpx;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: normal;
+        display: block;
+      }
+      &_edit{
+        display: none;
+      }
+    }
+  }
+}

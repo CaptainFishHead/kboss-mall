@@ -1,0 +1,19 @@
+
+<view class="warp">
+    <view class="warp-title" catch:tap="viewMore">
+        <text class="warp-title-txt">礼包包含商品</text>
+        <view class="warp-title-icon">
+            {{!isShowMore ? '展开' : '收起'}}
+            <image src="https://static.tojoyshop.com/images/wxapp-boss/order/icon-{{!isShowMore?'down':'up'}}.png" mode="aspectFill"/>
+        </view>
+    </view>
+    <block wx:if="{{isShowMore}}">
+        <view wx:for="{{list}}" wx:key="id" class="warp-item" data-skuid="{{item.skuId}}" catch:tap="showProInfo">
+            <view class="warp-item-name">{{item.spuName}}{{item.skuDesc ? '(' + item.skuDesc + ')' : ''}}</view>
+            <view class="warp-item-num">
+                <text>x{{item.skuNum}}</text>
+                <text wx:if="{{showArrow}}" class="warp-item-right"></text>
+            </view>
+        </view>
+    </block>
+</view>

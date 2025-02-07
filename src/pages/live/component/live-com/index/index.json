@@ -1,0 +1,24 @@
+{
+  "usingComponents": {
+    "live-goods-card": "../goods/card",
+    "live-goods-bag": "../goods/bag",
+    "live-chat-input": "../chat/input",
+    "live-chat-list": "../chat/list",
+    "live-trailer": "../trailer",
+    "live-tips": "../tips",
+    "live-end": "../end",
+    "live-cancel": "../cancel",
+    "live-pause": "../pause/index",
+    "live-error": "../error/index",
+    "popularity": "../popularity/index",
+    "notice": "../notice/index",
+    "fabulous": "../fabulous",
+    "report": "../report/index",
+    "live-decorate": "../decorate/index",
+    "flex": "../../../../../components/flex/index",
+    "flex-item": "../../../../../components/flex/item/index",
+    "icon": "../icon/index",
+    "navigation": "../navigation/index",
+    "tojoy-player": "../tj-player/index"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "live-com": "../component/live-com/index",
+    "share-dialog": "../../../components/share-entry/index",
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "live-cancel-recommend": "../component/live-cancel-recommend/index",
+    "live-end-recommend": "../component/live-end-recommend/index",
+    "login": "../../../components/login/index"
+  }
+}

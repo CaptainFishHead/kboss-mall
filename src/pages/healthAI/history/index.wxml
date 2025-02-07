@@ -1,0 +1,41 @@
+<import src="../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<view class="historywrap">
+  <navigation-bar title="历史记录" background="#FFFFFF" />
+  <view class="content" wx:if="{{collectionData.list.length}}">
+    <block wx:for="{{collectionData.list}}" wx:key="index">
+      <view class="content-li" data-item="{{item}}" bind:tap="onCLickDetail">
+        <view class="content-li-liTop">
+          <image class="content-li-liTop-titleimgs" src="{{item.imgUrl}}" mode="" />
+          <view class="content-li-liTop-cont">
+            <view class="content-li-liTop-cont-contBox">
+              <view class="content-li-liTop-cont-contBox-title">{{item.detectTitle}}</view>
+              <view class="content-li-liTop-cont-contBox-label jian" wx:if="{{item.detectModelType == '1'}}">极简版</view>
+              <view class="content-li-liTop-cont-contBox-label jing" wx:if="{{item.detectModelType == '2'}}">精准版</view>
+            </view>
+            <view class="content-li-liTop-cont-time">{{item.detectTime}}</view>
+            <view class="content-li-liTop-cont-detail">
+              <text>查看详细报告</text>
+              <image class="content-li-liTop-cont-detail-enter" src="https://static.tojoyshop.com/images/wxapp-boss/icons/icon_more_green.png" mode=""/>
+            </view>
+          </view>
+        </view>
+        <view class="content-li-liBtmBox" wx:if="{{item.healthReview}}">
+          <view class="content-li-liBtmBox-liBtm">{{item.healthReview}}</view>
+        </view>
+        
+      </view>
+    </block>
+  </view>
+  <view class="content" wx:if="{{isshow}}">
+    <view class="wuImg">
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/empty-track.png" mode=""/>
+      <view class="text">暂无历史记录</view>
+    </view>
+  </view>
+  <!-- 全部加载完样式 -->
+  <view class="more" wx:if="{{(collectionData.currPage >= collectionData.totalPage) && !isshow}}">没有更多了</view>
+  <view class="footer">
+    <button type="primary" class="success" bind:tap="onClicknavto">测评列表</button>
+  </view>
+</view>

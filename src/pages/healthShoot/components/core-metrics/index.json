@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "report-progress": "../report-progress/index"
+  }
+}

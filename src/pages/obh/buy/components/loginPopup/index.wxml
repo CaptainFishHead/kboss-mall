@@ -1,0 +1,15 @@
+<!--pages/obh/buy/components/loginPopup/index.wxml-->
+<view class="open-popup-container" bind:tap="close">
+
+  <view class="popup-dialog" catch:tap="true">
+    <view class="popup-img"></view>
+    
+    <view class="popup-content">
+      <view class="popup-title">温馨提示</view>
+      <view class="popup-des">{{msg}}</view>
+
+      <view class="open-btn" catch:tap="onLogin">确定</view>
+    </view>
+  </view>
+
+</view>

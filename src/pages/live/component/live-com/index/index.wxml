@@ -1,0 +1,106 @@
+<!-- 顶部自定义导航、主播信息 -->
+<navigation isCustomBack="{{isCustomBack}}" frontColor="#ffffff" style="--flex-basis: 40px" transparencyStart="{{0}}" fixed catch:back="catchBack">
+  <!-- 头像使用代理商店铺logo 名称使用代理商店铺名称 -->
+  <view class="popularity-box">
+    <popularity avatar="{{roomInfo.headImg || defaultLogo}}" name="{{roomInfo.name}}" popularity="{{customData.hotNum}}"/>
+  </view>
+</navigation>
+<view class="live container" style="--footer-height:0rpx">
+  <view class="live-bg cover" wx:if="{{liveState !== 4 }}" style="background-image: url({{roomInfo.headImg || defaultLogo}});"></view>
+  <!-- 直播间装饰 -->
+  <live-decorate decorateList="{{decorateList}}" wx:if="{{liveState === 1 || liveState === 4 || liveState === 5}}"/>
+
+  <!-- 预告、直播中、暂停 -->
+  <block wx:if="{{liveState === 0 || liveState === 1 || liveState === 4  || liveState === 5}}">
+    <!-- 视频拉流 -->
+    <tojoy-player src="{{pullSrc}}" wx:if="{{liveState === 1 || liveState === 4}}" class="live-player" bindstatechange="onStatechange" bindjoinSmallRoom="onJoinSmallRoom" bindexitSmallRoom="onExitSmallRoom" />
+    <view class="live-bg cover" wx:if="{{liveState === 4}}" style="background-image: url({{roomInfo.avatarUrl || defaultLogo}});"></view>
+    <!-- 公告 -->
+    <notice class="live-notice" style="top: calc(23rpx + 88rpx + {{statusBarHeight}}px)" desc="{{notification}}" wx:if="{{notification}}"/>
+    <!-- 直播预告 -->
+    <live-trailer wx:if="{{!liveState && !loading}}" roomInfo="{{roomInfo}}"/>
+    <!-- 直播暂停 -->
+    <live-pause wx:elif="{{liveState === 4}}" roomInfo="{{roomInfo}}"/>
+    <!-- 购买提示、公屏、讲解商品卡片 -->
+    <view class="live-message">
+      <!-- 用户购买、加购等提示 -->
+      <live-tips roomInfo="{{roomInfo}}" catch:open-container="nextAction"/>
+      <!-- 公屏 -->
+      <live-chat-list roomInfo="{{roomInfo}}"/>
+      <!-- 当前直播的商品卡片 -->
+<!--      <live-goods-card catch:go-buy="nextAction" wx:if="{{roomInfo.imRoomConfigQueryVo.isSelf === 1 && (liveState === 1 || liveState === 4)}}" productList="{{productList}}"/>-->
+      <live-goods-card catch:go-buy="nextAction" wx:if="{{roomInfo.imRoomConfigQueryVo.isSelf === 1 && (liveState !== 2)}}" productList="{{productList}}"/>
+    </view>
+    <!-- 购物袋、发布公屏、点赞等  -->
+    <flex wx:if="{{isJoinRoom}}" space="0 14rpx" class="footer" justifyContent="space-between" alignItems="center" alignContent="center" style="color:#fff;">
+	    <!-- 输入框 -->
+	    <flex-item grow="1" basis="0" style="z-index:100;position:initial;">
+        <live-chat-input class="footer-input" wx:if="{{roomInfo.imRoomConfigQueryVo.isComment === 1}}"/>
+      </flex-item>
+			<!-- 购物袋 -->
+	    <flex-item wx:if="{{roomInfo.imRoomConfigQueryVo.isSelf === 1}}" basis="75rpx" shrink="0">
+		    <view class="footer-common footer-bag" catch:tap="tapAction" data-key="pack">
+			    <image src="https://static.tojoyshop.com/images/wxapp-boss/live/goods-bag.png" style="width:43rpx;height:43rpx" mode="aspectFit" />
+		    </view>
+	    </flex-item>
+	    <!-- 客服、举报 -->
+	    <flex-item basis="75rpx" shrink="0">
+		    <view class="footer-common footer-icon" bind:tap="tapAction" data-key="report">
+			    <image src="https://static.tojoyshop.com/images/wxapp-boss/live/more.png" mode="aspectFit"/>
+		    </view>
+	    </flex-item>
+	    <!-- 分享 -->
+	    <flex-item basis="75rpx" shrink="0" wx:if="{{roomInfo.imRoomConfigQueryVo.isShare === 1}}">
+		    <view class="footer-common footer-icon" bind:tap="tapAction" data-key="poster"><image src="https://static.tojoyshop.com/images/wxapp-boss/live/share.png" mode="aspectFit"/></view>
+	    </flex-item>
+      <flex-item basis="75rpx" shrink="0"  wx:if="{{roomInfo.imRoomConfigQueryVo.isLike === 1}}" style="z-index:90;">
+        <!-- 点赞 -->
+        <fabulous roomInfo="{{roomInfo}}" likeCount="{{customData.likeCount}}"></fabulous>
+      </flex-item>
+    </flex>
+  </block>
+  <!-- 直播结束 -->
+  <live-end wx:elif="{{liveState === 2}}" dataInfo="{{customData}}">
+		<view slot="end-recommend">
+			<slot name="end-recommend" ></slot>
+		</view>
+	</live-end>
+  <!-- 直播取消 -->
+  <live-cancel wx:elif="{{liveState === 3}}">
+		<view slot="cancel-recommend">
+			<slot name="cancel-recommend"></slot>
+		</view>
+	</live-cancel>
+  <!-- 发生错误 errorType 5 直播间拥挤 6 直播间加载失败 7 直播间不存在 -->
+  <live-error wx:if="{{liveState === 5 || liveState === 6 || liveState === 7}}" errorType="{{liveState}}" catch:reload-room="reloadRoom"/>
+  <!-- loading -->
+  <view class="live-loading" wx:if="{{loading}}">
+    <view class="live-loading-box">
+      <image src="https://static.tojoyshop.com/images/kboss-agent/common/loading-circle.png"  class="live-loading-icon"/>
+      <text class="live-loading-desc">加载中...</text>
+    </view>
+  </view>
+</view>
+
+<page-container
+	show="{{pageContainer.visible}}" position="bottom"
+	custom-style="background:rgba(0,0,0,0);z-index:10000;" duration="{{300}}"
+	bind:afterleave="clearPageContainer"
+>
+	<!-- 在此引入商品列表 -->
+	<live-goods-bag
+		wx:if="{{pageContainer.key === 'pack' && pageContainer.visible }}"
+		class="footer-bag"
+		catch:go-buy="nextAction" catch:close="closePageContainer"
+		catch:go-cart="goCart"
+		catch:go-order="goOrder"
+		productList="{{productList}}"
+		style="height:1200rpx"
+		activeId="{{activeSpuId}}"
+	/>
+	<report
+		wx:if="{{pageContainer.key === 'report'}}"
+		bind:close="closePageContainer"
+		bind:contact="onContact"
+	></report>
+</page-container>

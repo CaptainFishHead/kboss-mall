@@ -1,0 +1,15 @@
+<!--pages/commission/explain/index.wxml-->
+<view bindtap="showExplain">
+    <slot name="btns"></slot>
+</view>
+
+<view class="{{visible ? 'explain-show': 'explain-hide'}}" >
+    <view class="explain-cont">
+        <view class="explain-title">{{title}}</view>
+        <view class="explain-body">
+            <slot name="content"></slot>
+        </view>
+        <button type="primary" class="now-btn" bindtap="hideExplain">我知道了</button>
+    </view>
+    <view class="explain-bg" bindtap="hideExplain"></view>
+</view>

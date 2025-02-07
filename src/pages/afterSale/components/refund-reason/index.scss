@@ -1,0 +1,96 @@
+.title-info {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #0D0E15;
+  padding: 0rpx 30rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 122rpx;
+  border-bottom: 1rpx solid #E4E4E4;
+}
+
+.reason-text {
+  padding: 0 30rpx 0 0;
+  max-width: 450rpx;
+  height: 42rpx;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #999999;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background: url(https://static.tojoyshop.com/images/wxapp-boss/refund/arrow-gray-right.png) no-repeat right center;
+  background-size: auto 24rpx;
+
+  &.on {
+    color: #0D0E15;
+  }
+}
+
+.allprice {
+  font-size: 34rpx;
+}
+
+.refund-info {
+  padding: 26rpx 20rpx;
+  margin: 0 30rpx 50rpx 30rpx;
+  background: #FAFAFA;
+  font-size: 28rpx;
+
+  &-amount, &-bean {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+  }
+
+  &-tips {
+    color: #b58209;
+    border-top: 1rpx solid #E4E4E4;
+    font-size: 24rpx;
+    padding-top: 16rpx;
+    line-height: 36rpx;
+  }
+}
+
+.unit-price {
+  font-size: 30rpx;
+  &::before {
+    content: "¥ ";
+    font-size: 28rpx;
+  }
+}
+
+.dialog-reason {
+  &-cnt {
+    width: 100%;
+    background-color: #fff;
+    overflow-x: hidden;
+    &-scroll{
+      height: calc(100vh - 700rpx - constant(safe-area-inset-bottom));
+      height: calc(100vh - 700rpx - env(safe-area-inset-bottom));
+    }
+    &-list {
+      padding: 0 40rpx;
+      &-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &-li {
+          font-size: 30rpx;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #0D0E15;
+          line-height: 42rpx;
+          padding: 35rpx 10rpx 35rpx 0;
+        }
+      }
+    }
+  }
+  .confirm-btn{
+    display: block;
+    line-height: 94rpx;
+    box-sizing: border-box;
+  }
+}

@@ -1,0 +1,5 @@
+<!--plugin/components/live/pause/index.wxml-->
+<view class="pause">
+  <view class="pause-tips">稍等片刻，马上回来</view>
+  <view class="pause-time" wx:if="{{roomInfo.livePausedTime}}">{{time}}</view>
+</view>

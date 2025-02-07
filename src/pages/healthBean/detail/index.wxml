@@ -1,0 +1,31 @@
+<!-- wetoast -->
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<navigation-bar ext-class="navigation" title="我的康豆" background="#FFF" />
+
+<view class="container">
+  <view class="title">{{operateTypeMap[dataDetail.operateType]}}</view>
+  <block>
+    <view class="price money">{{dataDetail.operatePointFormat}}</view>
+  </block>
+  <view class="list">
+    <view class="list-item">
+      <text class="list-item-lf">交易时间</text>
+      <view class="list-item-rg">{{dataDetail.createDate}}</view>
+    </view>
+    <!-- <view class="list-item">
+      <text class="list-item-lf">流水编号</text>
+      <view class="list-item-rg">{{dataDetail.operateType === 13 ? dataDetail.refundCode : dataDetail.orderNum || '-'}}</view>
+    </view> -->
+
+    <!-- operateType操作类型：2平台发放,3平台扣减,6康豆过期,11平台发放,12下单抵现,13售后退还,19平台扣减 -->
+    <view class="list-item">
+      <text class="list-item-lf">订单编号</text>
+      <view class="list-item-rg">
+        <text>{{dataDetail.targetId || '-'}}</text>
+        <view class="copy-btn" bind:tap="copy" data-text="{{dataDetail.targetId}}" wx:if="{{dataDetail.targetId}}">复制</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,132 @@
+/* pages/payPlatform/index.wxss */
+@import "./../../components/toast/index.wxss";
+
+page {
+  background-color: #F6F6F6;
+}
+
+.cashier {
+
+  &-main {
+    background-color: #FFFFFF;
+    padding: 150rpx 0 138rpx;
+    width: 100%;
+    text-align: center;
+
+    &-countdown {
+      font-size: 32rpx;
+      color: #999999;
+
+      text {
+        color: #0D0E15;
+      }
+    }
+
+    &-price {
+      font-size: 44rpx;
+      color: #0D0E15;
+
+      .price {
+        font-size: 75rpx;
+      }
+    }
+  }
+
+  &-paymethod {
+
+    background-color: #FFFFFF;
+    margin-top: 20rpx;
+
+    &-title {
+      height: 94rpx;
+      line-height: 94rpx;
+      margin-left: 34rpx;
+      font-size: 30rpx;
+      font-weight: bold;
+      color: #333333;
+      border-bottom: 2rpx solid #F3F3F3;
+    }
+
+    &-wechart {
+      display: flex;
+      align-items: center;
+      padding: 40rpx 34rpx;
+      justify-content: space-between;
+
+      &-box {
+        display: flex;
+        align-items: center;
+
+        &-icon {
+          width: 40rpx;
+          height: 38rpx;
+        }
+
+        &-txt {
+          font-size: 32rpx;
+          color: #333333;
+          margin-left: 28rpx;
+        }
+      }
+
+      &-ic_check {
+        width: 40rpx;
+        height: 40rpx;
+      }
+    }
+  }
+}
+.order{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #0D0E15;
+  background-color: #FFFFFF;
+  padding: 0 0 calc(100rpx + constant(safe-area-inset-bottom));
+  padding: 0 0 calc(100rpx + env(safe-area-inset-bottom));
+  padding-top: calc(var(--height) + 100px + constant(safe-area-inset-top));
+  padding-top: calc(var(--height) + 100px + env(safe-area-inset-top));
+  height: calc(98vh - var(--height) - constant(safe-area-inset-bottom));
+  height: calc(98vh - var(--height) - env(safe-area-inset-bottom));
+
+  &-fail{
+    width: 160rpx;
+    height: 160rpx;
+  }
+
+  &-text{
+    font-size: 32rpx;
+    margin: 22rpx 0 64rpx;
+  }
+  &-btn{
+    height: 74rpx !important;
+  }
+}
+
+.price-text {
+  margin: 0 10rpx;
+}
+
+.dialog-payplat {
+
+  &-title {
+    margin-bottom: 50rpx;
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #0d0e15;
+    line-height: 48rpx;
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 60rpx 0;
+
+    button {
+      width: 48%;
+      color: #333333;
+    }
+  }
+}

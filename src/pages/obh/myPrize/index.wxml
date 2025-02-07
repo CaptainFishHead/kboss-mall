@@ -1,0 +1,22 @@
+<!-- wetoast -->
+<import src="../../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+<navigation-bar title="我的奖品" background="#FFF" bindback="goBackCustomize" />
+<block wx:if="{{isLogged}}">
+    <view class="containers">
+        <view wx:if="{{prizeList && prizeList.length}}" class="prize-list">
+            <prize-item wx:for="{{prizeList}}" wx:key="index" prizeInfo="{{item}}"/>
+        </view>
+        <empty
+                wx:if="{{prizeList && prizeList.length === 0 && !isLoading}}"
+                imgUrl="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/empty-favorite.png"
+                empotyDesc="暂无奖品"
+                bindbuttonTap="onCreateAddress"
+        />
+        <mp-loading tips="正在加载" show="{{isLoading}}" type="circle"/>
+        <!-- <view class="not-more" wx:if="{{isNotMore && !isLoading}}">没有更多了</view> -->
+    </view>
+</block>
+<view class="login" wx:else>
+    <login bind:success="bindSuccess" bind:fail="bindFail" bind:close="bindClose" hideClose/>
+</view>

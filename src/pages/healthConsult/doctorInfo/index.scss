@@ -1,0 +1,215 @@
+/* pages/healthConsult/doctorInfo/index.wxss */
+@import "./../../../components/toast/index.wxss";
+page{
+  background: url('https://static.tojoyshop.com/images/wxapp-boss/healthConsult/bg-docterInfo.png') no-repeat;
+  background-size: 100%;
+  padding-bottom: calc(300rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(300rpx + env(safe-area-inset-bottom));
+}
+.main{
+  width: 723rpx;
+  height: auto;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 35rpx 40rpx;
+  .content{
+    display: flex;
+    justify-content: left;
+    padding: 34rpx 0;
+    .content-left{
+      width: 148rpx;
+      height: 148rpx;
+      background: linear-gradient( 180deg, #F0F7F6 0%, #D8F3F5 100%);
+      border-radius: 10rpx;
+      border: 3rpx solid #F3F4F6;
+      overflow: hidden;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      .image-doctor{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .content-middle{
+      flex-shrink: 0;
+      width: 32rpx;
+    }
+    .content-right{
+      height: 160rpx;
+      padding: 14rpx 0  0;
+      box-sizing: border-box;
+      flex:1;
+      overflow: hidden;
+      &-top{
+        display: flex;
+        .text{
+          font-weight: 500;
+          font-size: 32rpx;
+          color: #333333;
+          line-height: 48rpx;
+          margin-bottom: 10rpx;
+          // flex:1;
+          max-width: 323rpx;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .tag{
+          margin-left: 10rpx;
+          width: 134rpx;
+          height: 33rpx;
+          background-image:url('https://static.tojoyshop.com/images/wxapp-boss/healthConsult/title-docterInfo.png');
+          background-size:100% 100% ;
+          margin-top: 10rpx;
+          font-size: 22rpx;
+          color: #82530D;
+          line-height: 30rpx;
+          position: relative;
+          top:-2rpx;
+          flex-shrink: 0;
+        }
+      }
+      &-middle{
+        width: 100%;
+        font-size: 26rpx;
+        color: #666666;
+        line-height: 32rpx; 
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-bottom:10rpx;
+      }
+      &-bottom{
+        display: flex;
+        justify-content: space-between;
+        .department{
+          font-size: 28rpx;
+          color: #039399;
+          line-height: 40rpx;
+        }
+      }
+    }
+  }
+  .introduce{
+    line-height: 48rpx;
+    position: relative;
+    &-title{
+      font-size: 28rpx;
+      color: #333333;
+      font-weight: bold;
+    }
+    &-desc{
+      font-size: 28rpx;
+      color: #666666;
+    }
+    .company{
+      text-align: right;
+    }
+  }
+  .more{
+    width: 142rpx;
+    height: 48rpx;
+    display: block;
+    font-size: 28rpx;
+    color: #09BDAC;
+    text-align: right;
+    padding-right: 24rpx;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    line-height: 48rpx;
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/healthConsult/more.png), linear-gradient(270deg, #FFFFFF 45%, rgba(255, 255, 255, 0) 100%);
+    background-size: 24rpx, cover;
+    background-position: right center, 0 0;
+    background-repeat: no-repeat;
+  }
+  .notice{
+    font-size: 26rpx;
+    color: #666666;
+    line-height: 43rpx;
+    position: relative;
+    &-title{
+      font-weight: bold;
+    }
+  }
+  .simple{
+    height: 380rpx;
+    overflow: hidden;
+  }
+  .appointed{
+    margin: 50rpx auto;
+    &-title{
+      font-weight: 500;
+      font-size: 35rpx;
+      color: #333333;
+      line-height: 30rpx;
+      text-align: justify;
+      text-indent: 20rpx;
+      &:before{
+        display: block;
+        content: "";
+        position: absolute;
+        width: 8rpx;
+        height: 30rpx;
+        background: linear-gradient( 147deg, #01D6A1 0%, #00B79F 100%);
+        border-radius: 11rpx;
+        opacity: 0.87;
+      }
+    }
+  }
+  .logo{
+    width: 324rpx;
+    height: 36rpx;
+    display: block;
+    margin: 40rpx auto;
+  }
+}
+.mask{
+  width:100%;
+  height:100%;
+  position:fixed;
+  background:rgba(0,0,0,0.7);
+  z-index:10;
+  top:0;
+  left:0;
+}
+.doctor-info-details{
+  width: 100%;
+  height: 1042rpx;
+  padding: 42rpx;
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  border-radius: 10rpx 10rpx 0rpx 0rpx;
+  z-index: 999;
+  box-sizing: border-box;
+  overflow-y: auto;
+  .title{
+   
+    font-weight: 500;
+    font-size: 32rpx;
+    color: #333333;
+    line-height: 32rpx;
+    letter-spacing: 1px;
+    text-align: left;
+   
+    image{
+      display: block;
+      float: right;
+      width: 32rpx;
+      height: 32rpx;
+    }
+  }
+  .content{
+    font-size: 28rpx;
+    color: #666666;
+    line-height: 48rpx;
+    padding: 20rpx 0;
+  }
+}
+.adviser-class{
+  bottom: calc(200rpx + constant(safe-area-inset-bottom)) !important;
+  bottom: calc(200rpx + env(safe-area-inset-bottom)) !important;
+}

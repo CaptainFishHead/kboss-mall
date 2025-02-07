@@ -1,0 +1,73 @@
+<!-- 随心配 弹层 -->
+<mp-half-screen-dialog show="{{ visible }}" maskClosable="{{false}}" closabled="{{false}}" catchtouchmove="touchMove">
+  <view slot="title" class="title">
+    礼包内包含的商品
+
+    <view class="close" bindtap="closeHalfDialog">
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-close.png" mode="aspectFit" />
+    </view>
+
+  </view>
+  <view slot="desc">
+    <scroll-view scroll-y class="body">
+      <view class="list">
+        <block wx:for="{{spuList}}" wx:for-index="spuIndex" wx:for-item="spu" wx:key="index">
+          <view class="list-pro {{spu.disabled ? 'disabled' : ''}}">
+            <view class="list-pro-checkbox">
+              <mp-checkbox-group multi="{{false}}" bindtap="changeCheckbox" data-pid="{{spu.id}}">
+                <checkbox color="#B58209" checked="{{spu.checked && !spu.disabled}}" disabled="{{spu.disabled ? true : false}}" />
+              </mp-checkbox-group>
+            </view>
+            <view class="list-pro-img" bindtap="{{spu.disabled ? '' : 'showProduct'}}" data-id="{{spu.id}}">
+              <image src="{{spu.sku.imgurl}}" mode="aspectFill" />
+            </view>
+            <view class="list-pro-desc">
+              <view class="list-pro-desc-top">
+                <view class="name">{{spu.name || '-'}}</view>
+                <view class="sku" data-skus="{{spu.skuList}}" data-pid="{{spu.id}}" data-kid="{{spu.sku.id}}"
+                      bindtap="{{spu.disabled ? '' : 'showSku'}}">
+                  <text>{{(spu.sku.ruleVal || '') + ' ' + (spu.sku.natureVal || '')}}</text>
+                  <image src="https://static.tojoyshop.com/images/wxapp-boss/cart/ic_jiantou.png" />
+                </view>
+              </view>
+              <view class="list-pro-desc-bottom" wx:if="{{!spu.disabled}}">
+                <view class="price">￥ <text>{{spu.sku.sellPrice || 0}}</text></view>
+                <view class="num">
+                  <goods-count skuId="{{spu.sku.id}}" productNum="{{spu.num}}" minNum="{{spu.sku.sinceMin}}" maxNum="{{spu.sku.sinceMax}}" stockNums="{{spu.sku.stockNums}}" bind:changenum="changeNum" />
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+  <view slot="footer" class="footer">
+    <view class="footer-lf">
+      <mp-checkbox-group multi="{{false}}" bindtap="changeCheckboxAll">
+        <checkbox color="#B58209" checked="{{allChecked}}" disabled="{{allDisabled}}" />
+      </mp-checkbox-group>
+      <text class="checkbox-text">全选</text>
+      <view class="total-price price">合计：<text>￥{{totalPrice || 0}}</text></view>
+    </view>
+    <button type="primary" bindtap="submit" data-submit="{{submitType}}" disabled="{{allDisabled}}">{{submitType === '1' ? '立即购买' : '确认'}}</button>
+  </view>
+</mp-half-screen-dialog>
+
+<!-- 规格选择 -->
+<product-sku bind:submit="selectTypeSubmit" id="skuComponents" skuList="{{skuList}}" skuId="{{skuId}}" />
+
+
+<mp-dialog ext-class="dialog-common dialog-confim dialog-tips dialog" class="" show="{{dialog.show}}" buttons="{{dialog.buttons}}" bindbuttontap="tapDialogButton">
+
+  <block wx:if="{{dialog.type === 'noStock'}}">
+    <view class="title">温馨提示</view>
+    <view class="desc">您购买的部分商品库存不足 ，我们已为您重新甄选商品，请您再次核对</view>
+  </block>
+
+  <block wx:if="{{dialog.type === 'back'}}">
+    <view class="title">温馨提示</view>
+    <view class="desc">已为您搭配最佳组合，确定要离开吗？</view>
+  </block>
+
+</mp-dialog>

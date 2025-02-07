@@ -1,0 +1,54 @@
+<view class="goods-data">
+  <flex class="data-info" justifyContent="start" alignItems="center">
+    <flex-item style="width: 33.33%; margin-top: 48rpx">
+      <flex class="data-info-item" direction="column" alignItems="center">
+        <flex-item class="data-info-icon"><image class="icon"  src="https://static.tojoyshop.com/images/wxapp-boss/live/live-exposure-icon.png"/></flex-item>
+        <flex-item class="data-info-num">{{dataInfo.totalCommodityEposureCount}}</flex-item>
+        <flex-item class="data-info-label">总曝光</flex-item>
+      </flex>
+    </flex-item>
+    <flex-item style="width: 33.33%; margin-top: 48rpx">
+      <flex class="data-info-item" direction="column" justifyContent="space-between" alignItems="center">
+        <flex-item class="data-info-icon"><image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/live-click-icon.png"/></flex-item>
+        <flex-item class="data-info-num">{{dataInfo.totalClickCount}}</flex-item>
+        <flex-item class="data-info-label">总点击量</flex-item>
+      </flex>
+    </flex-item>
+    <flex-item style="width: 33.33%; margin-top: 48rpx">
+      <flex class="data-info-item" direction="column" justifyContent="space-between" alignItems="center">
+        <flex-item class="data-info-icon"><image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/goods-num-icon.png"/></flex-item>
+        <flex-item class="data-info-num">{{dataInfo.orderProductNum}}</flex-item>
+        <flex-item class="data-info-label">总成交商品 (件)</flex-item>
+      </flex>
+    </flex-item>
+        <flex-item style="width: 33.33%; margin-top: 48rpx">
+      <flex class="data-info-item" direction="column" justifyContent="space-between" alignItems="center">
+        <flex-item class="data-info-icon"><image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/live-money-icon.png"/></flex-item>
+        <flex-item class="data-info-num">{{dataInfo.totalOrderPrice}}</flex-item>
+        <flex-item class="data-info-label">总成交金额 (元)</flex-item>
+      </flex>
+    </flex-item>
+  </flex>
+  <view class="data-table">
+    <view class="table-header">
+      <view class="table-header-name goods">商品</view>
+      <view class="table-header-name {{sortType === 'num' ? 'active' : ''}}" catch:tap="sortData" data-type='num'>成交件数
+        <image class="sort-icon" src="{{sortType === 'num' ? sortMap[sort] : sortMap.default}}"/>
+      </view>
+      <view class="table-header-name {{sortType === 'money' ? 'active' : ''}}" catch:tap="sortData" data-type='money'>成交金额
+        <image class="sort-icon" src="{{sortType === 'money'?sortMap[sort] : sortMap.default}}"/>
+      </view>
+    </view>
+    <view class="table-body">
+      <view class="table-body-row" wx:for="{{productDataList}}">
+        <view class="table-body-culums goods-img">
+          <view class="sort-num" wx:if="{{index <= 2}}">{{index + 1}}</view>
+          <image class="img" mode="aspectFill" src="{{item.spuImgUrl}}"/>
+        </view>
+        <view class="table-body-culums goods-name two-line">{{item.spuName}}</view>
+        <view class="table-body-culums num">{{item.orderProductNum}}</view>
+        <view class="table-body-culums num">{{item.orderTotalPrice}}</view>
+      </view>
+    </view>
+  </view>
+</view>

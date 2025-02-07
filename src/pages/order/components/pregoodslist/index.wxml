@@ -1,0 +1,48 @@
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+
+<view class="gdslist">
+    <!--商品列表-->
+    <view wx:for="{{goodsList}}" wx:key="storeId" class="gdslist-warp">
+        <view class="gdslist-warp-store">{{item.storeName}}</view>
+        <view class="gdslist-warp-goods" wx:for="{{item.skuList}}" wx:key="skuId" wx:for-index="idx" wx:for-item="prod">
+            <view class="gdslist-warp-goods-flex">
+                <image class="prod-img" src="{{prod.skuImg}}"></image>
+                <view class="product">
+                    <view class="product-name">{{prod.spuName}}</view>
+                    <view class="product-attr" wx:if="{{isReal}}">{{prod.skuDesc}}</view>
+                    <view class="product-cont">
+                        <!-- 活动类型：2、促销活动 3、优惠券 -->
+                        <view class="product-cont-params" wx:if="{{prod.promotionType === 2 || prod.promotionType === 3}}">
+                            <image class="product-cont-params-img" src="{{prod.promotionSkuUrl}}" wx:if="{{prod.promotionType === 2}}"/>
+                            <view class="product-cont-params-desc" wx:if="{{prod.promotionType === 3}}"></view>
+                            <view class="product-cont-params-discount_price price">¥ {{filter.formatAmount(prod.skuPromotionPrice)}}</view>
+                            <view class="product-cont-params-real_price price">¥ {{filter.formatAmount(prod.sellPrice)}}</view>
+                        </view> 
+                        <view wx:else class="product-cont-params-discount_price price">¥ {{filter.formatAmount(prod.sellPrice)}}</view>
+                        <view class="product-cont-num"><text>X</text> {{prod.skuNum}}</view>
+                    </view>
+                </view>
+            </view>
+            <cpgoodslist showArrow list="{{prod.subSkuList}}" wx:if="{{prod.spuKind===1}}" catch:showinfo="showDetail"/>
+        </view>
+        <view class="uesermsg">
+            <text class="uesermsg-title">留言</text>
+            <textarea
+              wx:if="{{showMsg}}"
+              class="uesermsg-message"
+              bindinput="onEditMessage"
+              auto-height
+              cursor-spacing="{{50}}"
+              maxlength="50"
+              placeholder="给商家备注留言信息"
+              data-storeid="{{item.storeId}}"
+            />
+        </view>
+    </view>
+</view>
+
+<!-- 产品详情半弹窗 -->
+<product-dialog id="detailComponents"/>
+
+
+

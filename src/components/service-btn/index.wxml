@@ -1,0 +1,28 @@
+<!--components/service-btn/index.wxml-->
+<view class="{{ extClass }}">
+  <slot />
+</view>
+<mp-half-screen-dialog ext-class="services" class="service-wraper" show="{{serviceVisible}}" desc="" bindbuttontap="buttontap" buttons="{{buttons}}" bindclose="closeService">
+  <view slot="title" class="service-title">
+    联系您的VIP客服
+  </view>
+  <view slot="desc" class="service-desc">
+    <view class="service-desc-img">
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/home/bg-sevice.png" mode="aspectFit"></image>
+    </view>
+    <view class="service-desc-text">周一至周日 09:00 - 17:30</view>
+  </view>
+  <view slot="footer">
+    <view class="service-footer">
+      <button class="com-btn service-btn" open-type="contact" hover-class="none" session-from="{{sessionFrom}}" bindtap="onService">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-service-btn.png" mode="aspectFit" />
+        <text>在线客服</text>
+      </button>
+      <button class="com-btn phone-btn" bindtap="onCallTel">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-iphone-btn.png" mode="aspectFit" />
+        <text>电话客服</text>
+      </button>
+    </view>
+
+  </view>
+</mp-half-screen-dialog>

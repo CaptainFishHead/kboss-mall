@@ -1,0 +1,23 @@
+<!-- 授权用户信息 -->
+<button
+  wx:if="{{!removeSlot}}"
+	class="{{extClass}}"
+	hover-class="{{hoverClass}}"
+	disabled="{{disabled}}"
+	catchtap="beforeAction"
+	type="{{type}}" plain="{{plain}}" lang="zh_CN">
+	<slot/>
+</button>
+
+<block wx:if="{{visible}}">
+	<root-portal catchtap catchtouchmove enable>
+		<!-- 微信授权手机号登录 -->
+		<mp-half-screen-dialog
+			ext-class="authorize"
+			show="{{visible}}"
+			bindclose="hideDialog"
+		>
+			<login slot="desc" bind:success="bindSuccess" bind:fail="bindFail" bind:close="bindClose" pageSource="{{pageSource}}"/>
+		</mp-half-screen-dialog>
+	</root-portal>
+</block>

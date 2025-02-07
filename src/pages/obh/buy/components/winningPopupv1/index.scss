@@ -1,0 +1,334 @@
+/* pages/obh/buy/components/winningPopupv1/index.wxss */
+.winning-popup-container {
+  background-color: #000A;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  
+  .winning-popup-background {
+    width: 750rpx; 
+    height: 1624rpx;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+
+  .winning-popup-title {
+    background: url('https://static.tojoyshop.com/images/obh/lottery/new-lottery/bg-lottery-result-title.png?v=1');
+    width: 100%;
+    height: 172rpx;
+    line-height: 172rpx;
+    font-size: 46rpx;
+    text-align: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    top: 360rpx;
+    position: absolute;
+    left: 0;
+    color: #FEDE7B;
+    font-weight: 600;
+    z-index: 10;
+
+
+    text {
+      background-image: linear-gradient(to right, #FDFBDB, #FEDE7B);
+      -webkit-background-clip: text;
+      z-index: 2000;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .winning-popup-congratulate {
+    width: 750rpx;
+    height: 1624rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+
+  .winning-popup-fade-in {
+    animation: animFadein .5s ease-in-out 0s 1;
+    animation-fill-mode: both;
+  }
+
+  .winning-popup-boom {
+    width: 750rpx;
+    height: 750rpx;
+    position: absolute;
+    top: 400rpx;
+    left: 0;
+    animation: animBoom .6s ease-in-out 0s 1;
+    animation-fill-mode: both;
+  }
+
+  .winning-popup-prize {
+    width: 320rpx;
+    height: 320rpx;
+    position: absolute;
+    top: 582rpx;
+    left: 215rpx;
+    animation: animPrize .5s ease-in-out 0s 1;
+    animation-fill-mode: both;
+  }
+  
+  .winning-popup-star {
+    width: 1000rpx;
+    height: 1000rpx;
+    position: absolute;
+    top: 255rpx;
+    left: -125rpx;
+    animation: animStar 6s linear 0s infinite;
+  }
+
+  .winning-popup-star1 {
+    width: 700rpx;
+    height: 700rpx;
+    position: absolute;
+    top: 405rpx;
+    left: 25rpx;
+    animation: animStar1 6s linear 0s infinite;
+  }
+
+  .winning-popup-flash {
+    width: 680rpx;
+    height: 680rpx;
+    position: absolute;
+    top: 405rpx;
+    left: 35rpx;
+    animation: winningAnimFlash 18s linear 0s infinite;
+  }
+
+  .winning-popup-points {
+    width: 750rpx;
+    height: 750rpx;
+    position: absolute;
+    top: 370rpx;
+    left: 0;
+    animation: animPoints .5s ease-in-out 0s 1;
+    animation-fill-mode: both;
+  }
+
+  .winning-popup-ray {
+    width: 750rpx;
+    height: 1624rpx;
+    position: absolute;
+    left: 0;
+    // opacity: .5;
+    filter: blur(1px);
+    top: 0;
+  }
+
+  .winning-popup-stage {
+    width: 750rpx;
+    height: 1624rpx;
+    position: absolute;
+    left: 0;
+    opacity: .7;
+    top: 0;
+  }
+
+
+  .winning-popup-gift-name {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    top: 987rpx;
+    font-size: 38rpx;
+    font-weight: 600;
+    background-image: linear-gradient(to bottom, #FDF9E8, #F9D651);
+    -webkit-background-clip: text;
+    z-index: 2000;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .winning-popup-gift-tips {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    top: 1048rpx;
+    font-size: 27rpx;
+    color: #fff;
+  }
+
+  .winning-popup-bottom {
+    position: absolute;
+    top: 1148rpx;
+    text-align: center;
+    width: 100%;
+
+    .winning-popup-options {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 70rpx 90rpx;
+
+      .options-left {
+        height: 84rpx;
+      }
+
+      .options-right {
+        height: 84rpx;
+      }
+    }
+    
+    .options-close {
+      width: 70rpx;
+      height: 70rpx;
+      margin: 0 auto;
+    }
+
+
+    .winning-popup-options-one {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 0 70rpx 90rpx;
+
+      .options-left {
+        height: 84rpx;
+      }
+
+      .options-right {
+        height: 84rpx;
+      }
+    }
+    
+    .options-close {
+      width: 70rpx;
+      height: 70rpx;
+      margin: 0 auto;
+    }
+  }
+}
+
+@keyframes animBoom {
+  0% {
+    transform: scale(0);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes animPrize {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes animStar1{
+  0% {
+    transform: rotate(30deg)scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+    transform: rotate(120deg)scale(1);
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(210deg) scale(1.1);
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  75% {
+    transform: rotate(300deg) scale(1);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(390deg) scale(1);
+    opacity: 0;
+  }
+
+}
+
+@keyframes animStar {
+  0% {
+    transform: rotate(0deg)scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+    transform: rotate(90deg)scale(1);
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  75% {
+    transform: rotate(270deg) scale(1);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes winningAnimFlash {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animFadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animPoints {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

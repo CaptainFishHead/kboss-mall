@@ -1,0 +1,64 @@
+
+<view class="weui-flex classify-flex" style="--height:calc({{scrollHeight}}px - {{tabbarHeight}}rpx);">
+	<view class="weui-flex__item classify-flex-searchbar">
+		<view class="searchbar">
+			<searchbar hotPosition="1" isLink showBtn plain bind:open-page="searchbarOpenPage"/>
+		</view>
+	</view>
+	<view class="weui-flex__item classify-flex-content">
+		<view class="weui-flex classify-flex-content-flex">
+			<view class="weui-flex__item classify-flex-content-flex-left">
+				<goodsClassify value="{{currentClassifyId}}" bindchange="onChangeClassify"/>
+			</view>
+
+			<view class="weui-flex__item classify-flex-content-flex-right">
+				<scroll-view bindscrolltolower="onReachScrollBottom" scroll-y scroll-top="{{isScrollTop ? 0 : 'false'}}"
+				             enable-back-to-top>
+					<swipers wx:if="{{list.tops && list.tops.length > 0}}" topGoodsList="{{list.tops}}"/>
+					<view class="weui-flex classify-flex-content-flex-right-goods"
+					      wx:if="{{list.products && list.products.length > 0}}">
+						<block class="goods-item" wx:for="{{list.products}}" wx:for-item="prodItem" wx:key="id">
+							<view class="weui-flex__item  classify-flex-content-flex-right-goods__item">
+								<product-card
+									prodItem="{{prodItem}}"
+                  prentChecked="{{cIds}}"
+									product-height="390rpx"
+									product-padding="24rpx 24rpx 20rpx"
+									product-margin="0 0 30rpx 0"
+									product-name-size="28rpx"
+									product-name-height="84rpx"
+									product-name-margin="20rpx 0 0 0"
+									product-cover-flex="0 0 auto"
+									product-border="1px solid #f1f1f1"
+									product-border-radius="6rpx"
+									ext-justify-content="space-between"
+                  />
+							</view>
+						</block>
+					</view>
+					<view class="no-more"
+					      wx:if="{{list.products.length && currPage === totalPage && !isHideLoadMore}}">
+						<text>没有更多了</text>
+					</view>
+					<mp-loading tips="正在加载" show="{{isHideLoadMore}}" type="circle"/>
+					<!-- 无结果 -->
+					<view class="empty"
+					      wx:if="{{(!list.products||list.products.length===0)&&(!list.tops||list.tops.length===0)&&!isLoading}}">
+						<image src="https://static.tojoyshop.com/images/wxapp-boss/search/empty-search.png"
+						       mode="aspectFit"/>
+						<view>暂无商品</view>
+					</view>
+				</scroll-view>
+
+			</view>
+		</view>
+
+	</view>
+</view>
+
+<login-page
+	visible="{{loginPageVisible}}"
+	bind:logged="afterLogin"
+	bind:success="afterLogin"
+	bind:close="closeLoginPage"
+/>

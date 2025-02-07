@@ -1,0 +1,14 @@
+@import "./../../components/toast/index.wxss";
+
+page {
+  background: #f7f7f7;
+}
+.container {
+  padding-top: 130rpx;
+  padding-bottom: calc(170rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(170rpx + env(safe-area-inset-bottom));
+}
+
+.login {
+  padding-top: 300rpx;
+}

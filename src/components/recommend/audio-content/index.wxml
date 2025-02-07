@@ -1,0 +1,31 @@
+<wxs src="../../../utils/filter.wxs" module="filter"/>
+<view class="audio-content" wx:if="{{audioLength}}">
+  <view class="audio">
+    <view class="audio-logo" wx:if="{{cover}}">
+      <image class="audio-logo-img" src="{{cover}}" mode="aspectFill" />
+    </view>
+    <view class="audio-desc two-line">
+      {{audioName}}
+    </view>
+    <view class="audio-btn" bindtap="switchState">
+      <image wx:if="{{audioState}}" class="audio-btn-icon" src="https://static.tojoyshop.com/images/wxapp-boss/recommend/icon-play.png" mode="aspectFill" />
+      <image wx:else class="audio-btn-icon" src="https://static.tojoyshop.com/images/wxapp-boss/recommend/icon-pause.png" mode="aspectFill" />
+    </view>
+  </view>
+  <slider
+    min="0"
+    max="{{audioLength}}"
+    step="{{0.1}}"
+    class="audio_slider"
+    catchchange="sliderChange"
+    value="{{audioCurrentTime}}"
+    backgroundColor="#DEDEDE"
+    activeColor="#cfaf65"
+    block-color="#cfaf65"
+    block-size="12"
+  />
+  <view class="audio_time">
+    <text>{{filter.formatSeconds(audioCurrentTime)}}</text>
+    <text>{{filter.formatSeconds(audioLength)}}</text>
+  </view>
+</view>

@@ -1,0 +1,78 @@
+<import src="../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<view class="container">
+  <navigation-bar ext-class="navigation" background="#C0F2F1" title="{{healthProblemsItem.name}}" bindback="goBack"/>
+  <!-- 进度条 -->
+  <view class="quesProgress" id="quesProgress">
+    <view class="quesProgressNum" style="width:{{(progreeWidth / questionCount) * (currentTestNum + 1)}}px"></view>
+  </view>
+  <!-- 主体内容 -->
+  <view class="contentBox">
+    <!-- 进度状态 -->
+    <view class="quesProgressStatus">{{currentTestNum + 1}}/{{questionCount}}</view>
+    <!-- 答题内容 -->
+    <view class="quesTastContent">
+      <!-- 默认第一页，欢迎语 -->
+      <view class="firstWelcomeMsg" wx:if="{{currentTestNum === 0}}">
+        <view class="firstWelcomeMsgIcon">
+          <image src="https://static.tojoyshop.com/images/wxapp-boss/home/newcomer.gif" role="img" mode="widthFix"/>
+        </view>
+        <view class="firstWelcomeMsgHeader">
+          <view class="firstWelcomeMsgContent">
+            <view class="firstWelcomeMsgHeaderTitle">你好，开始测评吧</view>
+            <view class="firstWelcomeMsgHeaderService">智能小康为您服务</view>
+          </view>
+        </view>
+      </view>
+      <view class="firstCallMsg" wx:if="{{currentTestNum === 0}}">
+        首先有几个基础信息需要采集一下，真实的数据才能给到您精确的推荐哦~
+      </view>
+      <view class="callMsgCentent" wx:if="{{!finishedStatus}}">
+        {{ currentQsItem.question.questionContentName }}
+      </view>
+      <block wx:if="{{mustQuestions.length && !finishedStatus}}">
+        <quest-main dataCode="{{currentQsItem}}" dataIndex="{{currentTestNum + 1}}" bind:updateData="handleEmit" />
+          <button
+            class="requiredTest"
+            dataCode="{{currentQsItem}}"
+            bind:tap="handleSkipCurrQs"
+            wx:if="{{!currentQsItem.question.required}}"
+          >我不清楚，跳过本题</button>
+      </block>
+      <block wx:if="{{finishedStatus}}">
+        <view class="callMsgCentent">恭喜！所有题目已完成</view>
+        <view class="containerCommonBox" style="margin-top: 33rpx;">
+          <view class="containerCommonHeader"></view>
+          <view class="containerCommonFinished">
+            <view class="containerCommonImage">
+              <image src="https://static.tojoyshop.com/images/wxapp-boss/assessment/submitSuccess.png" mode="widthFix"/>
+            </view>
+            <view class="containerCommonText">
+              <view class="containerCommonInfo">您本次的题目已经全部完成，</view>
+              <view class="containerCommonInfo">请提交测评查看结果吧！</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- step -->
+    <view class="contentStepBox">
+      <view class="contentStep left">
+        <button class="contentStepBtn prev" bind:tap="handleTestPrev" wx:if="{{currentTestNum > 0}}">上一题</button>
+      </view>
+      <view class="contentStep right">
+<!--         disabled="{{!currentQsItem.answerStatus}}"-->
+        <button
+          class="contentStepBtn next {{ currentQsItem.answerStatus ? '' : 'disabledBtn'}}"
+          bind:tap="handleTestNext"
+          wx:if="{{currentTestNum + 1 <= questionCount && !finishedStatus}}"
+
+        >下一题</button>
+        <button
+          class="contentStepBtn next {{currentQsItem.answerStatus ? '' : 'disabledBtn'}}"
+          bind:tap="handleFinished" wx:if="{{finishedStatus}}"
+        >完成提交</button>
+      </view>
+    </view>
+  </view>
+</view>

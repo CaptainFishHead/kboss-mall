@@ -1,0 +1,33 @@
+/* components/classify/goods-classify/index.wxss */
+.scrollbox{
+  width: 180rpx;
+  background: #f7f7f7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.scroll-view-item{
+  height: 128rpx;
+  padding: 0 18rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  margin: -10rpx 0;
+  text-align: center;
+  min-width: 0;
+}
+.scroll-view-item text{
+  flex: 1;
+  white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.scroll-view-item.current{
+  color: #B58209;
+  font-weight: bold;
+  background-image: url(https://static.tojoyshop.com/images/wxapp-boss/classify/checked-bg.png);
+  background-size: 180rpx 128rpx;
+}

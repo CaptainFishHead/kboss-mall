@@ -1,0 +1,326 @@
+@import "../../../components/toast/index.wxss";
+.reportWrap {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background: #F6F6F6;
+  padding: 0 30rpx;
+  padding-bottom: calc(214rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(214rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+
+  .header {
+    width: 100%;
+    padding: 32rpx 25rpx 28rpx;
+    box-sizing: border-box;
+    background-image: url('https://static.tojoyshop.com/images/wxapp-boss/assessment/report_header.png');
+    background-repeat: repeat;
+    background-size: 100%;
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center;
+    border-radius: 10rpx;
+    .score {
+      width: 168rpx;
+      height: 168rpx;
+      position: relative;
+
+      .scoreImg {
+        width: 168rpx;
+        height: 131rpx;
+      }
+
+      .scoreNum {
+        // width: 100%;
+        position: absolute;
+        left: 50%;
+        bottom: 50rpx;
+        transform: translate(-50%, 0);
+        font-weight: 700;
+        font-size: 60rpx;
+        line-height: 60rpx;
+        display: flex;
+        align-items: flex-end;
+
+        .fen {
+          font-weight: 400;
+          font-size: 20rpx;
+          line-height: 20rpx;
+          margin-bottom: 10rpx;
+        }
+      }
+
+      .rating {
+        width: 110rpx;
+        height: 30rpx;
+        background: #C9F2F0;
+        border-radius: 14rpx;
+        font-weight: 400;
+        font-size: 22rpx;
+        color: #333333;
+        line-height: 30rpx;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        bottom: 15rpx;
+        transform: translate(-50%, 0);
+      }
+    }
+
+    .reportText {
+      margin-left: 23rpx;
+      font-weight: 400;
+      font-size: 26rpx;
+      color: #333333;
+      line-height: 40rpx;
+    }
+  }
+
+  .content {
+    background: #F6F6F6;
+    width: 100%;
+    border-radius: 10rpx;
+    &-contentLi {
+      margin-top: 30rpx;
+      box-sizing: border-box;
+      border-radius: 10rpx;
+      &-title {
+        width: 100%;
+        height: 94rpx;
+        padding: 23rpx 38rpx;
+        box-sizing: border-box;
+        background-image: url('https://static.tojoyshop.com/images/wxapp-boss/assessment/header_bg.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        font-weight: 600;
+        font-size: 34rpx;
+        color: #333333;
+        border-top-left-radius: 10rpx;
+        border-top-right-radius: 10rpx;
+      }
+
+      &-list {
+        width: 100%;
+        padding: 1rpx 24rpx 46rpx;
+        box-sizing: border-box;
+        background: #FFFFFF;
+        border-bottom-left-radius: 10rpx;
+        border-bottom-right-radius: 10rpx;
+        &-li {
+          display: flex;
+          align-items: center;
+          margin-top: 34rpx;
+
+          &-titleImg {
+            width: 150rpx;
+            height: 150rpx;
+            background: linear-gradient(180deg, #ABCEFF 0%, #BFDBFF 100%);
+            border-radius: 10rpx;
+          }
+
+          &-liRit {
+            margin-left: 28rpx;
+
+            &-disease {
+              display: flex;
+              align-items: center;
+
+              &-diseaseName {
+                font-weight: 600;
+                font-size: 34rpx;
+                color: #333333;
+              }
+
+              &-riskLevel {
+                width: 120rpx;
+                height: 40rpx;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8rpx;
+                font-weight: 400;
+                font-size: 28rpx;
+                margin-left: 20rpx;
+              }
+
+              .diagnosis {
+                color: #333333;
+                background: #F4F4F4;
+                border: 2rpx solid #6E6E6E;
+                box-sizing: border-box;
+              }
+
+              .lowrisk {
+                color: #058137;
+                background: #F1FFF6;
+                border: 2rpx solid #058137;
+                box-sizing: border-box;
+              }
+
+              .highrisk {
+                color: #D47000;
+                background: #FFF8F1;
+                border: 2rpx solid #C77708;
+                box-sizing: border-box;
+              }
+
+              .extremelyrisk {
+                color: #BC0000;
+                background: #FFF1F1;
+                border: 2rpx solid #C70A08;
+                box-sizing: border-box;
+              }
+            }
+
+            &-description {
+              font-weight: 400;
+              font-size: 30rpx;
+              color: #333333;
+              margin-top: 20rpx;
+            }
+          }
+        }
+
+        &-liT {
+          width: 100%;
+          margin-top: 34rpx;
+
+          &-liTop {
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            &-dian {
+              width: 17rpx;
+              height: 17rpx;
+              border-radius: 50%;
+              background: #00B79F;
+            }
+
+            &-riskFactorName {
+              font-weight: 600;
+              font-size: 34rpx;
+              color: #333333;
+              margin-left: 25rpx;
+            }
+
+            &-riskFactorLevel {
+              width: 120rpx;
+              height: 40rpx;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 8rpx;
+              font-weight: 400;
+              font-size: 28rpx;
+              margin-left: 20rpx;
+            }
+            .lowrisk {
+              color: #058137;
+              background: #F1FFF6;
+              border: 2rpx solid #058137;
+            }
+
+            .highrisk {
+              color: #D47000;
+              background: #FFF8F1;
+              border: 2rpx solid #C77708
+            }
+
+            .extremelyrisk {
+              color: #BC0000;
+              background: #FFF1F1;
+              border: 2rpx solid #C70A08;
+            }
+          }
+
+          &-liBtm {
+            padding-left: 42rpx;
+            box-sizing: border-box;
+            margin-top: 20rpx;
+
+            &-referAdvice {
+              font-weight: 400;
+              font-size: 30rpx;
+              color: #333333;
+            }
+
+            &-descriptions {
+              font-weight: 400;
+              font-size: 30rpx;
+              color: #333333;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  .footer {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 0 30rpx;
+    background: #F6F6F6;
+    padding-bottom: calc(10rpx + constant(safe-area-inset-bottom));
+    padding-bottom: calc(10rpx + env(safe-area-inset-bottom));
+    box-sizing: border-box;
+
+    &-footerBox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 17rpx 0;
+      background: linear-gradient(90deg, #FDEFD9 0%, #FFFBF6 100%);
+      border-radius: 10rpx;
+
+      &-footImg {
+        width: 100rpx;
+        height: 100rpx;
+        border-radius: 50%;
+        margin-left: 25rpx;
+      }
+
+      &-footCent {
+        flex: 1;
+        margin-left: 24rpx;
+
+        &-jietu {
+          font-weight: 500;
+          font-size: 28rpx;
+          color: #404040;
+        }
+
+        &-one {
+          font-weight: 400;
+          font-size: 24rpx;
+          color: #666666;
+        }
+      }
+
+      &-footBtn {
+        width: 170rpx;
+        height: 56rpx;
+        background: linear-gradient(180deg, #FFEAC9 0%, #FFC569 100%);
+        border-radius: 30rpx;
+        font-weight: 500;
+        font-size: 26rpx;
+        color: #554623;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 40rpx;
+      }
+    }
+
+    &-footTip {
+      text-align: center;
+      margin-top: 16rpx;
+      font-weight: 400;
+      font-size: 26rpx;
+      color: #999999;
+    }
+  }
+}

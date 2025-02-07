@@ -1,0 +1,20 @@
+
+<view class="goods" catchtap="btnHandler" data-goods="{{goods}}">
+  <view class="goods-box">
+    <view class="goods-tag goods-tag-hot" wx:if="{{goods[dataMap.isTop] === 1}}">热卖</view>
+    <view class="goods-tag goods-tag-num" wx:elif="{{goods[dataMap.serialNo] >= 0}}" >{{goods[dataMap.serialNo]}}</view>
+    <image class="goods-img" mode="aspectFill" src="{{goods[dataMap.img]}}"></image>
+    <view class="goods-speaking" wx:if="{{goods[dataMap.isExplain] === 1}}">讲解中</view>
+    <view class="goods-over-mask" wx:if="{{goods[dataMap.stockNum] <= 0}}">- 已抢光 -</view>
+  </view>
+  <view class="goods-info">
+    <view class="goods-name"><text>{{goods[dataMap.name]}}</text></view>
+    <!-- <view class="goods-des"><text>{{goods.subName}}</text></view> -->
+    <view class="goods-bottom">
+      <text class="goods-price"><text class="goods-price-uni">￥</text>{{goods[dataMap.price] - 0}}</text>
+      
+      <button class="goods-buy goods-over-btn" wx:if="{{goods[dataMap.stockNum] === 0}}">{{'抢光了'}}</button>
+      <button class="goods-buy" data-goods="{{goods}}" wx:else>{{btnText}}</button>
+    </view>
+  </view>
+</view>

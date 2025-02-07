@@ -1,0 +1,81 @@
+<!-- wetoast -->
+<import src="../../../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+
+        <!-- 网络错误 -->
+<empty ext-class="empty-box" wx:if="{{showEmpty}}"
+       imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722"
+       empotyDesc="{{errMsg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="reloadHandler"/>
+
+<block wx:else>
+    <navigation-bar title="赠送礼品卡" color="#FFFFFF"/>
+    <view class="container">
+        <view class="card">
+            <view class="card-title">
+                <image mode="aspectFit" class="card-title-icon"
+                       src="https://static.tojoyshop.com/images/wxapp-boss/coupon/leaf-left.png"/>
+                <text>赠送礼品卡给朋友</text>
+                <image mode="aspectFit" class="card-title-icon"
+                       src="https://static.tojoyshop.com/images/wxapp-boss/coupon/leaf-right.png"/>
+            </view>
+            <view class="card-desc">
+                <view>① 发起微信赠送后该礼品卡若48小时未被领取，则该礼品卡自动返回到您的账户。</view>
+                <view>② 发起微信赠送后，若好友未领取礼品卡，您可撤销赠送。</view>
+                <view>③ 通过手机号赠送礼品卡，礼品卡会发放到赠送账号中，同时系统发短信告知该手机号。</view>
+            </view>
+
+            <view class="card-envelope">
+                <image mode="aspectFit" class="card-envelope-ic_card_tag"
+                       src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-card-name.png"/>
+                <view class="card-envelope-name">{{cardInfo.cardName}}</view>
+                <view class="card-envelope-tips">
+                    <image mode="aspectFit" class="card-envelope-tips-icon"
+                           src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-warning.png"/>
+                    仅可兑换指定商品
+                </view>
+                <view class="card-envelope-date">
+                    {{cardInfo.effectType === 1 ? cardInfo.effectStartDate + '至' + cardInfo.effectEndDate : '激活后' + cardInfo.effectAddDay + '天生效'}}
+                </view>
+            </view>
+
+            <view class="card-btns">
+                <view class="card-btns-mobile" bindtap="giveFromMobile">手机号赠送</view>
+                <button class="card-btns-wechat" open-type="share">微信赠送</button>
+            </view>
+        </view>
+    </view>
+
+    <mp-dialog ext-class="order-alert-dialog dialog-exchange"
+            show="{{dialogShow}}"
+            title="赠送礼品卡">
+        <view class="close" bind:tap="handleClose">
+            <image src="https://static.tojoyshop.com/images/wxapp-boss/order/close.png" mode="widthFix"/>
+        </view>
+        <view class="dialog-cont">
+            <view class="dialog-cont-place">请在下方输入获赠人的手机号</view>
+            <form id="form" class="dialog-cont-form" bindsubmit="onSumint">
+                <view class="dialog-cont-form-flexbox">
+                    <view class="dialog-cont-form-flexbox-section">
+                        <input type="number" name="mobile" value="{{formValue.mobile}}" placeholder="请输入电话号码"
+                               bindinput="onInputMobile"/>
+                    </view>
+                    <button type="primary" class="dialog-cont-form-flexbox-submit" form-type="submit">赠送</button>
+                </view>
+            </form>
+        </view>
+    </mp-dialog>
+
+    <mp-dialog
+            ext-class="dialog-common dialog-confim"
+            show="{{visibleGiveSucc}}"
+            buttons="{{buttonsConfim}}"
+            mask-closable="{{false}}"
+            bindbuttontap="tapDialogButton">
+        <view class="dialog-success">
+            <image mode="aspectFit" class="dialog-success-icon"
+                   src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-give-success.png"/>
+            <view class="dialog-success-desc">转赠成功</view>
+        </view>
+    </mp-dialog>
+
+</block>

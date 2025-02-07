@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "tab-bar": "/components/tab-bar",
+    "favorite": "/components/favorite/index",
+    "searchbar": "/components/searchbar/index",
+    "empty": "/components/empty/index",
+    "share-entry": "/components/share-entry/index",
+    "service-btn": "/components/service-btn/index",
+    "health-indicators": "/components/health-indicators/index",
+    "newconmer": "/components/newconmer/index"
+  }
+}

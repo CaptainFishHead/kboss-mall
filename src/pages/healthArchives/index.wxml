@@ -1,0 +1,135 @@
+<!-- wetoast -->
+<import src="../../components/toast/index" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<view class="archives-box">
+  <navigation-bar bindback="goBack" title="{{naviTransparent? '健康档案' : ''}}" background="rgb(175 230 224 / {{ naviTransparent }})" />
+
+  <view class="archives-title-box">
+    <text class="title">健康档案</text>
+    <text class="dec">健康记录 异常提醒</text>
+  </view>
+
+  <view class="base-info">
+    <view class="person-info" bind:tap="handerBasicInfo">
+      <image class="head-img" src="{{ healthInfo.basicInfo.headImg }}" mode="aspectFill" />
+      <view class="right">
+        <text class="person-name">{{ healthInfo.basicInfo.name }}</text>
+        <text>
+          <text class="sex">{{healthInfo.basicInfo.gender===2?'女':'男'}}</text>
+          <text>{{healthInfo.basicInfo.age || 0}}岁</text>
+        </text>
+      </view>
+    </view>
+
+    <view class="bottom-box">
+      <navigator class="navigator" hover-class="navigator-hover" open-type="navigate" bind:tap="navigateToBmi">
+        <text>身体质量指数</text>
+        <view class="bim-box">
+          <text>BMI: <text class="num price {{ healthInfo.basicInfo.bmi ? '' : 'no_bmi' }}">{{ healthInfo.basicInfo.bmi || '无' }}</text></text>
+          <text wx:if="{{ !!healthInfo.basicInfo.bmiLevel }}" class="status">{{ healthInfo.basicInfo.bmiLevel }}</text>
+        </view>
+      </navigator>
+
+      <navigator class="navigator" hover-class="navigator-hover" open-type="navigate" bindtap="navigateToFitnessInfo">
+        <view class="history">
+          <text>健康史</text>
+          <text class="supply">去完善</text>
+        </view>
+        <text class="info">全方位记录健康信息</text>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="sign-box">
+    <text class="sign-core">核心体征</text>
+    <text class="quota">8项核心指标，概览健康体征</text>
+    <sign-data class="sign-content" tags="{{ healthInfo.basicMetrics }}" bind:sendAbnormal="handlAbnormalMetrics" bind:toBmiPage="navigateToBmi" />
+    <view class="robot">
+      <view class="robot-bg"></view>
+      <view class="robot-cont">
+        <view class="title-box">
+          <view class="ai-header-box">
+            <image class="ai-header" src="https://static.tojoyshop.com/images/wxapp-boss/home/newcomer.gif" mode="widthFix" />
+          </view>
+          <view wx:if="{{!abnormalStatus}}">
+            您需要进一步完善指标信息
+          </view>
+          <view wx:elif="{{abnormal}}">
+            您有<text class="title-term">{{ abnormal }}项</text>核心指标异常
+          </view>
+          <view wx:else>
+            您的核心指标均属正常范围
+          </view>
+        </view>
+        <view class="loading-view" wx:if="{{!answerStatus}}">
+          <chat-loading-view></chat-loading-view>
+        </view>
+        <text class="content" wx:else>{{answer}}</text>
+        <navigator wx:if="{{answerStatus}}" class="term-more" url="/pages/chatai/index?from=health" hover-class="navigator-hover" open-type="navigate">
+          查看完整解读
+        </navigator>
+      </view>
+    </view>
+    <block wx:if="{{healthInfo.recuperateSchemes.length}}">
+      <view class="conditioning">
+        <view class="conditioning-title">专属健康调理方案</view>
+        <scroll-view scroll-x>
+          <view class="plan-box">
+            <block wx:for="{{ healthInfo.recuperateSchemes }}" wx:key="index">
+              <navigator class="plan-content" hover-class="navigator-hover" open-type="navigate" bind:tap="navigateToPlan" data-programme="{{ item }}">
+                <image class="banner" src="{{ item.imageUrl }}" mode="widthFix" />
+                <view class="content">
+                  <text class="text_1">{{ item.programmeShortTitle }}</text>
+                  <text class="text_2">更新时间：{{ item.totalDays }}</text>
+                  <view class="btn">
+                    <text>查看详情</text>
+                    <image class="more_green" src="https://static.tojoyshop.com/images/wxapp-boss/icon/icon_transparent.png" mode="widthFix"/>
+                  </view>
+                </view>
+              </navigator>
+            </block>
+          </view>
+        </scroll-view>
+      </view>
+    </block>
+    <navigator class="consult-box" hover-class="navigator-hover" open-type="navigate" bind:tap="navigateToWaiter" data-consultantId="{{ healthInfo.consultantInfo.consultantId }}">
+      <image class="person" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/consult.png" mode="widthFix" />
+      <view class="dec-txt">
+        定期进行相关检查，及时发现异常情况，如需要请咨询您的专属健康管家
+        <text class="btn">咨询</text>
+      </view>
+    </navigator>
+  </view>
+
+  <view class="health-data">
+    <text class="title_1">健康数据</text>
+    <text class="title_2">个人健康指标，监测多项数据</text>
+    <block wx:if="{{ healthInfo.healthMetrics.length }}">
+      <view class="health_card_list">
+        <block wx:for="{{ healthInfo.healthMetricsArr10 }}" wx:key="index">
+          <view class="health_card_list_box">
+            <health-card metric="{{ item }}" />
+          </view>
+        </block>
+      </view>
+      <navigator wx:if="{{healthInfo.healthMetrics.length >= 10}}" class="term-more" url="/pages/healthArchives/healthData/index" hover-class="navigator-hover" open-type="navigate">
+        查看全部
+      </navigator>
+    </block>
+    <empty wx:else ext-class="empty-box" ext-empty-text="empty-text-box" ext-gobtn="ext-gobtn-box" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/empty_data@2x.png" empotyDesc="{{errMsg||'立即上传您的健康数据享受个性化健康管理服务'}}" buttonTxt="去填写基础信息" bindbuttonTap="handerBasicInfo" />
+  </view>
+
+  <view class="report">
+    <view class="btm-box">
+      <view class="unscramble">报告解读</view>
+      <view class="dec">快捷上传报告 专家1V1解读</view>
+    </view>
+    <view class="btn" bindtap="uploadReport">
+      <text>去上传</text>
+      <image class="rightjian" src="https://static.tojoyshop.com/images/wxapp-boss/icons/icon_more_white.png" mode="widthFix" />
+    </view>
+  </view>
+</view>
+
+<upload-report id="upload-report-comp" />

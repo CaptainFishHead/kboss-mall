@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "steps": "../components/step/index",
+    "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
+    "medical-history": "../components/medical-histor/index",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
+  }
+}

@@ -1,0 +1,20 @@
+<!-- 优惠券 弹层 -->
+<mp-half-screen-dialog title="优惠券" ext-class="dialog-list-coupon" show="{{ visible }}" bindclose="close" catchtouchmove="touchMove">
+  <view slot="desc">
+    <scroll-view scroll-y class="body" wx:if="{{couponList.length}}">
+      <view class="list">
+        <block wx:for="{{couponList}}" wx:for-item="coupon" wx:key="couponId">
+          <voucher-item voucher="{{coupon}}" index="{{index}}" scene="1" bind:tapCurItem="onTapCurItem" bind:showCurCouponRule="onShowCurCouponRule"/>
+        </block>
+      </view>
+    </scroll-view>
+    <view wx:else class="empty">
+      <empty imgUrl="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-voucher-empty.png"
+            ext-class="empty-box" empotyDesc="当前活动已经结束～请下次再来" />
+    </view>
+  </view>
+  <view slot="footer" class="footer">
+    <button type="primary" bindtap="close" class="footer-btn">返回商品</button>
+  </view>
+</mp-half-screen-dialog>
+<authorize ext-class="authorize-btn" isShowAuth id="authCouponComp" bind:success="onReceive"/>

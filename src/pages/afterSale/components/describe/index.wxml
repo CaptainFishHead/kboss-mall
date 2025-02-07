@@ -1,0 +1,22 @@
+<view class="title-des">补充描述</view>
+<view class="des-box">
+    <textarea
+      cursor-spacing="{{40}}"
+      maxlength="{{totalNum}}"
+      value="{{remark}}"
+      bindinput="bindinputDes"
+      bindblur="bindContentBlur"
+      focus="{{isFocus}}"
+      confirm-type="完成"
+      placeholder="补充描述，有助于商家更好的处理售后问题"
+      placeholder-style="des-placeholder"
+      class="des-box-textarea"
+      wx:if="{{isInputContentFocus}}"/>
+    <scroll-view scroll-y class="des-box-textarea"
+                 wx:if="{{isContentFocus}}"
+                 bind:tap="bindContentFocus">
+        {{remark}}
+        <view class="des-placeholder" wx:if="{{!remark}}">补充描述，有助于商家更好的处理售后问题</view>
+    </scroll-view>
+    <view class="des-box-num">{{remark.length || 0}}/{{totalNum}}</view>
+</view>

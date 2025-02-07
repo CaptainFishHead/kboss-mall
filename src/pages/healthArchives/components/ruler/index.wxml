@@ -1,0 +1,10 @@
+<view class="container-box">
+  <view class="bg" style="height: {{showScale}};"></view>
+  <scroll-view scroll-x bindscroll="scroll" binddragstart="scrollStart" binddragend="scrollEnd" enhanced bounces="{{false}}" scroll-left="{{ initialPosition }}">
+    <view class="container" style="{{ paddingStyle }}">
+      <view class="scale" wx:for="{{ scales }}" wx:key="index">
+        <text wx:if="{{ index % 5 === 0 }}" class="scale-num">{{ item }}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,55 @@
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<!-- 导航栏 -->
+<navigation-bar title="历史记录" background="#fff" />
+
+<!-- 内容 -->
+<view class="history-box">
+  <view wx:for="{{ agentCoreIndicatorVOList }}" wx:key="index" wx:if="{{agentCoreIndicatorVOList.length}}">
+    <view class="history-text">{{ item.time }}</view>
+    <view class="abnormal-explain" wx:for="{{ item.groups }}" wx:for-item="child" wx:for-index="childIndex" wx:key="childIndex">
+      <view class="abnormal-explain-title">{{ child.time }}</view>
+      <block wx:if="{{agentCoreIndicatorVOList&&agentCoreIndicatorVOList.length}}">
+        <!-- <view class="abnormal-explain-list {{expandedHeight?'expanded':''}}" style="--max-height:{{expandedHeight}}px"> -->
+        <view class="abnormal-explain-list">
+          <view class="abnormal-explain-list-item-code">
+          <!-- 数据来源：0用户记录 1管家记录 2设备同步 3健康拍 -->
+            <text>{{CREATOR_TYPE_MAPS[child.creatorType]}}</text>
+          </view>
+          <view class="explain-item">
+            <view class="abnormal-explain-list-item-cont">
+              <view class="abnormal-explain-list-item-cont-li" wx:for="{{ child.groups }}" wx:for-item="metric" wx:for-index="metricIndex" wx:key="metricIndex">
+                <text>{{metric.indexName}}:</text>
+                <text wx:if="{{ metric.indexDataType === 3 }}" class="details" bindtap="openDetail" data-metric="{{ metric }}">查看详情</text>
+                <text class="num" wx:else>
+                  <text class="price">{{ metric.indexData }}</text>
+                  <text wx:if="{{ metric.indexDataType === 2 }}" class="num_value">{{ metric.indexUnit }}</text>
+                  <text class="{{ metric.className }}"></text>
+                </text>
+              </view>
+
+            </view>
+          </view>
+          <!-- <view class="abnormal-explain-list-all" wx:if="{{!child.isShow}}" bind:tap="handleShowAll" data-index="{{ index }}" data-childIndex="{{ childIndex }}">
+            <view class="blur" />
+            <view class="btn">
+              <text>查看更多</text>
+              <view class="btn-icon btn-down"></view>
+            </view>
+          </view> -->
+        </view>
+      </block>
+      <!-- <view class="hide-all" wx:if="{{child.isShow}}" bind:tap="handleShowAll" data-index="{{ index }}" data-childIndex="{{ childIndex }}">
+        <text>收起</text>
+        <view class="btn-icon btn-up"></view>
+      </view> -->
+    </view>
+  </view>
+
+  <empty wx:if="{{!agentCoreIndicatorVOList.length && !isLoading}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/plan/empty_plan@2x.png" empotyDesc="暂无历史记录" />
+
+</view>
+
+<!-- 查看详情 -->
+<mp-half-screen-dialog extClass="dialog-details health-label-dialog" bindclose="closeDetail" show="{{ detailVisible }}" maskClosable="{{false}}" title="{{ currentMetric.indexName }}" desc="{{ currentMetric.indexData }}" buttons="{{buttons}}">
+</mp-half-screen-dialog>

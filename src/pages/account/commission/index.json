@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "explain": "./explain/index",
+    "date-picker": "./date-picker/index",
+    "empty": "./empty/index"
+  }
+}

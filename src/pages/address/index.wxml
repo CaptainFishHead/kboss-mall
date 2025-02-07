@@ -1,0 +1,52 @@
+<!--pages/address/index.wxml-->
+<import src="./../../components/toast/index.wxml"/>
+<navigation-bar ext-class="navigation" title="收货地址" background="#fff"/>
+	<!-- 收货地址列表 --><!--addressButtons.slice(1)-->
+<view class="address-list" wx:if="{{addressList.length}}">
+	<mp-slideview
+		ext-class="address-unit"
+		wx:for="{{addressList}}"
+		wx:key="unid"
+		buttons="{{item.isDefault?deleteBtn:addressButtons}}"
+		data-isDefault="{{item.isDefault}}"
+		data-id="{{item.addressId}}"
+		bindbuttontap="onButtonTap"
+		bindshow="onShowSlide"
+		bindhide="onHideSlide"
+		show="{{addressId === item.addressId}}"
+	>
+		<view class="address-info" data-addressinfo="{{item}}" catchtap="onChoseAddress">
+			<checkbox wx:if="{{isCheckbox}}" checked="{{checkedAddressId === item.addressId}}" class="check-box" color="#B58209"/>
+			<view class="user-info">
+				<view class="info">
+					<text class="name">{{item.acceptName || ''}}</text>
+					<text class="tel">{{item.encryMobile || ''}}</text>
+					<text class="label" wx:if="{{item.isDefault}}">默认</text>
+				</view>
+				<view class="address-details">
+					{{item.provinceName || ''}} {{item.cityName || ''}} {{item.areaName || ''}} {{item.detailAddress || ''}}
+				</view>
+			</view>
+			<image src="https://static.tojoyshop.com/images/wxapp-boss/address/edit-icon.png" class="edit"
+			       data-id="{{item.addressId}}" catchtap="onEditAddress"/>
+		</view>
+	</mp-slideview>
+	<!-- 添加地址按钮 -->
+	<view class="btn-box-bottom">
+		<button type="primary" bindtap="onCreateAddress">添加收货地址</button>
+	</view>
+</view>
+	<!-- 收货地址空数据 -->
+<empty
+	wx:else
+	imgUrl="https://static.tojoyshop.com/images/wxapp-boss/address/empty-address.png?v=1.0.0"
+	empotyDesc="暂无收货地址哦～"
+	buttonTxt="新增地址"
+	bindbuttonTap="onCreateAddress"
+/>
+	<!-- 删除提示弹窗 -->
+<delete-dialog visible="{{visible}}" bindconfirmDel="onDelAddress"/>
+	<!-- wetoast -->
+<template is="toast" data="{{...tj_toast}}"/>
+<global-back/>
+

@@ -1,0 +1,57 @@
+<!-- swiper -->
+<view class="swiper {{ extClass }}">
+  <swiper bindchange="swiperChange" style="height: {{ picHeight || 375 }}px" autoplay="{{!product.videoUrl && productImages.length > 1 || product.videoUrl && productImages.length > 2 && !playStates}}">
+    <!-- 图片swiper -->
+    <block wx:for="{{ productImages }}" wx:key="index">
+
+      <swiper-item class="swiper-item">
+        <!-- swiper添加视频 -->
+        <block wx:if="{{item.videoUrl}}">
+          <view class="pic-box">
+            <video id="swiperVideo" class="video" show-play-btn="{{fullStates}}" show-center-play-btn="{{false}}" enable-progress-gesture="{{fullStates}}" muted="{{volumeStates}}" controls="{{ fullStates }}" poster="{{ item.source }}" title="{{ product.name }}" src="{{ item.videoUrl }}" style="height: {{ picHeight || 375 }}px" bindtimeupdate="videoUpdate" bindplay="videoPlay" bindpause="videoPause" bindfullscreenchange="videoFullScreenChange" bindended="videoEnd">
+              <block wx:if="{{ !playStates && !fullStates && isStop }}">
+                <image class="poster" mode="aspectFit" src="{{ item.source }}" />
+                <image class="btn-play" mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-play.png" bindtap="videoOpreation" />
+              </block>
+              <flex wx:if="{{ !fullStates && !isStop }}" class="video-controls" space="0 13rpx" alignItems="center" justifyContent="space-between">
+                <flex-item shrink="0" basis="128rpx" style="text-align:right;">
+                  <image class="icon icon-opreation" mode="widthFix" src="{{playStates ? 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-pause.png' : 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-play.png'}}" bindtap="videoOpreation" />
+                </flex-item>
+                <flex-item grow="1">
+                  <!-- 模拟视频进度条 -->
+                  <slider class="video-controls_slider" wx:if="{{ !fullStates && !isStop }}" value="{{sliderValue}}" step="1" bindchange="sliderChange" bindchanging="sliderChanging" block-size="12" backgroundColor="#cdcdcd" activeColor="#CFAF65" block-color="#CFAF65" />
+                </flex-item>
+                <flex-item shrink="0" basis="56rpx">
+                  <image class="icon icon-volume" mode="widthFix" src="{{volumeStates ? 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-volume-off.png' : 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-volume.png'}}" bindtap="videoVolume" />
+                </flex-item>
+                <flex-item shrink="0" basis="56rpx">
+                  <image class="icon icon-window" mode="widthFix" src="{{fullStates ? 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-window-min.png' : 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-window-max.png'}}" bindtap="videoFullScreen" />
+                </flex-item>
+              </flex>
+             <!-- <block wx:if="{{ !fullStates && !isStop }}">
+                <image class="icon icon-opreation" mode="widthFix" src="{{playStates ? 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-pause.png' : 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-play.png'}}" bindtap="videoOpreation" />
+                <image class="icon icon-volume" mode="widthFix" src="{{volumeStates ? 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-volume-off.png' : 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-volume.png'}}" bindtap="videoVolume" />
+                <image class="icon icon-window" mode="widthFix" src="{{fullStates ? 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-window-min.png' : 'https://static.tojoyshop.com/images/wxapp-boss/product/icon-window-max.png'}}" bindtap="videoFullScreen" />
+              </block>-->
+            </video>
+          </view>
+        </block>
+
+        <block wx:else>
+          <view class="pic-box">
+            <image class="banner" mode="aspectFit" src="{{ item.source }}" />
+          </view>
+        </block>
+
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 轮播图数字 -->
+  <view class="swiper-num" wx:if="{{!playStates && isStop}}">
+    <text class="swiper-num-cur">{{swiperIndex}}</text>
+    <text class="swiper-num-dot">/</text>
+    <text>{{productImages.length}}</text>
+  </view>
+  <!-- 模拟视频进度条 -->
+<!--  <slider class="audio-slider" wx:if="{{ !fullStates && !isStop }}" value="{{sliderValue}}" step="1" bindchange="sliderChange" bindchanging="sliderChanging" block-size="12" backgroundColor="#cdcdcd" activeColor="#000" block-color="#000" />-->
+</view>

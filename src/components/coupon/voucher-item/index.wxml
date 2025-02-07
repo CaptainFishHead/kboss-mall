@@ -1,0 +1,63 @@
+<view class="voucher" bind:tap="onTap">
+  <!-- 不可用状态置灰 遮罩层  -->
+  <view class="voucher-mask" wx:if="{{(scene==='2'&&voucher.isAvailable===0)||scene==='4'}}" />
+  <!-- <authorize ext-class="authorize-btn" bind:success="onTap"> -->
+  <view class="voucher-contain">
+    <view class="voucher-contain-left">
+      <view class="price voucher-contain-left-price"><text>¥</text>{{voucher.couponAmount}}</view>
+      <view class="voucher-contain-left-limit">
+        <block wx:if="{{voucher.useType===1}}">
+          <view>无门槛立减</view>
+        </block>
+        <block wx:else>
+          <block wx:if="{{voucher.isWrap}}">
+            <view>{{'单价满'+(voucher.moneyLimit-0)}}元</view>
+            <view>可用</view>
+          </block>
+          <block wx:else>
+            <view>{{'单价满'+(voucher.moneyLimit-0)}}元可用</view>
+          </block>
+        </block>
+      </view>
+    </view>
+    <view class="voucher-contain-right">
+      <view class="voucher-contain-right-overdue" wx:if="{{scene==='3'&&voucher.isOverdue===1}}">即将过期</view>
+      <view class="voucher-contain-right-info">
+        <view class="voucher-contain-right-info-name">{{voucher.couponName}}</view>
+        <view class="voucher-contain-right-info-date" wx:if="{{scene==='1' && voucher.timeType===2}}">自领取之日起{{voucher.validityDays}}天可用</view>
+        <view class="voucher-contain-right-info-date" wx:else>{{voucher.startTime}}-{{voucher.endTime}}</view>
+      </view>
+      <!--    不同场景 不同状态 优惠券显示的操作按钮不同 场景 scene 1：商品详情页 2：订单确认页 3：优惠券列表 4：历史优惠券-->
+      <view class="voucher-contain-right-area">
+        <view class="voucher-contain-right-area-rule" wx:if="{{(scene==='2'||scene==='3')&&voucher.isAvailable===1}}" catch:tap="onShowUseRule">
+          <text>使用说明</text>
+          <view class="voucher-contain-right-area-rule-arrow {{voucher.isShowRule?'top-arrow':'bottom-arrow'}}" />
+        </view>
+        <view wx:else />
+        <!-- 按钮 scene==='1':商品详情页-,receiveStatus 0:未领取 1:已领取 2:已抢光， scene==='2'：订单确认页-勾选, scene==='3'：优惠券列表-去使用  -->
+        <view class="voucher-contain-right-area-btn" wx:if="{{scene==='1'&&!voucher.receiveStatus}}">立即领取</view>
+        <view class="voucher-contain-right-area-btn btn-opacity" wx:if="{{scene==='1'&&voucher.receiveStatus===2}}">已抢光</view>
+        <view class="voucher-contain-right-area-btn" wx:if="{{scene==='3'&&voucher.isAvailable===1}}">去使用</view>
+        <view class="voucher-right-area-checkbox" wx:if="{{scene==='2'&&voucher.isAvailable===1}}">
+          <mp-checkbox-group ext-class="coupon_checkbox" multi="{{false}}">
+            <checkbox color="#FFFFFF" checked="{{voucher.isChecked}}" />
+          </mp-checkbox-group>
+        </view>
+      </view>
+      <block wx:if="{{(scene==='1'&&voucher.receiveStatus===1)||(scene==='4'&&(voucher.notMessage===3||voucher.notMessage===4))}}">
+        <view class="voucher-contain-right-status">
+          <image class="voucher-contain-right-status-icon" wx:if="{{scene==='1'&&voucher.receiveStatus===1}}" src="https://static.tojoyshop.com/images/wxapp-boss/coupon/voucher-icon-received.png" />
+          <image class="voucher-contain-right-status-icon" wx:if="{{scene==='4'&&(voucher.notMessage===3||voucher.notMessage===4)}}" src="https://static.tojoyshop.com/images/wxapp-boss/coupon/voucher-icon-{{reasonForUnavailabMaps[voucher.notMessage]}}.png" />
+        </view>
+      </block>
+      <!--  不可用原因  -->
+      <view wx:if="{{(scene==='2'||scene==='3')&&voucher.isAvailable===0}}" class="voucher-contain-right-reason {{scene==='2'&&voucher.isAvailable===0?'zindex-112':''}}">
+        <view class="voucher-contain-right-reason-icon">!</view>
+        <view class="voucher-contain-right-reason-text">{{reasonForUnavailabMaps[voucher.notMessage]}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="voucher-rules {{voucher.isShowRule?'show-anim':'close-anim'}}" style="white-space: pre-wrap;">{{voucher.remark}}</view>
+  <!-- </authorize> -->
+
+</view>

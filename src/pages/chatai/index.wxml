@@ -1,0 +1,102 @@
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<wxs src="../../utils/filter.wxs" module="filters" />
+<!--titile-->
+<navigation-bar ext-class="navigation" background="linear-gradient(#CDF2EE, #CDF2EE,#F2F9F9)" title="AI小康" back="{{true}}" bindback="goBack" />
+<image class="chat-bot-animation" src="{{newcomerIcon}}"></image>
+<!--内容区-->
+<scroll-view scroll-top="{{scrollTop}}" scroll-y type="list" scroll-into-view="{{bottomViewId}}" style="--chatHeight:{{chatContentHeight}}rpx;" class="chat-list" bindscrolltolower="onScrolltolower" scroll-with-animation="{{!disabled}}" enable-passive="{{true}}" binddragstart="onTouchStart" binddragging="onTouchMove" binddragend="onTouchEnd" enhanced="{{true}}" bounces="{{false}}">
+	<view class="chat-container" wx:for="{{content}}" wx:key="index" wx:for-index="index" wx:for-item="chatItem">
+		<view id="item{{index}}">
+			<block wx:if="{{chatItem.type == CHAT_TYPE.QUESTION}}">
+				<view class="chat-time">
+					<block wx:if="{{index == 0 || index == 1}}">{{filters.formatChatData(chatItem.timestamp, 0)}}</block>
+					<block wx:else>
+						{{filters.formatChatData(chatItem.timestamp, content[index - 1].timestamp)}}
+					</block>
+				</view>
+				<chat-right-item chatContent="{{chatItem.texstr}}"/>
+			</block>
+			<block wx:elif="{{chatItem.type == CHAT_TYPE.ANSWER}}">
+				<chat-left-item chatContent="{{chatItem.texstr}}" btnInfo="{{chatItem.btnInfo}}" isLogged="{{isLogged}}"
+				disabled="{{disabled}}" bind:onLogin="onLoginEvent"/>
+			</block>
+			<block wx:elif="{{chatItem.type == CHAT_TYPE.REQUESTIONS}}">
+				<chat-recommend-view questions="{{chatItem.questions}}" bind:onQuestion="getReQuestion"></chat-recommend-view>
+			</block>
+			<block wx:elif="{{chatItem.type == CHAT_TYPE.LOADING && index == (content.length - 1)}}">
+				<chat-loading-view></chat-loading-view>
+			</block>
+			<block wx:elif="{{chatItem.type == CHAT_TYPE.CONSULT}}">
+				<chat-tools-view bind:onLogin="onLoginEvent" isLogged="{{isLogged}}"></chat-tools-view>
+			</block>
+			<block wx:elif="{{chatItem.type == CHAT_TYPE.GOODS || chatItem.type == CHAT_TYPE.ARTICLE || chatItem.type == CHAT_TYPE.DOCTOR}}">
+				<chat-card-view info="{{chatItem}}" disabled="{{disabled}}"></chat-card-view>
+			</block>
+			<block wx:elif="{{chatItem.type == CHAT_TYPE.REPORT}}">
+				<chat-report-view></chat-report-view>
+			</block>
+		</view>
+	</view>
+	<view class="chat-index" bind:tap="onStopChatEvent">
+	  <view wx:if="{{disabled}}" class="chat-index-layout">
+		<view class="chat-index-icon"></view>
+		 停止生成
+		</view>
+	</view>
+	<view id="item{{content.length}}" style="width: 100%; height: {{bottomInputHeight}}rpx;"></view>
+</scroll-view>
+<!--输入区-->
+<view class="chat-input" style="padding-bottom:{{inputHeight}}px;">
+	<view class="chat-input-labour">
+		<!--人工咨询按钮-->
+		<view class="chat-input-tools" bind:tap="onConsult">
+			<image class="chat-input-labour-icon" src="{{labourIcon}}"></image>
+			<text>人工咨询</text>
+		</view>
+		<!--输入区域-->
+		<view class="chat-input-content">
+			<textarea class="chat-input-textarea" cursor-spacing="50" value="{{questionText}}" auto-height="true" bindinput="onQuestionInputEvent" adjust-position="{{false}}" bindfocus="inputFocus" bindblur="inputBlur"></textarea>
+			<image class="chat-input-voices" src="{{vicesIcon}}" bind:tap="showVoicesDialog"></image>
+		</view>
+		<!--发送按钮-->
+		<view class="chat-input-send" bind:tap="sendMess">发送</view>
+	</view>
+	<text class="chat-input-bottom-title">内容为AI生成仅供参考</text>
+</view>
+<view class="chat-input-bottom" />
+
+<!--录音弹窗-->
+<block wx:if="{{visible}}">
+	<mp-half-screen-dialog show="{{visible}}" bindclose="hideDialog" closabled="{{closabled}}" extClass="chat-dialog" bindclose="closeDialog" bindbuttontap="editText">
+		<!--头部信息-->
+		<view wx:if="{{!closabled}}" slot="title" class="chat-dialog-title-root">
+			<image class="chat-dialog-title-close" src="{{closeIcon}}" bind:tap="editText"></image>
+			<text class="chat-dialog-title-content">编辑内容</text>
+			<view class="chat-dialog-title-send" bind:tap="sendMess">发送</view>
+		</view>
+		<!--内容信息-->
+		<view slot="desc" class="chat-dialog-content">
+			<!--内容编辑区-->
+			<textarea class="chat-dialog-edit" style="min-height: {{!closabled ? 450 : 200}}rpx;" value="{{questionText}}" placeholder-style="color:#999999" placeholder="{{voicessError}}" cursor-spacing="550" 	adjust-position="{{true}}" bindfocus="getEditfocus" auto-height="true" bindinput="onQuestionInputEvent" disabled="{{!isReception}}"></textarea>
+			<!--提示语-->
+			<text wx:if="{{closabled}}" class="chat-dialog-tips" bind:tap="{{isReception ? 'editText' : ''}}">{{dialogTips}}</text>
+			<!--语音交互按钮区-->
+			<view wx:if="{{closabled}}" class="chat-dialog-voice">
+				<view wx:if="{{isReception}}" class="chat-dialog-cancle" bind:tap="hideDialog">退出</view>
+				<view class="chat-dialog-voices-layout">
+					<!-- 外部圆形边框 -->
+					<view wx:if="{{!isReception}}" class="chat-dialog-wy"></view>
+					<!-- 内部内容容器 -->
+					<view wx:if="{{!isReception}}" class="chat-dialog-animation" style="width: 100rpx;height: 100rpx; animation: {{isStart ? 'pulsedb 2.3s infinite cubic-bezier(0.36, 0, 0, 1)' : 'none'}};">
+					</view>
+					<view wx:if="{{!isReception}}" class="chat-dialog-animation" style="animation: {{isStart ? 'pulsedb 2.25s infinite cubic-bezier(0.36, 0, 0, 1)' : 'none'}};" bind:tap="onVoiceClick" bind:longpress="onLongpress" bind:touchend="onTouchend">
+						<image class="chat-dialog-voices-icon" src="{{voicesIcon}}"></image>
+					</view>
+				</view>
+				<view wx:if="{{isReception}}" class="chat-dialog-bottom-send" bind:tap="sendMess">发送</view>
+			</view>
+		</view>
+	</mp-half-screen-dialog>
+</block>
+<login-promise id="authorize" removeSlot />

@@ -1,0 +1,7 @@
+<!-- 加购 按钮 -->
+<view class="{{ extClass }}">
+  <slot />
+</view>
+
+<!-- 规格选择 -->
+<product-sku id="skuComponents" bind:submit="selectTypeSubmit" skuList="{{skuList}}" skuId="{{sku.skuId}}" />

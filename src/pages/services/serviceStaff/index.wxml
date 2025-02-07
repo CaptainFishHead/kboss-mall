@@ -1,0 +1,80 @@
+<import src="/components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<!-- 联系客服 -->
+<navigation-bar ext-class="navigation" title="联系客服" background="#FFF8E5" />
+<view class="container">
+  <!-- text -->
+  <view class="container-text">
+    <view class="container-text-iphone">{{splitPhone}}</view>
+    <view class="container-text-info">服务时段：周一至周日 {{businessHours}}（节假日除外）</view>
+  </view>
+  <!-- contact -->
+  <block wx:if="{{!!storeInfo.wexinId}}">
+    <view class="container-btnbox">
+      <flex justifyContent="{{'space-between'}}" alignItems="{{'center'}}">
+        <flex-item class="conact-style" bindtap="copyWechart" data-wechart="{{storeInfo.wexinId}}">
+          <flex justifyContent="{{'center'}}" alignItems="{{'center'}}">
+            <flex-item>
+              <image class="container-btnbox-wxicon"
+                src="https://static.tojoyshop.com/images/kboss-agent/mine/manage/icon-wechart.png?v=202405201147"
+                mode="widthFix"></image>
+            </flex-item>
+            <flex-item class="container-btnbox-text">复制微信号</flex-item>
+          </flex>
+        </flex-item>
+        <flex-item class="conact-style" bindtap="onStoreService">
+          <flex justifyContent="{{'center'}}" alignItems="{{'center'}}">
+            <flex-item>
+              <image class="container-btnbox-iphone"
+                src="https://static.tojoyshop.com/images/kboss-agent/mine/manage/icon-phone.png?v=202405201147"
+                mode="widthFix"></image>
+            </flex-item>
+            <flex-item class="container-btnbox-text">立即拨打</flex-item>
+          </flex>
+        </flex-item>
+      </flex>
+    </view>
+  </block>
+  <block wx:else>
+    <!-- only phone -->
+    <view class="container-btnbox onlyp" bindtap="onStoreService">
+      <flex justifyContent="{{'center'}}" alignItems="{{'center'}}">
+        <flex-item>
+          <flex alignItems="{{'center'}}">
+            <flex-item>
+              <image class="container-btnbox-iphone"
+                src="https://static.tojoyshop.com/images/kboss-agent/mine/manage/icon-phone.png?v=202405201147"
+                mode="widthFix"></image>
+            </flex-item>
+            <flex-item class="container-btnbox-text">立即拨打</flex-item>
+          </flex>
+        </flex-item>
+      </flex>
+    </view>
+  </block>
+  <!-- agentStoreAddress -->
+  <view class="container-addr" wx:if="{{!!serviceAllAddr}}">
+    <flex justifyContent="{{'space-between'}}" alignItems="{{'center'}}">
+      <flex-item class="container-addr-title">店铺地址</flex-item>
+      <flex-item class="container-addr-copybtn" data-addr="{{serviceAllAddr}}" bindtap="copyAddress">
+        复制
+      </flex-item>
+    </flex>
+    <flex justifyContent="{{'start'}}" class="container-addr-mtop">
+      <flex-item>
+        <image class="container-addr-icon"
+          src="https://static.tojoyshop.com/images/kboss-agent/mine/manage/icon-small-loaction.png?v=202405201154"
+          mode="widthFix"></image>
+      </flex-item>
+      <flex-item class="container-addr-text">{{serviceAllAddr}}</flex-item>
+    </flex>
+  </view>
+  <!-- wx-chart -->
+  <block wx:if="{{!!storeInfo.weixinQr}}">
+    <view class="container-wxbox">
+      <image show-menu-by-longpress="true" bindtap="longPressQrcode" class="container-wxbox-echart"
+        src="{{storeInfo.weixinQr}}" mode="aspectFit"></image>
+    </view>
+    <view class="container-wxtext">长按二维码添加客服微信</view>
+  </block>
+</view>

@@ -1,0 +1,30 @@
+<!-- 产品列表 -->
+<view class="second-module-allicon{{list.length<3||(list.length<2&&bgType==1)?' off':''}}{{bgType==1?' video-box':''}}">
+  <scroll-view class="nav-bar" scroll-anchoring="{{true}}" bounces="{{true}}" scroll-x bindscroll="scroll">
+    <!-- 使用flex布局实现横向滚动，在scroll-view里加一层容器包裹，才会出现滚动效果 -->
+    <view class="nav-bar-wrap{{list.length<2||(list.length<3&&bgType==1)?' nav-bar-wrap-center':''}}">
+      <block wx:for="{{list}}" wx:key='unique'>
+        <view class="nav-bar-item{{current==index?' on':''}}{{index==0&&list.length>1?' nav-bar-item-one':''}}" style="background-image:url({{current==index?skinList[current%skinList.length].selectBgOn:skinList[current%skinList.length].selectBgOff}});" data-item="{{item}}" data-index="{{index}}" catchtap="handleClick">
+          <image wx:if='{{index==0}}' class="recommend" src="{{skinList[current%skinList.length].tuijianIcon}}"></image>
+          <image wx:if='{{current==index}}' class="select" src="{{skinList[current%skinList.length].selectIcon}}"></image>
+          <!-- //type  1.时间  2.次数 -->
+          <view class="nav-bar-text nav-bar-text2" wx:if="{{item.type&&item.type==2}}">¥{{item.price}}/晚</view>
+          <block wx:else>
+            <view class="nav-bar-text nav-bar-text0{{item.timeStr&&item.timeStr.length>8?' font28 line1hidden':''}}">{{item.timeStr}}</view>
+            <view class="nav-bar-text nav-bar-text1">¥{{item.price}}</view>
+          </block>
+        </view>
+      </block>
+      <view class="nav-bar-item nav-bar-item" wx:if="{{bgType==0}}" style="background-image:url({{skinList[current%skinList.length].selectBgOff}});" data-item="" data-index="-1" catchtap="handleClick">
+        <view class="nav-bar-text nav-bar-text3">神奇的氧吧房</view>
+        <view class="nav-bar-text nav-bar-text4">去了解</view>
+      </view>
+      <view class="place-w1" wx:if="{{(list.length>2&&bgType==0)||(list.length>3&&bgType==1)}}"></view>
+    </view>
+  </scroll-view>
+  <view class="tip{{(list.length>2&&bgType==0)||(list.length>3&&bgType==1)?' tip-on':''}}">{{tip}}</view>
+  <!-- 模拟进度条 -->
+  <view class="slider-wrap" wx:if="{{(list.length>2&&bgType==0)||(list.length>3&&bgType==1)}}">
+    <view class="slider-inside-location" style="left:{{left}}rpx"></view>
+  </view>
+</view>

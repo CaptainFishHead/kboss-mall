@@ -1,0 +1,129 @@
+.container {
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 35rpx;
+  padding-bottom: 50rpx;
+
+  .items {
+    width: 100%;
+    min-height: 240rpx;
+
+    &-title {
+      margin-bottom: 10rpx;
+      line-height: 48rpx;
+      font-size: 34rpx;
+      font-weight: 600;
+      color: #333;
+    }
+
+    &-child {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: space-around;
+
+      .btn {
+        width: 300rpx;
+        height: 64rpx;
+        margin: 20rpx 0;
+        background: #f3f4f6;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 10rpx;
+
+        &-title {
+          margin-left: 30rpx;
+        }
+      }
+    }
+  }
+
+  .abnormal-explain {
+    // min-height: 465rpx;
+    margin-top: 32rpx;
+    width: 100%;
+    box-sizing: border-box;
+    background: #f0fcfa;
+    padding: 32rpx 35rpx;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    align-items: center;
+    border-radius: 10rpx;
+
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      font-weight: 600;
+      font-size: 34rpx;
+      color: #ff5700;
+      line-height: 48rpx;
+      text-align: left;
+      font-style: normal;
+      margin-bottom: 18rpx;
+    }
+
+    .hide-all {
+      min-height: 120rpx;
+      // animation: expandHeight 2s ease-out forwards;
+    }
+
+    .view-more {
+      border-radius: 6rpx;
+      width: 335rpx;
+      height: 68rpx;
+      background: linear-gradient(180deg, #a2e4de 0%, #3dcec0 100%);
+      font-weight: 500;
+      font-size: 32rpx;
+      color: #333333;
+      text-align: center;
+      line-height: 68rpx;
+      margin-top: 30rpx;
+    }
+  }
+}
+
+.warn {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 30rpx;
+  margin-bottom: 5rpx;
+}
+
+// 报错色
+.error {
+  background: #fef7f7 !important;
+
+  .warn {
+    width: 36rpx;
+    height: 36rpx;
+  }
+}
+
+.big {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+@keyframes expandHeight {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: auto;
+  }
+
+  /* 注意：这里height: auto在动画中可能不会按预期工作，但可以用作示例 */
+}

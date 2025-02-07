@@ -1,0 +1,23 @@
+<view class="progress-container">
+  <view class="progress-bar">
+    <view class="left">
+      <view class="low" wx:if="{{currValue < min}}"></view>
+    </view>
+    <view class="normal progress">
+      <view class="mark-points {{currValue < min && 'small'}}  {{currValue > max && 'big'}}" style="left: {{spacing}}px">
+        <!-- style="{{isLimitType === 1 ? 'left:-8rpx' : isLimitType === 2 ? 'right:24rpx' : 'transform: translateX(-50%)'}}" -->
+        <view class="num">
+          <text>{{currValue}}</text>
+        </view>
+      </view>
+      <view class="normal-desc">
+        <text class="normal-min">{{min}}</text>
+        <text class="normal-txt">正常</text>
+        <text class="normal-max">{{max}}</text>
+      </view>
+    </view>
+    <view class="right">
+      <view class="tall" wx:if="{{currValue > max}}"></view>
+    </view>
+  </view>
+</view>

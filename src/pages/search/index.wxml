@@ -1,0 +1,145 @@
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<navigation-bar title="搜索" ext-class="navigation" />
+
+<view class="containerSearch">
+
+  <view class="searchbar">
+    <searchbar id="searchbar" showResultPage="{{showResultPage}}" hotPosition="{{hotPosition}}" bind:search="onSearch" bind:edit="onEdit" bind:obserFun="obserFun" isObser="{{isObser}}" inputVal="{{keyword}}" showBtn bind:open-page="searchbarOpenPage" />
+  </view>
+  <view class="containerSearch-head">
+    <view class="tabTitle commodityTitle {{active == '1' ? 'actived' : ''}}" data-active='1' bind:tap="clickTab">
+      <text>商品</text>
+      <view class="xianbot" wx:if="{{active == '1'}}"></view>
+    </view>
+    <view class="tabTitle contentTitle {{active == '2' ? 'actived' : ''}}" data-active='2' bind:tap="clickTab">
+      <text>内容</text>
+      <view class="xianbot" wx:if="{{active == '2'}}"></view>
+    </view>
+  </view>
+  <view class="containerSearch-result" wx:if="{{showResultPage || (showLenovo && lenovoList)}}">
+    <!-- 关联搜索词列表 -->
+    <view class="list list-box" wx:if="{{showLenovo && lenovoList && lenovoList.length > 0}}" style="top: {{statusHeight + 44 + 60}}px">
+      <block wx:for="{{lenovoList}}" wx:key="index">
+        <view class="list-text" bindtap="onSelectResult" data-text="{{item.keyword}}" data-type="2">
+          <mp-html content="{{item.keyword}}" />
+        </view>
+      </block>
+    </view>
+
+    <!-- 搜索结果列表 -->
+    <view class="list" wx:if="{{showResultPage}}" style="top: {{statusHeight + 44 + 60 + 40}}px">
+      <view class="activity-swiper">
+        <view class="swiper-item" wx:if="{{active == '1'}}">
+          <scroll-view bindscrolltolower="onReachScrollBottom" scroll-y enable-back-to-top wx:if="{{resultList && resultList.length > 0}}">
+            <block wx:for="{{resultList}}" wx:key="index">
+              <view class="list-pro" data-item='{{item}}' bindtap="toProduct">
+                <view class="list-pro-lf">
+                  <image src="{{item.imgUrl}}" mode="aspectFill" />
+                </view>
+                <view class="list-pro-rg">
+                  <view class="list-pro-rg-top">
+                    <view class="title">{{item.productName}}</view>
+                    <view class="subtitle">{{item.productSubhead}}</view>
+                  </view>
+                  <view class="list-pro-rg-bottom">
+                    <view class="price">￥ <text>{{item.sellPrice || 0}}</text></view>
+                    <view class="num">已售 <text>{{item.saleNum || 0}}</text></view>
+                  </view>
+                </view>
+              </view>
+            </block>
+            <view class="no-more" wx:if="{{resultList.length === totalCount && !isHideLoadMore}}">
+              <text>没有更多了</text>
+            </view>
+            <mp-loading tips="正在加载" show="{{isHideLoadMore}}" type="circle" />
+          </scroll-view>
+          <!-- 无结果 -->
+          <view class="empty" wx:if="{{resultList && resultList.length === 0 && !isLoading}}">
+            <image src="https://static.tojoyshop.com/images/wxapp-boss/search/empty-search.png" mode="aspectFit" />
+            <view>搜索无结果</view>
+          </view>
+        </view>
+        <view class="swiper-item" wx:if="{{active == '2'}}">
+          <scroll-view bindscrolltolower="onReachScrollBottom" scroll-y enable-back-to-top wx:if="{{resultList1 && resultList1.length > 0}}">
+            <view class="contentresult">
+              <block wx:for="{{resultList1}}" wx:key="index">
+                <view class="list-li" bindtap="toProduct" data-item='{{item}}'>
+                  <image wx:if="{{item.type == '2'}}" class="television" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_play.png" mode="" />
+                  <view class="liveState" wx:if="{{item.type == '3'}}">
+                    <image wx:if="{{item.liveState == '1'}}" class="liveImg" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_television.png" mode="" />
+                    <image wx:if="{{item.liveState == '0'}}" class="liveImg" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_television_k2.png" mode="" />
+                    <text wx:if="{{item.liveState == '1'}}">正在直播</text>
+                    <text wx:if="{{item.liveState == '0'}}">直播预告</text>
+                  </view>
+                  <view class="list-li-lf">
+                    <image src="{{item.coverImgUrl}}" mode="aspectFill" />
+                  </view>
+                  <view class="list-li-rg">
+                    <view class="title">{{item.title}}</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+            <view class="no-more" wx:if="{{resultList1.length === totalCount1 && !isHideLoadMore1}}">
+              <text>没有更多了</text>
+            </view>
+            <mp-loading tips="正在加载" show="{{isHideLoadMore1}}" type="circle" />
+          </scroll-view>
+          <view class="empty" wx:if="{{resultList1 && resultList1.length === 0 && !isLoading1}}">
+            <image src="https://static.tojoyshop.com/images/wxapp-boss/search/empty-search.png" mode="aspectFit" />
+            <view>搜索无结果</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <!-- 搜索历史 和 热门搜索 -->
+  <view class="containerSearch-area {{loadingHistory && historyList.length > 0 && 'loadingHistory'}}" wx:if="{{!showResultPage && !showLenovo}}">
+    <block wx:if="{{historyList.length > 0}}">
+      <view class="title">
+        <text>搜索历史</text>
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/search/icon-delete.png" mode="heightFix" bindtap="deleteBtn" />
+      </view>
+      <view class="history">
+        <view class="list">
+          <block wx:for="{{historyListShow}}" wx:key="index">
+            <view class="item" bindtap="onSelectResult" data-type="3" data-text="{{item}}">
+              <text>{{item}}</text>
+            </view>
+          </block>
+          <view class="item arrow" bindtap="toggleShow" wx:if="{{showMoreBtn}}">
+            <image style="transform:rotate({{toggleDown ? 0 : 180}}deg)" src="https://static.tojoyshop.com/images/wxapp-boss/search/icon-arrow.png" mode="heightFix" />
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{hotList.length > 0}}">
+      <view class="title">
+        <text>热门搜索</text>
+      </view>
+      <view class="hot">
+        <view class="list">
+          <block wx:for="{{hotList}}" wx:key="index">
+            <view class="item" bindtap="onSelectResult" data-type="4" data-text="{{item.wordName}}">
+              <image src="https://static.tojoyshop.com/images/wxapp-boss/search/icon-hot.png" mode="heightFix" wx:if="{{item.hot === 1}}" />
+              <text>{{item.wordName}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+
+  </view>
+</view>
+
+<mp-dialog ext-class="dialog-common dialog-confim dialog-tips dialog" class="dialog" show="{{dialogShow}}" buttons="{{buttonsConfim}}" bindbuttontap="tapDialogButton">
+  <view class="title">温馨提示</view>
+  <view>是否全部删除？</view>
+</mp-dialog>
+
+<login-page visible="{{loginPageVisible}}" bind:logged="afterLogin" bind:success="afterLogin" bind:close="closeLoginPage" />

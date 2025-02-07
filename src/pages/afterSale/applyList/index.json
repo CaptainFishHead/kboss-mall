@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "售后/退款",
+  "usingComponents": {
+    "empty": "../../../components/empty/index",
+    "login": "../../../components/login/index",
+    "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
+    "return-goods": "../components/return-goods/index",
+    "mp-loading": "weui-miniprogram/loading/loading"
+  }
+}

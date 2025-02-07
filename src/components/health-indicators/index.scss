@@ -1,0 +1,315 @@
+/* components/health-indicators/health-indicators.wxss */
+.health {
+  margin-top: 24rpx;
+  width: 100%;
+  height: 602rpx;
+  background-image: url('https://static.tojoyshop.com/images/wxapp-boss/home/qa_new_bg.png?v=1.0.12');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-top: 1rpx;
+  position: relative;
+
+  .healthHeader {
+    width: 100%;
+    display: flex;
+
+    .aititle {
+      width: 106rpx;
+      height: 106rpx;
+      margin-left: 24rpx;
+      margin-top: 12rpx;
+      // position: absolute;
+      // left: 26rpx;
+      // top: 12rpx;
+    }
+
+    .healthTitle {
+      box-sizing: border-box;
+      margin-top: 55rpx;
+      margin-left: 32rpx;
+      // padding-top: 55rpx;
+      // padding-left: 173rpx;
+      font-weight: 600;
+      font-size: 34rpx;
+      color: #007469;
+      line-height: 34rpx;
+      display: flex;
+      align-items: center;
+
+      .abnormalNum {
+        color: #FF5700;
+      }
+
+      .more_green {
+        width: 21rpx;
+        height: 21rpx;
+        margin-left: 12rpx;
+        margin-top: 4rpx;
+      }
+    }
+  }
+
+
+
+  .healthContent {
+    width: 100%;
+    // height: 480rpx;
+    .img_bust {
+      width: 361rpx;
+      height: 351rpx;
+      position: absolute;
+      bottom: 120rpx;
+      left: 180rpx;
+      z-index: 1;
+    }
+
+    .healthli {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10rpx;
+      height: 50rpx;
+      background: linear-gradient(135deg, rgba(183, 243, 234, 0.5) 0%, rgba(181, 235, 230, 0.5) 43%, rgba(124, 223, 208, 0.5) 100%);
+      border-radius: 4rpx;
+      border: 2rpx solid #43D4BA;
+      box-sizing: border-box;
+      z-index: 2;
+
+      .icon_warning {
+        width: 34rpx;
+        height: 26rpx;
+        margin-right: 6rpx;
+      }
+      .icon_check{
+        width: 32rpx;
+        height: 32rpx;
+        margin-right: 6rpx;
+      }
+      .name {
+        font-weight: 400;
+        font-size: 30rpx;
+        color: #005A4E;
+        text-align: left;
+      }
+
+      .enter {
+        width: 20rpx;
+        height: 20rpx;
+        margin-left: 6rpx;
+      }
+    }
+
+    .healthlis {
+      background: linear-gradient(225deg, rgba(255, 188, 167, 0.89) 0%, rgba(255, 215, 181, 0.89) 100%);
+      border-radius: 4rpx;
+      border: 2rpx solid rgba(255, 93, 41, 1);
+      .name {
+        font-weight: 400;
+        font-size: 30rpx;
+        color: #392100;
+      }
+    }
+
+    .healthliwhy {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 4rpx;
+      border: 1rpx solid #999999;
+      opacity: 0.5;
+
+      .name {
+        font-weight: 400;
+        font-size: 30rpx;
+        color: #392100;
+      }
+    }
+
+    .healthli0 {
+      position: absolute;
+      left: 93rpx;
+      top: 146rpx;
+    }
+
+    .healthli1 {
+      position: absolute;
+      top: 145rpx;
+      right: 89rpx;
+    }
+
+    .healthli2 {
+      position: absolute;
+      top: 229rpx;
+      left: 61rpx;
+    }
+
+    .healthli3 {
+      // width: 179rpx;
+      position: absolute;
+      top: 229rpx;
+      right: 60rpx;
+    }
+
+    .healthli4 {
+      position: absolute;
+      top: 316rpx;
+      left: 48rpx;
+    }
+
+    .healthli5 {
+      // width: 168rpx;
+      position: absolute;
+      top: 313rpx;
+      right: 48rpx;
+    }
+
+    .healthli6 {
+      // width: 131rpx;
+      position: absolute;
+      top: 401rpx;
+      left: 42rpx;
+    }
+
+    .healthli7 {
+      position: absolute;
+      top: 407rpx;
+      right: 43rpx;
+    }
+  }
+
+  .healthFooter {
+    width: 100%;
+    // padding: 0 10rpx;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+
+  .healthFoot {
+    width: 100%;
+    height: 120rpx;
+    background: #CFECEC;
+    border-radius: 0rpx 0rpx 10rpx 10rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .healthBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 314rpx;
+      height: 60rpx;
+      background: linear-gradient(136deg, #A2E4DE 0%, #3DCEC0 100%);
+      border-radius: 6rpx;
+
+      .icon_informatio {
+        width: 32rpx;
+        height: 28rpx;
+        margin-top: 4rpx;
+      }
+
+      text {
+        font-weight: 600;
+        font-size: 30rpx;
+        color: #333333;
+        line-height: 42rpx;
+        margin-left: 9rpx;
+      }
+    }
+  }
+}
+
+// 默认的AI小康
+.healthno {
+  margin-top: 24rpx;
+  width: 100%;
+  height: 451rpx;
+  background-image: url('https://static.tojoyshop.com/images/wxapp-boss/home/qano_new_bg.png?v=1.0.1');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-top: 1rpx;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+
+  .healthHeader {
+    width: 100%;
+    display: flex;
+    .aititle {
+      width: 106rpx;
+      height: 106rpx;
+      margin-left: 24rpx;
+      margin-top: 12rpx;
+      // position: absolute;
+      // left: 26rpx;
+      // top: 12rpx;
+    }
+
+    .healthTitle {
+      margin-top: 55rpx;
+      margin-left: 32rpx;
+      // padding-top: 55rpx;
+      // padding-left: 173rpx;
+      box-sizing: border-box;
+      font-weight: 600;
+      font-size: 34rpx;
+      color: #007469;
+      line-height: 48rpx;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+
+  .healthContent {
+    width: 630rpx;
+    height: 263rpx;
+    background-image: url('https://static.tojoyshop.com/images/wxapp-boss/home/xiaokan_bg.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 0 33rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-top: 20rpx;
+    // position: absolute;
+    // left: 32rpx;
+    // top: 130rpx;
+    .healthContentText{
+      font-weight: 400;
+      font-size: 30rpx;
+      color: #333333;
+      line-height: 55rpx;
+    }
+    .healthBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 274rpx;
+      height: 60rpx;
+      background: linear-gradient(136deg, #A2E4DE 0%, #3DCEC0 100%);
+      border-radius: 6rpx;
+      margin-top: 25rpx;
+      // margin: 23rpx auto 0;
+
+      .icon_informatio {
+        width: 32rpx;
+        height: 28rpx;
+        margin-top: 4rpx;
+      }
+
+      text {
+        font-weight: 600;
+        font-size: 30rpx;
+        color: #333333;
+        line-height: 42rpx;
+        margin-left: 9rpx;
+      }
+    }
+  }
+}

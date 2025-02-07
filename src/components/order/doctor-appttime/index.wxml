@@ -1,0 +1,33 @@
+<!--components/order/doctor-appttime/index.wxml-->
+<view class="appointed-time">
+  <block wx:if="{{scheduleData.length}}">
+    <scroll-view scroll-x scroll-with-animation scroll-into-view="id-{{selectedDateIndex}}" class="dates">
+      <view
+        wx:for="{{dates}}"
+        wx:key="index"
+        id="id-{{index}}"
+        class="dates-box {{selectedDate == item ? 'active-date' : ''}}"
+        bindtap="onDateChange"
+        data-item="{{item}}"
+        data-index="{{index}}"
+      >
+        {{item}}
+      </view>
+    </scroll-view>
+    <scroll-view class="time-class" scroll-y>
+      <view class="timeSlots">
+        <view
+          wx:for="{{times}}"
+          wx:key="index"
+          bindtap="handleTime" 
+          class="{{selectedTimeId==item.scheduleId?'active-time-slots':''}}"
+          data-id="{{item.scheduleId}}"
+        >
+          {{item.scheduleStartTime}}-{{item.scheduleEndTime}}
+        </view>
+      </view>
+    </scroll-view>
+    
+  </block>
+  <view class="appointed-time-no" wx:else>——暂无可约时段——</view>
+</view>

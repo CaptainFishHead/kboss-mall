@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "card": "./card/index"
+  }
+}

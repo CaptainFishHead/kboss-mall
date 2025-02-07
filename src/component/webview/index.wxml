@@ -1,0 +1,3 @@
+ <web-view src="{{src}}" bind:message="onMessage"></web-view>
+<!--<live-player src="{{src}}" mode="live" autoplay object-fit='fillCrop'  style="width: 100%; height: 1000rpx;" v-if="{{src}}"  bindstatechange="statechange" binderror="error" />-->
+<!-- <live-player src="rtmp://uat-livepull-cloud.k-laoban.com/live/10119" mode="live" autoplay bindstatechange="statechange" binderror="error" object-fit='fillCrop' style="width: 100%; height: 1000rpx;" /> -->

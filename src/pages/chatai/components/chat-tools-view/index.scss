@@ -1,0 +1,54 @@
+/* pages/chatai/components/chat-tools-view/index.wxss */
+.tools-root {
+	display: flex;
+	align-items: center;
+	width: 600rpx;
+	height: 114rpx;
+	background: #FFFFFF;
+	box-shadow: 0rpx 2rpx 4rpx 0rpx #469a7347;
+	border-radius: 0rpx 20rpx 20rpx 20rpx;
+	margin-left: 27rpx;
+	margin-top: 40rpx;
+
+	&-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex-grow: 1;
+	}
+
+	&-line {
+		width: 1rpx;
+		height: 71rpx;
+		margin-top: 10rpx;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(153, 153, 153, 1) 50%, rgba(255, 255, 255, 1) 100%);
+	}
+
+	&-icon {
+		width: 45rpx;
+		height: 45rpx;
+		margin-top: 10rpx;
+	}
+
+	&-title {
+		color: #666666;
+		font-size: 22rpx;
+	}
+
+	&-contact {
+		width: 100%;
+		height: 114rpx;
+		background-color: transparent;
+		position: absolute;
+		top: 0rpx;
+	}
+
+	.cuslayout {
+		position: relative;
+		flex-grow: 1;
+	}
+
+	&-bottom {
+		width: 100rpx; height: 10rpx;background-color: transparent;
+	}
+}

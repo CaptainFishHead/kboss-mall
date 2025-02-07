@@ -1,0 +1,65 @@
+.remind {
+  position: fixed;
+  width: 100%;
+  left: 15rpx;
+  bottom: 50rpx;
+  height: 188rpx;
+  width: 720rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  backdrop-filter: blur(50rpx);
+  padding: 39rpx 34rpx 31rpx;
+  box-sizing: border-box;
+  &-name {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #000000;
+    line-height: 47rpx;
+    letter-spacing: 2rpx;
+  }
+  &-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15rpx;
+    &-time {
+      font-size: 30rpx;
+      color: #000;
+      line-height: 42rpx;
+    }
+    &-btn {
+      width: 189rpx;
+      height: 63rpx;
+      background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+      border-radius: 4rpx;
+      font-size: 26rpx;
+      font-weight: bold;
+      color: #000000;
+      line-height: 63rpx;
+      padding: 0;
+      display: inline-block;
+      margin: 0;
+      &::after {
+        display: none;
+      }
+    }
+    &-over {
+      border: 1rpx solid #FFFFFF;
+      background: rgba(6,13,25,0.6);
+      color: #FFF;
+      opacity: 0.59;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.one-line {
+  // max-width: 300rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;				//溢出内容隐藏
+  text-overflow: ellipsis;		//文本溢出部分用省略号表示
+  display: -webkit-box;			//特别显示模式
+  -webkit-line-clamp: 1;			//行数
+  line-clamp: 1;					
+  -webkit-box-orient: vertical;	//盒子中内容竖直排列
+}

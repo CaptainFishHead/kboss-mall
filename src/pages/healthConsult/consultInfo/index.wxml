@@ -1,0 +1,153 @@
+<!-- wetoast -->
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<navigation-bar title="填写咨询基本信息" background="white" />
+<view bindtouchstart="watchUserOperation" wx:if="{{doctorInfo.doctorId}}">
+  <view class="main">
+    <view class="content">
+      <view class="content-left">
+        <image src="{{doctorInfo.imageUrl}}" />
+      </view>
+      <view class="content-middle"></view>
+      <view class="content-right">
+        <view class="content-right-top">
+          <view class="text">{{doctorInfo.doctorName}}·{{doctorInfo.doctorTitleName}}</view>
+          <view class="tag">
+            <view></view>
+          </view>
+        </view>
+        <view class="content-right-middle">
+          {{doctorInfo.hospitalName}} {{doctorInfo.deptName}}
+        </view>
+        <view class="content-right-bottom" wx:if="{{editType}}">
+          <view class="time">{{preBookTime}}</view>
+        </view>
+        <view class="content-right-bottom" wx:else>
+          <view class="time">{{apptDate}} ({{weekNumber}}) {{timeSolt}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="explain">说明：收集此信息仅为健康专家更全面地了解您的健康情况，信息会加密，请放心填写</view>
+    <!-- base info -->
+    <view class="info-base">
+      <form id="form" class="form">
+        <view class="form-item">
+          <view class="form-item-label">
+            <text class="label-icon"></text>
+            实际咨询人姓名
+          </view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra">
+              <input placeholder="实际咨询人姓名" model:value="{{formData.name}}" type="text" bindinput="onNameInput" maxlength="20" />
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="form-item-label">
+            <text class="label-icon"></text>
+            性别
+          </view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra form-item-input-btn">
+              <radio-group bindchange="genderChange">
+                <label class="form-item-radio {{item.checked ? 'checked' : ''}}" wx:for="{{genderItems}}" wx:key="index">
+                  <radio value="{{item.value}}" checked="{{item.checked}}" />
+                  <view class="text">
+                    <image mode="heightFix" class="logo" src="{{item.checked ? item.curImgUrl : item.imgUrl}}" />
+                  </view>
+                </label>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="form-item-label">
+            <text class="label-icon"></text>
+            出生日期
+          </view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra">
+              <picker mode="date" value="{{formData.birthday}}" end="{{birthdayEnd}}" bindchange="onChangeDate">
+                <view class="picker">
+                  {{formData.birthday || '请选择'}}
+                  <text class="icon" />
+                </view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="form-item-label">
+            <text class="label-icon"></text>
+            实际咨询人手机号
+          </view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra">
+              <input placeholder="方便顾问与咨询人联系" model:value="{{formData.mobile}}" bindinput="onMobileInput" type="number" maxlength="11" />
+            </view>
+          </view>
+        </view>
+        <view></view>
+        <view class="form-item">
+          <view class="form-item-label">
+            <text class="label-icon"></text>
+            实际咨询人居住城市
+          </view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra">
+              <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                <view class="picker">
+                  {{multiArray[0][multiIndex[0]]? multiArray[0][multiIndex[0]] +"," +multiArray[1][multiIndex[1]]:"请选择" }}
+                  <text class="icon" />
+                </view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="form-item-label">
+            <text class="label-icon"></text>
+            本次咨询的目的
+          </view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra">
+              <picker range="{{ purposeItems }}" range-key="name" value="{{ formData.purpose }}" bindchange="onChangePurpose">
+                <view class="picker">
+                  {{purposeItems[formData.purpose].name||'请选择'}}
+                  <text class="icon" />
+                </view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="form-item-label">
+            <text class="label-icon"></text>
+            健康状况描述
+            <view class="annotation">（注：下方可上传2张图片资料）</view>
+          </view>
+        </view>
+        <view class="form-remark">
+          <textarea class="form-remark-textarea" placeholder="请输入文字说明（如：症状、病情的持续时间，是否有家庭遗传疾病，药物过敏等）" model:value="{{formData.content}}" bindinput="oncontentInput" />
+        </view>
+        <view class="form-upload">
+          <view class="form-upload-files">
+            <view class="form-upload-files-images add" wx:for="{{imageFilesUrl}}" wx:key="index">
+              <image src="{{item}}" class="image" />
+              <view class="close" bindtap="deleteImage" data-index="{{index}}"></view>
+            </view>
+            <view class="add" bindtap="chooseImage" wx:if="{{imageFilesUrl.length<2}}">
+              <image src="https://static.tojoyshop.com/images/wxapp-boss/healthConsult/icon-add.png" class="image-add" />
+            </view>
+          </view>
+          <view class="annotation">点击此处添加检查报告或者症状照片，报告拍照时姓名信息请务必齐全</view>
+        </view>
+      </form>
+    </view>
+    <view class="btn-box-bottom">
+      <button type="primary" bindtap="saveInfo">{{editType==1?"完成":"确认预约"}}</button>
+    </view>
+  </view>
+  <login-promise id="authorize" removeSlot />
+  <adviser trigger-user-operation-value="{{triggerUserOperationValue}}" props-class="adviser-class"></adviser>
+</view>

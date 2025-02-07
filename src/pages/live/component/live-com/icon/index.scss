@@ -1,0 +1,22 @@
+.mt-icon {
+  display: inline-block;
+  position: relative;
+  //overflow: hidden;
+  //font-size: 0;
+  background-color: currentColor;
+  -webkit-mask: var(--src) no-repeat;
+  mask: var(--src) no-repeat;
+  -webkit-mask-size: 100% auto;
+  mask-size: 100% auto;
+  -webkit-mask-position: left center;
+  mask-position: center center;
+  //image {
+  //  position: relative;
+  //  width: 100% !important;
+  //  height: 100% !important;
+  //  margin: 0 !important;
+  //  vertical-align: top;
+  //  transform: translateY(-100%);
+  //  filter: drop-shadow(0 var(--icon-height) 0 currentColor) brightness(var(--brightness));
+  //}
+}

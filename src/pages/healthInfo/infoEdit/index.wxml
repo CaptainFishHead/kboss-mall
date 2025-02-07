@@ -1,0 +1,47 @@
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<navigation-bar title="健康档案" back="{{false}}" background="rgba({{bgRgb}}, 1)">
+  <view class="nav-bar" slot="left">
+    <image mode="heightFix" class="logo" src="https://static.tojoyshop.com/images/wxapp-boss/top-back.png" bind:tap="goBack" />
+  </view>
+</navigation-bar>
+<view class="cont">
+  <flex class="cont-info" alignItems="center">
+    <flex-item class="icon-box">
+      <image mode="heightFix" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/baseInfo/img-{{personInfo.gender===2?'nv':'nan'}}-edit.png?v=1" bind:tap="restart" />
+    </flex-item>
+    <flex-item class="info-box">
+      <flex justifyContent="space-between" direction="column" class="cont">
+        <flex-item class="name">{{personInfo.name}}</flex-item>
+        <flex-item>
+          <text class="com">{{personInfo.gender===2?'女':'男'}}</text>|
+          <text class="com">{{personInfo.age}}岁</text>|
+          <text class="com">{{personInfo.mobile}}</text>
+          <text class="com edit-info" bind:tap="onEditPerson">编辑</text>
+        </flex-item>
+      </flex>
+    </flex-item>
+  </flex>
+  <view class="cont-medical">
+    <block wx:for="{{list}}" wx:key="index">
+      <view class="cont-medical-text">{{item.categoryName}}</view>
+      <view class="tagBox" id="tagBox{{index}}" data-index="{{index}}">
+        <view class="cont-medical-box {{item.isMore&&'tag-box'}} ">
+          <block wx:if="{{item.isHave!==0||item.isHave===0&&item.taglist.length}}">
+            <view style="margin:0 24rpx 5rpx 0;" class="cont-medical-box-item tagItem" wx:for="{{item.taglist}}" wx:for-item="sub" wx:key="index">{{sub}}</view>
+            <text wx:if="{{item.isMore}}" class="more" bind:tap="getMore" data-index="{{index}}">更多</text>
+          </block>
+          <block wx:if="{{item.isHave==1&&(!item.taglist.length||item.taglist==null)}}"><text class="empty">—</text></block>
+          <block wx:if="{{item.isHave==0&&!item.taglist.length}}"><text class="no-medical">无</text></block>
+        </view>
+        <!-- </flex> -->
+      </view>
+    </block>
+  </view>
+</view>
+<view class="btn-box">
+  <button type="primary" class="btn {{0&&'disabled'}}" bind:tap="onEditHealth">编辑</button>
+</view>
+<!-- 疾病历史更多标签 -->
+<medical-tags title="{{tagTitle}}" visible="{{tagVisible}}" data="{{tagList}}" bind:close="tagClose" />

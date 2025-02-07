@@ -1,0 +1,8 @@
+<flex justifyContent="center" alignItems="center" style="height: 36rpx;">
+  <flex-item>
+    <flex class="step {{isActive&&'active'}}" justifyContent="space-between" alignItems="center">
+      <flex-item class="step-num  {{isActive&&active}}">{{stepNum}}</flex-item>
+      <flex-item class="step-text  {{isActive&&active}}">{{stepText}}</flex-item>
+    </flex>
+  </flex-item>
+</flex>

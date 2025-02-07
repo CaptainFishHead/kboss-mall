@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "sign-data": "./components/sign-data/index",
+    "health-card": "./components/health-card/index",
+    "upload-report": "./components/upload-report/index",
+    "empty": "/components/empty/index",
+    "chat-loading-view": "./components/chat-loading-view/index"
+  }
+}

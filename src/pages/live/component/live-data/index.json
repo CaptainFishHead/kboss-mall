@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "goods-sales": "./goods-sales/index",
+        "live-effect": "./live-effect/index"
+    }
+}

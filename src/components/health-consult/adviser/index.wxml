@@ -1,0 +1,18 @@
+<view class="adviser props-class" hidden="{{adiverShow&&!lightShow}}">
+  <image class="image-close" src="https://static.tojoyshop.com/images/wxapp-boss/healthConsult/close.png" bindtap="close" />
+  <view class="adviser-doctor" bindtap="toHealthWaiter">
+  <view  class="image-doctor">
+    <image  class="image" src="{{imageSrc}}"/>
+  </view>
+  <text>遇到什么问题，期待您的咨询～</text>
+  </view>
+</view>
+<view class="adviser adviser2 props-class" hidden="{{adiverShow&&lightShow}}">
+  <image class="image-close" src="https://static.tojoyshop.com/images/wxapp-boss/healthConsult/close.png" bindtap="close" />
+  <view class="adviser-doctor hidden">
+  <view  class="image-doctor  image-hidden"  bindtap="toHealthWaiter">
+    <image class="image" src="{{imageSrc}}" />
+  </view>
+  </view>
+</view>
+<login-promise id="authorize" removeSlot/>

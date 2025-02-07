@@ -1,0 +1,19 @@
+.config {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 40rpx;
+  .rows {
+    height: 140rpx;
+    line-height: 140rpx;
+    border-bottom: 1rpx solid #d7d7d7;
+    font-size: 28rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .href-text {
+      text-decoration: underline;
+    }
+  }:last-child{
+    border-bottom: 0;
+  }
+}

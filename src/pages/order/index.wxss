@@ -1,0 +1,31 @@
+
+@import "./../../components/toast/index.wxss";
+page{
+  background-color: #f6f6f6;
+}
+.back-icon{
+  width: 40rpx;
+  height: 40rpx;
+  background-image: url(https://static.tojoyshop.com/images/wxapp-boss/top-back.png);
+  background-size: 40rpx 40rpx;
+}
+.containers{
+  /* padding-top: 72rpx; */
+  padding-bottom:calc(50rpx + env(safe-area-inset-bottom));
+  padding-bottom: calc(50rpx + constant(safe-area-inset-bottom));
+
+}
+.order-unit{
+  margin-top: 16rpx;
+}
+
+.order-tab-hide {
+  height: calc(var(--height) +44px + constant(safe-area-inset-top));
+  height: calc(var(--height) +44px + env(safe-area-inset-top));
+  margin-top: 88rpx;
+  visibility: hidden;
+
+}
+.login {
+  padding-top: 300rpx;
+}

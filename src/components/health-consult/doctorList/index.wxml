@@ -1,0 +1,53 @@
+<view class="main">
+  <view class="header">
+    <view class="header-child">
+      <view class="picker-wrap">
+        <picker bindchange="bindPickerChangeCity" value="{{selectedCityIndex}}" range="{{regions}}" range-key="regionName">
+          <view class="picker">
+            {{regions[selectedCityIndex].regionName}}
+            <image src="https://static.tojoyshop.com/images/wxapp-boss/healthConsult/up.png" class="up" mode="heightFix" />
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="header-child">
+      <view class="picker-wrap">
+        <picker bindchange="bindPickerChangeDepartments" value="{{selectedDepartmentsIndex}}" range="{{departments}}" range-key="deptName">
+          <view class="picker">
+            {{departments[selectedDepartmentsIndex].deptName}}
+            <image src="https://static.tojoyshop.com/images/wxapp-boss/healthConsult/up.png" class="up" mode="heightFix" />
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{doctorList.length>0}}">
+    <view class="content" wx:for="{{doctorList}}" wx:key="index" bindtap="toDoctorInfo" data-doctor-id="{{item.doctorId}}">
+      <view class="content-left">
+        <image src="{{item.imageUrl}}" mode="heightFix" class="up image-doctor" />
+      </view>
+      <view class="content-right">
+        <view class="content-right-top">
+          {{item.doctorName}}·{{item.doctorTitleName}}
+        </view>
+        <view class="content-right-middle">
+          {{item.hospitalName}}
+        </view>
+        <view class="content-right-bottom">
+          <view class="department">
+            {{item.deptName}}
+          </view>
+          <view class="btn">
+            立即预约
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="none-content" wx:else>
+    <image src="https://static.tojoyshop.com/images/wxapp-boss/healthConsult/none-content.png" class="image-none-content" />
+    <text>
+      暂无医生信息
+    </text>
+  </view>
+</view>

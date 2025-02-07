@@ -1,0 +1,17 @@
+<!--pages/live/player/index.wxml-->
+<import src="/components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<view class="login-box" wx:if="{{!isLogin && !isLoading}}">
+  <navigation-bar ext-class="navigation" title="" background="#FFFFFF" back="{{true}}" />
+  <login bind:success="loginSuccess"/>
+</view>
+<block wx:if="{{isLogin && !isLoading}}">
+  <live-com id="liveCom" timSdk="{{tim}}" isCustomBack bind:init="onInit" bind:contact="onContact" bind:liveStateChange="onliveStateChange" bind:goBuy="goBuy" bind:goCart="goCart" bind:goOrder="goOrder" bind:share="onShowShare" bind:on-back="goBack" liveRoomId="{{roomId}}">
+    <!-- <live-end-recommend wx:if="{{liveState === 2}}" slot="end-recommend" roomId="{{roomId}}"/> -->
+    <!-- <live-cancel-recommend wx:if="{{liveState === 3}}" slot="cancel-recommend" roomId="{{roomId}}"/> -->
+  </live-com>
+  <share-dialog id="shareDialog" position="live" targetId="{{roomId}}" bind:createPoster="onCreatePoster" bind:createShareCode="onCreateShareCode" bind:copyUrl="onCopyUrl"/>
+  <!-- 整个页面蒙版 解决分享材料没返回时触发其他操作 -->
+  <view class="smegma" wx:if="{{disabledClick}}"></view>
+</block>
+

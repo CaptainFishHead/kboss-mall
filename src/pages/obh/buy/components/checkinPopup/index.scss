@@ -1,0 +1,102 @@
+/* pages/obh/promotion/components/checkinPopup/index.wxss */
+.popup-title {
+  font-size: 42rpx;
+  color: #333;
+  height: 186rpx;
+  line-height: 186rpx;
+  text-align: center;
+}
+
+.popup-close {
+  position: absolute;
+  top: 38rpx;
+  right: 38rpx;
+  width: 50rpx;
+  height: 50rpx;
+  background: url('https://static.tojoyshop.com/images/obh/lottery/ic-checkin-close.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.popup-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.popup-active-item {
+  width: 650rpx;
+  height: 160rpx;
+  border-radius: 23rpx;
+  border: 2rpx #4CC226 solid;
+  margin-bottom: 34rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(to right, #A9EC8926, #00D9C726);
+  position: relative;
+
+  .active-flag {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60rpx;
+    height: 48rpx;
+    background: url('https://static.tojoyshop.com/images/obh/lottery/ic-checkin-flag.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+}
+
+.popup-item {
+  width: 650rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  border: 2rpx #F6F7FB solid;
+  margin-bottom: 34rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #F6F7FB;
+}
+
+.popup-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin: 35rpx 84rpx;
+}
+
+.popup-options {
+  display: flex;
+  flex-direction: row;
+  margin: 25rpx 50rpx 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  view {
+    width: 317rpx;
+    height: 98rpx;
+    border-radius: 49rpx;
+    box-sizing: border-box;
+    line-height: 96rpx;
+    text-align: center;
+    font-size: 34rpx;
+  }
+
+
+  .cancel {
+    color: #565656;
+    border: 1rpx #565656 solid;
+
+  }
+  .confirm {
+    line-height: 98rpx;
+    color: #FFF;
+    background: linear-gradient(to right, #12CB74, #00D9C7);
+  }
+}

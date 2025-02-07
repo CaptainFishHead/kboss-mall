@@ -1,0 +1,230 @@
+/* components/recommend/live-tag/index.wxss */
+.live-tag {
+  height: 40rpx;
+  border-radius: 25rpx 0 0 25rpx;
+  text-align: right;
+  padding: 7rpx 13rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  &_img{
+    display: inline-block;
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: -8rpx;
+  }
+  &_txt {
+    color: #fff;
+    font-size: 28rpx;
+    margin-left: 6rpx;
+    line-height: 0;
+  }
+}
+
+.preview {
+  background: linear-gradient(270deg, #000000 0%, #00765F 100%);
+  .live-tag_radar{
+    width: 27rpx;
+    height: 27rpx;
+    position: relative;
+      &_round{
+        width: 27rpx;
+        height: 27rpx;
+        position: relative;
+        border-radius: 50%;
+        background: #00FFFD;
+      }
+      &_round,
+      &_light {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+  
+      &_round {
+        width: 13rpx;
+        height: 13rpx;
+        display: block;
+      }
+  
+      &_light {
+        opacity: 1;
+        z-index: 0;
+  
+        &.one {
+          width: 13rpx;
+          height: 13rpx;
+          box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 253, .7);
+        }
+  
+        &.two {
+          width: 19rpx;
+          height: 19rpx;
+          box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 253, .6);
+        }
+  
+        &.three {
+          width: 27rpx;
+          height: 27rpx;
+          box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 253, .4);
+        }
+      }
+  }
+}
+.liveing {
+    background: linear-gradient(270deg, #000000 0%, #006017 100%);
+}
+
+// 直播中
+// .liveing {
+//   background: linear-gradient(270deg, #000000 0%, #006017 100%);
+
+//   .live-tag_radar {
+//     &_round {
+//       background: #00FF3D;
+//     }
+
+//     &_light {
+//       &.one {
+//         box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 61, 0.7);
+//         -webkit-animation: liveingAnimate1 1s 0.5s infinite ease-out;
+//       }
+
+//       &.two {
+//         box-shadow: 0 0 2rpx 2rpx rgba(121, 182, 135, 0.6);
+//         -webkit-animation: liveingAnimate2 1s 0.5s infinite ease-out;
+//       }
+
+//       &.three {
+//         box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 61, 0.4);
+//         -webkit-animation: liveingAnimate3 1s 0.5s infinite ease-out;
+//       }
+//     }
+//   }
+// }
+
+// @keyframes liveingAnimate1 {
+//   0% {
+//     opacity: 0;
+//     box-shadow: 0 0 2rpx 1rpx rgba(0, 255, 61, 0.8);
+//   }
+
+//   50% {
+//     opacity: 1;
+//   }
+
+//   100% {
+//     opacity: 0.6;
+//     box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 61, 0.8);
+//   }
+// }
+
+// @keyframes liveingAnimate2 {
+//   0% {
+//     opacity: 0;
+//     box-shadow: 0 0 2rpx 1rpx rgba(0, 255, 61, 0.6);
+//   }
+
+//   50% {
+//     opacity: 1;
+//   }
+
+//   100% {
+//     opacity: 0.3;
+//     box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 61, 0.6);
+//   }
+// }
+
+// @keyframes liveingAnimate3 {
+//   0% {
+//     opacity: 0;
+//     box-shadow: 0 0 2rpx 1rpx rgba(0, 255, 61, 0.4);
+//   }
+
+//   50% {
+//     opacity: 1;
+//   }
+
+//   100% {
+//     opacity: 0.3;
+//     box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 61, 0.4);
+//   }
+// }
+
+// 直播预告
+// .preview {
+//   background: linear-gradient(270deg, #000000 0%, #00765F 100%);
+
+//   .live-tag_radar {
+//     &_round {
+//       background: #00FFFD;
+//     }
+
+//     &_light {
+//       &.one {
+//         box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 253, .7);
+//         -webkit-animation: previewAnimate1 1s 0.5s infinite ease-out;
+//       }
+
+//       &.two {
+//         box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 253, .6);
+//         -webkit-animation: previewAnimate2 1s 0.5s infinite ease-out;
+//       }
+
+//       &.three {
+//         box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 253, .4);
+//         -webkit-animation: previewAnimate3 1s 0.5s infinite ease-out;
+//       }
+//     }
+//   }
+// }
+
+// @keyframes previewAnimate1 {
+//   0% {
+//     opacity: 0;
+//     box-shadow: 0 0 2rpx 1rpx rgba(0, 255, 253, 0.8);
+//   }
+
+//   50% {
+//     opacity: 1;
+//   }
+
+//   100% {
+//     opacity: 0.6;
+//     box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 253, 0.8);
+//   }
+// }
+
+// @keyframes previewAnimate2 {
+//   0% {
+//     opacity: 0;
+//     box-shadow: 0 0 2rpx 1rpx rgba(0, 255, 253, 0.6);
+//   }
+
+//   50% {
+//     opacity: 1;
+//   }
+
+//   100% {
+//     opacity: 0.3;
+//     box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 253, 0.6);
+//   }
+// }
+
+// @keyframes previewAnimate3 {
+//   0% {
+//     opacity: 0;
+//     box-shadow: 0 0 2rpx 1rpx rgba(0, 255, 253, 0.4);
+//   }
+
+//   50% {
+//     opacity: 1;
+//   }
+
+//   100% {
+//     opacity: 0.3;
+//     box-shadow: 0 0 2rpx 2rpx rgba(0, 255, 253, 0.4);
+//   }
+// }

@@ -1,0 +1,65 @@
+/* pages/collection/index.wxss */
+@import "./../../../components/toast/index.wxss";
+.recommend{
+  width: 100%;
+  min-height:100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  &.bg{
+    background-color: #ffffff;
+  }
+  &-swiper{
+    margin-bottom:16rpx;
+    padding: 0 16rpx;
+  }
+  &-tabbar{
+    height: 94rpx;
+    .fixed{
+      position: fixed;
+      top: calc(var(--top));
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: 0 16rpx;
+      box-sizing: border-box;
+      background-color: #f9f9f9;
+    }
+  }
+  &-list{
+    margin: 0 35rpx;
+  }
+  &-waterfall{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16rpx;
+    .recommend-clumns{
+      flex-direction: column;
+      &_item{
+        // break-inside: avoid;
+        width: 352rpx;
+        margin-bottom: 15rpx;
+      }
+    }
+  }
+  &-more {
+    color: rgba(0, 0, 0, 0.24);
+    padding: 20rpx 0;
+    margin-bottom: 40rpx;
+    text-align: center;
+    font-size: 22rpx;
+    line-height: 34rpx;
+  }
+  .first-recommend{
+    height: 380rpx !important;
+  }
+  .first-live-recommend{
+    height: 550rpx !important;
+  }
+  .operation-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}

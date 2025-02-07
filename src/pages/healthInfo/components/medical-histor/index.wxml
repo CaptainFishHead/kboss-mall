@@ -1,0 +1,50 @@
+<wxs module="foo">
+  function addClass(len) {
+    var className = ''
+    if (len <= 10) {
+      className = len <= 5 ? '' : 'twoLine'
+    }
+    if (len > 10 && len <= 26) {
+      className = len <= 13 ? 'w440' : 'w440 twoLine'
+    }
+    if (len > 26) {
+      className = 'w670 twoLine'
+    }
+    return className
+  }
+  module.exports = {
+    addClass: addClass,
+  }
+</wxs>
+<!-- isOther 其他0否 1是> -->
+<view slot="desc">
+  <block wx:if="{{isCheckbox===2}}">
+    <checkbox-group class="list" bindchange="checkboxChange">
+      <block wx:for="{{metaList}}" wx:for-index="sindex" wx:key="sindex">
+        <label class="list-item {{item.checked ? 'checked' : ''}} {{foo.addClass(item.tagLength)}} " data-item="{{item}}" data-multiple="2" catch:tap="getCurrentItem">
+          <checkbox checked="{{item.checked}}" value="{{item.optionName}}" />
+          <view class="list-item-text">{{item.optionName}}</view>
+          <view class="icon"></view>
+        </label>
+        <view class="rests" wx:if="{{item.checked&&item.isOther}}" data-option-index="{{sindex}}">
+          <textarea maxlength="40" disable-default-padding cursor-spacing="{{50}}" placeholder="请输入" value="{{item.otherOptionName}}" data-option-index="{{sindex}}" type="text" bindinput="onInputOther" />
+        </view>
+      </block>
+    </checkbox-group>
+  </block>
+  <!-- 单选 -->
+  <block wx:else>
+    <radio-group class="list" bindchange="genderChange">
+      <block wx:for="{{metaList}}" wx:key="sindex" wx:for-index="sindex">
+        <label class="list-item {{item.checked ? 'checked' : ''}} {{foo.addClass(item.tagLength)}} " data-item="{{item}}" data-multiple="1" catch:tap="getCurrentItem">
+          <radio value="{{item.optionName}}" checked="{{item.checked}}" />
+          <view class="list-item-text">{{item.optionName}}</view>
+          <view class="icon"></view>
+        </label>
+        <view class="rests" wx:if="{{item.checked&&item.isOther}}">
+          <textarea disable-default-padding cursor-spacing="{{50}}" maxlength="40" placeholder="请输入" value="{{item.otherOptionName}}" data-option-index="{{sindex}}" type="text" bindinput="onInputOther" />
+        </view>
+      </block>
+    </radio-group>
+  </block>
+</view>

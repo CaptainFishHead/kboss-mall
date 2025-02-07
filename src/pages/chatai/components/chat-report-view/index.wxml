@@ -1,0 +1,10 @@
+<view class="report-root">
+  <image class="report-root-head"></image>
+  <view class="report-root-content">
+    <view class="report-root-layout">
+      <view class="report-root-title">健康顾问数据解读</view>
+      <view class="report-root-desc">一对一免费解读</view>
+    </view>
+    <view class="report-root-btn">解读报告</view>
+  </view>
+</view>

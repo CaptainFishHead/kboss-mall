@@ -1,0 +1,5 @@
+<view style="{{styleStr}}" class="empty-box empty-box{{type}}">
+  <image class="empty-img" src="{{imgLink[type]}}" mode="widthFix"></image>
+  <view class="empty-text" wx:if="{{text}}">{{text}}</view>
+  <slot></slot>
+</view>

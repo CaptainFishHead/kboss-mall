@@ -1,0 +1,108 @@
+/* pages/healthConsult/index.wxss */
+@import "./../../components/toast/index.wxss";
+$imgPath: 'https://static.tojoyshop.com/images/wxapp-boss/healthConsult/';
+.health-consult{
+  padding-bottom: 150rpx;
+}
+.nav-bar {
+  .logo {
+    display: block;
+    min-width: 100%;
+    height: 44rpx;
+  }
+}
+.header{
+  width: 100%;
+  height: 212rpx;
+  background: url($imgPath+"bg-head.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  &-content{
+    height: 124rpx;
+    margin: 60rpx auto 0;
+    display: flex;
+    justify-content: center;
+    image{
+      width: 130rpx;
+      height: 130rpx;
+      position: relative;
+      top:-34rpx;
+    }
+    &-middle{
+      width: 32rpx;
+    }
+    &-right{
+      min-height: 44rpx;
+      font-weight: 500;
+      font-size: 38rpx;
+      color: #000000;
+      line-height: 44rpx;
+      .text{
+        margin-top: 10rpx;
+        font-size: 26rpx;
+        color: #666666;
+        line-height: 26rpx; 
+        font-weight: normal;    
+      }
+    }
+  }
+}
+.department{
+  width: 100%;
+  padding: 40rpx 50rpx 0; 
+  box-sizing: border-box;
+  &-title{
+    font-family: FZZZHONGJW--GB1, FZZZHONGJW--GB1;
+    font-weight: 600;
+    font-size: 36rpx;
+    color: #404040;
+    line-height: 44rpx;
+    text{
+      font-size: 28rpx;
+      color: #B58209;
+      line-height: 40rpx;
+      margin-left:10rpx;
+      font-weight: normal;
+    }
+  }
+  &-nav{
+    width: 100%;
+    padding-top: 40rpx;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    &-list{
+      width: 25%;
+      margin-bottom: 60rpx;
+      text-align: center;
+      image{
+        width: 68rpx;
+        height: 68rpx;
+      }
+      .text{
+        height: 40rpx;
+        font-weight: 500;
+        font-size: 28rpx;
+        color: #333333;
+        line-height: 40rpx;
+        text-align: center;
+      }
+    }
+  }
+}
+.doctor-list{
+  padding-top: 0;
+}
+.robot{
+  position: fixed;
+  width: 130rpx;
+  height: 130rpx;
+  right:60rpx;
+  top: 300rpx;
+  z-index: 9999;
+  image{
+    width: 100%;
+    height: 100%;
+  }
+}

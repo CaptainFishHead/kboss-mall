@@ -1,0 +1,48 @@
+<!-- 优惠价/活动价 -->
+<view class="small-price">
+  <!-- 登陆后显示折后价 -->
+  <!-- 参加活动isJoinPromotion: 0不参加 1参加 -->
+  <block wx:if="{{isLogged}}">
+    <block wx:if="{{info.kangBossActivityInfo.isJoinPromotion}}">
+      <view class="top price">
+        <view class="money">
+          <text class="money-type">￥</text>
+          <text>{{info.kangBossActivityInfo.promotionSkuPrice || '0'}}</text>
+        </view>
+        <view class="money-line">
+          <text>￥{{info.sellPrice || '0'}}</text>
+        </view>
+      </view>
+    </block>
+    <!-- 优惠券 isHasCoupon: 0无 1有 -->
+    <block wx:elif="{{info.couponGoodsDetailDto.isHasCoupon}}">
+      <view class="top price">
+        <view class="money">
+          <text class="money-type">￥</text>
+          <text>{{info.couponGoodsDetailDto.skuCouponPrice || '0'}}</text>
+        </view>
+        <view class="money-line">
+          <text>￥{{info.sellPrice || '0'}}</text>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="top price">
+        <view class="money">
+          <text class="money-type">￥</text>
+          <text>{{info.sellPrice|| '0'}}</text>
+        </view>
+      </view>
+    </block>
+  </block>
+  <!-- 登陆前显示原价 -->
+  <block wx:else>
+    <view class="top price">
+      <view class="money">
+        <text class="money-type">￥</text>
+        <text>{{info.sellPrice|| '0'}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+

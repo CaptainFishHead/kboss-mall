@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mp-form": "weui-miniprogram/form/form",
+    "t-captcha": "plugin://myPlugin/t-captcha"
+  }
+}

@@ -1,0 +1,20 @@
+<scroll-view
+    class="scrollbox"
+    scroll-y
+    scroll-top="{{scrollTop}}"
+    scroll-with-animation
+    enhanced="{{true}}"
+    show-scrollbar="{{false}}"
+    >
+    <view
+      wx:for="{{classifyList}}"
+      wx:for-index="index"
+      wx:for-item="item"
+      wx:key="id"
+      class="scroll-view-item {{item.id === currClassifyId && 'current'}}"
+      data-id="{{item.id}}"
+      bindtap="handleClassify"
+      >
+      <text>{{item.categoryName}}</text>
+    </view>
+</scroll-view>

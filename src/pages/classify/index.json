@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "searchbar": "/components/searchbar/index",
+    "product-card": "/components/product/card",
+    "swipers": "/components/classify/swipers",
+    "goodsClassify": "/components/classify/classes",
+    "mp-loading": "weui-miniprogram/loading/loading",
+    "login-page": "/components/LoginPage/index"
+  },
+  "disableScroll": true
+}

@@ -1,0 +1,75 @@
+<!-- wetoast -->
+<import src="../../../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+
+        <!-- 网络错误 -->
+<empty ext-class="empty-box" wx:if="{{showEmpty}}"
+       imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722"
+       empotyDesc="{{errMsg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="reloadHandler"/>
+
+<block wx:else>
+    <navigation-bar back="{{false}}">
+        <image mode="heightFix" class="icon-home" slot="left"
+               src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-home.png"
+               bind:tap="restart"/>
+    </navigation-bar>
+
+    <view class="container">
+        <view class="card">
+
+            <view class="card-head">
+                <image mode="aspectFit" class="card-head-icon"
+                       src="{{userHeadIcourl||defaultHead}}"/>
+                <view class="card-head-name">{{nickName}}</view>
+                <view class="card-head-desc">Ta 赠送了您一张礼品卡</view>
+            </view>
+
+            <view class="card-envelope">
+                <block wx:if="{{receiveFlag}}">
+                    <image mode="aspectFit" class="card-envelope-ic_card_tag"
+                           src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-card-name.png"/>
+                    <view class="card-envelope-name">{{cardInfo.cardName}}</view>
+                    <view class="card-envelope-tips">
+                        <image mode="aspectFit" class="card-envelope-tips-icon"
+                               src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-warning.png"/>
+                        仅可兑换指定商品
+                    </view>
+                    <view class="card-envelope-date">
+                        {{cardInfo.effectType === 1 ? cardInfo.effectStartDate + '至' + cardInfo.effectEndDate : '激活后' + cardInfo.effectAddDay + '天生效'}}
+                    </view>
+                </block>
+                <block wx:else>
+                    <image mode="aspectFit" class="card-envelope-icon_fail" src="{{resultIcon}}"/>
+                    <view class="card-envelope-result" wx:if="{{result}}">{{result}}</view>
+                    <view class="card-envelope-reason" wx:if="{{reason}}">{{reason}}</view>
+                </block>
+            </view>
+
+            <authorize wx:if="{{receiveFlag}}" ext-class="authorize-btn" bind:success="onAcceptCard">
+                <view class="card-btn">{{btnText}}</view>
+            </authorize>
+            <view class="card-btn" bind:tap="restart" wx:else>{{btnText}}</view>
+
+            <view class="card-explain">
+                <view>使用说明</view>
+                <view>①　本卡可用于兑换指定商品</view>
+                <view>②　本卡激活后即可兑换商品，请在有效期内使用</view>
+                <view>③　本卡可转赠，转赠后该卡有效期不会发生变更</view>
+                <view>④　本卡使用最终解释权归北京天九云电子商务有限公司所有</view>
+            </view>
+        </view>
+    </view>
+
+    <mp-dialog
+            ext-class="dialog-common dialog-confim"
+            show="{{visibleAccept}}"
+            buttons="{{buttonsConfim}}"
+            bindbuttontap="tapDialogButton">
+        <view class="dialog-accept">
+            <image mode="aspectFit" class="dialog-accept-icon"
+                   src="{{resultIcon}}"/>
+            <view class="dialog-accept-desc">{{popupResult}}</view>
+        </view>
+    </mp-dialog>
+
+</block>

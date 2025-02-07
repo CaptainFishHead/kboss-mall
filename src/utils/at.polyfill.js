@@ -1,0 +1,25 @@
+// https://github.com/tc39/proposal-relative-indexing-method#polyfill
+function at(n) {
+  // ToInteger() abstract op
+  n = Math.trunc(n) || 0;
+  // Allow negative indexing from the end
+  if (n < 0) n += this.length;
+  // OOB access is guaranteed to return undefined
+  if (n < 0 || n >= this.length) return undefined;
+  // Otherwise, this is just normal property access
+  return this[n];
+}
+
+Array.prototype.at = Array.prototype.at || at
+String.prototype.at = String.prototype.at || at
+
+// const TypedArray = Reflect.getPrototypeOf(Int8Array);
+// for (const C of [Array, String, TypedArray]) {
+//   Object.defineProperty(C.prototype, "at",
+//     {
+//       value: at,
+//       writable: true,
+//       enumerable: false,
+//       configurable: true
+//     });
+// }

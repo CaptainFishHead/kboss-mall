@@ -1,0 +1,5 @@
+<import src="./../../../components/toast/index.wxml" />
+<navigation-bar ext-class="navigation" title="授权登录" bindback="handleBack"/>
+<view class="login">
+  <login bind:success="bindSuccess" bind:fail="bindFail" bind:close="bindClose" hideClose/>
+</view>

@@ -1,0 +1,180 @@
+<!--pages/index/index.wxml-->
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<wxs module="filter" src="../../utils/filter.wxs"/>
+<!-- 网络错误 -->
+<empty ext-class="empty-box" wx:if="{{showEmpty}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722" empotyDesc="{{errMsg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="reloadHandler" />
+<block wx:else>
+  <!--  style="padding-top:{{navBar.navBarHeight + 14}}px;" -->
+  <view class="home">
+    <navigation-bar back="{{false}}" style="--menuButtonHeight:{{navBar.menuButtonHeight}}px" ext-class="nav">
+      <view class="nav-bar" slot="left" wx:if="{{theme.tabBar}}">
+        <image mode="heightFix" style="height:{{navBar.menuButtonHeight + 2}}px" class="logo" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_navlogo.png" />
+      </view>
+      <view slot="center" class="center">
+        <searchbar hotPosition="3" extClass="br-36" isLink bind:open-page="searchbarOpenPage" />
+        <!--      <view style="height:2px"/>-->
+      </view>
+    </navigation-bar>
+    <view class="headBg">
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/home/bonebg.png" mode="" />
+    </view>
+
+    <scroll-view class="homescroll" style="padding-top:{{navBar.navBarHeight + 14}}px;" scroll-y enhanced fast-deceleration show-scrollbar="{{false}}" bind:touchstart="start" bind:touchend="end" bind:scroll="pageScrolling" scroll-top="{{scrollTop}}">
+      <swiper circular='true' indicator-active-color='#FFFFFF' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper" wx:if="{{adsList.length}}">
+        <block wx:for="{{adsList}}" wx:key="index">
+          <swiper-item class="swiper-item" data-item="{{item}}" data-applets="{{item.applets}}" data-link="{{item.href}}" data-detailid="{{item.detailId}}" data-title="{{item.title}}" data-id="{{item.id}}" data-jumptype="{{item.jumpType}}" data-type='HOMELB' bindtap="isNeedLogin">
+          <!-- handleGoPage -->
+            <view class="contbox">
+              <image src="{{item.picUrl}}" mode="scaleToFill" />
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+      <health-indicators bind:childFun="healthfun" bind:aikang='onclickAikang' abnormalNum='{{healthObj.abnormalNum}}' healthlist='{{healthObj.basicMetrics}}' nullNum="{{healthObj.nullNum}}"></health-indicators>
+      <!-- 固定入口 -->
+      <view class="categoryBox">
+        <view class="categoryBox-category">
+          <view class="categoryBox-category-categorys">
+            <block wx:for="{{categoryList}}" wx:key="index">
+              <view class="categoryBox-category-categorys-categoryLi categoryLi{{index}}" data-href="{{item.path}}" data-num="{{item.num}}" data-type="GDRK" bind:tap="isNeedLogin">
+              <!-- categoryClick 原点击事件 -->
+                <view class="categoryBox-category-categorys-categoryLi-categoryRight">
+                  <view class="categoryBox-category-categorys-categoryLi-categoryRight-title">{{item.title}}</view>
+                  <view class="categoryBox-category-categorys-categoryLi-categoryRight-tip">{{item.tipText}}</view>
+                </view>
+                <image class="categoryBox-category-categorys-categoryLi-titleImg" src="{{item.img}}" mode="" />
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+      <!-- 固定入口end -->
+      <!-- 咨询医师 healthwaiter 原点击事件-->
+      <view class="counselorBox" data-type="ZXGW" bind:tap="isNeedLogin" wx:if="{{iswelcome}}">
+        <view class="counselorBox-counselor" wx:if="{{consultant.isBind}}">
+          <view class="counselorBox-counselor-userinfo">
+            <view class="counselorBox-counselor-userinfo-userBox">
+              <image class="counselorBox-counselor-userinfo-userBox-counselorTitle" src="{{consultant.consultantAvatar}}" mode="" />
+              <view class="counselorBox-counselor-userinfo-userBox-usertext">
+                <view class="counselorBox-counselor-userinfo-userBox-usertext-namebox">
+                  <text class="counselorBox-counselor-userinfo-userBox-usertext-namebox-name">{{consultant.consultantName}}</text>
+                  <image class="counselorBox-counselor-userinfo-userBox-usertext-namebox-medal" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_medal.png" mode="" />
+                </view>
+                <view class="counselorBox-counselor-userinfo-userBox-usertext-counselorLevel">{{consultant.consultantTitle}}</view>
+              </view>
+            </view>
+            <view class="counselorBox-counselor-userinfo-counselorBtn">
+              <text>免费咨询</text>
+              <image class="counselorBox-counselor-userinfo-counselorBtn-counselorImg" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_counselor.png" mode="" />
+            </view>
+          </view>
+          <view class="counselorBox-counselor-label">
+            <block wx:for="{{consultant.tagList}}" wx:key="index">
+              <view class="counselorBox-counselor-label-labelLi">{{item}}</view>
+            </block>
+          </view>
+        </view>
+        <view class="counselorBox-counselorDefault" wx:if="{{!consultant.isBind}}">
+          <image class="counselorBox-counselorDefault-counselorDefaultImg" src="https://static.tojoyshop.com/images/wxapp-boss/home/counselor_home_default1.png?v=1.0.1" mode="" />
+        </view>
+      </view>
+      <!-- 咨询医师 -->
+      <!-- 为您推荐 -->
+      <view class="recommendBox">
+        <view class="recommendBox-recommend">
+          <view class="recommendBox-recommend-recommendHead">为您推荐</view>
+          <view class="recommendBox-recommend-recommendLabeltitle">
+            <text>健康</text><text class="fenge">l</text><text>养生</text><text class="fenge">l</text><text>疗愈</text>
+          </view>
+          <view class="recommendBox-recommend-recommendWrap">
+            <view class="firstBg"></view>
+            <block wx:for="{{recommendList}}" wx:key="index">
+            <!-- clickRecommend 原 点击事件 -->
+              <view class="recommendLi" data-item='{{item}}' data-type="WNTJ" bind:tap="isNeedLogin">
+                <image wx:if="{{item.type == '2'}}" class="television" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_play.png" mode="" />
+                <view class="liveState" wx:if="{{item.type == '3'}}">
+                  <image wx:if="{{item.liveState == '1' || item.liveState == '4'}}" class="liveImg" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_television.png" mode="" />
+                  <image wx:if="{{item.liveState == '0'}}" class="liveImg" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_television_k2.png" mode="" />
+                  <text wx:if="{{item.liveState == '1' || item.liveState == '4'}}">正在直播</text>
+                  <text wx:if="{{item.liveState == '0'}}">直播预告</text>
+                </view>
+                <image class="recommendImg" src="{{item.coverImgUrl}}" mode="" />
+                <view class="recommendFoot">
+                  <view class="recommendTitle">{{item.title}}</view>
+                  <view class="recommendTip">{{item.abstractTitle}}</view>
+                  <view class="recommendbot" wx:if="{{item.type != '3'}}">
+                    <view class="recommendLabel">
+                      <!-- <block wx:for="{{item.catetoryList}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx"> -->
+                        <view class="categoryName" wx:if="{{item.catetoryList[0].categoryName}}">{{item.catetoryList[0].categoryName}}</view>
+                      <!-- </block> -->
+                    </view>
+                    <view class="popularity">
+                      <image class="icon_like" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_like.png" mode="" />
+                      <text>{{filter.transformNum(item.likeCount)}}</text>
+                    </view>
+                  </view>
+                  <view class="recommendbot" wx:else>
+                    <view class="popularity">
+                      <!-- <image class="icon_like" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_activitylevel.png" mode="" />
+                      <text>{{item.popularityValue}}</text> -->
+                    </view>
+                    <view class="directBtn">进入直播间</view>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+
+    <view class="right-btn-box">
+      <!-- 客服 -->
+      <block wx:if="{{theme.isShowCustomer}}">
+        <authorize ext-class="service-btn" optimization bind:success="">
+          <service-btn bind:showServices="showServices" serviceVisible="{{serviceVisible}}">
+            <view class="service com-btn" bindtap="showService">
+              <image class="service-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_test_services.png?v=1.0.0" mode="aspectFit" />
+            </view>
+          </service-btn>
+        </authorize>
+      </block>
+      <!-- 回到顶部 -->
+      <block wx:if="{{showTop}}">
+        <view class="com-btn" bindtap="goTop">
+          <image class="top-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-top.png" mode="aspectFit" />顶部
+        </view>
+      </block>
+      <!-- 分享 -->
+      <block wx:if="{{!!theme.isShare}}">
+        <share-entry pageId="{{pageId}}" pageName="{{title}}" bind:createPoster="createPoster" bind:createShareCode="createShareCode">
+          <view class="share com-btn">
+            <image src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-share.png" mode="aspectFit" />
+            分享
+          </view>
+        </share-entry>
+      </block>
+      <!-- 康豆 -->
+      <block wx:if="{{theme.isShowBeans}}">
+        <authorize ext-class="service-btn clear-margin" style="margin:0;" optimization bind:success="">
+          <view class="service com-btn btn-exchange" bindtap="navigateToMiniHongCuBao">
+            <image class="service-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-beans-exchange.png" mode="aspectFit" />
+          </view>
+        </authorize>
+      </block>
+    </view>
+
+    <global-back isScrolling="{{isScrolling}}" isShowScan="{{true}}" />
+    <!-- 底部tab -->
+    <tab-bar />
+  </view>
+  <!-- 新人引导弹窗 -->
+  <!--  -->
+  <newconmer newcomerShow="{{newcomerShow}}" newcomerList="{{newcomerList}}" bind:addInfo="getAddInfo"></newconmer>
+</block>
+<authorize ext-class="authorize-btn" isShowAuth id="authHealthCoponents" bind:success="getAuthUserinfo" />
+<privacy id="privacy" />
+<login-promise id="authorize" removeSlot/>

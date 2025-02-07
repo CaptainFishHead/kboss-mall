@@ -1,0 +1,9 @@
+<!--plugin/components/live/popularity/index.wxml-->
+<wxs src="./../../../../../utils/filter.wxs" module="filter" />
+<view class="popularity">
+  <image src="{{avatar}}" mode="aspectFit" class="popularity__logo"/>
+  <view class="popularity__info">
+    <text class="popularity__info__name">{{name}}</text>
+    <text class="popularity__info__num">{{ filter.formatNumber(popularity)}}人气</text>
+  </view>
+</view>

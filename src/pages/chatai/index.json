@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "chat-left-item": "./components/chat-left-item/index",
+    "chat-right-item": "./components/chat-right-item/index",
+    "chat-recommend-view": "./components/chat-recommend-view/index",
+    "chat-card-view": "./components/chat-card-view/index",
+    "chat-report-view": "./components/chat-report-view/index",
+    "chat-tools-view": "./components/chat-tools-view/index",
+    "chat-loading-view": "./components/chat-loading-view/index"
+  },
+  "disableScroll": true
+}

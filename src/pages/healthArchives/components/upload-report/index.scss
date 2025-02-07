@@ -1,0 +1,154 @@
+@import '../../../../components/toast/index.wxss';
+.body {
+  padding: 0 40rpx;
+  border-bottom: 1px solid #F3F3F3;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-pic {
+    width: 475rpx;
+    height: 316rpx;
+  }
+
+  &-text {
+    font-weight: 400;
+    font-size: 28rpx;
+    color: rgba(0, 0, 0, 0.75);
+    line-height: 45rpx;
+    text-align: left;
+    font-style: normal;
+
+    .tip {
+      color: #07a495;
+      margin-left: 30rpx;
+      position: relative;
+    }
+
+    .tip::after {
+      content: '';
+      width: 28rpx;
+      height: 28rpx;
+      position: absolute;
+      top: 5rpx;
+      left: -30rpx;
+      background-color: #09bdac;
+      background: url('https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/check.png') no-repeat;
+      background-size: 100% 100%;
+      border-radius: 50%;
+    }
+  }
+}
+
+.desc {
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 40rpx;
+  color: rgba(0, 0, 0, 0.75);
+  text-align: left;
+  font-style: normal;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 40rpx 0;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-icon {
+      width: 110rpx;
+      height: 110rpx;
+      background: #f5f7f8;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      &-pic {
+        width: 56rpx;
+        height: 56rpx;
+      }
+
+      &-arrow {
+        width: 22rpx;
+        height: 16rpx;
+        position: absolute;
+        top: 50%;
+        right: -80rpx;
+        transform: translate(-50%, -50%);
+        background-image: url('https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/SketchPngade.png');
+        background-size: 100% 100%;
+        border-radius: 50%;
+      }
+    }
+
+    &-text {
+      font-family: PingFangSC, PingFang SC;
+      font-size: 26rpx;
+      font-weight: 500;
+      color: #07a495;
+      height: 37rpx;
+      margin-top: 16rpx;
+    }
+  }
+}
+
+// steps-item-icon-arrow最后一个不显示
+.steps-item:last-child .steps-item-icon-arrow {
+  display: none;
+}
+
+.upload-history {
+  position: relative;
+  width: fit-content;
+  text-align: center;
+  margin: 30rpx auto;
+  color: #666;
+
+  &::after {
+    width: 10rpx;
+    height: 10rpx;
+    border-top: 2rpx solid;
+    border-right: 2rpx solid;
+    border-color: #666;
+    content: '';
+    position: absolute;
+    right: -16rpx;
+    top: 0rpx;
+    bottom: 0rpx;
+    margin: auto;
+    transform: rotate(45deg);
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    &,
+    &.button-hover {
+      width: 100%;
+    }
+  }
+}
+
+.footer::after {
+  content: '';
+  position: absolute;
+  top: -20rpx;
+  left: 0rpx;
+  border-top: 2px solid #f3f3f3;
+  padding: 0rpx;
+  margin-bottom: 40rpx;
+}

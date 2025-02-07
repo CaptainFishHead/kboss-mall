@@ -1,0 +1,6 @@
+<view class="goods">
+    <view class="goods-storename">{{storeInfo.storeName}}</view>
+    <view class="goods-item" wx:for="{{goodsList}}" wx:for-index="storeIndex" wx:key="skuId">
+      <good-item item="{{item}}"/>
+    </view>
+</view>

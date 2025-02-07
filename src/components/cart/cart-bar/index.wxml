@@ -1,0 +1,18 @@
+<view class="cart-bar">
+    <view class="cart-bar-lt">
+        <mp-checkbox-group ext-class="cart_checkbox" multi="{{false}}">
+            <checkbox color="#B58209" checked="{{allChecked}}" data-allchecked="{{allChecked}}" bindtap="allCheckeChange"/>
+        </mp-checkbox-group>
+        <text class="cart-bar-lt-all">全选</text>
+    </view>
+    <view class="cart-bar-rt">
+        <view class="warp" wx:if="{{totalNumGoods>0}}">
+            <view class="price-sum">合计：<text class="price-sum-txt price">¥ {{totalPrice}}</text></view>
+            <view class="tips">不含运费</view>
+        </view>
+        <view wx:else></view>
+        <button type="primary" class="account_btn {{totalNumGoods>0?'':'dis_btn'}}" bindtap="productSettlement">
+            立即结算(<text>{{totalNumGoods > 99 ? 99 + '+' : totalNumGoods}}</text>)
+        </button>
+    </view>
+</view>

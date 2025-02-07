@@ -1,0 +1,72 @@
+<view
+	class="column column-{{column.componentId}}"
+	style="{{column.style}}"
+	data-component-id="{{column.componentId}}"
+>
+	<view wx:if="{{column.componentId === 1906}}">{{column.title}}</view>
+	<block
+		wx:for="{{column.cells}}" wx:for-index="cellIndex" wx:for-item="cell" wx:key="elementId"
+	>
+		<view
+			data-cells="{{column.loopSizeType||2}}"
+			class="cell" style="--flex-grid:{{column.loopSizeType||2}};{{cell.style}}"
+			data-link="{{cell.link}}"
+			data-module_id="{{column.columnId}}"
+			data-element_id="{{cell.elementId}}"
+			data-cell_id="{{cell.elementId}}"
+			data-commodity_index="{{cellIndex}}"
+			data-reboot="{{cell.reboot}}"
+			bind:tap="navigateTo"
+		>
+			<view class="cell-body">
+				<block
+					wx:for="{{column.functional}}" wx:key="label" wx:for-item="item"
+					wx:for-index="functionalIndex"
+				>
+          <button
+            class="like"
+            wx:if="{{item.value && cell.link.jumpType === 2}}"
+            catch:tap="functionalAction"
+            data-functional="{{item}}"
+            data-link="{{cell.link}}"
+            data-columnIndex="{{columnIndex}}"
+            data-cellIndex="{{cellIndex}}"
+          >
+            <view style="color:{{item.default}}" class="icon ">
+              <view class="icon-item icon-item-{{cell.link.isFavorite}}"></view>
+              <view class="text">{{item.label}}</view>
+            </view>
+          </button>
+
+				</block>
+				<block wx:if="{{column.componentId !== 1908}}">
+        <!-- lazy-load -->
+					<image src="{{cell.designerImageUrl.src}}" mode="widthFix" show-menu-by-longpress="{{true}}"/>
+				</block>
+				<view class="cell-body-video" wx:else
+				      style="--max-width:{{cell.designerImageUrl.width}}rpx;--max-height:{{cell.designerImageUrl.height}}rpx;--border-radius:{{cell.designerImageUrl.extra.borderRadius}}rpx;--resultWidth:{{cell.designerImageUrl.resultWidth}}rpx;--resultHeight:{{cell.designerImageUrl.resultHeight}}rpx">
+					<video
+						bind:play="playVideo" 
+						bind:pause="pauseVideo"
+						bind:fullscreenchange="fullScreenChange"
+						class="video" id="video-{{cell.elementId}}"
+						data-auto_play="{{!!cell.designerImageUrl.extra.autoPlay}}" data-progress="{{!!cell.designerImageUrl.extra.progress}}" data-muted="{{!!cell.designerImageUrl.extra.muted}}"
+						src="{{cell.designerImageUrl.extra.video}}" poster="{{cell.designerImageUrl.extra.cover}}" object-fit="contain"
+						controls="{{!!cell.designerImageUrl.extra.progress}}"
+						auto-pause-if-navigate auto-pause-if-open-native autoplay="{{false}}"
+						show-progress="{{!!cell.designerImageUrl.extra.progress}}"
+						muted="{{!cell.designerImageUrl.extra.progress}}"
+						loop="{{!cell.designerImageUrl.extra.progress}}"
+						show-fullscreen-btn="{{false}}"
+						show-play-btn="{{!!cell.designerImageUrl.extra.progress}}"
+						show-center-play-btn="{{!!cell.designerImageUrl.extra.progress}}"
+					></video><!--show-fullscreen-btn="{{!!cell.designerImageUrl.extra.progress}}"-->
+				</view>
+			</view>
+		</view>
+	</block>
+	<view class="more" style="opacity:{{opacity}};" wx:if="{{column.componentId === 1901}}">
+		<view class="text">上滑探索更多</view>
+		<image src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-arrow-down.png"/>
+	</view>
+</view>

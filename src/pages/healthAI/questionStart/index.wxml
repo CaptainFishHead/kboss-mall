@@ -1,0 +1,28 @@
+<import src="../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<view class="questionwrap">
+  <navigation-bar title="{{healthProblemsItem.name}}" background="#fff" />
+  <view class="content">
+    <view class="content-aiImg">
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/home/newcomer.gif" mode="" />
+    </view>
+    <view class="content-title">{{healthProblemsItem.name}}</view>
+    <view class="content-li">
+      <view class="content-li-lis">
+        <text>题目数量</text>
+        <text class="content-li-lis-num">{{healthProblemsItem.questionCount}}</text>
+        <text>题</text>
+      </view>
+      <view class="content-li-lis">
+        <text>大约需要</text>
+        <text class="content-li-lis-num">{{healthProblemsItem.costTime}}</text>
+        <text>分钟</text>
+      </view>
+    </view>
+    <view class="content-conText" wx:if="{{healthProblemsItem.remark}}">{{healthProblemsItem.remark}}</view>
+    <view class="content-tips">评估结果仅供参考，不作为医学诊断</view>
+  </view>
+  <view class="footer">
+    <button type="primary" class="success" bind:tap="hanleStart">开始测评</button>
+  </view>
+</view>

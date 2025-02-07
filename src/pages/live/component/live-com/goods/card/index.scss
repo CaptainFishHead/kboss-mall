@@ -1,0 +1,118 @@
+/* plugin/components/hello-component.wxss */
+.goods-card {
+  // position: absolute;
+  // left: 20rpx;
+  // bottom: 172rpx;
+  // z-index: 11;
+  width: 554rpx;
+  height: 200rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+
+.goods-box {
+  width: 180rpx;
+  height: 180rpx;
+  position: relative;
+  border-radius: 10rpx;
+  overflow: hidden;
+  float: left;
+  &-tag {
+    height: 36rpx;
+    min-width: 46rpx;
+    position: absolute;
+    padding: 0 4rpx;
+    top: 0;
+    left: 0;
+    border-radius: 0px 0px 14rpx 0px;
+    color: #fff;
+    background-color: rgba($color: #333333, $alpha: 0.69);
+    font-size: 26rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-hot {
+      width: 58rpx;
+      background-color: rgba($color: #E54A4A, $alpha: 0.89);
+      font-size: 22rpx;
+    }
+  }
+}
+
+.goods-img {
+  width: 100%;
+  height: 100%;
+}
+
+.goods-info {
+  padding: 3rpx 12rpx;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.goods-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  line-height: 39rpx;
+}
+
+.goods-des {
+  font-size: 26rpx;
+  color: #B58209;
+  line-height: 39rpx;
+}
+
+.goods-bottom {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items:flex-end;
+  justify-content: space-between;
+  // width: 292rpx;
+}
+
+.goods-price {
+  font-size: 39rpx;
+  color: #B58209;
+  line-height: 40rpx;
+  font-family: DINAlternate-Bold, DINAlternate;
+}
+
+.goods-price-uni {
+  font-size: 29rpx;
+}
+
+.goods-buy {
+  width: 119rpx;
+  height: 54rpx;
+  background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+  border-radius: 4rpx;
+  font-size: 26rpx;
+  color: #333;
+  font-weight: bold;
+  padding: 0;
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 9rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goods-buy::after {
+  display: none;
+}
+
+.two-line {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;				//溢出内容隐藏
+  text-overflow: ellipsis;		//文本溢出部分用省略号表示
+  display: -webkit-box;			//特别显示模式
+  -webkit-line-clamp: 2;			//行数
+  line-clamp: 2;					
+  -webkit-box-orient: vertical;	//盒子中内容竖直排列
+}

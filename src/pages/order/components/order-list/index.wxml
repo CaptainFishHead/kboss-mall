@@ -1,0 +1,101 @@
+<wxs module="filter" src="../../../../utils/filter.wxs"/>
+
+<view class="orderlist">
+    <!-- 订单号与订单状态 -->
+    <view class="orderlist-head">
+        <view class="orderlist-head-number">
+            <view>订单编号：</view>
+            <view>{{orderInfo.orderCode}}</view>
+        </view>
+        <view class="orderlist-head-status status-color-{{orderInfo.orderStatus}}">
+            {{orderInfo.orderStatusDesc}}
+        </view>
+    </view>
+    <!-- 订单列表主体 -->
+    <view class="orderlist-items {{orderInfo.skuList.length > 1 && 'multi'}}" bind:tap="toDetails">
+        <scroll-view class="scroll-view" wx:if="{{orderInfo.skuList.length > 1}}" scroll-x="{{true}}">
+            <view wx:for="{{orderInfo.skuList}}" wx:key="index" class="order-area {{orderInfo.skuList.length-1===index&&'after-block'}}">
+                <image class="order-area-images" mode="aspectFill" src="{{item.skuImg}}"/>
+            </view>
+        </scroll-view>
+        <view wx:else class="scroll-view-width">
+            <view wx:for="{{orderInfo.skuList}}" wx:key="index" class="order-area">
+                <image class="order-area-images" mode="aspectFill" src="{{item.skuImg}}"/>
+            </view>
+        </view>
+        <!-- 多图模式下的显示 -->
+        <block wx:if="{{orderInfo.skuList.length > 1}}">
+          <view class="right-area">
+              <view class="right-area-more">查看详情</view>
+              <!-- <view class="right-area-price price">¥ {{orderPrice}}</view> -->
+              <view class="right-area-total">共{{orderInfo.orderSkuNum || 0}}件</view>
+          </view>
+          <view class="order-info-price">
+            <text wx:if="{{orderInfo.orderStatus === 10}}">需付款：</text>
+            <text wx:else>{{orderInfo.orderStatusPay === 1 ? '实付款：': '应付款：'}}</text>
+            <view class="price">
+              ¥ <block wx:for="{{filter.moneyArr(filter.formatAmount(orderInfo.orderPayPrice || '0'))}}" wx:key="index">
+                  <text wx:if="{{index}}">.</text>
+                  <text class="{{index ? 'price-after' : 'price-main'}}">{{item}}</text>
+                </block>
+            </view>
+          </view>
+        </block>
+        <!-- 单个产品图时展示名称以及规格 -->
+        <view wx:else class="order-info">
+            <view>
+                <view class="order-info-name">{{orderInfo.skuList[0].spuName}}</view>
+                <view class="order-info-sku">
+                    <view class="order-info-sku-num">数量: {{orderInfo.skuList[0].skuNum}}</view>
+                    <view class="order-info-sku-attr" wx:if="{{orderInfo.orderAttribute === 1}}">{{orderInfo.skuList[0].skuDesc}}</view>
+                </view>
+            </view>
+            <view class="order-info-price">
+              <text wx:if="{{orderInfo.orderStatus === 10}}">需付款：</text>
+              <text wx:else>{{orderInfo.orderStatusPay === 1 ? '实付款：': '应付款：'}}</text>
+              <view class="price">
+                ¥ <block wx:for="{{filter.moneyArr(filter.formatAmount(orderInfo.orderPayPrice || '0'))}}" wx:key="index">
+                    <text wx:if="{{index}}">.</text>
+                    <text class="{{index ? 'price-after' : 'price-main'}}">{{item}}</text>
+                  </block>
+              </view>
+            </view>
+        </view>
+    </view>
+    <view class="orderlist-btns">
+      <!-- 待支付  -->
+      <block wx:if="{{orderInfo.orderStatus === 10}}">
+        <button type="primary" plain class="orderlist-btns-grey" bind:tap="showCancelReason">取消订单</button>
+        <button type="primary" plain class="orderlist-btns-yellow" bind:tap="orderPayHandle">继续支付</button>
+      </block>
+      <!-- 待发货 -->
+      <block wx:if="{{orderInfo.orderStatus === 20}}">
+        <button type="primary" plain class="orderlist-btns-grey" wx:if="{{orderInfo.haveRefundFlag === 1}}" bind:tap="toDetails">售后记录</button>
+        <button type="primary" plain open-type="contact" class="orderlist-btns-grey" wx:if="{{orderInfo.haveRefundFlag === 1}}" bindtap="onService">联系客服</button>
+        <button type="primary" plain class="orderlist-btns-yellow" bind:tap="handleRemind" wx:if="{{orderInfo.haveRefundFlag !== 1}}">提醒发货</button>
+      </block>
+      <!-- 待收货 -->
+      <block wx:if="{{orderInfo.orderStatus === 30}}">
+        <button type="primary" plain class="orderlist-btns-grey" wx:if="{{orderInfo.haveRefundFlag === 1}}" bind:tap="toDetails">售后记录</button>
+        <button type="primary" plain class="orderlist-btns-grey" bind:tap="onLogistics">查看物流</button>
+        <button type="primary" plain class="orderlist-btns-yellow" bind:tap="showConfirmReceipt" wx:if="{{!orderInfo.haveRefundingFlag}}">确认收货</button>
+      </block>
+      <!-- 已完成 -->
+      <block wx:if="{{orderInfo.orderStatus > 30}}">
+        <button type="primary" plain class="orderlist-btns-grey" wx:if="{{orderInfo.haveRefundFlag === 1}}" bind:tap="toDetails">售后记录</button>
+        <button type="primary" plain open-type="contact" class="orderlist-btns-grey" wx:if="{{orderInfo.orderStatus === 40 || orderInfo.orderStatus === 50}}" bindtap="onService">联系客服</button>
+        <button type="primary" plain class="orderlist-btns-grey" wx:if="{{orderInfo.orderStatus === 60 || orderInfo.orderStatus === 70 || orderInfo.orderStatus === 80 }}" bind:tap="handleShowTips">删除订单</button>
+        <button type="primary" plain class="orderlist-btns-yellow" wx:if="{{orderInfo.orderStatus === 50 || orderInfo.orderStatus === 60 || orderInfo.orderStatus === 70 || orderInfo.orderStatus === 80}}" bind:tap="handleAgain">再次购买</button>
+      </block>
+    </view>
+    
+</view>
+
+<!-- 温馨提示弹窗 -->
+<tips-dialog id="tipsDialog" bind:confirm="handleDelete" />
+
+<!-- 取消订单弹窗 -->
+<cancel-reason id="cancelReason" bind:confirm="cancelOrder" />
+
+<!-- 确认收货提示 -->
+<receipt-dialog id="receiptDialog" bind:confirm="onReceipt"/>

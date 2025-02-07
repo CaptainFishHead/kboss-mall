@@ -1,0 +1,28 @@
+<view class="winning-popup-container">
+  <image src="{{singularity}}" class="winning-popup-stage" />
+
+  <image src="https://static.tojoyshop.com/images/obh/lottery/new-lottery/bg-lottery-result-boom.png" class="winning-popup-boom"/>
+  <image src="{{congratulate}}" class="winning-popup-congratulate" wx:if="{{showCongratulate}}"/>
+
+  <image src="https://static.tojoyshop.com/images/obh/lottery/new-lottery/bg-lottery-result-flash.png" class="winning-popup-flash"/>
+  <image src="https://static.tojoyshop.com/images/obh/lottery/new-lottery/bg-lottery-result-star.png" class="winning-popup-star"/>
+  <image src="https://static.tojoyshop.com/images/obh/lottery/new-lottery/bg-lottery-result-star.png" class="winning-popup-star1"/>
+  <image src="https://static.tojoyshop.com/images/obh/lottery/new-lottery/bg-lottery-result-points.png" class="winning-popup-points" />
+  <image src="{{lotteryResult.prizeIcon}}" class="winning-popup-prize" mode="aspectFit"/>
+ 
+  <view class="winning-popup-title"><text>{{promptMsg || '人品大爆发'}}</text></view> 
+  
+  <view class="winning-popup-fade-in">
+    <view class="winning-popup-gift-name">{{lotteryResult.prizeName}}</view>
+    <view class="winning-popup-gift-tips">{{lotteryResult.prizePartnerType == 1 ? '该奖品需购买奖品伴侣后赠送' : '请耐心等待客服联系兑奖（1-3个工作日）'}}</view>
+    <view class="winning-popup-bottom">
+      <view class="{{((lotteryCount > 0) || (lotteryCount <= 0 && shareTimes < 3)) ? 'winning-popup-options' : 'winning-popup-options-one'}}">
+        <image src="https://static.tojoyshop.com/images/obh/lottery/result/btn-lottery-goon.png" class="options-left" mode="heightFix" wx:if="{{lotteryCount > 0}}" catch:tap="closePopup" style="z-index: 11000;"/>
+        <image src="https://static.tojoyshop.com/images/obh/lottery/result/btn-lottery-share.png" class="options-left" mode="heightFix" wx:if="{{lotteryCount <= 0 && shareTimes < 3}}" catch:tap="onPopupShare" style="z-index: 11000;"/>
+        <image src="https://static.tojoyshop.com/images/obh/lottery/result/btn-lottery-goto-gift.png" class="options-right" mode="heightFix"  catch:tap="gotoGift" style="z-index: 11000;"/>
+      </view>
+      <image src="https://static.tojoyshop.com/images/obh/lottery/result/ic-lottery-result-close.png" class="options-close" catch:tap="closePopup" style="z-index: 11000;"/>
+    </view>
+  </view>
+  
+</view>

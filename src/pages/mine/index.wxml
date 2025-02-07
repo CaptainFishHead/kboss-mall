@@ -1,0 +1,200 @@
+<wxs src="./../../utils/filter.wxs" module="filter" />
+<!--index.wxml-->
+<import src="./../../components/toast/index.wxml" />
+<!-- wetoast -->
+<template is="toast" data="{{...tj_toast}}" />
+
+<view class="bg-color">
+  <tab-bar current="{{2}}" />
+  <!-- <navigation-bar ext-class="navigation {{!userInfo.userId?'un-login':''}}" data-logged="{{!!userInfo.userId}}" title="" background="rgba(255, 255, 255, 0)" back="{{false}}" /> -->
+  <view class="jianbian"></view>
+  <view class="mine" style="padding-top:{{navBar.menuButtonHeight + 43}}px" data-logged="{{!!userInfo.userId}}">
+
+    <view class="area">
+      <!-- 用户信息 -->
+      <authorize ext-class="authorize-btn" optimization bind:logged="" bind:success="getAuthUserinfo">
+        <view class="user" bindtap="gotoEditUserInfo">
+          <view class="user-head">
+            <image mode="aspectFill" class="user-head-img" src="{{userInfo.avatarUrl || defaultHead}}" />
+            <view class="user-head-info">
+              <view class="name">{{userInfo.nickName || userInfo.mobile || '请登录'}}</view>
+              <view class="edit" wx:if="{{userInfo.userId}}">编辑资料</view>
+            </view>
+          </view>
+          <!-- 会员 -->
+          <!-- <view class="user-vip" wx:if="{{userInfo.userId && levelIcon !== null}}" catch:tap="toMemberPage">
+            <image mode="heightFix" class="user-vip-icon" src="{{levelIcon}}" />
+            <image mode="heightFix" class="user-vip-light" src="https://static.tojoyshop.com/images/wxapp-boss/mine/vip-light.png" />
+            <view class="user-vip-arrow">
+              <image mode="heightFix" src="https://static.tojoyshop.com/images/wxapp-boss/mine/icon-arrow-blue.png" />
+              <image mode="heightFix" src="https://static.tojoyshop.com/images/wxapp-boss/mine/icon-arrow-blue.png" />
+            </view>
+          </view> -->
+        </view>
+      </authorize>
+    </view>
+    <!-- 优惠券、礼品卡、预估收益 -->
+    <view class="coupon-info" wx:if="{{userInfo.userId}}">
+      <!-- 康豆 -->
+      <view class="com-style" bindtap="navigateToMiniHongCuBao">
+        <view class="num price">
+          <text wx:for="{{filter.moneyArr(yasume || '0')}}" wx:key="index"><text>{{index ? '.' : ''}}</text>{{item}}</text>
+        </view>
+        <text class="name">康豆</text>
+      </view>
+      <block wx:for="{{adminTopMenu}}" wx:key="index">
+        <!-- 预估收益存在 -->
+        <view class="com-style" wx:key="index" wx:if="{{item.isShowMoney && isEmployee}}">
+          <authorize data-href="{{item.path + '?profit=' + totalCommission}}" ext-class="authorize-btn" bind:success="onHrefPage">
+            <view class="num price">{{totalCommission}}</view>
+            <text class="name">{{item.name}}</text>
+          </authorize>
+        </view>
+        <!-- 预估收益不存在 -->
+        <view class="com-style" wx:key="index" wx:elif="{{!item.isShowMoney}}">
+          <authorize data-href="{{item.path}}" ext-class="authorize-btn" bind:success="onHrefPage">
+            <block wx:if="{{item.isShowText}}">
+              <view class="num price">{{cardNumber}}</view>
+            </block>
+            <block wx:if="{{item.isShowVoucher}}">
+              <view class="num price">{{voucherNumber}}</view>
+            </block>
+            <block wx:if="{{item.isShowPrize}}">
+              <view class="num price">{{prizeNum}}</view>
+            </block>
+            <text class="name">{{item.name}}</text>
+          </authorize>
+        </view>
+      </block>
+    </view>
+    <!-- 会员 -->
+    <view class="area">
+      <view class="user-vip" wx:if="{{userInfo.userId && levelIcon !== null}}" catch:tap="toMemberPage">
+        <image mode="" class="user-vip-icon" src="{{levelIcon}}" />
+      </view>
+    </view>
+    <!-- 健康顾问 -->
+    <view class="area" wx:if="{{iswelcome}}">
+      <view class="advatar" bind:tap="advatar" wx:if="{{waiterData.isBind}}">
+        <view class="adviserInformation">
+          <image class="titleImg" src="{{waiterData.consultantAvatar}}" mode="" />
+          <view class="adviserbox">
+            <view class="consultantTitle">您的健康专属管家</view>
+            <view class="consultantName">{{waiterData.consultantName}}</view>
+          </view>
+        </view>
+        <view class="adviserbtn">立即咨询</view>
+      </view>
+      <view class="counselor" bind:tap="advatar" wx:if="{{!waiterData.isBind}}">
+        <image class="counselor_default" src="https://static.tojoyshop.com/images/wxapp-boss/mine/counselor_mine_default1.png?v=1.0.0" mode="" />
+      </view>
+    </view>
+    <!-- 健康档案等四个模块 -->
+    <view class="area">
+      <view class="notepadList">
+        <view class="notepadLi" wx:for="{{notepadList}}" data-href="{{item.path}}" data-num="{{item.num}}" wx:key="index" bindtap='debouncedNotepadLiClick'>
+          <image src="{{item.iconPath}}" mode="" />
+          <text class="num" wx:if="{{item.num == 2 && recuperateSchemeCount > 0}}">{{recuperateSchemeCount >99 ? '99+' : recuperateSchemeCount}}</text>
+          <text class="num" wx:if="{{item.num == 3 && serviceCount > 0}}">{{serviceCount > 99 ? '99+' : serviceCount}}</text>
+          <view class="notepadName">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- <block wx:if="{{userInfo.userId}}">
+      <view class="health-beans" bindtap="navigateToMiniHongCuBao">
+        <view class="health-beans-box">
+          <text class="text">我的康豆</text>
+          <text class="price"><text wx:for="{{filter.moneyArr(yasume || '0')}}" wx:key="index"><text>{{index ? '.' : ''}}</text>{{item}}</text></text>
+          <image src="https://static.tojoyshop.com/images/wxapp-boss/mine/icon-arrow-blue.png" />
+        </view>
+      </view>
+    </block> -->
+
+    <view class="area">
+      <!-- 我的订单 -->
+      <view class="my-order">
+        <view class="weui-flex block" catch:tap="toOrderList">
+          <view class="weui-flex__item title">我的订单</view>
+          <view class="weui-flex__item rows-right">
+            <image src="https://static.tojoyshop.com/images/wxapp-boss/mine/more-icon.png" />
+          </view>
+        </view>
+        <view class="weui-flex order">
+          <view class="orderli" wx:for="{{orderNavList}}" wx:key="index">
+            <view class="order-nav-item" catch:tap="toOrderList" data-href="{{item.path}}">
+              <image src="{{item.iconPath}}" class="icon" mode="widthFix" />
+              <text class="num" wx:if="{{item.number}}">{{item.number>99?'99+':item.number}}</text>
+            </view>
+            <view class="txt">{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- 我的管理-new -->
+      <view class=" my-admin">
+        <view class="weui-flex block">
+          <view class="weui-flex__item title">我的管理</view>
+        </view>
+        <view class="administration">
+          <view class="adminLi" wx:for="{{adminNavList}}" wx:key="index" data-href="{{item.path}}" data-num="{{item.num}}" bind:tap="onMineClick">
+            <image src="{{item.iconPath}}" mode="" />
+            <view class="adminName">{{item.name}}</view>
+          </view>
+        </view>
+        <!-- <flex class="order mine-box">
+          <flex-item wx:for="{{adminNavList}}" wx:key="index" class="cont-box {{item.isLine&&'line'}}" data-href="{{item.path}}" data-num="{{item.num}}" bind:tap="onMineClick">
+            <flex class="mine-item {{item.num===1&&'health'}} {{item.num===3&&'favorite'}}" justifyContent="center" alignItems="center">
+              <flex-item class=" re-box">
+                <image src="{{item.iconPath}}" class="icon re-size" mode="widthFix" />
+              </flex-item>
+              <flex-item class="txt fz26 {{item.num===1&&'health-txt'}}">
+                {{item.name}}
+              </flex-item>
+            </flex>
+          </flex-item>
+        </flex> -->
+      </view>
+      <view class="admin-block" wx:if="{{enableDebug}}">
+        <view class="weui-flex admin" bindtap="goEnvConfig">
+          <view class="weui-flex__item left-desc"><text class="txt">环境变量配置</text></view>
+          <view class="weui-flex__item rows-right">
+            <image src="https://static.tojoyshop.com/images/wxapp-boss/mine/more-icon.png" />
+          </view>
+        </view>
+      </view>
+      <!-- </view> -->
+      <!-- 联系我们 -->
+      <view class="my-service">
+        <view class="serviceHead">
+          <text class="weui-flex__item title">联系我们</text>
+          <text class="service-time">周一至周日 09:00 - 21:00</text>
+        </view>
+        <view class="serviceCont">
+          <view class="serviceCont_item">
+            <authorize ext-class="service-btn" optimization bind:success="getAuthUserinfo">
+              <button wx:if="{{!!userInfo.userId}}" open-type="contact" class="service-btn" hover-class="none" session-from="{{sessionFrom}}" bindtap="onService">
+                <image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/mine/service-icon.png?v=202207121454" />
+                <view class="txt">在线客服</view>
+              </button>
+              <button wx:else class="service-btn" hover-class="none">
+                <image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/mine/service-icon.png?v=202207121454" />
+                <view class="txt">在线客服</view>
+              </button>
+            </authorize>
+          </view>
+          <view class="serviceCont_item serviceCont_Tel" bindtap="onCallTel">
+            <button class="service-btn">
+              <image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/mine/mobile-icon.png?v=2022071214254" />
+              <view class="txt telText">电话客服</view>
+            </button>
+
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>
+<tab-bar current="{{2}}" />
+
+<global-back />
+<authorize ext-class="authorize-btn" isShowAuth id="authHealthCoponents" bind:success="" />

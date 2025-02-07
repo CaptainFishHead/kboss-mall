@@ -1,0 +1,31 @@
+
+<!-- 种草 大家都在用 -->
+<wxs src="./../../../utils/filter.wxs" module="filter" />
+<view class="recommended" wx:if="{{totalCount > 0}}">
+  <view class="recommended-top">
+    <image class="recommended-img" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-recommended.png" />
+    <view class="recommended-num">{{totalCount}}篇好物分享</view>
+    <view class="recommended-btn" wx:if="{{totalCount > 3}}" bindtap="toList">
+      <text class="recommended-btn-text">去看看</text>
+      <view class='recommended-btn-arrow'></view>
+      <image class="recommended-btn-light" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-flicker-light.png" />
+    </view>
+  </view>
+    <scroll-view class="recommended-wrap" scroll-x="{{true}}" bind:scrolltolower="getList">
+      <view class='recommended-list'>
+        <view class="recommended-item {{ totalCount === 1 ? 'onlyOne' : ''}}"  wx:for="{{list}}" wx:key="*this" data-item="{{item}}" bindtap="toItem">
+          <view class="recommended-item-cover">
+            <image class="recommended-item-img" mode="aspectFill" src="{{item.coverImgUrl}}" />
+            <image wx:if="{{item.type === 2}}" class="recommended-item-pause" src="https://static.tojoyshop.com/images/wxapp-boss/recommend/video-icon.png" />
+          </view>
+          <view class="recommended-item-info">
+            <view class="recommended-item-title"><text>{{item.title}}</text></view>
+            <view class="recommended-item-content" wx:if="{{item.abstractTitle}}"><text>{{item.abstractTitle}}</text></view>
+            <!-- <view class="recommended-item-content" wx:else>
+              <rich-text type="text" nodes="{{filter.getTextFromHtml(item.remark) || ''}}" space="nbsp"></rich-text>
+            </view> -->
+          </view>
+        </view>
+       </view>
+    </scroll-view>
+</view>

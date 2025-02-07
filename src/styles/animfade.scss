@@ -1,0 +1,21 @@
+.containerCommonBox{
+  animation: animFade .8s linear 0s;
+}
+@keyframes animFade {
+  0% {
+    transform: translateX(750rpx);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(375rpx);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateX(100rpx);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

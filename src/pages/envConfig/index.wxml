@@ -1,0 +1,18 @@
+<navigation-bar title="环境变量配置" back="{{false}}"/>
+<view class="config">
+  <view class="rows">
+    <text>是否手机号登录</text>  
+    <switch name="isDefault" checked="{{isMoblieLogin}}" color="#cfaf65" class="switch" bindchange="onChangeSwitch"  />
+  </view>
+  <view class="rows" wx:if="{{isLogged}}">
+    <text class="href-text" bindtap="clearData">测试用->清空，退出</text>  
+  </view>
+  <view class="rows" wx:if="{{isLogged}}">
+    <text class="href-text" bindtap="copyToken">复制token</text>  
+  </view>
+  <button type="primary" class="login-btn"
+		bindtap="goUserCenter">确定
+	</button>
+</view>
+
+

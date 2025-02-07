@@ -1,0 +1,66 @@
+/* components/order/doctor-appttime/index.wxss */
+.appointed-time{
+  
+  position: relative;
+  
+  .dates {
+    width: 100%;
+    overflow-x: auto;
+    height: 80rpx;
+    margin: 30rpx auto 40rpx;
+    white-space: nowrap;
+    &-box {
+      width: 270rpx;
+      height: 80rpx;
+      background: #F3F4F6;
+      border-radius: 2rpx;
+      display: inline-block;
+      font-size: 30rpx;
+      color: #333333;
+      line-height: 80rpx;
+      text-align: center;
+      margin-right:22rpx;
+    }
+    .active-date{
+      background: #09BDAC;
+      color: #FFFFFF;
+    }
+  }
+  .timeSlots{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    view{
+      width: 200rpx;
+      height: 80rpx;
+      background: #F3F4F6;
+      border-radius: 4rpx;
+      font-size: 28rpx;
+      color: rgba(51,51,51,0.8);
+      line-height: 80rpx;
+      text-align: center;
+      margin-bottom: 20rpx;
+      box-sizing: border-box;
+      border:1px solid  transparent;
+    }
+    &::after{
+      content: ''; 
+      width: 30%;
+    }
+    .active-time-slots{
+      background-image: url('https://static.tojoyshop.com/images/wxapp-boss/healthConsult/selected.png');
+      background-repeat: no-repeat;
+      background-position:right bottom;
+      background-origin: border-box;
+      background-size:32rpx;
+      border:1px solid  #4AC5B4;
+      background-color: #EEF6F5;
+    }
+  }
+  &-no{
+    font-size: 28rpx;
+    color: #999999;
+    text-align: center;
+    margin: 92rpx 0 85rpx;
+  }
+}

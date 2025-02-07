@@ -1,0 +1,2 @@
+<!--component/tj-player/index.wxml-->
+<live-player src="{{src}}" autoplay object-fit='fillCrop'  picture-in-picture-mode="{{pictureInPictureMode}}" 	auto-pause-if-navigate="{{false}}" 	auto-pause-if-open-native="{{false}}"  class="class" wx:if="{{src}}" bindstatechange="statechange" binderror="error" 	bindenterpictureinpicture="onJoinSmallRoom" bindleavepictureinpicture="onExitSmallRoom" />

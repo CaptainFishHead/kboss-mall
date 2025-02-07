@@ -1,0 +1,47 @@
+<!--components/health-indicators/health-indicators.wxml-->
+
+<block wx:if="{{nullNum}}">
+  <view class="health">
+    <view class="healthHeader">
+      <image class="aititle" bind:tap="clickAikang" src="https://static.tojoyshop.com/images/wxapp-boss/home/newcomer.gif" mode="" />
+      <view class="healthTitle" bind:tap="clickAikang">
+        <text wx:if="{{abnormalNum}}">您有<text class="abnormalNum">{{abnormalNum}}项</text>核心指标异常</text>
+        <text wx:else>您的核心指标均属正常范围</text>
+        <image class="more_green" src="https://static.tojoyshop.com/images/wxapp-boss/icons/icon_more_green.png" mode="" />
+      </view>
+    </view>
+    <view class="healthContent">
+      <image bind:tap="clickhealthInfo" class="img_bust" src="https://static.tojoyshop.com/images/wxapp-boss/home/img_bust.png" mode="" />
+      <view class="{{item.isabnormal ? 'healthli healthlis': 'healthli'}} healthli{{index}} {{!item.isdata ? 'healthli healthliwhy': 'healthli'}}" wx:for="{{healthlist}}" wx:key="index" data-indexid="{{item.indexId}}" bind:tap="clickTarget">
+        <image wx:if="{{item.isabnormal}}" class="icon_warning" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_warning.png?v=1.0.0" mode="" />
+        <image wx:if="{{!item.isabnormal && item.isdata}}" class="icon_check" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/check.png?v=1.0.0" mode="" />
+        <text class="name name{{index}}">{{item.indexName}}</text>
+        <image class="enter" src="https://static.tojoyshop.com/images/wxapp-boss/icons/enter.png" mode="" />
+      </view>
+    </view>
+    <view class="healthFooter">
+      <view class="healthFoot">
+        <view class="healthBtn" bind:tap="clickAikang">
+          <image class="icon_informatio" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_informatio.png" mode="" />
+          <text>问一问AI小康</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</block>
+<block wx:else>
+  <view class="healthno">
+    <view class="healthHeader">
+      <image class="aititle" src="https://static.tojoyshop.com/images/wxapp-boss/home/newcomer.gif" mode="" />
+      <view class="healthTitle">您好，我是您的健康助手小康</view>
+    </view>
+    <view class="healthContent">
+      <text class="healthContentText">您可以随时向我咨询任何健康问题，我将为您提供专业、及时的解答。</text>
+      <view class="healthBtn" data-btn='1' bind:tap="clickAikang">
+        <image class="icon_informatio" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_informatio.png" mode="" />
+        <text>和小康聊聊</text>
+      </view>
+    </view>
+  </view>
+</block>

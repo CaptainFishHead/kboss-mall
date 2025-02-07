@@ -1,0 +1,19 @@
+<!--pages/order/components/cancel-reason/index.wxml-->
+<mp-half-screen-dialog
+        ext-class="half-only-list"
+        closabled="{{false}}"
+        show="{{visible}}"
+        class="dialog-cancel">
+    <view slot="desc" class="dialog-cancel-body">
+        <view class="dialog-cancel-body-title">请选择取消订单原因（必选）</view>
+        <view class="dialog-cancel-body-items" wx:for="{{reasonList}}" wx:key="index">
+            <text>{{item.text}}</text>
+            <checkbox color="#B58209" value="{{item.text}}"
+                      checked="{{item.id === reasonId}}" id="{{item.id}}"
+                      data-text="{{item.text}}" bind:tap="radioChange"/>
+        </view>
+    </view>
+    <view slot="footer" class="dialog-cancel-footer">
+        <button type="primary" bindtap="onConfirm">确认</button>
+    </view>
+</mp-half-screen-dialog>

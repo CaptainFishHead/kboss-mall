@@ -1,0 +1,26 @@
+<import src="../../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<mp-half-screen-dialog title="{{retainedTile}}" ext-class="dialog retained-dialog" class="retained-dialog" show="{{visible}}" closabled="{{true}}" bindbuttontap="onConfirm" maskClosable="{{false}}">
+  <view slot="desc" class="content">
+    <view class="content-com inpt-box">
+      <view class="flex">
+        <view class="content-title info-com">手机号</view>
+        <input value="{{formValue.phoneNumber}}" data-title="phoneNumber" placeholder="请输入手机号码" bindinput="inputRetainedInfo" class="content-value info-com" placeholder-class="placeholder" maxlength="11" cursor-spacing="{{100}}" />
+      </view>
+    </view>
+    <view class="content-com inpt-box">
+      <view class="flex">
+        <view class="content-title info-com">姓名</view>
+        <input bindinput="inputRetainedInfo" data-title="name" class="content-value info-com" placeholder-class="placeholder" value="{{formValue.name}}" placeholder="请输入您的姓名" maxlength="20" cursor-spacing="{{100}}" />
+      </view>
+    </view>
+    <view class="content-com">
+      <textarea bindinput="inputRetainedInfo" data-title="fromWhere" value="{{formValue.fromWhere}}" class="content-know info-com" placeholder-class="placeholder" placeholder="从何渠道知道康老板(必填)" maxlength="50" cursor-spacing="{{100}}" />
+    </view>
+  </view>
+  <view slot="footer" class="content-btn">
+    <button bindtap="submit" type="primary" class="submit" hover-class="none">提交领康豆
+      <image class="arrow" mode="aspectFit" src="https://static.tojoyshop.com/images/wxapp-boss/getbeans/icon-right-arow.png" />
+    </button>
+  </view>
+</mp-half-screen-dialog>

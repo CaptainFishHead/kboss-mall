@@ -1,0 +1,17 @@
+<!-- 商品详情 弹层 title="商品详情" -->
+<mp-half-screen-dialog title="商品详情" show="{{ visible }}" bindclose="close" catchtouchmove="touchMove">
+  <view slot="desc">
+    <scroll-view scroll-y class="body">
+
+      <!-- 网络错误 -->
+      <view wx:if="{{showEmpty}}" style="height: {{showEmpty ? '800rpx' : 'auto'}}">
+        <empty ext-class="empty-box" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722" empotyDesc="{{errMsg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="backHandler" />
+      </view>
+
+      <block wx:else>
+        <product id="product" bind:empty="empty" bind:error="error" wx:if="{{visible}}" isWarpGoods="{{isWarpGoods}}" />
+      </block>
+
+    </scroll-view>
+  </view>
+</mp-half-screen-dialog>

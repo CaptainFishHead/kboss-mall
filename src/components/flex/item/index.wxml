@@ -1,0 +1,6 @@
+<view
+	style="--order: {{order}};--flex-shrink:{{shrink}};--flex-grow:{{grow}};--flex-basis:{{basis}};--align-self:{{self}};{{style}};"
+	class="flex-item class"
+>
+	<slot />
+</view>

@@ -1,0 +1,89 @@
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<navigation-bar
+  background="#FFFFFF"
+  back="{{!source}}"
+  title="{{orderType === ORDER_SOURCE_PAGE.WARMDOCTORCARD ? '预约结果': !source ? '支付结果' :  ''}}"
+  bind:back="goWarmDoctorHome"
+  >
+  <view slot="left" wx:if="{{source===1069}}">
+    <!-- <button open-type="launchApp" app-parameter="{{sdkPayCallback}}" bindlaunchapp="exit" binderror="launchAppError" class="home-icon"></button> -->
+    <button class="home-icon" bind:tap="goHome"></button>
+  </view>
+</navigation-bar>
+
+<view class="pay_success_cont">
+    <image class="ic_pay_img" src="https://static.tojoyshop.com/images/wxapp-boss/order/icon-success.png"></image>
+    <view class="txt">{{successDesc[orderType] || '支付成功'}}</view>
+    <!--   商品卡兑换成功 去掉金额-->
+    <view class="price_wrap" wx:if="{{orderType === '1' || orderType === '2'}}">
+      <block wx:if="{{totalAmount !== ''}}">
+        <text class="unit">¥</text>
+        <text class="price">{{totalAmount}}</text>
+      </block> 
+    </view>
+    <!--    sdk 和 场景进入 -->
+    <view class="btn_wrap" wx:if="{{source}}">
+      <button type="primary" open-type="launchApp" app-parameter="{{sdkPayCallback}}" class="size_btn"
+              bindlaunchapp="exit" binderror="launchAppError" wx:if="{{source===1069}}">返回商户
+      </button>
+      <button type="primary" bindtap="restart" class="size_btn" wx:if="{{source!==1069}}">去首页逛逛</button>
+    </view>
+    <!-- 温暖医生 立即预约进入 -->
+    <view class="btn_wrap" wx:elif="{{orderType === ORDER_SOURCE_PAGE.WARMDOCTORCARD}}">
+      <button type="primary" plain class="size_btn" bind:tap="onReservation">查看预约</button>
+    </view>
+    <view class="btn_wrap" wx:else>
+      <button type="primary" plain class="size_btn go_home" bindtap="restart">返回首页</button>
+      <button type="primary" class="size_btn" bindtap="goOrder">查看订单</button>
+    </view>
+    <!-- 温暖医生提示-->
+    <block wx:if="{{serviceOrderCode}}">
+      <subscribe-info isPayMoeny="{{orderType !== ORDER_SOURCE_PAGE.WARMDOCTORCARD}}" info="{{warmDoctorReserInfo}}" />
+      <adviser-entry avatar="{{serviceAdAvatar}}" wx:if="{{serviceAdAvatar}}"/>
+    </block>
+    <!-- 康豆奖励提示模块 -->
+    <view class="reward" wx:elif="{{rewardBean&&rewardBean!==0}}">
+        <view class="reward-top">
+            <image class="reward-top-icon" src="https://static.tojoyshop.com/images/wxapp-boss/order/icon-crown.png"/>
+            <view>
+                <text class="reward-top-t1">尊敬的康老板会员</text> 恭喜您获得以下奖励
+            </view>
+        </view>
+        <view class="reward-content">
+            <view class="reward-content-text">本单会员权益奖励</view>
+            <view class="reward-content-bottom">
+                <view class="reward-content-bottom-bean">
+                    <text class="reward-content-bottom-bean-num price">{{rewardBean}}</text>康豆
+                </view>
+                <view class="reward-content-bottom-btn" bind:tap="toBeanDetail">
+                    查看我的康豆
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+        <!-- 康豆规则弹窗 -->
+<mp-dialog ext-class="dialog-common dialog-beans dialog-overflow-visible"
+           mask-closable="{{false}}"
+           class="dialog-beans"
+           title="恭喜您获得奖励康豆"
+           show="{{beansDialog}}"
+           buttons="{{beansButtons}}"
+           bindbuttontap="closeBeadsDialog"
+           catchtouchmove="touchMove">
+    <view class="dialog-beans-cont">
+        <view class="dialog-beans-cont-num">
+            <image class="dialog-beans-cont-num-icon"
+                   src="https://static.tojoyshop.com/images/wxapp-boss/order/icon-bean1.png"/>
+            <text style="font-size:66rpx;" class="price">{{rewardBean || 0}}</text>
+        </view>
+        <view class="dialog-beans-cont-txt">如未到账，请稍后查询</view>
+    </view>
+    <!--    <image class="icon-close" bind:tap="closeBeadsDialog"
+               src="https://static.tojoyshop.com/images/wxapp-boss/order/close.png"/>-->
+</mp-dialog>
+<member-upgrade-dialog id="upgradeComponents" bind:closed="upgradeClosed"/>
+<global-back/>

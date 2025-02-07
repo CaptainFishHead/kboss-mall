@@ -1,0 +1,31 @@
+/* components/recommend/scroll-tabbar/index.wxss */
+.scroll-tabbar{
+  width: 100%;
+  white-space: nowrap;
+  // font-family: 'FZZZHONGJW';
+  &_item{
+    text-align: center;
+    margin: 0 15rpx;
+    display: inline-block;
+    font-size: 30rpx;
+    color: #999999;
+    padding: 20rpx 0;
+    &.on{
+      font-size: 34rpx;
+      color: #B58209;
+      position: relative;
+      font-weight: bold;
+      &::after{
+        content: "";
+        width: 30rpx;
+        height: 5rpx;
+        display: block;
+        background: linear-gradient(270deg, #EFD8A6 0%, #CFAF65 100%);
+        position: absolute;
+        left: 50%;
+        bottom: 18rpx;
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+}

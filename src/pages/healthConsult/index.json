@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "doctor-list": "../../components/health-consult/doctorList/index",
+    "adviser": "../../components/health-consult/adviser/index"
+  }
+}

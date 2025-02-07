@@ -1,0 +1,27 @@
+.empty-box {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    top: 42%;
+    transform: translateY(-50%);
+}
+
+.empty-img {
+    margin: 0 auto;
+    width: 240rpx;
+    height: 226rpx;
+}
+
+.empty-text {
+    padding: 40rpx 20rpx 0;
+    font-size: 28rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #666666;
+    line-height: 40rpx;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

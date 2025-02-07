@@ -1,0 +1,116 @@
+.container {
+  display: block;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+  padding: 36rpx 40rpx 46rpx;
+  border-radius: 10rpx;
+}
+
+.order-items-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 43rpx;
+  line-height: 37rpx;
+  position: relative;
+}
+
+.order-items-head .order-number {
+  font-size: 26rpx;
+  color: #666;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.order-items-head .order-status {
+  font-weight: bold;
+  font-size: 26rpx;
+}
+
+.order-tips {
+  position: absolute;
+  right: 0rpx;
+  bottom: -33rpx;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  text-align: right;
+}
+
+.order-items-warp {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.scroll-view-width {
+  margin-right: 30rpx;
+}
+
+.order-items-warp .order-img-area {
+  /* background-color: #F8F8F8; */
+  border-radius: 4rpx;
+  /* padding: 30rpx; */
+  font-size: 0;
+}
+
+.order-items-warp .order-img-area .images {
+  height: 138rpx;
+  width: 138rpx;
+}
+
+.order-name-area {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+}
+
+.order-name-area .order-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #0D0E15;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 440rpx;
+  line-height: 40rpx;
+}
+
+.order-name-area .order-sku {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 33rpx;
+}
+
+.order-name-area .order-sku .order-sku-time {
+  margin-bottom: 6rpx;
+}
+
+.order-name-area .order-sku .order-sku-name {
+  max-width: 300rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.handle-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 60rpx !important;
+  font-size: 24rpx !important;
+  font-weight: normal;
+}
+
+.container .order-status-color-danger {
+  color: #BC1817;
+}
+
+.container  .order-status-color-default {
+  color: #333333;
+}
+
+.container  .order-status-color-close {
+  color: #999999;
+}

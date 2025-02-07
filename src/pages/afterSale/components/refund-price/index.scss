@@ -1,0 +1,59 @@
+.refund{
+  &-title{
+    padding: 50rpx 20rpx 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+
+    &-des {
+      font-size: 34rpx;
+      color: #333;
+      font-weight: 500;
+    }
+
+    &-price {
+      font-size: 34rpx;
+      color: #333;
+      padding: 0 0 0 30rpx;
+
+      &::before {
+        // content: '¥ ';
+        font-size: 28rpx;
+      }
+    }
+  }
+
+  &-info{
+    padding: 26rpx 20rpx;
+    background: #FAFAFA;
+    font-size: 26rpx;
+
+    &-bean {
+      margin: 20rpx 0;
+    }
+    
+    &-amount,&-bean {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20rpx;
+    }
+
+    &-tips {
+      color: #b58209;
+      border-top: 1rpx solid #E4E4E4;
+      font-size: 24rpx;
+      padding-top: 16rpx;
+      line-height: 36rpx;
+    }
+  }
+
+}
+.ref-bean{
+  margin-top: 20rpx;
+}
+
+.price-size{
+  font-size: 30rpx;
+}

@@ -1,0 +1,176 @@
+//@import "./../../app";
+.login {
+  // background: #FFFFFF;
+  /*position: absolute;
+  width: 630rpx;
+  height: 590rpx;
+  box-sizing: border-box;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);*/
+  height: calc(480rpx + constant(safe-area-inset-bottom));
+  height: calc(480rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  border-radius: 4rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  //padding: 45rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.75);
+  padding: 76rpx calc(40rpx + constant(safe-area-inset-right))  33rpx calc(40rpx + constant(safe-area-inset-left));
+  padding: 76rpx calc(40rpx + env(safe-area-inset-right))  33rpx calc(40rpx + env(safe-area-inset-left));
+  & > view {
+    position: relative;
+    &.login-close {
+      position: absolute;
+      box-sizing: border-box;
+      text-align: right;
+      z-index: 100;
+      width: 100%;
+      left: 50%;
+      top: 0;
+      transform: translate3d(-50%,0,0);
+      padding:40rpx;
+      image {
+        width: 32rpx;
+        height: 32rpx;
+        display: inline-block;
+      }
+    }
+  }
+
+  &-mask {
+    height: 100%;
+    position: absolute;
+    z-index: 12;
+    background: rgba(0, 0, 0, 0);
+    width: 100%;
+  }
+
+  &-btn {
+    width: 100%;
+  }
+
+  .logo {
+    display: block;
+    width: 130rpx;
+    height: 130rpx;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 34rpx;
+    line-height: 60rpx;
+    font-weight: 800;
+  }
+
+  .btn-login {
+    width: 100%;
+  }
+
+  .agree {
+    color: rgba(0, 0, 0, .9);
+    line-height: 34rpx;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text + text {
+      margin-left: 10rpx;
+    }
+
+    navigator {
+      display: inline-block;
+      font-weight: bold;
+      margin-left: 10rpx;
+      text-decoration: underline;
+    }
+
+  }
+
+  /* checkbox大小的调整 */
+  checkbox {
+    transform: scale3d(0.7, 0.7, 1);
+  }
+
+  /*checkbox选中后图标样式  */
+  checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+    width: 28rpx;
+    height: 28rpx;
+    line-height: 28rpx;
+    text-align: center;
+    font-size: 22rpx;
+    color: #333;
+    background: transparent;
+    transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
+  }
+  .content-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .input-wrap {
+    padding: 30rpx 0;
+    border-bottom: 1rpx solid #ebebeb;
+    width: 100%;
+  }
+  .user-name {
+    font-size: 32rpx;
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #000000;
+    padding-left: 28rpx;
+    text-align: left;
+  }
+  .user-name-placeholder {
+    font-size: 32rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #c2c2c2;
+  }
+  .getCode {
+    position: absolute;
+    top: 36rpx;
+    color: #666;
+    font-size: 30rpx;
+    right: 0;
+    text-align: center;
+    border-left: 1rpx solid #ebebeb;
+    width: 228rpx;
+    line-height: 48rpx;
+  }
+  .getCode.off {
+    color: #bdbdbd;
+  }
+  .user-placeholder {
+    color: #c2c2c2;
+  }
+  .user-code {
+    font-size: 32rpx;
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    width: 392rpx;
+    line-height: 60rpx;
+    height: 60rpx;
+    color: #000000;
+    padding-left: 28rpx;
+    text-align: left;
+  }
+  .user-code-box {
+    position: relative;
+    font-size: 32rpx;
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    width: 100%;
+    height: 120rpx;
+    color: #000000;
+    overflow: hidden;
+    margin-bottom: 20rpx;
+  }
+}

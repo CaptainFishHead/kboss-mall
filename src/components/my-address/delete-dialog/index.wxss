@@ -1,0 +1,39 @@
+/* pages/address/delete-dialog/index.wxss */
+.title{
+    border-bottom: 1rpx solid #E4E4E4; 
+    padding-bottom: 40rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40rpx;
+    margin-bottom: 20rpx;
+ }
+ .content{
+     padding-bottom: 50rpx;
+ }
+ .wranning{
+     font-size: 34rpx;
+     font-weight: bold;
+ }
+ .close-btn{
+     width: 20rpx;
+     height: 20rpx;
+     padding:0 10rpx;
+     position: relative;
+     z-index: 1;
+ }
+ .del-btn{
+    position: fixed;
+    bottom: 44rpx;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 670rpx !important;
+    height: 108rpx;
+    line-height: 108rpx;
+    color: #000;
+    font-size: 32rpx;
+    font-weight: bold;
+    background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+    border-radius: 0;
+}

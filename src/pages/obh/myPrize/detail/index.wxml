@@ -1,0 +1,70 @@
+<!-- wetoast -->
+<import src="../../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<scroll-view scroll-y enhanced bind:scroll="pageScrolling" class="page-container">
+	<view class="scroll-content {{prizeInfo.claimStatus===1 ? 'full' : ''}}">
+		<!-- <navigation-bar title="兑奖详情" ext-class="prize-nav" background="rgba(255,255,255, {{opacity > 0.2 ? 1 : 0}})" bindback="goBack" /> -->
+		<navigation-bar title="" ext-class="prize-nav" background="rgba(255,255,255, 0)" bindback="goBack" />
+		<!-- 奖品信息 -->
+		<prize-info prizeInfo="{{prizeInfo}}" bind:timeout="prizeTimeout"/>
+		<!-- 其他奖品信息 物流、伴侣等 -->
+		<view class="prize-other-info">
+			<!-- 物流状态 -->
+			<view class="logistic-info card-wrap" wx:if="{{prizeInfo.claimStatus===4 || prizeInfo.claimStatus===5}}">
+				<card-title imgUrl="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/yjxx_title.png"/>
+				<logistics bind:showLogistic="showLogistic" bind:showService="showService" logisticsInfo="{{logisticsInfo}}"/>
+			</view>
+			<!-- 奖品伴侣 -->
+			<block wx:if="{{prizeInfo.hasPrizePartner === 1 && statusMap[prizeInfo.claimStatus] != 5}}">
+				<!-- 伴侣待购买 -->
+				<view class='banlv-goods card-wrap' wx:if="{{prizeInfo.claimStatus===1}}">
+					<card-title imgUrl="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/ybcp_title.png"/>
+					<view class="no-share">
+						<view class="no-share-des" wx:if="{{shareList.length && prizeInfo.shareNum}}">
+							<view class="tab"><image class="tab-img" src="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/not-share.png" mode="aspectFit"/></view>
+							<view class="text">免分享直接购买得奖品</view>
+						</view>
+						<view class="goods-list">
+							<goods-item class="goods-item" wx:for="{{noShareList}}" wx:key="index" goodsInfo="{{item}}" prizeInfo="{{prizeInfo}}"/>
+						</view>
+					</view>
+					<view class="need-share" wx:if="{{shareList.length && prizeInfo.shareNum}}">
+						<view class="share-des">
+							<view class="share-top">
+								<view class="tab"><image class="tab-img" src="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/need-share.png" mode="aspectFit"/></view>
+								<view class="text">
+									<view class="text1">分享{{prizeInfo.shareNum}}人登录后购买得奖品</view>
+									<view class="text2">被分享人登录成功后即算分享成功</view>
+								</view>
+								<button type="primary" plain class="handle-btn share-btn" open-type="share">
+									立即分享
+								</button>
+							</view>
+							<share-users wx:if="{{shareUserList.length}}" userList="{{shareUserList}}" allNum="{{prizeInfo.shareNum}}"/>
+						</view>
+						<view class="goods-list">
+							<goods-item class="goods-item" wx:for="{{shareList}}" wx:key="index" goodsInfo="{{item}}" prizeInfo="{{prizeInfo}}"/>
+						</view>
+					</view>
+				</view>
+				<!-- 伴侣已购买 -->
+				<view class="banlv-order card-wrap" wx:else>
+					<card-title imgUrl="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/ygm_ybcp_title.png"/>
+					<prize-card prizeInfo="{{prizeInfo}}" prizeType="banlv"/>
+				</view>
+			</block>
+		</view>
+	</view>  
+</scroll-view>
+<view class="right-btn-box">
+	<authorize ext-class="service-btn" optimization bind:success="">
+		<service-btn bind:showServices="showServices" serviceVisible="{{serviceVisible}}">
+			<view class="service com-btn" bindtap="showService">
+				<image class="service-img" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon-servers.png" mode="aspectFit" />
+			</view>
+		</service-btn>
+	</authorize>
+</view>
+<!-- 物流详情弹窗 -->
+<logistics-detail bind:closeLogistics="closeLogistics" logisticsVisible="{{logisticsVisible}}" logisticsInfo="{{logisticsInfo}}"/>
+

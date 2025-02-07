@@ -1,0 +1,10 @@
+<view class="weui-flex address">
+    <view class="weui-flex__item">
+      <view class="address-user">
+          {{orderInfo.receiverName ? orderInfo.receiverName + ' ' + orderInfo.receiverMobile : '收货地址'}}
+      </view>
+      <view class="ext-class">{{orderInfo.receiverAddress}}</view>
+    </view>
+    <slot name="edit-btn"/>
+</view>
+

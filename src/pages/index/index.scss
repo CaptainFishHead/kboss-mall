@@ -1,0 +1,518 @@
+/**index.wxss**/
+@import "./../../components/toast/index.wxss";
+@import "./../../styles/carrier.scss";
+
+.nav {
+  z-index: 4000;
+
+  .weui-navigation-bar__inner {
+    will-change: background;
+    transition: background linear .1s;
+    display: flex;
+    align-items: center;
+    z-index: 400;
+
+    .weui-navigation-bar__right {
+      margin-right: 10px;
+    }
+
+    .weui-navigation-bar__left {
+      width: auto !important;
+      padding-left: 10px;
+    }
+  }
+}
+
+.nav-bar {
+  flex: 0 1 152rpx;
+  margin-right: 10px;
+  font-size: 0;
+
+  .logo {
+    // display: block;
+    min-width: 100%;
+    height: var(--menuButtonHeight);
+    max-width: 70rpx;
+  }
+}
+
+.center {
+  flex: 1;
+  text-align: left;
+
+  .br-36 {
+    .searchbar {
+      height: var(--menuButtonHeight) !important;
+    }
+
+    .searchbar-lf {
+      border-radius: 36rpx;
+      background-color: #fff !important;
+
+    }
+  }
+
+}
+
+.clear-margin {
+  margin: 0;
+}
+
+page {
+  //-webkit-filter:grayscale(.95)
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #F2F9F9;
+
+}
+
+.headBg {
+  width: 100%;
+  height: 314rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  image {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.homescroll {
+  width: 100%;
+  height: 100vh;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+  padding-bottom: calc(114rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(114rpx + env(safe-area-inset-bottom));
+
+  .swiper {
+    width: 100%;
+    height: 314rpx;
+    // padding: 0 10rpx;
+    box-sizing: border-box;
+
+    .contbox {
+      width: 100%;
+      height: 314rpx;
+
+      image {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  // 固定入口
+  .categoryBox {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 40rpx;
+
+    &-category {
+      width: 100%;
+      background: linear-gradient(113deg, #E4F8F6 0%, #ECFDFB 16%, #F9FFFE 34%, #E9FFFD 60%, #EAFFFD 73%, #D1F3EF 93%, #E1F7F5 100%, #E1F7F5 100%);
+      border-radius: 10rpx;
+      border: 2rpx solid rgba(156, 240, 230, 1);
+      padding: 56rpx 0;
+      box-sizing: border-box;
+
+      &-categorys {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+
+        &-categoryLi {
+          width: 50%;
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          padding: 0 32rpx;
+          box-sizing: border-box;
+          position: relative;
+
+          &-titleImg {
+            width: 50rpx;
+            height: 50rpx;
+          }
+
+          &-categoryRight {
+            &-title {
+              font-weight: 600;
+              font-size: 32rpx;
+              line-height: 32rpx;
+              color: #007469;
+            }
+
+            &-tip {
+              font-weight: 400;
+              font-size: 26rpx;
+              line-height: 26rpx;
+              margin-top: 14rpx;
+              color: #666666;
+            }
+          }
+        }
+
+        .categoryLi0::after,
+        .categoryLi2::after {
+          content: '';
+          width: 2rpx;
+          height: 44rpx;
+          background: linear-gradient(180deg, rgba(0, 154, 170, 0) 0%, #006171 49%, rgba(0, 97, 113, 0) 100%);
+          opacity: 0.3;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translate(0, -50%);
+        }
+
+        .categoryLi2,
+        .categoryLi3 {
+          margin-top: 84rpx;
+        }
+      }
+
+      &-categorys::after {
+        content: "";
+        width: 641rpx;
+        height: 2rpx;
+        background: linear-gradient(270deg, rgba(0, 97, 113, 0) 0%, #007484 50%, rgba(0, 154, 170, 0) 100%);
+        opacity: 0.1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  // 咨询顾问
+  .counselorBox {
+    width: 100%;
+    // padding: 0 10rpx;
+    box-sizing: border-box;
+    margin-top: 40rpx;
+
+    &-counselor {
+      width: 100%;
+      height: 252rpx;
+      background-image: url('https://static.tojoyshop.com/images/wxapp-boss/home/consultant_bg.png?v=1.0.1');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      padding: 37rpx 27rpx 37rpx 33rpx;
+      box-sizing: border-box;
+
+      &-userinfo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &-userBox {
+          display: flex;
+          align-items: center;
+
+          &-counselorTitle {
+            width: 121rpx;
+            height: 121rpx;
+            border-radius: 50%;
+          }
+
+          &-usertext {
+            margin-left: 26rpx;
+
+            &-namebox {
+              display: flex;
+              align-items: center;
+
+              &-name {
+                font-weight: 600;
+                font-size: 34rpx;
+                color: #6C3305;
+              }
+
+              &-medal {
+                width: 34rpx;
+                height: 34rpx;
+                margin-left: 4rpx;
+              }
+            }
+
+            &-counselorLevel {
+              font-weight: 400;
+              font-size: 28rpx;
+              color: #6C3305;
+              line-height: 40rpx;
+            }
+          }
+        }
+
+        &-counselorBtn {
+          width: 209rpx;
+          height: 60rpx;
+          background: linear-gradient(135deg, #C1AB87 0%, #E3C899 31%, #B3862F 100%);
+          border-radius: 32rpx;
+          font-weight: 600;
+          font-size: 32rpx;
+          color: #FFFFFF;
+          line-height: 45rpx;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &-counselorImg {
+            width: 24rpx;
+            height: 24rpx;
+            margin-left: 6rpx;
+          }
+        }
+      }
+
+      &-label {
+        display: flex;
+        align-items: center;
+        margin-top: 22rpx;
+
+        &-labelLi {
+          // width: 110rpx;
+          height: 35rpx;
+          padding: 0 16rpx;
+          border-radius: 20rpx;
+          border: 2rpx solid;
+          box-sizing: border-box;
+          font-weight: 400;
+          font-size: 24rpx;
+          color: #B28028;
+          margin-left: 9rpx;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    &-counselorDefault {
+      width: 100%;
+      height: 252rpx;
+
+      &-counselorDefaultImg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .recommendBox {
+    width: 100%;
+    // padding: 0 10rpx;
+    box-sizing: border-box;
+    margin-top: 40rpx;
+
+    &-recommend {
+      width: 100%;
+      padding-bottom: 20rpx;
+      box-sizing: border-box;
+
+      &-recommendHead {
+        width: 100%;
+        height: 65rpx;
+        font-weight: 700;
+        font-size: 38rpx;
+        color: #404040;
+        background-image: url('https://static.tojoyshop.com/images/wxapp-boss/home/recommendation_bg.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &-recommendLabeltitle {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 24rpx;
+        font-weight: 400;
+        font-size: 28rpx;
+        color: #117B61;
+
+        .fenge {
+          margin: 0 10rpx;
+        }
+      }
+
+      &-recommendWrap {
+        width: 100%;
+        margin-top: 24rpx;
+        background: #F2F9F9;
+        border-radius: 10rpx;
+        border: 2rpx solid rgba(156, 240, 230, 1);
+        padding: 16rpx 24rpx 0 24rpx;
+        box-sizing: border-box;
+        position: relative;
+
+        .firstBg {
+          width: 100%;
+          height: 536rpx;
+          background: linear-gradient(0deg, #F3F9F7 0%, #C2EBE4 75%, #C2EBE4 100%);
+          border-top-left-radius: 10rpx;
+          border-top-right-radius: 10rpx;
+          // background: linear-gradient( 0deg, #FFFFFF 0%, #F3F9F7 75%, #C2EBE4 100%);
+          border-top-left-radius: 10rpx;
+          border-top-right-radius: 10rpx;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+
+        .recommendLi {
+          width: 100%;
+          height: 484rpx;
+          margin-top: 24rpx;
+          position: relative;
+          border-radius: 10rpx;
+
+          .television {
+            width: 50rpx;
+            height: 50rpx;
+            position: absolute;
+            right: 24rpx;
+            top: 24rpx;
+          }
+
+          .liveState {
+            width: 167rpx;
+            height: 50rpx;
+            background: rgba(0, 0, 0, 0.61);
+            border-radius: 0rpx 0rpx 10rpx 0rpx;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 400;
+            font-size: 24rpx;
+            color: #FFFFFF;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            .liveImg {
+              width: 31rpx;
+              height: 31rpx;
+              margin-right: 9rpx;
+            }
+          }
+
+          .recommendImg {
+            width: 100%;
+            height: 100%;
+            border-radius: 10rpx;
+          }
+
+          .recommendFoot {
+            width: 100%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FFFFFF 100%);
+            border-radius: 0rpx 0rpx 10rpx 10rpx;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 24rpx 24rpx;
+            box-sizing: border-box;
+
+            .recommendTitle {
+              font-weight: 600;
+              font-size: 34rpx;
+              color: #2D2D2D;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 1;
+              /* 定义文本的行数 */
+              -webkit-box-orient: vertical;
+              /* 最大高度，行高乘以行数 */
+              white-space: normal;
+              // margin-top: 10rpx;
+            }
+
+            .recommendTip {
+              font-weight: 400;
+              font-size: 30rpx;
+              color: #4A4A4A;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 1;
+              /* 定义文本的行数 */
+              -webkit-box-orient: vertical;
+              /* 最大高度，行高乘以行数 */
+              white-space: normal;
+            }
+
+            .recommendbot {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-top: 10rpx;
+
+              .recommendLabel {
+                display: flex;
+                align-items: center;
+
+                .categoryName {
+                  // width: 144rpx;
+                  // height: 46rpx;
+                  padding: 10rpx 20rpx;
+                  box-sizing: border-box;
+                  background: #D4F1EA;
+                  border-radius: 4rpx;
+                  display: flex;
+                  margin-right: 20rpx;
+                  align-items: center;
+                  justify-content: center;
+                  font-weight: 400;
+                  font-size: 26rpx;
+                  color: #666666;
+                }
+              }
+
+              .popularity {
+                display: flex;
+                align-items: center;
+                font-weight: 400;
+                font-size: 28rpx;
+                color: #727272;
+
+                .icon_like {
+                  width: 35rpx;
+                  height: 35rpx;
+                  margin-right: 12rpx;
+                }
+              }
+
+              .directBtn {
+                width: 219rpx;
+                height: 60rpx;
+                background: linear-gradient(135deg, #FFF4E3 0%, #FDD79B 100%);
+                border-radius: 6rpx;
+                font-weight: 600;
+                font-size: 30rpx;
+                color: #907146;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

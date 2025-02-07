@@ -1,0 +1,24 @@
+<view class="container-obh">
+  <navigation-bar title="氧吧酒店" background="#fff" />
+  <view class="obh-wrap">
+    <image wx:for="{{images}}" wx:key="index" src="{{item}}" class="land-image" mode="widthFix" />
+
+    <view class="bottom-container-fake">
+      <view class="bottom-item" style="opacity: 0;">
+      </view>
+    </view>
+  </view>
+</view>
+<view class="obh-wrap">
+  <view class="bottom-container" wx:if="{{hasDeviceFlag == 1}}">
+    <view class="bottom-item buy-btn" catchtap="gotoBuy">购买氧吧设备</view>
+    <view class="bottom-item" catchtap="gotoBuyService">
+      <view class="bottom-item-text">我想体验</view>
+      <view class="bottom-item-tips">可查询服务记录</view>
+    </view>
+  </view>
+  <view class="bottom-container" wx:else>
+    <view class="bottom-item buy-btn" catchtap="gotoHome">查看更多健康产品</view>
+    <view class="bottom-item" catchtap="gotoBuy">立即购买 </view>
+  </view>
+</view>

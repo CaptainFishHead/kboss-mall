@@ -1,0 +1,15 @@
+<navigation-bar title="历史优惠券" background="#fff"/>
+
+<view class="container">
+    <block wx:if="{{voucherList && voucherList.length}}" wx:for="{{voucherList}}" wx:key="index">
+        <voucher-item voucher="{{item}}" index="{{index}}" scene="4" bind:tapCurItem="onTapCurItem"/>
+    </block>
+    <empty wx:if="{{voucherList && voucherList.length === 0 && !isLoading}}"
+           imgUrl="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-voucher-empty.png"
+           empotyDesc="没有相关优惠券记录"/>
+<!--    <mp-loading tips="正在加载" show="{{isHideLoadMore}}" type="circle"/>-->
+</view>
+<!-- wetoast -->
+<import src="../../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+<global-back/>

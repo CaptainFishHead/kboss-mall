@@ -1,0 +1,72 @@
+@mixin dialog() {
+  .dialog-v2 {
+    .link {
+      color: #956A03;
+    }
+    .weui-dialog__hd {
+      display: none;
+    }
+
+    &, .weui-dialog {
+      width: 630rpx;
+      border-radius: 10rpx;
+    }
+    .weui-dialog__bd {
+      margin: 38rpx 40rpx 42rpx;
+      padding: 0;
+    }
+  }
+}
+@mixin v2-dialog() {
+  .v2_dialog {
+    box-sizing: border-box;
+    padding: 0;
+
+
+  }
+}
+
+@mixin v2-dialog-title() {
+  .v2_dialog {
+    &-title {
+      font-size: 34rpx;
+      font-weight: 500;
+      line-height: 48rpx;
+      color: #333333;
+      text-align: left;
+    }
+  }
+}
+
+@mixin v2-dialog-body() {
+  .v2_dialog {
+    &-body {
+      text-align: justify;
+      line-height: 50rpx;
+      font-size: 30rpx;
+      letter-spacing: 1rpx;
+    }
+  }
+}
+
+@mixin v2-dialog-footer() {
+  .v2_dialog {
+    &-footer {
+      margin-top: 40rpx;
+      button {
+        border-radius: 4rpx;
+        width: 100%;
+        height: 80rpx;
+        padding: 0;
+        line-height: 80rpx;
+        font-size: 30rpx;
+        font-weight: 500;
+        &[type="default"] {
+          border: 2rpx solid #999;
+          color: #666;
+          background: none;
+        }
+      }
+    }
+  }
+}

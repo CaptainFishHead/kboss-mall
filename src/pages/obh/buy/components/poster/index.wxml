@@ -1,0 +1,10 @@
+<!--pages/obh/promotion/components/poster/index.wxml-->
+<view class="poster-container" catch:touchmove="touchMove1">
+  <scroll-view scroll-y style="height: calc(100vh - 340rpx); padding-bottom: 100rpx;">
+    <image src="{{posterUrl}}" class="poster" mode="widthFix" show-menu-by-longpress="{{true}}" />
+  </scroll-view>
+</view>
+
+<view class="canvas-container">
+	<canvas type="2d" id="poster" canvas-id="poster" style="width: 500rpx; height: 1000rpx;"></canvas>
+</view>

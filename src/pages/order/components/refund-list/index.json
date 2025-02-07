@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "goods-count": "../../../../components/goods-count/index",
+    "mp-checkbox-group": "weui-miniprogram/checkbox-group/checkbox-group",
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "empty": "../../../../components/empty/index"
+  }
+}

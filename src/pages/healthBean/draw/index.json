@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "retained-info":"../components/retained-info/index"
+  }
+}

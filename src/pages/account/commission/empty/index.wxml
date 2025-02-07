@@ -1,0 +1,9 @@
+<!--pages/commission/empty/index.wxml-->
+<empty ext-class="commission-empty">
+    <view slot="img" >
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/commission/null-pic.png?v=202204070354" class="empty-pic"/>
+    </view>
+    <view slot="desc">
+        <text class="empty-desc">暂无收益</text>
+    </view>
+</empty>

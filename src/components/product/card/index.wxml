@@ -1,0 +1,30 @@
+<wxs src="../../../utils/filter.wxs" module="filter"/>
+
+<view class="weui-flex product"
+      style="--flex-direction:{{direction}};--flex-ext-direction:{{extDirection}};--flex-ext-justify-content:{{extJustifyContent}};--flex-price-text-align:{{priceTextAlign}};--flex-body-direction:{{bodyDirection}};--flex-body-height:{{bodyHeight}};--flex-body-text-align:{{bodyTextAlign}};--product-base-size:{{productBaseSize}};--product-name-color:{{productNameColor}};--product-name-size:{{productNameSize}};--product-desc-color:{{productDescColor}};--product-desc-size:{{productDescSize}};--product-cover-flex:{{productCoverFlex}};--product-cover-width:{{productCoverWidth}};--product-cover-height:{{productCoverHeight}};--product-bg-color:{{productBgColor}};--product-height:{{productHeight}};--product-margin:{{productMargin}};--product-padding:{{productPadding}};--product-box-shadow:{{productBoxShadow}};--product-border:{{productBorder}};--product-border-radius:{{productBorderRadius}};--product-name-height:{{productNameHeight}};"
+      bind:tap="clickEventHandler" data-item="{{prodItem}}"
+>
+	<view class="product-cover">
+		<image src="{{prodItem.productImg}}"/>
+	</view>
+	<view class="weui-flex__item">
+		<!-- 商品基础信息 -->
+		<view class="weui-flex product-body">
+			<view class="weui-flex__item">
+				<view class="product-name" style="--product-name-margin:{{productNameMargin}};">{{prodItem.spuName}}</view>
+				<view class="product-desc" wx:if="{{showDesc}}">商品描述（小标题）</view>
+			</view>
+			<view class="weui-flex__item" wx:if="{{showPrice||showSales}}">
+				<view class="weui-flex product-ext">
+					<view class="weui-flex__item product-ext-price price"
+					      style="--flex-price-font-size:{{priceFontSize}};"
+					      wx:if="{{showPrice}}">
+						<text>¥</text> {{filter.moneyFormat(prodItem.salePrice)}}
+					</view>
+					<view class="weui-flex__item product-ext-sales" wx:if="{{showSales}}">销量</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<slot/>
+</view>

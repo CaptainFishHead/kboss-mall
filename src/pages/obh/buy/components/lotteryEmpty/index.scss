@@ -1,0 +1,56 @@
+/* pages/obh/promotion/components/lotteryEmpty/index.wxss */
+.lottery-empty-container {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: center;
+  z-index: 10000;
+
+  .img-container {
+    position: relative;
+    width: 369rpx;
+    height: 230rpx;
+    margin: 480rpx auto 43rpx;
+
+    .img-background {
+      width: 100%;
+      height: 100%;
+    }
+
+    .img-front {
+      width: 178rpx;
+      height: 168rpx;
+      position: absolute;
+      left: 150rpx;
+      
+      animation: anim 2s ease-in-out 0s infinite alternate both;
+    }
+  }
+}
+
+
+@keyframes anim {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.empty-txt1 {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.empty-txt2 {
+  font-size: 24rpx;
+  margin-top: 6rpx;
+  color: #333;
+}

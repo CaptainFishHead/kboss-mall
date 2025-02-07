@@ -1,0 +1,16 @@
+<!--plugin/components/live-goods-card.wxml-->
+<view class="goods-card class" wx:if="{{product.spuId}}" catch:tap>
+  <view class="goods-box">
+    <view class="goods-box-tag goods-box-tag-hot" wx:if="{{product.isTop === 1}}">热卖</view>
+    <view class="goods-box-tag goods-box-tag-sort" wx:elif="{{product.serialNo >= 0}}">{{product.serialNo}}</view>
+    <image class="goods-img" mode="aspectFill" src="{{product.spuImgUrl}}"></image>
+  </view>
+  <view class="goods-info">
+    <view class="goods-name two-line"><text>{{product.spuName}}</text></view>
+    <!-- <view class="goods-des"><text>正品保障 | 坏损包退</text></view> -->
+    <view class="goods-bottom">
+      <text class="goods-price"><text class="goods-price-uni">￥</text>{{product.skuPrice - 0}}</text>
+      <button class="goods-buy" catch:tap="btnHandler">{{btnText}}</button>
+    </view>
+  </view>
+</view>

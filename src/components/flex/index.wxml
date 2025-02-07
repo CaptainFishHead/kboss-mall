@@ -1,0 +1,6 @@
+<view
+	style="--flex-direction: {{direction}};--align-items:{{alignItems}};--flex-wrap:{{wrap}};--justify-content:{{justifyContent}};--align-content:{{alignContent}};{{space?('margin:'+fix):''}};--flex-item-margin:{{margin}};{{style}}"
+	class="flex class" id="{{refId}}"
+>
+	<slot></slot>
+</view>

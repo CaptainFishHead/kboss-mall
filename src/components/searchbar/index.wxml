@@ -1,0 +1,37 @@
+
+<view class="searchbar-box {{isBlack && 'isBlack'}} {{isLink && 'isLink'}} {{extClass}}">
+
+  <view class="searchbar">
+    <view class="searchbar-lf" bindtap="{{isLink ? 'toSearchPage' : ''}}">
+
+      <view class="searchbar-input">
+        <block wx:if="{{isLink}}">
+          <view class="icon-search" />
+        </block>
+        <block wx:else>
+          <view class="icon-search" />
+          <input type="text" placeholder="{{placeholder}}" focus="{{isFocus}}" value="{{val}}" confirm-type="search" bindconfirm="onConfirm" bindfocus="onFocus" bindblur="onBlur" bindinput="onEdit" wx:if="{{isval}}"/>
+          <!--   -->
+          <view class="icon-clear" bindtap="onClear" wx:if="{{val}}" />
+        </block>
+      </view>
+
+      <swiper class="swiper" vertical circular autoplay="{{!isFocus && !val}}" current="{{curIndex}}" interval="6000" easing-function="easeOutCubic" bindchange="swiperChange" bindtransition="swiperTransition" style="opacity: {{!isFocus && !val ? 1 : 0}}">
+        <block wx:for="{{placeholderList}}" wx:key="index">
+          <swiper-item>
+            <view class="swiper-item" style="opacity: {{opacity}}">
+              <view>{{item.wordName}}</view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+
+    </view>
+
+    <view class="searchbar-rg" style="{{plain ? 'padding: 0' : ''}}" bindtap="{{isLink ? 'toSearchPage' : ''}}" data-frombtn="{{isLink}}" wx:if="{{showBtn}}">
+      <button type="primary" size="mini" plain="{{plain}}" bindtap="{{isLink ? '' : 'onConfirm'}}">搜索</button>
+    </view>
+  </view>
+
+
+</view>

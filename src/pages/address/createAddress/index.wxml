@@ -1,0 +1,51 @@
+<!--pages/address/createAddress/index.wxml-->
+<import src="../../../components/toast/index.wxml"/>
+<navigation-bar ext-class="navigation" title='{{title}}' background="#fff" />
+<view class="create-address-container">
+    <form id="form" class="create-address-form" bindsubmit="onSumint">
+        <view class="section">
+            <input name="acceptName" value="{{formValue.acceptName}}" placeholder="请输入真实姓名" 	adjust-position="{{false}}" bindinput="onInputName" bindtap="togglePos" />
+        </view>
+        <view class="section">
+            <input type="number" name="receiveMobile" value="{{formValue.receiveMobile}}" placeholder="请输入电话号码" maxlength="{{11}}" adjust-position="{{false}}" bindinput="onInputMobile"  bindtap="togglePos"/>
+        </view>
+        <view class="section select-box"  bindtap="togglePos">
+            <input name="provinceId" value="{{formValue.provinceId}}" class="hidden-input"/>
+            <input name="cityId" value="{{formValue.cityId}}" class="hidden-input"/>
+            <input name="areaId" value="{{formValue.areaId}}" class="hidden-input"/>
+            <input name="provinceName" value="{{formValue.provinceName}}" class="hidden-input"/>
+            <input name="cityName" value="{{formValue.cityName}}" class="hidden-input"/>
+            <input name="areaName" value="{{formValue.areaName}}" class="hidden-input"/>
+            <city-picker id="cityPicker" sourceData="{{provinceData}}" value="{{formValue}}" bindchange="onChangeCity">
+                <view catchtap="onOpenCityPicker">
+                    <view class="city-txt" wx:if="{{formValue && formValue.provinceId}}">{{formValue.provinceName}}{{formValue.cityName}}{{formValue.areaName}}</view>
+                    <view class="city-desc" wx:else>请输入所在城市</view>
+                </view>
+            </city-picker>
+        </view>
+        <view class="section detail-box">
+            <input name="detailAddress" value="{{formValue.detailAddress}}" placeholder="请输入详细地址" 	adjust-position="{{false}}"	bindinput="onInputAddress" bindtap="togglePos"/>
+            <view class="map-in" bindtap="onChooseAddress">
+              <text wx:if="{{isFirstIn}}">点击此处可定位当前地址</text>
+            </view>
+        </view>
+        <view class="weui-flex default-edit">
+            <view class="weui-flex__item default-text">设为默认地址</view>
+            <view class="weui-flex__item switch-box">
+                <switch name="isDefault" checked="{{formValue.isDefault}}" color="#cfaf65" class="switch" bindchange="onChangeSwitch"  />
+            </view>
+        </view>
+        <view class="btn-box-bottom">
+            <block wx:if="{{addressId}}">
+                <button type="primary" plain="true" bindtap="openDelDialog">删除</button>
+            </block>
+            <block>
+                <button type="primary" form-type="submit">提交地址信息</button>
+            </block>
+        </view>
+    </form>
+</view>
+<delete-dialog visible="{{visible}}" bindconfirmDel="onDelAddress" />
+<!-- wetoast -->
+<template is="toast" data="{{...tj_toast}}"/>
+<global-back/>

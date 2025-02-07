@@ -1,0 +1,63 @@
+/**index.wxss**/
+@import "./../../components/toast/index.wxss";
+@import "./../../styles/carrier.scss";
+
+.nav {
+  z-index: 4000;
+
+  .weui-navigation-bar__inner {
+    will-change: background;
+    transition: background linear .1s;
+    display: flex;
+    align-items: center;
+    z-index: 400;
+
+    .weui-navigation-bar__right {
+      margin-right: 10px;
+    }
+
+    .weui-navigation-bar__left {
+      width: auto !important;
+      padding-left: 10px;
+    }
+  }
+}
+
+.nav-bar {
+  flex: 0 1 152rpx;
+  margin-right: 10px;
+  font-size: 0;
+
+  .logo {
+    // display: block;
+    min-width: 100%;
+    height: var(--menuButtonHeight);
+    max-width: 70rpx;
+  }
+}
+
+.center {
+  flex: 1;
+  text-align: left;
+
+  .br-36 {
+    .searchbar {
+      height: var(--menuButtonHeight) !important;
+    }
+
+    .searchbar-lf {
+      border-radius: 36rpx;
+      background-color: #fff !important;
+
+    }
+  }
+
+}
+
+.clear-margin{
+  margin: 0;
+}
+page {
+  padding-bottom: calc(110rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(110rpx + env(safe-area-inset-bottom));
+}

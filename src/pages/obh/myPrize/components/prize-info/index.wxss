@@ -1,0 +1,232 @@
+.prize-info {
+  padding: 250rpx 0 20rpx 0;
+  background: linear-gradient(180deg, #EDFBF9 0%, #F3FFFD 34%, #D6F5F1 100%);
+  position: relative;
+}
+.prize-info.big-margin .zhuhe-text {
+  margin-top: 30rpx;
+}
+.prize-info.big-margin .prize-name {
+  margin-top: 57rpx;
+}
+.prize-info.big-margin .prize-btn {
+  margin-top: 80rpx;
+}
+.prize-info.donghua .zhuhe-img {
+  animation: zhuhe 1s ease-in-out 0s forwards;
+}
+.prize-info.donghua .prize-img-wrap {
+  animation: prize 2s ease-in-out 0s forwards;
+  transform-origin: bottom;
+}
+.prize-info.donghua .prize-brage {
+  transform: translateX(1000rpx);
+  animation: brage 0.2s ease-in-out 2s forwards;
+}
+.prize-info.donghua .prize-name {
+  animation: prizeName 2s ease-in-out 0s forwards;
+}
+
+.dashed-text {
+  display: inline;
+  text-decoration-line: underline; /* 线类型 下划线 */
+  text-decoration-color: rgba(0,112,99,0.36); /* 线颜色 */
+  text-decoration-style: dashed; /* 线样式 虚线 */
+  text-decoration-thickness: 2rpx; /* 线粗细 */
+  text-underline-offset: 15rpx; /* 线偏移 */
+}
+.solid-text {
+  display: inline;
+  text-decoration-line: underline; /* 线类型 下划线 */
+  text-decoration-color: #007063; /* 线颜色 */
+  text-decoration-style: solid; /* 线样式 实线 */
+  text-decoration-thickness: 2rpx; /* 线粗细 */
+  text-underline-offset: 15rpx; /* 线偏移 */
+}
+.zhuhe-img {
+  width: 750rpx;
+  position: absolute;
+  top: -185rpx;
+  left: 0;
+}
+.zhuhe-text {
+  padding-left: 69rpx;
+}
+.zhuhe-title {
+  height: 49rpx;
+  font-size: 40rpx;
+  font-family: FZYANS_CUJW, DINAlternate;
+  font-weight: normal;
+  color: #007063;
+  line-height: 49rpx;
+  display: flex;
+  align-items: center;
+  text-underline-offset: 20rpx; /* 线偏移 */
+}
+.zhuhe-title .nickname {}
+.zhuhe-content {
+  width: 612rpx;
+  font-size: 34rpx;
+  font-family: FZYANS_CUJW, DINAlternate;
+  font-weight: normal;
+  color: #333333;
+  line-height: 65rpx;
+  margin-top: 16rpx;
+  text-align: justify;
+}
+.prize-wrap {
+  margin-top: 87rpx;
+  background-image: url(https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/prize-info-bg.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+.prize-img-wrap {
+  margin: 0 auto;
+  padding: 83rpx 101rpx 89rpx 103rpx;
+  width: 459rpx;
+  height: 425rpx;
+  background-image: url(https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/prize-bg.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  position: relative;
+  box-sizing: border-box;
+}
+.prize-img {
+  width: 100%;
+  height: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.prize-img .img {
+  width: 100%;
+  height: 100%;
+}
+.prize-brage {
+  width: 160rpx;
+  height: 160rpx;
+  position: absolute;
+  top: -16rpx;
+  right: 20rpx;
+}
+.prize-name {
+  /* width: 254rpx; */
+  height: 45rpx;
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #2F5C45;
+  line-height: 45rpx;
+  margin-top: 30rpx;
+  text-align: center;
+}
+.prize-btn {
+  /* width: 210rpx; */
+  height: 87rpx;
+  margin: 0 auto;
+  margin-top: 31rpx;
+  width: 100%;
+}
+
+.time-wrap {
+  position: relative;
+  display: inline;
+}
+.countdown-tips-time.pos {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.hide {
+  display: inline;
+  color: transparent;
+}
+.countdown-tips-time {
+  height: 40rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: PingFangSC, PingFang SC;
+  font-weight: bold;
+}
+
+.countdown-tips-time .time-item {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #DCA657;
+  color: #fff;
+  font-size: 29rpx;
+  border-radius: 8rpx;
+}
+.countdown-tips-time .time-point {
+  color: #E1AD5D;
+  font-size: 29rpx;
+  padding: 0 4rpx;
+}
+
+@keyframes zhuhe {
+  0% {
+    top: -76rpx;
+  }
+  100% {
+    top: -185rpx;
+  }
+}
+@keyframes prize {
+  0% {
+    transform: translateX(-100%) scaleY(1.05);
+  }
+  40% {
+    transform: translateX(50rpx) scaleY(1.05);
+  }
+  60% {
+    transform: translateX(0) scaleY(1.05);
+  }
+  65% {
+    transform: scaleY(1.05);
+  }
+  70% {
+    transform: scaleY(1);
+  }
+  75% {
+    transform: scaleY(1.04);
+  }
+  80% {
+    transform: scaleY(1);
+  }
+  85% {
+    transform: scaleY(1.03);
+  }
+  90% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: translateX(1.02);
+  }
+  100% {
+    transform: translateX(1);
+  }
+}
+@keyframes prizeName {
+  0% {
+    transform: translateX(-100%);
+  }
+  40% {
+    transform: translateX(50rpx);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes brage {
+  0% {
+    transform: translateX(300rpx);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

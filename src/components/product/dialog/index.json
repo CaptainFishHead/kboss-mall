@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-dialog": "weui-miniprogram//dialog",
+    "product": "/components/product/detail/index",
+    "empty": "/components/empty/index"
+  }
+}

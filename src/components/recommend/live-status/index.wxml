@@ -1,0 +1,13 @@
+<!--components/recommend/live-tag/index.wxml-->
+<view class="live-tag {{!state ? 'preview' : 'liveing'}}">
+  <view class="live-tag_radar" wx:if="{{!state}}">
+      <text class="live-tag_radar_round"></text>
+      <text class="live-tag_radar_light one"></text>
+      <text class="live-tag_radar_light two"></text>
+      <text class="live-tag_radar_light three"></text>
+  </view>
+  <image class="live-tag_img" src="https://static.tojoyshop.com/images/wxapp-boss/recommend/live.gif" wx:else/>
+  <text class="live-tag_txt">
+  {{!state ? '直播预告' : '直播中'}}
+  </text>
+</view>

@@ -1,0 +1,23 @@
+<mp-half-screen-dialog
+  ext-class="dialog-afterSales screen-dialog__bd_b0"
+  class="dialog-afterSales"
+  show="{{ visible }}"
+  title="{{title}}({{totalNumber}})"
+>
+  <scroll-view scroll-y slot="desc" class="product-list">
+    <block wx:for="{{skus}}" wx:key="refundCode">
+        <view class="product-list-item">
+            <view class="product-info" >
+              <image src="{{item.skuImg}}" class="pic"/>
+              <view class="info">
+                <text class="name">{{item.spuName}}</text>
+                <text class="kind">{{item.skuDesc}}</text>
+              </view>
+            </view>
+            <view class="product-number">
+              <text class="num">x{{item.skuNum}}</text>
+            </view>
+          </view>
+    </block>
+  </scroll-view>
+</mp-half-screen-dialog>

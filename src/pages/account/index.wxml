@@ -1,0 +1,46 @@
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<navigation-bar background="#eeeee3" />
+<view class="container">
+  <view class="head">
+    <view class="head-title">
+      <text>您好，</text>
+      尊贵的康老板会员
+    </view>
+    <!--  style="background-image: url({{memberInfo.levelUrl}});" -->
+    <view class="head-card">
+      <image class="head-card-cardImgs" src="{{memberInfo.levelUrl}}" mode=""/>
+    </view> 
+    <view class="head-bottom"></view>
+  </view>
+  <view class="cont">
+    <view class="cont-title">
+      <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/mine/icon-crown.png" />
+      康老板商城会员说明
+    </view>
+    <view class="cont-desc">
+      <view class="cont-desc-title">一. 会员等级划分</view>
+      <view class="cont-desc-list" wx:if="{{memberInfo.memberLevelRuleVo.length}}">
+        <block wx:for="{{memberInfo.memberLevelRuleVo}}" wx:key="index">
+          <view class="level {{memberInfo.sort === item.sort ? 'active' : ''}}">
+            <view class="level-line">
+              <view class="level-line-bot" />
+            </view>
+            <view class="level-img">
+              <image mode="widthFix" src="{{item.badgeUrl}}" />
+            </view>
+            <view class="level-info">
+              <view class="level-info-name">{{item.levelName}} {{item.conditionRemark||''}}</view>
+              <view class="level-info-benefit">{{item.benefitRemark||''}}</view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="cont-desc-title">二. 会员权益说明</view>
+      <mp-html content="{{memberInfo.memberLevelRuleRemark}}" />
+    </view>
+  </view>
+</view>
+

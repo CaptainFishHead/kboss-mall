@@ -1,0 +1,15 @@
+<view class="containerCommonBox" wx:if="{{!isShow}}">
+  <view class="sexTest">
+    <view
+      wx:for="{{optionList}}"
+      wx:for-item="item"
+      wx:key="index"
+      data-index="{{index}}"
+      data-item="{{item}}"
+      bind:tap="handleSelected"
+      class="sexTest-item {{item.selected ? 'sexTest-selected' : ''}}"
+    >
+      <image class="sexTest-icon" src="https://static.tojoyshop.com/images/wxapp-boss/assessment/{{item.optionValue === '1'?'icon_man':'icon_ms'}}.png"/>
+    </view>
+  </view>
+</view>

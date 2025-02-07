@@ -1,0 +1,44 @@
+<!-- navigation-bar -->
+<navigation-bar back="{{false}}" ext-class="nav" background="rgba(247, 254, 254, 1)">
+  <view class="nav-bar" slot="left">
+    <image mode="heightFix" class="logo" src="https://static.tojoyshop.com/images/wxapp-boss/getbeans/img-beans-home.png" bind:tap="restart" />
+  </view>
+  <view slot="center" class="center">
+    <view slot="center" class="center">领取康豆</view>
+  </view>
+</navigation-bar>
+
+<view class="container">
+  <!-- 内容 -->
+  <view class="content">
+    <!-- 领取成功 -->
+    <block wx:if="{{gainBeansData.receiveState === 1}}">
+      <view class="wrapper">
+        <view class="sucess">
+          <view class="text">恭喜您获得</view>
+          <view class="icon-plus">+</view>
+          <view class="num">{{gainBeansData.activityGivingCount}}</view>
+          <image class="icon" mode="aspectFit" src="https://static.tojoyshop.com/images/wxapp-boss/getbeans/icon-beans-01.png" />
+        </view>
+        <view class="text-info">已存入您的康豆账户</view>
+      </view>
+    </block>
+    <!-- 已经领取过 -->
+    <block wx:if="{{gainBeansData.receiveState === 6}}">
+      <view class="collected">
+        <image class="already-img" mode="aspectFit" src="https://static.tojoyshop.com/images/wxapp-boss/getbeans/icon-smile.png" />
+        <view class="text-info">您已经领取康豆</view>
+      </view>
+    </block>
+  </view>
+  <!-- 按钮 -->
+  <view class="btn">
+    <view class="btn-com btn-use" data-flag="1" bindtap="goHrefPage">去使用</view>
+    <view class="btn-com btn-view" data-flag="2" bindtap="goHrefPage">查看我的康豆余额</view>
+  </view>
+  <!-- 文字说明 -->
+  <view class="info">
+    <view class="com-text">活动说明：</view>
+    <text class="com-text"> {{gainBeansData.activityExplain}} </text>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "cpgoodslist": "../../../../components/order/cpgoodslist/index",
+    "afterRecord": "../afterRecord/index",
+    "product-dialog": "../../../../components/product/dialog/index"
+  }
+}

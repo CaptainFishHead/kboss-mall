@@ -1,0 +1,40 @@
+<!--<view class="chat class">
+</view>-->
+<scroll-view
+  class="chat class"
+  id="scrollBox"
+  scrollIntoView="msg-{{messageList[messageList.length - 1].ID}}"
+  enable-flex
+  enable-passive
+  scroll-with-animation
+  show-scrollbar="{{false}}" enhanced="{{true}}" scroll-y="{{true}}"
+  style="height: 220rpx">
+  <view wx:for="{{messageList}}" class="chat-item" wx:key="ID" id="msg-{{item.ID}}">
+    <view class="chat-list-item" wx:if="{{ item.isPrivate && item.isAtSelf }}">
+      <view class="chat-list-info">
+        <!-- 主播 -->
+        <text class="chat-list-owner">主播</text>
+        <!-- 回复用户昵称 -->
+        <text class="chat-list-user atuser">@{{item.atUser.nick}}</text>
+        <!-- 私密回复标识 -->
+        <text class="chat-list-message">（私密）</text>
+        <!-- 消息内容 -->
+        <text class="chat-list-message">{{item.message}}</text>
+      </view>
+    </view>
+    <view class="chat-list-item  {{item.type}}" wx:if="{{ !item.isPrivate }}">
+      <view class="chat-list-info">
+        <!-- 主播 -->
+        <text class="chat-list-owner" wx:if="{{item.isOwner}}">主播</text>
+        <!-- 其他成员 -->
+        <text class="chat-list-user" wx:else>{{item.from}}</text>
+        <!-- 回复用户昵称 -->
+        <text class="chat-list-user atuser" wx:if="{{item.atUser}}">@{{item.atUser.nick}}</text>
+        <!-- 进入直播间提示 -->
+        <text class="chat-list-message" wx:if="{{item.type === 'join'}}">来了</text>
+        <!-- 消息内容 -->
+        <text class="chat-list-message" wx:else>{{item.message}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,21 @@
+export default {
+  "__environment__": "pre",
+  "RSDX_API": "http://engine-test-api.rsdx.com",
+  "YUNSHANG_API": "http://pre-api.yunshang520.com",
+  "PROXY_MALL_API": "https://pre-mall.kang-boss.com/proxy/mall-api",
+  "BASE_API": "https://pre-steamengine-api.kang-boss.com",
+  "COMMISSION_BASE_URL": "https://test-tbhgw.shanghuiyun.com",
+  "VITE_BUCKET": "test-1314672876",
+  "VITE_REGION": "ap-nanjing",
+  "VITE_DOMAIN": "https://pre-resource.kang-boss.com",
+  "VITE_PROTOCOL": "https://pre-resource.kang-boss.com",
+  "KBOSS_WEB_API": "https://pre-mall.kang-boss.com",
+  "SDK_API": "https://pre-platform-api.kang-boss.com",
+  "IM_SDK_APPID": 1600027237,
+  "APP_ID": "10017",
+  "APP_KEY": "rxmxCHcJ",
+  "APP_SECRET": "d2fb73a96428cfb5eacd0e3338579c34c60b63e8",
+  "ACCOUNT_ID": "100000",
+  "SENSORS_DATA_URL": "https://shence.tojoyshare.com:8443/sa?project=default",
+  "FACE_DETECT_API": "https://api-uat.utours.cn/open-service/face-detect/redirect-h5"
+}

@@ -1,0 +1,14 @@
+<view class="logistics"
+      wx:if="{{logisticsCode&&!(detailJson.refundStatus===30||detailJson.refundStatus===40||detailJson.refundStatus===50)}}">
+    <view class="logistics-item">
+        <view class="logistics-title">物流公司：</view>
+        <view class="logistics-cnt">{{logisticsName}}</view>
+    </view>
+    <view class="logistics-item">
+        <view>物流单号：</view>
+        <view class="logistics-item-cnt">
+            <view class="logistics-item-cnt-code">{{logisticsCode}}</view>
+            <view class="logistics-item-cnt-copy" data-val="{{logisticsCode}}" catchtap="copy">复制</view>
+        </view>
+    </view>
+</view>

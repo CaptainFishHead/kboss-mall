@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mp-loading": "weui-miniprogram/loading/loading",
+    "empty": "../../../components/empty/index"
+  }
+}

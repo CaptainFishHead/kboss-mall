@@ -1,0 +1,345 @@
+@import "../../../components/toast/index.wxss";
+
+.weui-navigation-bar__placeholder {
+  display: none;
+}
+
+page {
+  background-color: #E3CA94;
+}
+
+.nav {
+  .weui-navigation-bar__inner {
+    display: flex;
+    align-items: center;
+
+    .weui-navigation-bar__left {
+      width: auto !important;
+    }
+  }
+}
+
+.nav-bar {
+  flex: 0 1 152rpx;
+
+  .logo {
+    display: block;
+    min-width: 100%;
+    height: 54rpx;
+  }
+}
+
+button[type=default].authorize-btn {
+  background: none;
+  color: inherit;
+  width: 100%;
+  padding: 0;
+  line-height: inherit;
+}
+
+button[type=default].authorize-btn::after {
+  border: none;
+}
+
+.container {
+  width: 100%;
+  // height: 100vh;
+  // height: 954rpx;
+  box-sizing: border-box;
+  background: url(" https://static.tojoyshop.com/images/wxapp-boss/getbeans/bg-gain-beans.png") center no-repeat;
+  background-size: 100% 100%;
+  padding: 0 0 calc(54rpx + constant(safe-area-inset-bottom));
+  padding: 0 0 calc(54rpx + env(safe-area-inset-bottom));
+  padding-top: calc(var(--height) + 31rpx + constant(safe-area-inset-top));
+  padding-top: calc(var(--height) + 31rpx + env(safe-area-inset-top));
+}
+
+.title {
+  width: 80%;
+  width: 593rpx;
+  height: 229rpx;
+  margin: 0 auto;
+  display: block;
+  position: absolute;
+  z-index: 111;
+  top: calc(var(--height) + 31rpx + env(safe-area-inset-top))
+}
+
+.content1 {
+  margin-top: 130rpx;
+  padding: 49rpx 89rpx 176rpx 92rpx;
+  width: 750rpx;
+  height: 943rpx;
+  background: url(" https://static.tojoyshop.com/images/wxapp-boss/getbeans/bg-reg-bag.png") no-repeat;
+  background-size: contain;
+  ;
+  box-sizing: border-box;
+
+  .ani-wapper {
+    width: 569rpx;
+    height: 730rpx;
+    margin: 85rpx auto 0;
+    position: relative;
+
+    .light {
+      background: url(" https://static.tojoyshop.com/images/wxapp-boss/getbeans/img-beans-light.png") center no-repeat;
+      background-size: 100% 100%;
+      width: 421rpx;
+      height: 416rpx;
+      position: absolute;
+      top: 98rpx;
+      left: 75rpx;
+      animation: lightAni 16s linear 1s infinite forwards;
+    }
+
+    .circle {
+      width: 314rpx;
+      height: 293rpx;
+      background: url(" https://static.tojoyshop.com/images/wxapp-boss/getbeans/img-beans-circle.png") center no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      top: 200rpx;
+      left: 127rpx;
+      animation: circleAni .5s ease 0s infinite alternate;
+    }
+
+    .btn {
+      width: 275rpx;
+      height: 275rpx;
+      background: url(" https://static.tojoyshop.com/images/wxapp-boss/getbeans/img-beans-btn.png") center no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      top: 220rpx;
+      left: 147rpx;
+      animation: btnAni .5s ease 0s infinite alternate;
+
+      .hand {
+        display: flex;
+        position: absolute;
+        top: 160rpx;
+        left: 140rpx;
+        animation: handAni .5s ease 0s infinite alternate;
+
+        .hand-img {
+          width: 218rpx;
+          height: 182rpx;
+        }
+      }
+    }
+  }
+}
+
+
+.text-bottom {
+  width: 637rpx;
+  height: 269rpx;
+  font-size: 34rpx;
+  font-weight: 400;
+  color: #4D3E19;
+  line-height: 60rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+
+@keyframes handAni {
+  0% {
+    top: 160rpx;
+    left: 140rpx;
+    transform: scale(0.95);
+
+  }
+
+  100% {
+    top: 161rpx;
+    left: 140rpx;
+    transform: scale(1);
+  }
+}
+
+@keyframes circleAni {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes lightAni {
+  0% {
+    transform: scale(1.2) rotate(0deg);
+  }
+
+  100% {
+    transform: scale(1.2) rotate(360deg);
+  }
+}
+
+@keyframes btnAni {
+  0% {
+    transform: scale(0.96);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.dialog {
+  .content {
+    width: 100%;
+    // width: 505rpx;
+    // height: 560rpx;
+    margin: 220rpx auto;
+    border-radius: 10rpx;
+    padding: 0;
+    position: relative;
+
+    .img {
+      width: 108rpx;
+      height: 110rpx;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .pt130 {
+      padding-top: 130rpx;
+    }
+
+    .desc {
+      .text {
+        width: 386rpx;
+        line-height: 48rpx;
+        font-size: 40rpx;
+        font-weight: 400;
+        color: #B58209;
+        line-height: 47rpx;
+        letter-spacing: 1rpx;
+        margin: 10rpx auto 0;
+        font-family: PingFangSC-Regular, PingFang SC;
+
+        &.special {
+          width: 420rpx;
+        }
+
+        &.not-act {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+
+  .footer {
+    border-radius: 4rpx;
+    position: absolute;
+    top: 590rpx;
+    left: 50%;
+    transform: translateX(-50%);
+
+    button {
+      width: 269rpx;
+      // line-height: 80rpx;
+      // height: 80rpx;
+      background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+      position: relative;
+      display: flex;
+      padding: 0;
+    }
+
+    image {
+      margin: 0;
+    }
+
+    .arrow {
+      padding: 0rpx;
+      width: 28rpx;
+      height: 40rpx;
+      // position: absolute;
+      // right: 15rpx;
+    }
+
+    .close-icon {
+      width: 40rpx;
+      height: 40rpx;
+      margin-top: 36rpx;
+    }
+  }
+}
+
+/* ============= 领取康豆活动弹框 ============= */
+.dialog-gain-beans {
+
+  &.weui-dialog,
+  .weui-dialog {
+    // width: 100%;
+    height: 1000rpx;
+    box-sizing: border-box;
+    background: url("https://static.tojoyshop.com/images/wxapp-boss/getbeans/bg-beans-dialog.png") center no-repeat;
+    background-size: cover;
+
+    .weui-dialog__ft {
+      display: none;
+    }
+
+  }
+
+  .dialog-dialog--weui-dialog {
+    transform: translateY(-62%);
+  }
+}
+
+.dialog-confim .weui-dialog__bd {
+  padding-bottom: 14rpx;
+  font-size: 30rpx;
+  overflow-y: visible;
+  box-sizing: border-box;
+}
+
+// 留资信息半弹框
+.retained-dialog.weui-half-screen-dialog {
+  .weui-half-screen-dialog__hd__main {
+    padding: 34rpx 8rpx !important;
+  }
+}
+
+.retained-dialog.weui-half-screen-dialog {
+  background: url('https://static.tojoyshop.com/images/wxapp-boss/getbeans/bg-user-info.png') no-repeat;
+  background-size: 100% 100%;
+  padding: 0 0 80rpx;
+
+  &__hd {
+    padding: 0 40rpx;
+
+    &__main {
+      padding: 33rpx 40 36rpx !important;
+
+      &__title {
+        color: green;
+      }
+    }
+  }
+
+  &__title {
+    height: 48rpx;
+    font-size: 34rpx;
+    font-weight: 500;
+    color: #333333;
+    line-height: 48rpx;
+  }
+
+  &__ft {
+    background-color: green;
+    padding-bottom: 34rpx;
+  }
+}
+
+.mt-dialog_title {
+  line-height: 0;
+  image {
+    width: 270rpx;
+    height: 34rpx;
+  }
+}

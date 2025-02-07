@@ -1,0 +1,53 @@
+<view class="score">
+  <view class="score-survey">
+    <view class="score-survey-icon"></view>
+    <view>测试时间：{{detectTime}}</view>
+  </view>
+  <view class="score-info">
+    <view class="scoreboard">
+      <view class="scoreboard-arc" style="--start-color:{{startColor}};">
+        <view class="scoreboard-arc-scale" />
+        <view class="scoreboard-arc-active" style="--start-color:{{startColor}};--end-color:{{endColor}};--percentage:{{percentage}}%;">
+          <view class="scoreboard-arc-active-end" style="transform: translateX(-50%) rotate({{(scoreValue/100)*234}}deg);" />
+        </view>
+      </view>
+      <view class="scoreboard-content">
+        <view class="scoreboard-content-title">
+          {{scoreValue}}<text>分</text>
+        </view>
+      </view>
+      <view class="scoreboard-bottom">
+        <view class="scoreboard-bottom-score">
+          <text>0</text>
+          <text>100</text>
+        </view>
+        <view class="scoreboard-bottom-slot">
+          <slot />
+        </view>
+      </view>
+    </view>
+    <view class="score-info-right">
+      <view class="score-info-right-index">
+        <view>健康指标</view>
+        <image class="icon-img" src="https://static.tojoyshop.com/images/wxapp-boss/healthai/doubt.png" bind:tap="handlePrompt" />
+      </view>
+      <view class="score-info-right-text">超过 {{exceedsPercent}}%的同龄用户</view>
+    </view>
+  </view>
+  <view class="score-desc" wx:if="{{false}}">
+    <view class="score-desc-left">
+      <image class="score-desc-left-icon" src="https://static.tojoyshop.com/images/kboss-agent/health/icon-tip.png" />
+      <text>评分说明：</text>
+    </view>
+    <view class="score-desc-ul">
+      <view class="score-desc-ul-li">70分以下为亚健康，70分以上为健康，80分以上为良好，90分以上为优秀</view>
+      <view class="score-desc-ul-li">70分以下为亚健康，70分以上为健康，80分以上为良好，90分以上为优秀</view>
+    </view>
+  </view>
+  <view class="score-human" />
+</view>
+<mp-dialog class="jcbg-dialog" ext-class="dialog-common receipt-dialog health-dialog" show="{{dialogShow}}" bindbuttontap="handleConfirm" buttons="{{buttons}}" title="健康指数" catchtouchmove="touchMove">
+  <view class="jcbg-dialog-text">
+    健康指数衡量您的综合健康状况，指数范围为1-100，数值越高说明您的健康状况相比于同龄人越好。健康的生活方式可以有效预防和控制疾病风险，而适量运动、心态平和、合理膳食、戒烟限酒是健康生活方式的四大基石。
+  </view>
+</mp-dialog>

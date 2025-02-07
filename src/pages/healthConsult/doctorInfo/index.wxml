@@ -1,0 +1,89 @@
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<navigation-bar></navigation-bar>
+
+<view bindtouchstart="watchUserOperation" wx:if="{{doctorInfo.doctorId}}">
+  <view class="main">
+    <view class="content">
+            <view class="content-left">
+            <image src="{{doctorInfo.imageUrl}}" class="image-doctor"/>
+            </view>
+            <view class="content-middle"></view>
+            <view class="content-right">
+              <view class="content-right-top">
+                <view class="text">{{doctorInfo.doctorName}}·{{doctorInfo.doctorTitleName}}</view>
+                <view class="tag">
+                  <view>
+                  </view>
+                </view>
+              </view>
+              <view class="content-right-middle">
+                {{doctorInfo.hospitalName}}
+              </view>
+              <view class="content-right-bottom">
+                <view class="department">
+                  {{doctorInfo.deptName}}
+                </view>
+              </view>
+            </view>
+      </view>
+      <view class="introduce">
+        <text class="introduce-title">擅长：</text>
+        <text class="introduce-desc">{{doctorInfo.specialty}}</text>
+        <text class="more" bindtap="showDoctorInfo">更多</text>
+      </view>
+    <view class="appointed">
+      <view class="appointed-title">可约时段</view>
+      <doctor-appttime id="appttime" bindchildEvent="handleChildEvent" />
+    </view>
+    <view class="notice" wx:if="{{!showIntroMore}}">
+      <text class="notice-title">预约须知：</text>
+      当您通过本页面进入“温暖医生”（以下简称“温暖医生”或“第三方”）为您提供的产品或服务时，意味着您同意以下声明条款：
+      <text>\n</text>
+      1、温暖医生服务自购买之日起180天内有效，一旦购买，恕不支持退货退款，亦不支持延长服务期限。
+      <text>\n</text>
+      2、我们建议您尽量按照预约时间进行健康咨询。若您确实有特殊情况无法准时上线，请您在预约...
+      <text class="more" bindtap="showIntroduce">更多</text>
+    </view>
+    <view class="notice" wx:if="{{showIntroMore}}">
+      <text class="notice-title">预约须知：</text>
+      当您通过本页面进入“温暖医生”（以下简称“温暖医生”或“第三方”）为您提供的产品或服务时，意味着您同意以下声明条款：
+      <text>\n</text>
+      1、温暖医生服务自购买之日起180天内有效，一旦购买，恕不支持退货退款，亦不支持延长服务期限。
+      <text>\n</text>
+      2、我们建议您尽量按照预约时间进行健康咨询。若您确实有特殊情况无法准时上线，请您在预约时间前至少提前2个小时、通过线上操作或者电话客服来取消或者重新预约。请您注意：当距离预约时间少于等于2小时，因健康咨询专家时间已确认、第三方将无法为您取消或者重新预约咨询时间。
+      <text>\n</text>
+      3、若您已预约但未使用服务，则视为您自动放弃，本次服务作废。
+      <text>\n</text>
+      4、请您充分理解并同意：第三方提供的产品及服务均由第三方独立负责，在交易过程中，若您遇到任何质量或者服务问题，均可致电021-60662922联系第三方官方客服。康老板商城不对第三方提供的产品和服务承担任何责任。
+      <text>\n</text>
+      如您通过网页确认或者选择下一步操作，则表示您同意以上全部内容。在此，康老板商城再次感谢您的支持与信任！
+      <view class="company">
+        北京天九互助购电商科技有限公司
+        <text>\n</text>
+        2024.07.15
+      </view>
+    </view>
+  </view>
+  <view class="btn-box-bottom">
+    <button type="primary" disabled="{{disabledBtn}}" bindtap="toConsultInfo">下一步</button>
+  </view>
+  <view class="mask" hidden="{{isHideDoctorInfo}}" bindtap="hideDoctorInfo">
+  </view>
+  <view class="doctor-info-details" hidden="{{isHideDoctorInfo}}">
+    <view class="title">
+      擅长
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/healthConsult/close-dialog.png" bindtap="hideDoctorInfo"/>
+    </view>
+    <view class="content">
+      {{doctorInfo.specialty}}
+      </view>
+      <view class="title margin" style="margin-top: 20rpx;">
+        简介
+      </view>
+      <view class="content">
+        {{doctorInfo.intro}}
+      </view>
+  </view>
+  <adviser trigger-user-operation-value="{{triggerUserOperationValue}}" props-class="adviser-class"></adviser>
+</view>

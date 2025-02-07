@@ -1,0 +1,17 @@
+<!-- 图文 -->
+<view class="recommend-card {{direction === 1 ? 'horizontal' : 'vertical'}} {{(info.type === 3 && direction !== 1) && 'live'}}" bindtap="toDetail">
+  <view class="recommend-card_info">
+    <view class="recommend-card_info_title">{{info.title || ''}}</view>
+    <view class="recommend-card_info_edit">
+      <slot></slot>
+    </view>
+  </view>
+  <view class="recommend-card_pic img-class">
+    <image src="{{info.coverImgUrl}}" mode="aspectFill" wx:if="{{direction === 1}}"/>
+    <image src="{{info.coverImgUrlV}}" mode="aspectFill" wx:else/>
+    <view class="recommend-card_icon" wx:if="{{info.type === 2}}"></view>
+    <view class="recommend-card_status" wx:if="{{info.type === 3}}">
+      <live-status state="{{info.liveState}}"/>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,187 @@
+@import "./../../../components/toast/index.wxss";
+
+.weui-navigation-bar__placeholder {
+  display: none;
+}
+
+page {
+  background: #FEF9EF;
+}
+
+.container {
+  width: 100%;
+  background: url("https://static.tojoyshop.com/images/wxapp-boss/coupon/bg-receive-voucher.png") no-repeat center;
+  background-size: 100% 100%;
+  padding: 0 0 calc(50rpx + constant(safe-area-inset-bottom));
+  padding: 0 0 calc(50rpx + env(safe-area-inset-bottom));
+  padding-top: calc(var(--height) + 44rpx + constant(safe-area-inset-top));
+  padding-top: calc(var(--height) + 44rpx + env(safe-area-inset-top));
+}
+
+.icon-home {
+  width: 52rpx;
+  height: 52rpx;
+}
+
+.card {
+  width: 100%;
+
+  &-head {
+    width: 100%;
+    text-align: center;
+
+    &-img {
+      margin: 28rpx 0 50rpx;
+      width: 564rpx;
+      height: 68rpx;
+    }
+
+  }
+
+  &-envelope {
+    width: 100%;
+    height: 422rpx;
+    background: url("https://static.tojoyshop.com/images/wxapp-boss/coupon/bg-voucher-envelope.png") no-repeat center;
+    background-size: 100% 100%;
+    position: relative;
+    text-align: center;
+    position: relative;
+
+    &-count {
+      position: absolute;
+      top: 0;
+      left: 16.8%;
+      font-size: 22rpx;
+      color: #BC1817;
+      padding: 5rpx 10rpx;
+      background: #F8E7E7;
+      border-radius: 8rpx 0 8rpx 0;
+    }
+
+    &-name {
+      font-size: 30rpx;
+      font-weight: bold;
+      color: #CA4542;
+      padding-top: 42rpx;
+    }
+
+    &-price {
+      margin: 16rpx 0 10rpx;
+      font-size: 82rpx;
+      color: #BC1817;
+      height: 82rpx;
+      line-height: 82rpx;
+      box-sizing: border-box;
+      opacity: 0.8;
+
+      &::before {
+        content: '¥';
+        font-size: 46rpx;
+        color: #BC1817;
+        margin-right: 10rpx;
+      }
+    }
+
+    &-limit {
+      font-size: 26rpx;
+      color: #B58209;
+      letter-spacing: 1px;
+    }
+
+  }
+
+  &-btn {
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #333333;
+    width: 540rpx;
+    height: 94rpx;
+    border-radius: 4rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40rpx auto 24rpx;
+  }
+
+  &-rules {
+    font-size: 30rpx;
+    color: #666666;
+    letter-spacing: 1px;
+    padding: 50rpx 46rpx 0;
+
+    &-title {
+      margin-bottom: 10rpx;
+    }
+  }
+}
+
+.dialog-accept {
+  width: 100%;
+  text-align: center;
+
+  &-icon {
+    width: 244rpx;
+    height: 130rpx;
+    margin-top: 40rpx;
+  }
+
+  &-desc {
+    font-size: 30rpx;
+    color: #666666;
+    margin: 22rpx 72rpx 0;
+  }
+
+  &-btn {
+    padding: 0;
+    width: 180rpx;
+    height: 90rpx;
+    background: #0D0E15;
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-radius: inherit;
+  }
+}
+
+button[type=default].authorize-btn {
+  background: none;
+  color: inherit;
+  width: 100%;
+  padding: 0;
+  line-height: inherit;
+}
+
+button[type=default].authorize-btn::after {
+  border: none;
+}
+
+.receive-btn {
+  background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+}
+
+.disabled-btn {
+  opacity: 0.6;
+  background-color: #ffffff;
+}
+
+.share-btn {
+  border-radius: 4rpx;
+  border: 1px solid #666666;
+  margin: 0 auto;
+  background: transparent;
+}
+
+canvas {
+  display: block;
+  background-color: transparent;
+  width: 500rpx;
+  height: 400rpx;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate3d(-200%, -200%, 0);
+  z-index: -1;
+}
+
+

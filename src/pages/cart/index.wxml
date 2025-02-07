@@ -1,0 +1,7 @@
+<import src="./../../components/toast/index.wxml" />
+<navigation-bar title="购物车" back="{{true}}" background='#fff' ext-class="nav" />
+<!-- <tab-bar current="{{1}}" /> -->
+<include src="./../../components/cart/page/index.wxml"></include>
+
+<template is="toast" data="{{...tj_toast}}" />
+<global-back />

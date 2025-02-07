@@ -1,0 +1,6 @@
+<view class="cart-title">
+	<image src="{{imgUrl}}" mode="heightFix" class="cart-title-img"/>
+	<view wx:if="{{des}}" class="cart-title-des">
+		{{des}}
+	</view>
+</view>

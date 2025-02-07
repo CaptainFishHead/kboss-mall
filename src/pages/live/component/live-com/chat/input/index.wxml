@@ -1,0 +1,3 @@
+<view class="chat-input-wrap class {{ inputFocus ? 'focus' : '' }}" style="--ty:{{keyboardHeight}}">
+  <input class="chat-input" adjust-position="{{false}}" bind:keyboardheightchange="bindKeyboardHeightChange" bindfocus="onfocus" bindblur="onblur" placeholder-class="input-placeholder" type='text' placeholder="说点什么..." value="{{messageText}}" confirm-type="send" bindconfirm="sendMessage"/>
+</view>

@@ -1,0 +1,4 @@
+<!--components/recommend/label/index.wxml-->
+<view class="recommend-label ext-class">
+  <text wx:for="{{tagList}}" wx:key="item" wx:if="{{!limit || index < limit}}">{{item}}</text>
+</view>

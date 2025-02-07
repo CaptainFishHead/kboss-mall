@@ -1,0 +1,4 @@
+<!--plugin/components/live/player/index.wxml-->
+<view class="decorate">
+    <image wx:for="{{decorateList}}" wx:key="index" wx:for-item="item" wx:for-index="index" class="decorate-{{index}}" src="{{item.imgUrl}}" wx:if="{{item.isShow === '1'}}"/>
+</view>

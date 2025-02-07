@@ -1,0 +1,25 @@
+<wxs module="filter" src="../../../utils/filter.wxs" />
+<navigation-bar ext-class="navigation" title="{{info.state == 1?'专家介绍':''}}" background="rgba(255,255,255, {{opacity}})" bindback="goBack" />
+<view class="container" wx:if="{{info.state == 1}}">
+  <view class="ip-card">
+    <view class="ip-img-wrap">
+      <image class="ip-img" src="{{info.imgUrl}}" mode="aspectFit" />
+    </view>
+    <view class="ip-info">
+      <view class="ip-name one-line">{{info.ipName}}</view>
+      <view class="ip-class one-line">{{info.description}}</view>
+      <view class="ip-tabs">
+        <block wx:for="{{filter.stringToArray(info.tag)}}" wx:key="index">
+          <text class="ip-tab" wx:if="{{item}}">{{item}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="ip-content">
+    <view class="content">
+      <!-- <rich-text nodes="{{info.remark}}" space="nbsp"></rich-text> -->
+      <mp-html content="{{content}}" lazy-load />
+    </view>
+  </view>
+</view>
+<empty wx:elif="{{!loading}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/content-empty.png" empotyDesc="糟糕，数据不见了" />

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "申请退款",
+  "usingComponents": {
+    "empty": "../../../components/empty/index",
+    "goods-list": "../components/goods-list/index",
+    "refund-reason": "../components/refund-reason/index",
+    "describe": "../components/describe/index"
+  }
+}

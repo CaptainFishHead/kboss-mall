@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "mp-loading": "weui-miniprogram/loading/loading",
+    "prize-item":"./components/prize-item/index",
+    "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "empty": "../../../components/empty/index",
+    "login": "../../../components/login/index"
+  },
+  "enablePullDownRefresh": true
+}

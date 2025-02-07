@@ -1,0 +1,11 @@
+
+ <view class="live-detail-box" bindtap='hanldeClick' disabled="buttonClicked">
+    <view class="live-icon-swiper playing">
+      <view class="playing-box">
+        <view class="playing-bar playing-bar1"></view>
+        <view class="playing-bar playing-bar2"></view>
+        <view class="playing-bar playing-bar3"></view>
+      </view>
+    </view>
+    <text class="live-txt"><slot></slot></text>
+  </view> 

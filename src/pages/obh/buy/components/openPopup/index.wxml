@@ -1,0 +1,16 @@
+<view class="open-popup-container" bind:tap="close">
+
+  <view class="popup-dialog" catch:tap="true">
+    <view class="popup-img"></view>
+    
+    <image class="popup-close" catch:tap="close"/>
+    <view class="popup-content">
+      <view class="popup-title">温馨提示</view>
+      <view class="popup-des">请先<text>开启</text>森林氧吧</view>
+      <view class="popup-des" style="margin-bottom: 50rpx;">获取抽奖机会</view>
+
+      <view class="open-btn" catch:tap="onCheckin">开启森林氧吧</view>
+    </view>
+  </view>
+
+</view>

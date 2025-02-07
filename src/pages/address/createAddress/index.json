@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "city-picker": "./../../../components/city-picker/index",
+    "delete-dialog": "./../../../components/my-address/delete-dialog/index"
+  },
+  "disableScroll": true
+}

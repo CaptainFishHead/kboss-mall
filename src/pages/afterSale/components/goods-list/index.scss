@@ -1,0 +1,46 @@
+
+.goods {
+  border-bottom: 1rpx solid #E4E4E4;
+  &-storename {
+    font-size: 30rpx;
+    color: #000000;
+    padding: 0 30rpx;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    padding: 0 30rpx;
+
+    &-select {
+      width: 36rpx;
+      height: 36rpx;
+      background: url(https://static.tojoyshop.com/images/wxapp-boss/refund/select-off.v2.png) no-repeat 0 0;
+      background-size: 100% 100%;
+      margin-right: 20rpx;
+
+      &.on {
+        background: url(https://static.tojoyshop.com/images/wxapp-boss/refund/select-on.v2.png) no-repeat 0 0;
+        background-size: 100% 100%;
+      }
+    }
+
+  }
+
+//   &-counter {
+//     height: 122rpx;
+//     box-sizing: border-box;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 30rpx;
+//     border-top: 2rpx solid #E4E4E4;
+//     border-bottom: 2rpx solid #E4E4E4;
+
+//     &-text {
+//       font-size: 28rpx;
+//       color: #0D0E15;
+//     }
+//   }
+}
+

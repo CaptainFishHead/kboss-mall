@@ -1,0 +1,102 @@
+.bag {
+  width: 87rpx;
+  height: 87rpx;
+  border-radius: 50%;
+  background: rgba($color: #000000, $alpha: 0.28);
+  font-size: 28rpx;
+  display: inline-flex;
+  &-icon {
+    vertical-align: middle;
+    width: 50rpx;
+    height: 50rpx;
+  }
+  &-info {
+    padding: 20rpx 20rpx 0;
+    background-color: #F6F6F6;
+    border-radius: 10px 10px 0px 0px;
+    &-top {
+      padding: 10rpx;
+      margin-bottom: 20rpx;
+      height: max-content;
+      .text {
+        color: #000000;
+        vertical-align: middle;
+      }
+    }
+    &-packup-icon {
+      width: 70rpx;
+      height: 40rpx;
+      vertical-align: middle;
+    }
+    .text {
+      font-size: 28rpx;
+    }
+    &-cart {
+      &-num {
+        position: absolute;
+        top: 2rpx;
+        right: 0rpx;
+        height: 20rpx;
+        min-width: 20rpx;
+        display: inline-block;
+        border-radius: 10rpx;
+        background-color: #E02020;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14rpx;
+        color: #fff;
+        padding: 0 2rpx;
+      }
+    }
+    &-icon-box {
+      display: inline-block;
+      position: relative;
+    }
+    &-icon {
+      width: 32rpx;
+      height: 32rpx;
+      margin-right: 8rpx;
+      vertical-align: middle;
+    }
+    &-title {
+      font-size: 28rpx;
+      font-weight: bold;
+      color: #333;
+      padding-left: 20rpx;
+      // padding: 32rpx 10rpx;
+    }
+  }
+  &-goods {
+    border-radius: 8rpx;
+    overflow: hidden;
+    padding: 0rpx 24rpx 32rpx 26rpx;
+    background-color: #fff;
+    box-sizing: border-box;
+    //height: 1000rpx;
+    //overflow-y: auto;
+    &-item {
+      border-top: 2rpx solid #F1F1F1;
+      padding: 32rpx 0;
+      &:first-child {
+        border: none;
+      }
+    }
+  }
+  &-empty {
+    padding-top: 171rpx;
+    &-icon {
+      width: 300rpx;
+      height: 210rpx;
+      .icon {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &-text {
+      content: #000;
+      font-size: 28rpx;
+      margin-top: 20rpx;
+    }
+  }
+}

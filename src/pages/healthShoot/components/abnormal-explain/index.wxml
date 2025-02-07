@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="items" wx:if="{{indicatorList.length}}">
+    <view class="items-title">指标概览</view>
+    <view class="items-child">
+      <view class="btn {{item.indexLevel != 0?'error':''}}" wx:for="{{indicatorList}}" wx:key="index">
+        <view class="btn-title">{{item.indexName}}</view>
+        <image wx:if="{{ item.indexLevel == 0 }}" class="warn" src="https://static.tojoyshop.com/images/wxapp-boss/healthai/check.png" />
+        <image wx:else class="warn" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_warning.png?v=1.0.0" />
+      </view>
+    </view>
+  </view>
+  <view class="abnormal-explain" wx:if="{{outlier}}">
+    <view class="abnormal-explain-title">
+      <view>存在 {{outlier}} 项异常</view>
+      <image class="warn big" src="https://static.tojoyshop.com/images/wxapp-boss/home/icon_warning.png?v=1.0.0" style="margin-top:8rpx;margin-left: 10rpx;" />
+    </view>
+    <view class="hide-all">
+      <!-- <view class="btn-icon btn-up">{{metricsPanels.text}}</view> -->
+      <view class="btn-icon btn-up">
+        您的健康状态显示出一些需要关注的情况。为降低并发症风险并改善整体健康状况，您需要通过药物、饮食、运动和定期监测进行综合管理。
+      </view>
+    </view>
+    <view class="view-more" bindtap="handleShowAll">查看完整解读</view>
+  </view>
+</view>

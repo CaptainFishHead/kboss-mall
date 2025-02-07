@@ -1,0 +1,20 @@
+<mp-half-screen-dialog ext-class="checkin-popup" show="{{visible}}" bindclose="close">
+  <view slot="title" style="height: 0;"></view>
+  <view slot="desc">
+    <view class="popup-title">选择入住时长</view>
+    <image class="popup-close" catch:tap="close"/>
+    <view class="popup-content">
+      <view wx:for="{{list}}" wx:key="index" class="{{currentIndex == index ? 'popup-active-item' : 'popup-item'}}" catch:tap="changeIndex" data-index="{{index}}">
+        <view class="active-flag"></view>
+        <view style="font-size: 34rpx; color: #333;">{{item.title}}</view>
+        <view style="font-size: 24rpx; color: #999; margin-top: 4rpx;">{{item.des}}</view>
+      </view>
+    </view>
+
+    <view class="popup-options">
+      <view class="cancel" catch:tap="close">取消</view>
+      <view class="confirm" catch:tap="onCheckin">确定</view>
+    </view>
+    <view class="popup-desc">温馨提示：森林氧吧关闭后，您可以微信扫码开启，无需额外支付费用</view>
+  </view>
+</mp-half-screen-dialog>

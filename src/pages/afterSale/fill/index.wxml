@@ -1,0 +1,57 @@
+<import src="../../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+<navigation-bar title="售后/退款" background="#fff"/>
+<empty ext-class="empty-box" wx:if="{{showEmpty}}"
+       imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722"
+       empotyDesc="{{errMsg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="reloadHandler"/>
+<view class="container-box" wx:else>
+  <view class="header">商家已同意退货申请，待退货
+      <view class="header-time" wx:if="{{countDown}}">还剩<text class="header-time-text"> {{countDown}}</text>，超时退货将自动关闭</view>
+  </view>
+  <view class="goods-unit" wx:for="{{brandInfo.brandList}}" wx:key="brandId">
+    <view class="title-text">退货信息</view>
+    <scroll-view class="goods-box" scroll-x="{{true}}">
+      <view class="goods-item" wx:for="{{item.brandSkuList}}" wx:key="skuId" wx:for-item="sku">
+        <image src="{{sku.skuImg}}" class="pic"/>
+      </view>
+    </scroll-view>
+    <fill-info
+      brandInfo="{{item}}"
+      bind:addressChange="bindFillCode"
+    />
+  </view>
+
+  <view class="info-order">
+    <refund-price detailInfo="{{brandInfo}}" />
+    <view class="info-order-list">
+      <view class="info-order-item">
+          <view class="info-order-item-des">服务单号：</view>
+          <view class="info-order-item-cnt">
+            {{brandInfo.refundCode}}
+            <text class="copy-btn" data-num="{{brandInfo.refundCode}}" bindtap="copyServeNum">复制</text>
+          </view>
+          
+      </view>
+      <view class="info-order-item">
+          <view class="info-order-item-des">订单编号：</view>
+          <view class="info-order-item-cnt">
+            {{orderCode}}
+            <text class="copy-btn" data-num="{{orderCode}}" bindtap="copyOrderNum">复制</text>
+          </view>
+      </view>
+      <view class="info-order-item">
+          <view class="info-order-item-des">申请时间：</view>
+          <view class="info-order-item-cnt">{{brandInfo.createTime}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="btn-box">
+      <button type="default" class="btn" bind:tap="goCancel">取消申请</button>
+      <button type="default" class="btn" open-type="contact" session-from="{{sessionFrom}}" bindtap="onService">联系客服</button>
+      <button type="primary" class="btn" catchtap="submitHandler">确认寄回</button>
+  </view>
+</view>
+<mp-dialog ext-class="order-cancel-dialog" show="{{dialogShow}}" bindbuttontap="goCancelConfirm" buttons="{{buttons}}" title="温馨提示">
+    <view>确认取消申请？</view>
+  </mp-dialog>
+<global-back/>

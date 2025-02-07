@@ -1,0 +1,12 @@
+<import src="../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<navigation-bar title="支持门店" background="#FFF" />
+<view class="containe">
+  <block wx:if="{{storeList.length}}">
+    <view wx:for="{{storeList}}" wx:key="storeId">
+      <outlets-item outletsInfo="{{item}}" />
+    </view>
+  </block>
+  <empty imgUrl="https://static.tojoyshop.com/images/wxapp-boss/order/empty-order.png?v=1.0.0" empotyDesc="暂无门店～" wx:if="{{storeList.length == 0 && !isLoading}}" />
+  <mp-loading tips="正在加载" show="{{isLoading}}" type="circle" />
+</view>

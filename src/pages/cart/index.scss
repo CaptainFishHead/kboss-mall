@@ -1,0 +1,16 @@
+@import "./../../components/toast/index.wxss";
+@import "./../../styles/cart.scss";
+
+.cart {
+  .bar-warp {
+    width: 100%;
+    position: fixed;
+    bottom: calc(env(safe-area-inset-bottom));
+  }
+}
+
+.nav {
+  .weui-navigation-bar__inner {
+    z-index: 400;
+  }
+}

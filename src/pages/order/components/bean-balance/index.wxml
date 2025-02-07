@@ -1,0 +1,18 @@
+
+<mp-dialog
+        ext-class="dialog-common dialog-confim dialog-bean-balance"
+        show="{{visibleBalance}}"
+        class="bean-balance"
+        buttons="{{buttonsConfim}}"
+        mask-closable="{{false}}"
+        bindbuttontap="tapClose">
+    <view class="close" bind:tap="tapClose">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/order/close.png" mode="widthFix"/>
+    </view>
+    <view class="dialog-balance">
+        <view class="dialog-balance-title">温馨提示</view>
+        <view class="dialog-balance-desc">
+            您当前的康豆账户余额不足，请重新选择康豆
+        </view>
+    </view>
+</mp-dialog>

@@ -1,0 +1,14 @@
+<view class="containerCommonBox" wx:if="{{!isShow}}">
+  <view class="containerCommonHeader">{{questionTName}}</view>
+  <view class="containerCommonBody">
+    <button
+      wx:for="{{options}}"
+      wx:for-item="item"
+      wx:key="index"
+      data-index="{{index}}"
+      data-item="{{item}}"
+      class="testButton {{item.selected ? 'testButton-Selected' : ''}}"
+      bind:tap="handleMultiple"
+    >{{item.optionContents}}</button>
+  </view>
+</view>

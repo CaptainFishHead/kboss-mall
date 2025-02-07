@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "medical-tags": "../components/medical-tags/index"
+  }
+}

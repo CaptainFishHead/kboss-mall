@@ -1,0 +1,8 @@
+<view class="remind">
+  <view class="remind-name">{{liveInfo.roomName}}</view>
+  <view class="remind-bottom">
+    <text class="remind-bottom-time">{{countdownText}}</text>
+    <!-- <button class="remind-bottom-btn" bindtap="btnHandler">开播提醒</button> -->
+    <!-- <button class="remind-btn remind-over" bindtap="btnHandler">已提醒</button> -->
+  </view>
+</view>

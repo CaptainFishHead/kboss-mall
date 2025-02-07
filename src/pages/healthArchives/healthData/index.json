@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "nav-tabs": "../components/nav-tabs/index",
+    "health-card": "../components/health-card/index"
+  }
+}

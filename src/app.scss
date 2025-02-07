@@ -1,0 +1,280 @@
+@import "./styles/weui-custom";
+// @font-face {
+//   font-family: DINAlternate-Bold;
+//   src: local("DIN-BoldAlternate"),
+//   url("https://static.tojoyshop.com/font/DIN-bold.ttf") format("truetype"), url("https://static.tojoyshop.com/font/DIN-bold.otf");
+// }
+
+// @font-face {
+//   font-family: FZZZHONGJW;
+//   src: url("https://static.tojoyshop.com/font/FZZZHONGJW.TTF") format("truetype"), url("https://static.tojoyshop.com/font/FZZZHONGJW.otf");
+// }
+
+.price {
+  font-family: DINAlternate-Bold, DINAlternate;
+  font-weight: normal;
+}
+
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.btn-box-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 122 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  padding-bottom: calc(30rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(30rpx + env(safe-area-inset-bottom));
+  border-top: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.08);
+
+  button {
+    &,
+    &.button-hover {
+      width: 100%;
+    }
+  }
+}
+
+page {
+}
+
+button::after {
+  display: none;
+}
+
+button {
+  &.success,
+  &.success[disabled],
+  &[type="primary"],
+  &[disabled][type="primary"] {
+    &,
+    &.button-hover {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 94rpx;
+      line-height: 30rpx;
+      font-size: 30rpx;
+      font-weight: bold;
+      color: #333;
+      border-radius: 4rpx;
+      background: linear-gradient(180deg, #efd8a6 0%, #cfaf65 100%);
+      box-sizing: border-box;
+    }
+
+    &.button-hover {
+      color: #222;
+      opacity: 0.9;
+    }
+
+    &[plain] {
+      &,
+      &.button-hover {
+        color: #333;
+        background: transparent;
+        border: 2rpx solid #666;
+      }
+
+      &.button-hover {
+        color: #333;
+        border-color: #666;
+        background: rgba(0, 0, 0, 0.05);
+      }
+    }
+
+    image {
+      width: 41rpx;
+      height: 40rpx;
+      margin-right: 14rpx;
+    }
+  }
+
+  &[disabled][type="primary"] {
+    opacity: 0.5;
+  }
+
+  &.success,
+  &.success[disabled] {
+    &,
+    &.button-hover {
+      background: linear-gradient(180deg, #a2e4de 0%, #09bdac 100%);
+    }
+  }
+
+  & + button {
+    margin-left: 16rpx;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.lists-item-row4-btn {
+  border: 2rpx solid #b58209 !important;
+  border-radius: 4rpx;
+  color: #b58209 !important;
+}
+
+rich-text {
+  font-size: 32rpx;
+  // color: #606266;
+  word-break: break-word;
+  text-align: justify;
+  // text-align-last: justify; /* 确保最后一行也两端对齐 */
+  // &::first-line {
+  // text-align: left; /* 第一行左对齐 */
+  // }
+
+  .class_p {
+    margin: 0 30rpx;
+
+    &:empty {
+      display: none;
+    }
+
+    &[data-line="0"] {
+      font-size: 0;
+      line-height: 0;
+    }
+  }
+
+  .class_img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+._blockquote,
+._div,
+._p {
+  text {
+    // font-size: 28rpx;
+    // font-size: 30rpx;
+    // color: #333333;
+    // line-height: 56rpx;
+    // letter-spacing: 1px;
+  }
+}
+
+view {
+  outline: none !important;
+}
+
+.weui-dialog {
+  width: auto;
+  overflow: initial;
+}
+
+.weui-half-screen-dialog {
+  min-height: auto;
+  background-color: #fff;
+}
+
+.dialog-receive-coupon {
+  background: transparent;
+}
+
+.mt-dialog {
+  .weui-dialog {
+    background: transparent;
+    border-radius: 0;
+
+    .weui-dialog__hd {
+      display: none;
+    }
+
+    .weui-dialog__bd {
+      padding: 0;
+      background: transparent !important;
+    }
+  }
+
+  &_title {
+    background: transparent;
+    text-align: left;
+    font-size: 36rpx;
+    color: #333333;
+    line-height: 44rpx;
+    letter-spacing: 1rpx;
+    margin-bottom: 27rpx;
+  }
+
+  &_body {
+    width: 630rpx;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  &_content {
+    padding: 48rpx 38rpx;
+    border-radius: 10rpx;
+    background: linear-gradient(180deg, #fff5de 0%, #ffffff 100%);
+  }
+
+  &_text {
+    color: #333333;
+    line-height: 60rpx;
+    font-size: 30rpx;
+    text-align: left;
+  }
+
+  &_waring {
+    .mt-dialog_content {
+      background: url("https://static.tojoyshop.com/images/wxapp-boss/dialog.waring.png")
+          444rpx 38rpx / 140rpx 120rpx no-repeat,
+        linear-gradient(180deg, #fff5de 0%, #ffffff 100%);
+    }
+  }
+
+  &_footer {
+    margin: 46rpx auto 0;
+    width: 410rpx;
+
+    button {
+      font-size: 30rpx;
+      color: #333333;
+      font-weight: bold;
+    }
+
+    text {
+      margin-top: 18rpx;
+      color: #666666;
+      font-size: 24rpx;
+      line-height: 33rpx;
+    }
+  }
+
+  &_close {
+    height: 111rpx;
+    position: relative;
+
+    & > view {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      image {
+        width: 48rpx;
+        height: 48rpx;
+      }
+    }
+  }
+}

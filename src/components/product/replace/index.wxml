@@ -1,0 +1,31 @@
+<!-- 随心配 弹层 -->
+<mp-half-screen-dialog title="商品不合心意？" subTitle="您还可以替换以下商品" show="{{ visible }}"
+                       bindclose="close" catchtouchmove="touchMove">
+  <view slot="desc">
+    <scroll-view scroll-y class="body">
+      <view class="list">
+        <block wx:for="{{spuList}}" wx:for-index="spuIndex" wx:for-item="spu" wx:key="index">
+          <card spu="{{spu}}" bind:success="changeCheckbox" showCheckbox />
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+  <view slot="footer" class="footer">
+    <button type="primary" bindtap="submit">我要替换</button>
+  </view>
+</mp-half-screen-dialog>
+
+<mp-dialog ext-class="dialog-common dialog-confim dialog-desc dialog" class="rep-dialog" show="{{dialogShow}}" buttons="{{buttonsConfim}}" bindbuttontap="tapDialogButton">
+  <view class="rep-dialog-title">您确认要替换吗？</view>
+  <view class="rep-dialog-desc">替换商品后礼包价格以实际结算价格为准</view>
+  <view class="rep-dialog-cont">
+    <card spu="{{spuOld}}" />
+    <view class="rep-dialog-cont-replace">
+      <view>
+        <image mode="aspectFit" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-replace-to.png" />
+        <text>替换为</text>
+      </view>
+    </view>
+    <card spu="{{spu}}" />
+  </view>
+</mp-dialog>

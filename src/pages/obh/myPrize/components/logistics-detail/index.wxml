@@ -1,0 +1,39 @@
+<!-- 物流详情弹窗 -->
+<view class="{{ extClass }}">
+  <slot />
+</view>
+<mp-half-screen-dialog ext-class="logistics" class="logistics-dialog" show="{{logisticsVisible}}" desc="" bindbuttontap="buttontap" bindclose="closeLogistics">
+  <view slot="title" class="logistics-title">
+    物流信息
+  </view>
+  <view slot="desc" class="logistics-desc">
+		<scroll-view scroll-y="true" style="max-height: 1000rpx;">
+			<view class="logistics-hrad">
+				<view class="row1">
+					<text >{{logisticsInfo.deliveryName}} {{logisticsInfo.deliveryId}}</text>
+					<text class="copy" data-sn="{{logisticsInfo.deliveryId}}" bindtap="bindCopy">复制</text>
+				</view>
+			</view>
+
+			<view class="logistics-box">
+				<block wx:if="{{logisticsInfo.list.length}}">
+					<!-- <scroll-view scroll-y="true" style="max-height: 1000rpx;"> -->
+					<view class="group-box" wx:for="{{logisticsInfo.list}}" wx:key="unique">
+						<view class="left-box">
+							<image src="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/logistics.png" class="pic"/>
+							<view class="dot"></view>
+						</view>
+						<view class="right-box">
+							<view class="text">{{item.context}}</view>
+							<view>{{item.time}}</view>
+						</view>
+					</view>
+					<!-- </scroll-view> -->
+				</block>
+				<view wx:else class="empty">
+					物流信息暂未更新
+				</view>
+			</view>
+		</scroll-view>
+  </view>
+</mp-half-screen-dialog>

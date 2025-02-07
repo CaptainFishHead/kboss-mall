@@ -1,0 +1,17 @@
+<navigation-bar title="" background="transparent" />
+<swiper class="swiper" circular indicator-dots>
+  <block wx:for="{{dataList}}" wx:for-item="cell" wx:key="index">
+    <swiper-item>
+      <view class="cell">
+        <block wx:if="{{cell.pdf}}">
+          <image lazy-load mode="aspectFit" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/pdf.png" />
+          <view style="margin: 40rpx 0;">{{cell.name}}</view>
+          <view class="cell-button" bindtap="showPdf" data-item="{{cell}}">查看文件</view>
+        </block>
+        <block wx:else>
+          <image lazy-load mode="aspectFit" src="{{cell.url}}" class="img" />
+        </block>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>

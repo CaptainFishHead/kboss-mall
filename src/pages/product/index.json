@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "product": "/components/product/detail/index",
+    "product-dialog": "/components/product/dialog/index",
+    "product-sku": "/components/product/sku/index",
+    "product-suit": "/components/product/suit/index",
+    "product-replace": "/components/product/replace/index",
+    "share-entry": "/components/share-entry/index",
+    "beans-rules": "/components/product/beans-rules/index",
+    "favorite": "/components/favorite/index",
+    "empty": "/components/empty/index",
+    "product-coupon": "/components/product/coupon-list/index",
+    "coupon-receive": "/components/product/coupon-receive/index"
+  }
+}

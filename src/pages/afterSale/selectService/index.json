@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "选择服务",
+  "usingComponents": {
+    "goods-item":"../components/goods-item/index",
+    "empty": "../../../components/empty/index"
+  }
+}

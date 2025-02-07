@@ -1,0 +1,94 @@
+.card {
+  position: relative;
+  width: 200rpx;
+  text-align: center;
+  padding: 20rpx 0;
+
+  &-checkbox {
+    position: absolute;
+    z-index: 21;
+    top: 20;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48rpx;
+    height: 48rpx;
+  }
+  &-img {
+    position: relative;
+    width: 200rpx;
+    height: 200rpx;
+    border: 2rpx solid transparent;
+    border-radius: 4rpx;
+    background: #f6f6f6;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    image {
+      width: 196rpx;
+      height: 196rpx;
+    }
+    &::after {
+      display: none;
+      content: "卖光了";
+      position: absolute;
+      z-index: 22;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      justify-content: center;
+      align-items: center;
+      width: 110rpx;
+      height: 110rpx;
+      font-size: 24rpx;
+      font-weight: bold;
+      color: #fff;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+  &-name {
+    max-width: 200rpx;
+    height: 60rpx;
+    margin: 14rpx 0;
+    font-size: 22rpx;
+    line-height: 30rpx;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &-price {
+    max-width: 200rpx;
+    font-size: 22rpx;
+    line-height: 36rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    text {
+      font-size: 30rpx;
+      font-family: DINAlternate-Bold, DINAlternate;
+    }
+  }
+
+  &.disabled {
+    image,
+    .card {
+      opacity: 0.3;
+
+      &-img::after {
+        display: flex;
+      }
+    }
+  }
+
+  &.checked {
+    .card-img {
+      border-color: #cfaf65;
+    }
+  }
+}

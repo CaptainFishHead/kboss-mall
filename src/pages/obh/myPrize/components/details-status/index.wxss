@@ -1,0 +1,64 @@
+.progress {
+  width: 100%;
+  position: relative;
+}
+.progress-line {
+  width: 100%;
+  height: 6rpx;
+  background: rgba(181,130,9,0.12);
+  border-radius: 5rpx;
+}
+.progress-line-inner {
+  height: 100%;
+  background: #B58209;
+  border-radius: 5rpx;
+}
+.progress-point {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+.progress-point-item {
+  width: 16rpx;
+  height: 16rpx;
+  background: #FFFFFF;
+  border: 2rpx solid #B58209;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+}
+.progress-point-item.notpress {
+  background: #E5D1A6;
+  border: 2rpx solid rgba(181,130,9,0.52);
+}
+.progress-point-item::before {
+  content: ' ';
+  width: 8rpx;
+  height: 8rpx;
+  background: #B58209;
+  border-radius: 50%;
+}
+.progress-point-item.notpress::before {
+  display: none;
+}
+.progress-point-text {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #333333;
+  position: absolute;
+  top: 26rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.progress-point-item.notpress .progress-point-text {
+  font-weight: 400;
+  color: rgba(181,130,9,0.55);
+}

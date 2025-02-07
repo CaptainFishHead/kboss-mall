@@ -1,0 +1,43 @@
+// 过滤检查单品、组合品中是否有售后 用于展示商品详情售后记录（解决后台售后不展示售后记录问题）
+var isAfterSales = function (data){
+  if(data.spuKind === 1) {
+    if (data.subSkuList && data.subSkuList.length) {
+     var returnData = data.subSkuList.filter(function(item) {
+       return item.refundNum > 0
+     })
+     return returnData.length;
+    }
+  } else {
+    return data.refundNum && data.refundNum <= data.skuNum
+  }
+}
+
+// 过滤单品、组合品是否在售后中 （解决后台售后不展示售后记录问题）
+var afterSalesing = function (data){
+  if (data && data.length) {
+    var skus = data.filter(function(item) {
+      if (item.skuList) {
+        var afterSales = item.skuList.filter(function(val) {
+          if (val.spuKind === 1 && val.subSkuList) {
+            var subRes = val.subSkuList.filter(function(v) {
+              return v.refundNum < (v.skuNum * val.skuNum)
+            })
+            return subRes.length;
+          } else {
+            return val.refundNum < val.skuNum;
+          }
+        });
+        return afterSales.length;
+      }
+    })
+    if (!skus.length) return false;
+  }
+  return true;
+}
+
+
+
+module.exports = {
+  isAfterSales: isAfterSales,
+  afterSalesing: afterSalesing
+};

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-loading": "weui-miniprogram/loading/loading",
+    "product-sku": "/components/product/sku/index"
+  }
+}

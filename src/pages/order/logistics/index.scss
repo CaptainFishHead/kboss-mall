@@ -1,0 +1,211 @@
+@import "../../../components/toast/index.wxss";
+@import "./../../../styles/mixins";
+
+.express-container {
+  padding-left: 30rpx;
+}
+
+.wrap-title {
+  font-size: 30rpx;
+  color: #0D0E15;
+  margin: 30rpx 0 36rpx;
+}
+
+.scroll-wrap {
+  white-space: nowrap;
+
+  &-item {
+
+    white-space: normal;
+    max-width: 448rpx;
+    overflow-x: hidden;
+    border-radius: 8rpx;
+    border: 1rpx solid #E4E4E4;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 20rpx;
+    margin-right: 20rpx;
+
+
+    &.actived {
+      border: 2rpx solid #CFAF65;
+      .bag{
+        color: #B58209 !important;
+      }
+    }
+
+    &-left {
+      margin-right: 30rpx;
+      font-size: 24rpx;
+      color: #999999;
+      .bag{
+        color: #0D0E15;
+        font-size: 33rpx;
+      }
+    }
+
+    &-right {
+      display: flex;
+      align-items: center;
+      max-width: 290rpx;
+      overflow-x: hidden;
+      position: relative;
+
+      &-box {
+        width: 90rpx;
+        margin-left: 10rpx;
+
+        &-img {
+          width: 90rpx;
+          height: 90rpx;
+          border-radius: 8rpx;
+          border: 1rpx solid #E4E4E4;
+          box-sizing: border-box;
+        }
+      }
+
+      &-mask {
+        width: 90rpx;
+        height: 90rpx;
+        box-sizing: border-box;
+        background: rgba(0, 0, 0, 0.52);
+        padding: 12rpx 16rpx;
+        border-radius: 8rpx;
+        font-size: 24rpx;
+        font-weight: 500;
+        color: #FFFFFF;
+        letter-spacing: 2rpx;
+        position: absolute;
+        right: 0;
+        top: 0;
+        text-align: center;
+      }
+
+    }
+  }
+
+}
+
+.logistics-head {
+  font-size: 28rpx;
+  color: #0D0E15;
+  padding: 50rpx 30rpx;
+  margin-bottom: 56rpx;
+  border-bottom: 1px solid #F1F1F1;
+
+  &-row {
+    margin-bottom: 20rpx;
+
+    &-copy {
+      width: 65rpx;
+      height: 36rpx;
+      text-align: center;
+      display: inline-block;
+      border: 2rpx solid #DBDCDB;
+      margin-left: 4rpx;
+      border-radius: 4rpx;
+      font-size: 24rpx;
+    }
+  }
+}
+
+.logistics-box {
+  padding: 0 30rpx 30rpx;
+  height: 52vh;
+  width: auto;
+  @include safe('bottom');
+
+  &-group {
+    display: flex;
+
+    &-left {
+      width: 50rpx;
+      flex-shrink: 0;
+      position: relative;
+
+      &-pic {
+        width: 50rpx;
+        height: 50rpx;
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        display: none;
+      }
+
+      &-dot {
+        width: 14rpx;
+        height: 14rpx;
+        background: #CCCCCC;
+        border-radius: 50%;
+        position: absolute;
+        left: calc(50% - 8rpx);
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: 3rpx;
+        height: 100%;
+        background: #CCCCCC;
+        position: relative;
+        left: calc(50% - 1.5rpx);
+
+        .dot {
+          top: 12rpx;
+        }
+      }
+    }
+
+    &-right {
+      font-size: 24rpx;
+      color: #888888;
+      padding: 0px 0 60rpx 30rpx;
+      margin-top: -8rpx;
+
+      &-text {
+        margin-bottom: 10rpx;
+      }
+    }
+
+    &:nth-of-type(1) .logistics-box-group-left .logistics-box-group-left-pic {
+      display: block;
+    }
+
+    &:nth-of-type(1) .logistics-box-group-right .text {
+      font-weight: bold;
+      color: #0D0E15;
+    }
+
+    &:last-child .logistics-box-group-left::after {
+      display: none;
+    }
+  }
+}
+
+
+.empty {
+  padding: 20% 0 0 0;
+  text-align: center;
+
+  &-pic {
+    width: 300rpx;
+    height: 210rpx;
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/empty-icons/empty-track.png);
+    background-size: 300rpx 210rpx;
+    margin: 0 auto;
+  }
+
+  &-t1 {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 38rpx;
+  }
+
+  &-t2 {
+    font-size: 24rpx;
+    color: #666666;
+  }
+}

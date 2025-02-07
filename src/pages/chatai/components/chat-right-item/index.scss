@@ -1,0 +1,17 @@
+/* pages/chatai/components/chat-right-item/index.wxss */
+.chat-root {
+	display: flex;
+	margin-top: 20rpx;
+	justify-content: flex-end;
+	margin-right: 27rpx;
+
+	&-item {
+		max-width: 70%;
+		background-color: #09BDAC;
+		color: white;
+		padding: 16rpx 20rpx;
+		border-radius: 20rpx 0rpx 20rpx 20rpx;
+		word-wrap: break-word;
+		word-break: break-all;
+	}
+}

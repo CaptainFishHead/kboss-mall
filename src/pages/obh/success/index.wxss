@@ -1,0 +1,153 @@
+@import "../../../styles/obh.wxss";
+.container-obh {
+  box-sizing: border-box;
+  background-color: #fff;
+  font-family: PingFangSC-Regular, PingFang SC;
+  background: #fff url('https://static.tojoyshop.com/images/wxapp-obh/common/bg.png') no-repeat 0 0/100% auto;
+  padding: 20rpx 0 220rpx;
+  min-height: 100vh;
+}
+
+.head {
+  text-align: center;
+  padding: 20rpx 68rpx 49rpx;
+}
+
+.head-icon {
+  width: 90rpx;
+  height: 90rpx;
+  margin: 0 auto;
+}
+
+.head-text0 {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: bold;
+  color: #000000;
+  line-height: 45rpx;
+  margin: 23rpx auto 12rpx;
+}
+
+.head-text1 {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 33rpx;
+  margin: 0rpx auto 74rpx;
+}
+
+.head-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0rpx auto 20rpx;
+}
+
+.head-item1 {
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  line-height: 40rpx;
+  flex-shrink: 0;
+
+}
+
+.head-item2 {
+  flex-shrink: 0;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  line-height: 40rpx;
+  max-width: 450rpx;
+}
+
+.head-line {
+  height: 0rpx;
+  border: 1rpx dashed #979797;
+  margin: 49rpx 0 0;
+}
+
+.cnt {
+  width: 670rpx;
+  margin: 0 auto;
+  padding: 0 28rpx 42rpx;
+  background: linear-gradient(229deg, RGBA(244, 247, 255, 1) 0%, RGBA(247, 251, 254, 1) 100%);
+}
+
+.title {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: bold;
+  color: #000000;
+  line-height: 45rpx;
+  padding: 45rpx 0 41rpx;
+  text-align: center;
+}
+
+.item1 {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  line-height: 40rpx;
+  padding: 0 0 30rpx 48rpx;
+  background: url('https://static.tojoyshop.com/images/wxapp-obh/success/shouming-orang.png') no-repeat 0 2rpx/34rpx auto;
+}
+
+.item2 {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  line-height: 40rpx;
+  padding: 0 0 10rpx 48rpx;
+  background: url('https://static.tojoyshop.com/images/wxapp-obh/success/shuoming-blue.png') no-repeat 0 0/34rpx auto;
+}
+
+.item2-list {}
+
+.item2-li {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  line-height: 40rpx;
+  padding: 0 0 20rpx;
+}
+
+.btn-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: space-between;
+  padding: 25rpx 40rpx;
+}
+
+.btn {
+  width: 324rpx;
+  height: 80rpx;
+  border-radius: 51rpx;
+  border: 1rpx solid #3072F6;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: bold;
+  color: #3072F6;
+  line-height: 80rpx;
+  text-align: center;
+  transform: rotateZ(360deg);
+}
+.btn.on{
+  background-color: #3072F6;
+  color: #fff;
+}

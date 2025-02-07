@@ -1,0 +1,83 @@
+.status-des {
+  padding: 65rpx 49rpx 40rpx 49rpx;
+  box-sizing: border-box;
+  background-image: url(https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/diban.png?v=1.0.0);
+  background-size: 99% auto;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  position: relative;
+}
+.countdown {
+  position: absolute;
+  bottom: -96rpx;
+  right: -20rpx;
+  width: 350rpx;
+  height: 520rpx;
+  font-size: 0;
+}
+.countdown-purse {
+  width: 100%;
+  height: 100%;
+}
+
+.countdown-tips {
+  position: absolute;
+  width: 210rpx;
+  height: 84rpx;
+  left: 57rpx;
+  bottom: 135rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-tips-text {
+  font-size: 24rpx;
+  color: #F4E7D0;
+  text-align: center;
+  margin-bottom: 3rpx;
+}
+
+.countdown-tips-time {
+  right: 142rpx;
+  width: 166rpx;
+  height: 42rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  line-height: 25rpx;
+}
+
+.countdown-tips-time .time-item {
+  width: 42rpx;
+  height: 42rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F4E7D0;
+  color: #CB2C28;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+}
+.countdown-tips-time  .time-point {
+  color: #F4E7D0;
+  /* height: 42rpx; */
+  font-size: 34rpx;
+  /* line-height: 42rpx; */
+
+}
+
+.status-name {
+  font-size: 46rpx;
+  font-weight: bold;
+  color: #333;
+  line-height: 65rpx;
+}
+.status-des-text {
+  width: 100%;
+  /* padding-left: 6rpx; */
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 40rpx;
+}

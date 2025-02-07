@@ -1,0 +1,11 @@
+<!-- 老版本组件 已弃用 -->
+<view class="progress">
+	<view class='progress-line'>
+		<view class='progress-line-inner' style="width: {{ pressScale }}"></view>
+	</view>
+	<view class="progress-point">
+		<view class="progress-point-item {{index > pressIndex ? 'notpress' : ''}}" wx:for="{{pressList}}" wx:key="index">
+			<view class="progress-point-text">{{item.name}}</view>
+		</view>
+	</view>
+</view>

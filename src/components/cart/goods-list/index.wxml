@@ -1,0 +1,121 @@
+<wxs src="../../../utils/filter.wxs" module="filter"/>
+
+<scroll-view class="cart-list" scroll-y
+             refresher-enabled="{{true}}"
+             refresher-threshold="{{70}}"
+             refresher-default-style="none"
+             refresher-triggered='{{triggered}}'
+             bindrefresherpulling="onPulling"
+             bindrefresherrefresh="onRefresh"
+             bindrefresherrestore="onRestore"
+             bindrefresherabort="onAbort"
+>
+    <view slot="refresher" class="refresh-bar">
+<!--         {{refreshText}}-->
+        <image class="refresh-bar-img" src="./loading.gif" />
+    </view>
+    <!--商品列表-->
+    <view wx:for="{{goodsList}}" wx:key="storeId" class="cart-list-store">
+        <view class="cart-list-store-name">{{item.storeName||''}}</view>
+        <view wx:for="{{item.skuList}}" wx:key="skuId" wx:for-index="idx" wx:for-item="prod" class="cart-list-store-goods">
+            <view class="weui-flex">
+                <view class="goods-lt">
+                    <mp-checkbox-group ext-class="cart_checkbox"
+                                       multi="{{false}}"
+                                       catchtap="checkeChange"
+                                       data-checked="{{prod.checked||false}}"
+                                       data-skuid="{{prod.skuId}}">
+                        <checkbox color="#B58209" checked="{{prod.checked}}"/>
+                    </mp-checkbox-group>
+                </view>
+                <view class="weui-flex__item goods-rt">
+                    <view class="prod-warp">
+                        <image class="prod-warp-img" src="{{prod.skuImg}}" bindtap="toProdInfo"
+                               data-skuid="{{prod.skuId}}" data-spuid="{{prod.spuId}}"/>
+                        <view class="prod-warp-info">
+                            <view class="prod-warp-info-top">
+                                <view class="prod-warp-info-top-cont">
+                                    <view class="prod-warp-info-top-cont-name" bindtap="toProdInfo" data-skuid="{{prod.skuId}}" data-spuid="{{prod.spuId}}">{{prod.spuName}}</view>
+                                    <view class="prod-warp-info-top-cont-del_btn" data-skuid="{{prod.skuId}}" data-cartid="{{prod.cartId}}" catch:tap="delGoodsHandle">
+                                        <image class="ic_del" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-close.png"/>
+                                    </view>
+                                </view>
+                                <view class="prod-warp-info-top-specs" data-skuid="{{prod.skuId}}" data-spuid="{{prod.spuId}}" data-cartid="{{prod.cartId}}" catch:tap="showSku" data-skunum="{{prod.skuNum}}" data-spukind="{{prod.spuKind}}">
+                                    <view class="prod-warp-info-top-specs-txt">{{prod.skuDesc}}</view>
+                                    <image class="prod-warp-info-top-specs-ic_arrow" src="https://static.tojoyshop.com/images/wxapp-boss/cart/ic_jiantou.png"
+                                           wx:if="{{prod.spuKind!=='1'}}"/>
+                                </view>
+                            </view>
+                            <!-- isPromotion 判断不享受活动价 true:享受 false:不享受 -->
+                            <view class="prod-warp-info-act" wx:if="{{prod.checked&&prod.isPromotion}}">
+                                <image class="prod-warp-info-act-icon" src="{{prod.promotionSkuUrl}}"/>
+                            </view>
+                            <view class="prod-warp-info-bottom">
+                                <block wx:if="{{!prod.isPromotion||!prod.checked}}">
+                                    <view class="prod_price price"><text class="price_txt">¥</text> {{filter.moneyNumber(prod.sellPrice)}}</view>
+                                </block>
+                                <block wx:else>
+                                    <!-- isBeyondPromLimit  false:只展示活动价,true:即展示活动价 也展示原价-->
+                                    <view wx:if="{{prod.isBeyondPromLimit}}">
+                                        <view class="prom-price price">
+                                            <text class="price_txt">¥</text> {{filter.moneyNumber(prod.promSkuPrice)}}<text class="price_num">x {{prod.skuPromotionNum}}</text>
+                                        </view>
+                                        <view class="original-price price">
+                                            <text class="price_txt">¥</text> {{filter.moneyNumber(prod.sellPrice)}}<text class="price_num">x {{prod.skuOriginalNum}}</text>
+                                        </view>
+                                    </view>
+                                    <view wx:else>
+                                        <view class="prom-price price"><text class="price_txt">¥</text> {{filter.moneyNumber(prod.promSkuPrice)}}</view>
+                                        <view class="gray-price price"><text class="price_txt">¥</text> {{filter.moneyNumber(prod.sellPrice)}}</view>
+                                    </view>
+                                </block>
+                                <goods-count skuId="{{prod.skuId}}" productNum="{{prod.skuNum}}" bind:changenum="changeNum" stockNums="{{prod.stockNums}}" maxNum="{{prod.sinceMax}}" minNum="{{prod.sinceMin}}"/>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="prod-tips" wx:if="{{prod.checked&&prod.isBeyondPromLimit&&prod.promTips}}">{{prod.promTips}}<view class="prod-tips-arrow"/></view>
+                    <cpgoodslist showArrow list="{{prod.subSkuList}}" wx:if="{{prod.spuKind==='1'}}" bind:showinfo="showSubComInfo"/>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--失效商品-->
+    <block wx:if="{{invalidList.length}}">
+        <view class="title">已失效商品</view>
+        <view wx:for="{{invalidList}}" wx:key="skuId" wx:for-index="idx" wx:for-item="prod" class="invalid">
+            <!--        <view class="invalid-storename">{{prod.storeName}}</view>-->
+            <view class="weui-flex invalid-list">
+                <image class="invalid-list-icon" src="https://static.tojoyshop.com/images/wxapp-boss/cart/tag_invalid_goods.png"/>
+
+                <view class="invalid-list-layer">
+                    <image src="{{prod.skuImg}}" class="invalid-list-layer-img"/>
+                    <view class="invalid-list-layer-mask">
+                        <view class="invalid-list-layer-mask-text">{{prod.cause===1?'下架':'卖光了'}}</view>
+                    </view>
+                </view>
+
+                <view class="invalid-list-cont">
+                    <view class="invalid-list-cont-name">
+                        <view class="invalid-list-cont-name-txt">{{prod.spuName}}</view>
+                        <view class="invalid-list-cont-name-btn" data-skuid="{{prod.skuId}}" data-cartid="{{prod.cartId}}"  catch:tap="delGoodsHandle">
+                            <image class="ic_del" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-close.png"/>
+                        </view>
+                    </view>
+                    <view class="invalid-list-cont-specs">{{prod.cause===1?'该商品已下架，去看看其他商品吧':'该商品库存不足，去看看其他商品吧'}} </view>
+                </view>
+            </view>
+        </view>
+    </block>
+
+</scroll-view>
+
+<mp-half-screen-dialog ext-class=""
+                       class="dialog-bean"
+                       maskClosable="{{false}}"
+                       bindclose="onCloseDelDialog"
+                       title="删除商品"
+                       show="{{ delGoodsVisible }}">
+    <view slot="footer">
+        <button type="primary" bind:tap="onDelSubmit">确认删除</button>
+    </view>
+</mp-half-screen-dialog>

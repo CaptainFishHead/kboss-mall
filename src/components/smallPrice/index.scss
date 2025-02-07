@@ -1,0 +1,23 @@
+
+.small-price{
+  display: inline-block;
+  font-family: DINAlternate-Bold, DINAlternate;
+  .top{
+    display:flex;
+    align-items:baseline;
+    .money{
+      color: #B58209;
+      font-size: 40rpx;
+      .money-type{
+        font-size: 29rpx;
+        color: #B58209;
+      }
+    }
+    .money-line{
+      font-size: 26rpx;
+      font-weight: bold;
+      color: #999999;
+      text-decoration: line-through;
+    }
+  }
+}

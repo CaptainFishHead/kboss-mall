@@ -1,0 +1,38 @@
+<import src="../../../../components/toast/index" />
+<template is="toast" data="{{...tj_toast}}" />
+<mp-half-screen-dialog extClass="health-label-dialog" title="报告上传" show="{{ visible }}" bindclose="close" catchtouchmove="touchMove">
+  <view slot="desc" class="body">
+    <block wx:if="{{isUpload}}">
+      <view class="success">
+        <image class="success-pic" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/upload-success.png" />
+        <view class="success-text">
+          您的报告已
+          <text class="tip">上传成功</text>
+          ，我们将会在24小时内为您更新数据。如您对报告中的数据有疑问，您还可以联系服务管家为您解惑。
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="desc">我们将打开拍摄功能并读取您的相册，收集您的健康数据信息，用于完着用户的健康档案。</view>
+      <view class="steps">
+        <view wx:for="{{stepList}}" wx:key="index" class="steps-item">
+          <view class="steps-item-icon">
+            <image src="{{item.imgUrl}}" class="steps-item-icon-pic" />
+            <view class="steps-item-icon-arrow"></view>
+          </view>
+          <view class="steps-item-text">{{item.text}}</view>
+        </view>
+      </view>
+    </block>
+    <view class="upload-history" bindtap="toggleHistory">历史上传记录</view>
+  </view>
+  <view slot="footer" class="footer">
+    <block wx:if="{{isUpload}}">
+      <button type="primary" bindtap="contactAdvisor" class="success">免费联系专属服务管家</button>
+    </block>
+    <block wx:else>
+      <button type="primary" plain bindtap="close">取消上传</button>
+      <button type="primary" bindtap="handleUpload" class="success">立即上传</button>
+    </block>
+  </view>
+</mp-half-screen-dialog>

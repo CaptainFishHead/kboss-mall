@@ -1,0 +1,72 @@
+<!--pages/obh/promotion/index.wxml-->
+<view class="promotion-container" id="root-container">
+  <image class="image" src="{{item}}" wx:for="{{imgs}}" wx:key="index" mode="widthFix"/>
+
+  <view class="promotion-bottom">
+    <div class="prize-users">
+      <scrollList data="{{winList}}" wx:if="{{winList.length > 0}}" delay="{{0}}"/>
+      <scrollList data="{{winListReverse}}" wx:if="{{winList.length > 0}}" delay="{{1}}"/>
+    </div>
+    <view wx:if="{{deviceInfo.openFlag == 2}}" style="background-color: #E4FBF7; font-size: 26rpx; color: #F16363; text-align: center; height: 56rpx; line-height: 56rpx;">森林氧吧运行中…</view>
+    <view class="promotion-bottom-container"  wx:if="{{deviceInfo.activityId || deviceInfo.openFlag == 1}}">
+      <view class="left btn" catch:tap="showCheckinTipsPopup" wx:if="{{deviceInfo.activityId}}">
+        <view style="height: 49rpx; margin-right: 4rpx; width: 49rpx; position: relative;">
+          <image src="https://static.tojoyshop.com/images/obh/loaded/20231020/ic-lottery.png?v=1" class="icon1" style="width: 49rpx; height: 49rpx;"/>
+        </view>
+        <text>住氧吧房赢大奖</text>
+        <view class="flag line1hidden" wx:if="{{winNum && winNum > 0}}">{{winNum}}人已中奖</view>
+      </view>
+      <view class="right btn" catch:tap="showCheckinPopup" data-index="{{1}}" wx:if="{{deviceInfo.openFlag == 1}}">
+        <image src="https://static.tojoyshop.com/images/obh/loaded/ic-btn-ybd.png" style="height: 49rpx; margin-right: 4rpx; width: 49rpx;"/>
+        <text>开启森林氧吧</text>
+        <view class="flag line1hidden">开启参与赢大奖</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<myTopBar wx:if="{{!showVideo}}" showHeight="{{false}}" fixed="{{true}}" titleText="" iconHeight="24" iconWidth="24" bind:back="backHandler" background="rgba(0,0,0,0)" backIcon="{{'https://static.tojoyshop.com/images/wxapp-obh/common/icon-back-black.png'}}" />
+
+<openPopup wx:if="{{checkinTipsVisible}}" bind:onCheckin="showCheckinPopup" bind:onClose="onTipsClose"/>
+
+<checkinPopup visible="{{checkinVisible}}" bind:close="onCheckinClose" bind:onCheckin="onCheckin"/>
+
+<loginPopup wx:if="{{loginPopup}}" msg="{{loginMsg}}" bind:onLogin="getWechatOpenId"/>
+
+<view wx:if="{{needAuthorization}}" class="auth-mask" catch:tap="showAuth"/>
+<privacy id="privacy" />
+
+<view wx:if="{{videoInfo && !isHide}}" class="{{showVideo ? 'video-container' : 'video-float'}}" catch:touchmove="touchMove">
+  <view style="position: absolute; width: 100%; height: 100%; background-color: #C2F4EA; left: 0; top: 0;" wx:if="{{showVideo}}">
+    <image src="{{videoInfo.videoBgUrl}}" style="width: 100%; height: 100%;" mode="widthFix"/>
+  </view>
+  <video wx:if="{{(isEnteredVideo && showVideo) || (!isEnteredVideo && !showVideo)}}" id="myVideo" class="obh-wrap video-element" src="{{videoInfo.videoUrl}}" bindprogress="bindprogressVideo" 
+    muted="{{muted}}" autoplay="{{true}}" loop="{{true}}" show-center-play-btn='{{false}}' show-play-btn="{{isFullScreen}}" controls="{{showVideo ? true : false}}" 
+    show-fullscreen-btn="{{false}}" bindended="endVideo" bindplay="playHandler" bindpause="pauseHandler" object-fit="fill" bindtimeupdate="bindTimeUpdateVideo" 	initial-time="{{currentTime}}">
+  </video>
+  <view class="video-mask" style="opacity: {{playStatus == 2 ? 1 : 0}};" catch:tap="clickPlay">
+    <image class="video-play-btn" src="https://static.tojoyshop.com/images/wxapp-obh/buy/icon-video-play.png"/>
+  </view>
+
+  <view wx:if="{{!showVideo}}" class="video-cover" catch:tap="showVideoContainer"></view>
+
+  <view wx:if="{{showVideo}}" class="video-options">
+    <view class="video-options-item" catch:tap="changeMuted">
+      <image src="https://static.tojoyshop.com/images/obh/loaded/20231020/ic-video-muted-{{muted ? 'off' : 'on'}}.png" />
+      <view>声音已{{muted ? '关' : '开'}}</view>
+    </view>
+
+    <view class="video-options-item" catch:tap="closeVideo">
+      <image src="https://static.tojoyshop.com/images/obh/loaded/20231020/ic-video-close.png" />
+      <view>关闭页面</view>
+    </view>
+  </view>
+
+
+  <view wx:if="{{isEnteredVideo && !showVideo}}" class="video-small-cover" catch:tap="showVideoContainer">
+    <image src="https://static.tojoyshop.com/images/obh/loaded/20231020/bg-small-video-cover.png" class="cover"/>
+    <image class="video-play-btn" src="https://static.tojoyshop.com/images/wxapp-obh/buy/icon-video-play.png"/>
+  </view>
+</view>
+
+<image wx:if="{{showVideo}}" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-close.png" class="video-close" catch:tap="closeVideo"/>

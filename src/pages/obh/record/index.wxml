@@ -1,0 +1,55 @@
+
+<wxs src="../../../utils/filter.wxs" module="filters"/>
+<view class="container-obh">
+  <navigation-bar title="服务购买记录" background="#fff" />
+  <view class="obh-wrap">
+  <view class="list">
+    <view class="li{{index==0?' one':''}}{{index+1==list.length?' last':''}}" wx:for="{{list}}" wx:for-item="item" wx:key="index">
+      <view class="li-head">
+        <view class="li-title">{{filters.formatDate(item.createTime,'.')}}</view>
+        <!-- orderStatus 订单服务状态  1服务未开始 2服务已开始 3服务已结束5:已退款;  -->
+        <!-- ("剩余时间 单位秒") private Long surplusSecond; -->
+        <view class="head-ing" wx:if="{{item.orderStatus==2&&item.surplusSecond}}">
+          <view class="ing-text">距离服务结束</view>
+          <view class="time-box"><view class="time-num">{{item.timeJson.h}}</view><view class="time-mark">:</view><view class="time-num">{{item.timeJson.m}}</view><view class="time-mark">:</view><view class="time-num">{{item.timeJson.s}}</view></view>
+        </view>
+        <view class="{{item.orderStatus==1?'head-not-started':'head-end'}}" wx:elif="{{item.orderStatusName}}">{{item.orderStatusName}}</view>
+      </view>
+      <view class="li-cnt">
+        <view class="li-name line1hidden{{item.orderStatus==3?' c-999':''}}">{{item.goodsName}}</view>
+        <view class="li-hotel line1hidden">{{item.hotelName}}</view>
+        <view class="li-room line1hidden">{{item.hotelRoomNo}}</view>
+         <!-- `refundStatus` int NOT NULL DEFAULT '0' COMMENT '退款状态 0 未退款 1 退款中 2 已退款', -->
+        <view class="refund-btn" data-item='{{item}}' data-index='{{index}}' catchtap="showPopHandler" wx:if="{{item.refundStatus==0&&(item.orderStatus==1||(item.orderStatus==2&&(item.surplusSecond||item.surplusSecond===null)))&&item.orderPayPrice&&item.orderPayPrice>0}}">我要退款</view>
+        <view class="refund-ing" wx:if="{{item.refundStatus==1}}">退款中</view>
+        <view class="refund-finished" wx:if="{{item.refundStatus==2}}">已退款</view>
+        <view class="li-money line1hidden{{item.orderStatus==3?' c-999':''}}">¥{{item.orderPayPrice}}</view>
+        <view class="li-time line1hidden">{{item.buyNumStr}}</view>
+        <image wx:if="{{false}}" src='https://static.tojoyshop.com/images/wxapp-obh/record/yiduankuan.png' class="finished-refund"></image>
+      </view>
+    </view>
+  </view>
+  <errorImg wx:if="{{msg&&list.length==0}}" text="{{msg}}"></errorImg>
+  <view class="msg" wx:else>{{msg}}</view>
+  <view class="btn-buy-box">
+    <view class="btn-buy-h"></view>
+    <view class="btn-buy-cnt"><view class="btn-buy" catchtap="buyProduct">购买氧吧设备</view></view>
+  </view>
+  <popDialog title="温馨提示" showCancel="{{false}}" btnConfirmText="知道了" showPopup="{{showPopupType==1}}" bind:callBack="closePopHandler">
+    <view class="pop-cnt">系统检测到氧吧设备正常开启过，对于这种情况系统不支持退款，如有疑问您可联系酒店前台咨询</view>
+  </popDialog>
+  <popDialog title="温馨提示" btnConfirmText="退款" showPopup="{{showPopupType==2}}" bind:callBack="confirmRefundHandler" bind:cancelHandler="closePopHandler">
+    <view class="pop-cnt">
+      <view class="pop-cnt-title">系统检测到氧吧设备未正常开启过，您可以先做以下操作排除故障：</view>
+      <view class="pop-list">
+        <view class="pop-li">1）检查设备是否连通电源（设备点亮代表有电源）</view>
+        <view class="pop-li">2）请手动开启氧吧开关</view>
+        <view class="pop-li">3）若①②均操作无效，请联系您入住的酒店前台协助您处理或在下方点击退款我们将为您全额退</view>
+      </view>
+    </view>
+  </popDialog>
+  <popDialog title="温馨提示" btnConfirmText="退款" showPopup="{{showPopupType==3}}" bind:callBack="confirmRefundHandler" bind:cancelHandler="closePopHandler">
+    <view class="pop-cnt">服务还未开始，系统支持全额退款，若您不需要氧吧服务，请在下方点击退款我们将为您全额退</view>
+  </popDialog>
+</view>
+</view>

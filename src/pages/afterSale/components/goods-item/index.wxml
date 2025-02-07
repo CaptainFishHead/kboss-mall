@@ -1,0 +1,21 @@
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<view class="item">
+    <image class="item-img" src="{{item.skuImg}}"/>
+    <view class="item-info">
+        <view class="item-info-name">
+            <view class="item-info-name-title">{{item.spuName}}</view>
+        </view>
+        <view class="item-info-attr">
+            <view class="item-info-attr-spec">
+                <text wx:if="{{refundType !== 4}}">数量：{{item.reSaleNum || item.skuNum}}</text>
+                {{item.skuDesc}}
+            </view>
+            <view class="item-info-attr-other">
+              <view class="item-info-attr-price" wx:if="{{item.spuKind === 2 && refundType !== 4}}">
+                实付单价: <text class="item-info-attr-price-num price">{{filter.formatAmount(item.skuCashPrice*100/item.skuNum/100)}}</text>
+              </view>
+              <slot></slot>
+            </view>
+        </view>
+    </view>
+</view>

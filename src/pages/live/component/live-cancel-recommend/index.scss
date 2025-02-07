@@ -1,0 +1,30 @@
+.live-list {
+  padding: 100rpx 27rpx 50rpx 27rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &-item {
+    margin-bottom: 20rpx;
+  }
+}
+.view-list {
+  height: 51rpx;
+  width: 82rpx;
+  margin-bottom: 70rpx;
+  margin: 0 auto;
+  animation: lookGoods 0.8s linear 0s infinite alternate; 
+  .icon {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@keyframes lookGoods {
+  from { 
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(14rpx);
+  }
+}

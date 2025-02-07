@@ -1,0 +1,18 @@
+<view class="warp">
+    <swiper class="swiper" interval="3000" autoplay circular bindchange="swiperChange"
+            style="height: {{ topGoodsList[0].picHeight}}rpx">
+        <block wx:for="{{topGoodsList}}" wx:key="id">
+            <swiper-item class="swiper-item" data-link="{{item.jumpTypeParam}}" bind:tap="toGoodsInfo">
+                <image src="{{item.picUrl}}" mode="aspectFill"
+                       style="height:{{item.picHeight?item.picHeight+'rpx':'100%'}}"/>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="dots">
+        <block wx:for="{{topGoodsList}}" wx:key="id">
+            <view class="dots-item {{curIndex === index ?'dots-active':''}}"/>
+        </block>
+    </view>
+</view>
+
+

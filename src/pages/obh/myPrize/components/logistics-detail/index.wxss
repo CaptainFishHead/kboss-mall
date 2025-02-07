@@ -1,0 +1,113 @@
+.logistics-dialog {
+    background-color: #F8F8F8;
+    /* padding: 0 11rpx; */
+    border-radius: 10rpx 10rpx 0rpx 0rpx;
+    min-height: 563rpx;
+}
+.logistics-title {
+    color: #333;
+    font-size: 36rpx;
+    text-align: center;
+}
+.logistics-desc {
+    background: #FFFFFF;
+    border-radius: 26rpx 26rpx 0rpx 0rpx;
+    min-height: 500rpx;
+    /* max-height: 800rpx;
+    overflow-y: auto; */
+    margin: 0 11rpx;
+}
+.logistics-hrad {
+    font-size: 28rpx;
+    color: #333;
+    padding: 50rpx 30rpx;
+    margin-bottom: 47rpx;
+    border-bottom: 1rpx solid #F8F8F8;
+}
+.logistics-hrad .row1 {
+    display: flex;
+    justify-content: space-between;
+}
+.logistics-hrad .row1 .copy {
+    width: 83rpx;
+    height: 43rpx;
+    line-height: 43rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2rpx solid #DBDCDB;
+    margin-left: 20rpx;
+    border-radius: 4rpx;
+}
+
+.logistics-box {
+    padding: 0 30rpx 80rpx 30rpx;
+}
+.logistics-box .group-box {
+    display: flex;
+}
+
+.logistics-box .group-box .left-box {
+    width: 50rpx;
+    flex-shrink: 0;
+    position: relative;
+
+}
+.logistics-box .group-box .left-box .pic {
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: none;
+}
+.logistics-box .group-box .left-box::after {
+    content: '';
+    display: inline-block;
+    width: 2rpx;
+    height: 100%;
+    background: #B58209;
+    position: absolute;
+    left: 50%;
+    /* transform: translateX(-50%); */
+}
+.logistics-box .group-box .left-box .dot {
+    width: 14rpx;
+    height: 14rpx;
+    background: #B58209;
+    border-radius: 50%;
+    position: absolute;
+    left: calc(50% - 7rpx);
+
+}
+.logistics-box .group-box .left-box::after,.logistics-box .group-box .left-box .dot {
+    top: 12rpx;
+}
+
+.logistics-box .group-box .right-box {
+    font-size: 24rpx;
+    font-weight: 400;
+    color: #888888;
+    padding: 0 0 63rpx 30rpx;
+}
+.logistics-box .group-box .right-box .text {
+    margin-bottom: 10rpx;
+    padding: 0;
+}
+.logistics-box .group-box:nth-of-type(1) .left-box .pic {
+    display: block;
+}
+.logistics-box .group-box:nth-of-type(1) .right-box .text {
+    font-weight: bold;
+    color: #B58209;
+}
+.logistics-box .group-box:last-child .left-box::after {
+    display: none;
+}
+
+.logistics-box .empty {
+    text-align: center;
+    margin-top: 100rpx;
+    color: #999999;
+}

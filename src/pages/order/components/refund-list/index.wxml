@@ -1,0 +1,57 @@
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<mp-half-screen-dialog
+    ext-class="refund-dialog"
+    class="coupon"
+    maskClosable="{{false}}"
+    bindclose="close"
+    show="{{refundVisbale}}"
+    title="选择售后商品"
+    catchtouchmove="touchMove"
+>
+    <view slot="desc">
+        <view class="content">
+            <scroll-view scroll-y enhanced show-scrollbar="{{false}}" class="content-list" wx:if="{{refundList.length}}">
+              <view class="goods-list" wx:for="{{refundList}}" wx:key="id" wx:for-index="index">
+                    <view class="goods-lt">
+                        <mp-checkbox-group ext-class="cart_checkbox"
+                                           multi="{{false}}"
+                                           catchtap="checkeChange"
+                                           data-checked="{{item.checked||false}}"
+                                           data-index="{{index}}">
+                            <checkbox color="#B58209" checked="{{item.checked}}"/>
+                        </mp-checkbox-group>
+                    </view>
+                    <view class="goods-rt">
+                        <view class="prod-warp">
+                            <image class="prod-warp-img" src="{{item.skuImg}}"/>
+                            <view class="prod-warp-info">
+                              <view class="name">{{item.spuName}}</view>
+                              <view class="kind">{{item.skuDesc}}</view>
+                              <view class="price">
+                                <!-- <view class="number" wx:if="{{item.promotionType === 2}}">¥ {{filter.formatAmount(item.skuPromotionPrice)}}</view> -->
+                                <view><view class="number" wx:if="{{item.spuKind === 2}}">¥ {{filter.formatAmount(item.skuCashPrice / item.skuNum)}}</view></view>
+                                <goods-count
+                                  key="{{index}}"
+                                  skuId="{{item.skuId}}"
+                                  productNum="{{item.reSaleNum}}"
+                                  bind:changenum="changeNum"
+                                  disabledInput="{{!item.shipNum}}"
+                                  maxNum="{{item.skuNum - item.refundNum}}"
+                                  minNum="{{item.shipNum ? 1 : item.reSaleNum}}"
+                                />
+                              </view>
+                            </view>
+                        </view>
+                    </view>
+              </view>
+            </scroll-view>
+            <view wx:else class="empty">
+                <empty ext-class="empty-box"
+                       imgUrl="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-voucher-empty.png"/>
+            </view>
+            <view class="footer-btn" style="{{systemInfo.platform==='android'?'margin-bottom:30rpx;':''}}" wx:if="{{refundList.length}}">
+                <button type="primary" disabled="{{disabledBtn}}" bind:tap="confrimRefundGoods">下一步</button>
+            </view>
+        </view>
+    </view>
+</mp-half-screen-dialog>

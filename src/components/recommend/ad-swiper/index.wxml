@@ -1,0 +1,16 @@
+<!--components/recommend/adSwiper/index.wxml-->
+<view class="recommend-ad" >
+  <swiper class="recommend-ad_swiper" autoplay circular bindchange="change">
+    <block wx:for="{{list}}" wx:for-item="item" wx:key="id">
+      <swiper-item data-link="{{item.link}}" data-detailid="{{item.detailId}}" data-jumptype="{{item.jumpType}}" bindtap="handleGoPage" class="recommend-ad_item">
+        <image src="{{item.picUrl}}" mode="scaleToFill" class="recommend-ad-item_pic"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="recommend-ad_dots" wx:if="{{list.length > 1}}">
+      <block wx:for="{{list}}" wx:key="id">
+          <view class="recommend-ad_dots_item {{currIndex === index ?'active':''}}"/>
+      </block>
+    </view>
+</view>
+

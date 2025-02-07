@@ -1,0 +1,30 @@
+<!-- 规格选择 按钮 -->
+<view class="{{ extClass }}" catchtap="shareBtn">
+	<slot />
+</view>
+<!-- 规格选择 弹层 -->
+<root-portal catchtap catchtouchmove enable wx:if="{{isOpen}}">
+  <mp-half-screen-dialog  ext-class="share-container screen-dialog__bd_b0" bindclose="hideDialog" class="share-container" show="{{visible}}">
+    <view slot="title" class="share-title">
+      分享到
+    </view>
+    <view slot="desc" class="share-list">
+      <button class="share-list-item" catchtap="onCreatePoster">
+        <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/share-entry/bill-icon.png" />
+        <text>生成海报</text>
+      </button>
+      <button open-type="share"  class="share-list-item" catchtap="onShareFriend">
+        <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/share-entry/wx-icon.png" />
+        <text>分享给好友</text>
+      </button>
+      <button class="share-list-item" catchtap="setClipboard">
+        <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/share-entry/link-icon.png" />
+        <text>复制链接</text>
+      </button>
+      <button class="share-list-item" catchtap="onShareCode">
+        <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/share-entry/code-icon.png" />
+        <text>分享码</text>
+      </button>
+    </view>
+  </mp-half-screen-dialog>
+</root-portal>

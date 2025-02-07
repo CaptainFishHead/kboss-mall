@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "bmi-list-card": "../components/bmi-list-card/index",
+    "shrink": "../components/shrink/index",
+    "chat-loading-view": "../components/chat-loading-view/index"
+  }
+}

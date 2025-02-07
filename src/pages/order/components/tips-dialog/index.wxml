@@ -1,0 +1,10 @@
+<!-- 温馨提示弹窗 -->
+<mp-dialog 
+  ext-class="order-cancel-dialog"
+  show="{{visible}}"
+  bindbuttontap="tapDialogButton"
+  buttons="{{buttons}}"
+  title="温馨提示"
+>
+    <view class="title">{{content}}</view>
+</mp-dialog>

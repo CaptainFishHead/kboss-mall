@@ -1,0 +1,16 @@
+/* pages/obh/myPrize/index.wxss */
+@import "../../../components/toast/index.wxss";
+page { 
+  background-color: #F6F6F6;
+  padding-bottom: 50rpx; 
+}
+.containers {}
+.prize-list {
+  margin-top: 16rpx;
+}
+.not-more {
+  text-align: center;
+  font-size: 24rpx;
+  padding: 12rpx;
+  color: #999;
+}

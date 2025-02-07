@@ -1,0 +1,182 @@
+.hot {
+  height: 83rpx;
+  // background: #FFFFFF;
+  border-radius: 10rpx;
+  display: inline-flex;
+  margin-bottom: 24rpx;
+  // position: absolute;
+  // z-index: 2000;
+  // bottom: 678rpx;
+  // left: 20rpx;
+  color: #fff;
+  box-sizing: border-box;
+  // animation: move 3s ease 0s infinite normal;
+  &-number {
+    width: 107rpx;
+    height: 100%;
+    padding-top: 40rpx;
+    background-image: url('https://static.tojoyshop.com/images/wxapp-boss/live/live-tips-hot.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 32rpx;
+    line-height: 21px;
+    font-family: DINAlternate-Bold, DINAlternate;
+    font-weight: bold;
+    color: #fff;
+    box-sizing: border-box;
+    // background: #FF7016;
+    margin-right: -16rpx;
+    padding-right: 16rpx;
+    border-top-left-radius: 10rpx;
+    border-bottom-left-radius: 10rpx;
+    text-align: center;
+  }
+  &-info {
+    border-radius: 10rpx 10rpx 10rpx 10rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    // width: 368rpx; // 加头像后解开
+    width: 300rpx;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5rpx 12rpx 7rpx 8rpx;
+    &-avtar {
+      display: flex;
+      &-box {
+        display: flex;
+        flex-direction: column;
+        .avtar {
+          width: 37rpx;
+          height: 37rpx;
+          border-radius: 50%;
+        }
+        .avtar1 {
+          margin-bottom: -2rpx;
+        }
+        .avtar2 {
+          margin-top: -2rpx;
+        }
+        &.box1 {
+          margin-right: -2rpx;
+        }
+        &.box2 {
+          margin-left: -2rpx;
+        }
+      }
+    }
+    &-text {
+      padding-left: 17rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-weight: 500;
+      max-width: 234rpx;
+      &-name {
+        font-size: 26rpx;
+        color: #FF5A19;
+        line-height: 30rpx;
+        padding-top: 7rpx;
+      }
+      &-number {
+        font-size: 28rpx;
+        color: #000;
+        line-height: 30rpx;
+        // padding-top: 7rpx;
+      }
+    }
+    &-arrow {
+      width: 28rpx;
+      height: 28rpx;
+      font-size: 0;
+      &-img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.tips {
+  display: inline-block;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+  // position: absolute;
+  // z-index: 2000;
+  // bottom: 678rpx;
+  // left: 20rpx;
+  border-radius: 40rpx;
+  padding: 2rpx;
+  background-clip: border-box;
+  min-height: 54rpx;
+  transform: translateX(0rpx);
+  // animation: move 3s ease 0s infinite normal;
+  background-image: linear-gradient(90deg, rgba(248, 215, 85, 0.37), rgba(250, 205, 23, 0.7));
+  &.blue {
+    background-image: linear-gradient(90deg, rgba(82, 200, 67, 0.37), rgba(82, 200, 67, 0.7));
+  }
+  &-circle {
+    height: 50rpx;
+    padding: 2rpx 5rpx 2rpx 25rpx;
+    width: auto;
+    display: flex;
+    align-items: center;
+    background-color: rgba($color: #000, $alpha: 0.8);
+    border-radius: 40rpx;
+    font-size: 26rpx;
+    color: #fff;
+    &-item {
+      display: flex;
+      align-items: center;
+      // .text {
+      //   max-width: 300rpx;
+      // }
+      .image {
+        height: 100%;
+        width: 100%;
+      }
+      .btn {
+        height: 40rpx;
+        line-height: 40rpx;
+        padding: 0 21rpx;
+        border-radius: 30rpx;
+        cursor: pointer;
+        &.blue {
+          background-color: #52C843;
+          color: #fff;
+        }
+        &.yellow {
+          background-color: #FEE100;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+.one-line {
+  max-width: 243rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;				//溢出内容隐藏
+  text-overflow: ellipsis;		//文本溢出部分用省略号表示
+  display: -webkit-box;			//特别显示模式
+  -webkit-line-clamp: 1;			//行数
+  line-clamp: 1;
+  -webkit-box-orient: vertical;	//盒子中内容竖直排列
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(750rpx);
+  }
+  10% {
+    transform: translateX(0rpx);
+  }
+  90% {
+    transform: translateX(0rpx);
+  }
+  100% {
+    transform: translateX(-750rpx);
+  }
+}

@@ -1,0 +1,60 @@
+.cl-tabs {
+  background-color: #ffffff;
+}
+
+.cl-tabs-scroll {
+  position: relative;
+  user-select: none;
+  white-space: nowrap;
+  padding: 0 20rpx;
+}
+.cl-tabs-noscroll {
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cl-tab {
+  position: relative;
+  // min-width: 0;
+  height: 80rpx;
+  padding: 0 20rpx;
+  text-align: center;
+  color: #888888;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  background: #fff;
+  
+  text {
+    display: block;
+    width: 100%;
+  }
+}
+.cl-tabs-scroll .cl-tab {
+  display: inline-block;
+  /* padding:0 24rpx; */
+}
+.cl-tabs-noscroll .cl-tab {
+  // flex: 1;
+  flex-shrink: 0;
+}
+.cl-tab:active {
+  background: #fff !important;
+}
+.cl-tab-active {
+  color: #b58209;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.cl-tabs__line {
+  position: absolute;
+  bottom: 2rpx;
+  left: 0;
+  z-index: 1;
+  height: 8rpx;
+  background: #b58209;
+}
+.scrollHeight {
+  height: 80rpx;
+}

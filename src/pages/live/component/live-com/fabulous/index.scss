@@ -1,0 +1,72 @@
+.fabulous {
+  position: relative;
+
+  &-like {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    will-change: transform;
+    transform: scale3d(1, 1, 1);
+    transition: transform ease-in-out .2s;
+    &_active {
+      transform: scale3d(1.5, 1.5, 1);
+    }
+    &.bg {
+      position: relative;
+      opacity: 0.28;
+    }
+    &_counts {
+      position: absolute;
+      color: #FFFFFF;
+      height: 22rpx;
+      width: 69rpx;
+      text-align: center;
+      left: 50%;
+      bottom: 0;
+      transform: translate3d(-50%, 8rpx, 0);
+      z-index: 10;
+      font-size: 20rpx;
+      font-weight: 400;
+      line-height: 22rpx;
+      border-radius: 5px;
+      &.bg {
+        background-color: #000;
+      }
+    }
+
+    &_button {
+      width: 75rpx;
+      height: 75rpx;
+      border-radius: 38rpx;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-clip: content-box;
+      &.bg {
+        background-color: #000;
+      }
+      image {
+        width: 48rpx;
+        height: 48rpx;
+      }
+    }
+  }
+}
+
+.list-img {
+  // top: -20rpx;
+  left: -40rpx;
+  position: absolute;
+  z-index: -1;
+}
+
+.heart-img {
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  opacity: 0;
+  position: absolute;
+  left: 26rpx;
+  bottom: 0;
+}

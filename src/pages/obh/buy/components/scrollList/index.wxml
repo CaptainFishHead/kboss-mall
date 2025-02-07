@@ -1,0 +1,19 @@
+<view class="scroll-list">
+  <view 
+    class="scroll-list-wrap wrap1" 
+    style="animation-duration: {{onceTime}}s;animation-play-state:{{playState}}"
+    wx:if="{{show1}}">
+    <view class="scroll-item" wx:for="{{list}}" wx:key="index">
+      {{item.nickName || item.mobile}} {{item.timeStr}}抽中<text class="prize-name">{{item.prizeName}}</text>
+    </view>
+  </view>
+  <view
+    class="scroll-list-wrap wrap2"
+    style="animation-duration: {{onceTime}}s;animation-play-state:{{playState}}"
+    wx:if="{{show2}}">
+    <view class="scroll-item" wx:for="{{list}}" wx:key="index">
+      {{item.nickName || item.mobile}} {{item.timeStr}}抽中
+      <text class="prize-name">{{item.prizeName}}</text>
+    </view>
+  </view>
+</view>

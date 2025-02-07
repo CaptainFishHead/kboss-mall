@@ -1,0 +1,13 @@
+<!--pages/obh/promotion/components/winningList/index.wxml-->
+<view class="notice" style="background: url('{{backgroundImg}}'); background-size: 100% 100%; background-repeat: no-repeat;">
+  <view class="notice__inner">
+    <view class="{{dataList && dataList.length > 0 ? 'notice__box': ''}}">
+      <view class="notice__item" wx:for="{{dataList}}" wx:key="index" style="color: {{txtColor}};"><text class="mobile">{{item.mobile}}</text><text>{{item.prizeName}}</text></view>
+    </view>
+    <view class="{{dataList && dataList.length > 0 ? 'notice__box': ''}}">
+      <view class="notice__item" wx:for="{{dataList}}" wx:key="index" style="color: {{txtColor}};"><text class="mobile">{{item.mobile}}</text><text>{{item.prizeName}}</text></view>
+    </view>
+  </view>
+
+  <view class="notice__empty" wx:if="{{!dataList || dataList.length == 0}}">数据加载中……</view>
+</view>

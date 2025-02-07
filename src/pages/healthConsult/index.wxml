@@ -1,0 +1,44 @@
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<navigation-bar title="专家名诊健康咨询" background="linear-gradient( 90deg, #EFFEFB 0%, #F8F8FF 100%);" />
+
+<view class="health-consult" bindtouchstart="watchUserOperation">
+  <view class="header">
+    <view class="header-content" bindtap="toChatAi">
+      <view class="header-conent-left">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/home/newcomer.gif"/>
+      </view>
+      <view class="header-content-middle"></view>
+      <view class="header-content-right"> 
+        你好，智能小康为您服务
+        <view class ="text">快来我和聊聊，为您挑选适合的专家</view>
+      </view>
+    </view>
+  </view>
+  <view class="department">
+    <view class="department-title">
+      重点科室
+    </view>
+    <view class="department-nav">
+      <view class="department-nav-list" wx:for="{{departmentList}}" wx:key="index" data-dept-id="{{item.deptId}}"  bind:tap="todoctorList">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/healthConsult/departments/{{item.deptId}}.png" />
+        <view class="text">{{item.deptName}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="department doctor-list">
+    <view class="department-title ">
+      百强专家
+      <text>实名认证 快速响应</text>
+    </view>
+  </view>
+  <doctor-list id="child" service-id="{{serviceId}}" service-order-code="{{serviceOrderCode}}"></doctor-list>
+  <adviser trigger-user-operation-value="{{triggerUserOperationValue}}"></adviser>
+</view>
+<view class="robot" bindtap="toChatAi" hidden="{{robotHide}}">
+  <image src="https://static.tojoyshop.com/images/wxapp-boss/home/newcomer.gif"/>
+</view>
+<login-promise id="authorize" removeSlot/>
+
+

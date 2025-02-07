@@ -1,0 +1,120 @@
+.navigation {
+  background: url(https://static.tojoyshop.com/images/wxapp-boss/search/top-bg.png)
+    0 0 no-repeat;
+  background-size: cover;
+}
+
+.classify-flex {
+  flex-direction: column;
+  height: var(--height);
+  background: #f5f5f5;
+
+  &-searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 96rpx;
+    width: 100%;
+    padding: 0 10rpx 0 30rpx;
+    background: #fff;
+    box-sizing: border-box;
+
+    .searchbar {
+      width: 100%;
+    }
+  }
+
+  &-content {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    padding-top: 20rpx;
+
+    &-flex {
+      flex-direction: row;
+      max-height: 100%;
+      height: 100%;
+
+      &-left {
+        flex: 0 0 180rpx;
+      }
+
+      &-right {
+        flex: 1;
+        background: #fff;
+        padding: 24rpx 0 0;
+        border-radius: 10rpx 0 0 0;
+
+        scroll-view {
+          height: 100%;
+        }
+
+        &-goods {
+          flex-wrap: wrap;
+          padding: 0 0 0 22rpx;
+
+          &__item {
+            flex: 0 0 44%;
+            box-sizing: border-box;
+            margin-right: 28rpx;
+          }
+        }
+
+        .no-more {
+          position: relative;
+          padding: 10rpx 0;
+          margin-bottom: 40rpx;
+          text-align: center;
+          font-size: 24rpx;
+          line-height: 34rpx;
+
+          &::before {
+            content: "";
+            position: absolute;
+            z-index: 21;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, 0, 0);
+            display: block;
+            width: 400rpx;
+            height: 1px;
+            background: #f1f1f1;
+          }
+
+          text {
+            position: relative;
+            z-index: 22;
+            display: inline-block;
+            width: auto;
+            padding: 0 10rpx;
+            color: rgba(0, 0, 0, 0.24);
+            background: #fff;
+          }
+        }
+
+        .empty {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 260rpx;
+          font-size: 28rpx;
+          color: #000000;
+          line-height: 28rpx;
+          letter-spacing: 1rpx;
+
+          image {
+            width: 300rpx;
+            height: 210rpx;
+            margin-bottom: 20rpx;
+          }
+        }
+      }
+
+      &-left,
+      &-right {
+        position: relative;
+        overflow-y: auto;
+      }
+    }
+  }
+}

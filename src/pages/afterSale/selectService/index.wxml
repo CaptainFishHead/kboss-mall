@@ -1,0 +1,18 @@
+<import src="../../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+<navigation-bar title="选择服务" background="#fff"/>
+<empty ext-class="empty-box" wx:if="{{showEmpty}}"
+       imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722"
+       empotyDesc="{{errMsg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="reloadHandler"/>
+<view class="service" wx:else>
+    <view class="service-title">退款商品</view>
+    <view class="service-list">
+        <goods-item wx:for="{{list}}" wx:key="index" item="{{item}}"/>
+    </view>
+    <view class="type-title">选择服务类型</view>
+    <view class="select-list">
+        <view class="select-item" data-type="0" catchtap="checkServiceType">仅退款（无需退货）</view>
+        <view class="select-item" data-type="1" catchtap="checkServiceType">我要退货退款</view>
+    </view>
+</view>
+<global-back/>

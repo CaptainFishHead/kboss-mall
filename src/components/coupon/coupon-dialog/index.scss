@@ -1,0 +1,85 @@
+.dialog {
+  &-box {
+    width: 600rpx;
+    height: 510rpx;
+    background: url("https://static.tojoyshop.com/images/wxapp-boss/coupon/voucher-bg-success.png") no-repeat center;
+    background-size: 100% 100%;
+    border-radius: 10rpx;
+    position: relative;
+    padding: 100rpx 20rpx 0;
+    box-sizing: border-box;
+
+    &-btn {
+      position: absolute;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+      bottom: 38rpx;
+      width: 440rpx;
+      height: 80rpx !important;
+      font-weight: 400 !important;
+      box-shadow: 0 5px 6px 5px rgba(186, 53, 53, 0.82);
+      border-radius: 4rpx;
+    }
+
+    &-close {
+      width: 48rpx;
+      position: absolute;
+      bottom: -90rpx;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+}
+
+.dialog-bg-light {
+  position: absolute;
+  width: 750rpx;
+  height: 754rpx;
+  top: -28%;
+  left: 50%;
+  z-index: -1;
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: translate3d(-50%, 0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0) rotate(360deg);
+    transition: all 5s;
+  }
+}
+
+.dialog-bg-star {
+  position: absolute;
+  width: 750rpx;
+  height: 650rpx;
+  top: -10%;
+  left: 50%;
+  z-index: -2;
+  transform: translate3d(-50%, 0, 0) rotate(360deg);
+  animation: star 1s linear infinite;
+}
+
+@keyframes star {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.dialog-bg-fireworks {
+  position: absolute;
+  width: 740rpx;
+  height: 550rpx;
+  transform: translate3d(-50%, 0, 0) rotate(360deg);
+  top: 0;
+  left: 50%;
+  z-index: -1;
+}

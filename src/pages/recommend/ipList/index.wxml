@@ -1,0 +1,24 @@
+<wxs module="filter" src="../../../utils/filter.wxs"/>
+<navigation-bar ext-class="navigation" title="" background="rgba(255,255,255, {{opacity}})" bindback="goBack" />
+<view class="container">
+	<view class="container-title">健康养生 名医在线</view>
+	<view class="container-content">
+		<view class="ip-list">
+			<view class="ip-item" wx:for="{{ipList}}" wx:key="index" bindtap="goDoctorDetail" data-id="{{item.ipId}}">
+				<view class="ip-img-wrap">
+					<image class="ip-img" src="{{item.imgUrl}}" mode="aspectFit"/>
+				</view>
+				<view class="ip-info">
+					<view class="ip-name one-line">{{item.ipName}}</view>
+					<view class="ip-class one-line">{{item.description}}</view>
+					<view class="ip-tabs">
+						<block wx:for="{{filter.stringToArray(item.tag)}}" wx:for-item="tag" wx:for-index="i" wx:key="i">
+							<text class="ip-tab" wx:if="{{!!tag}}">{{tag}}</text>
+						</block>
+					</view>
+				</view>
+			</view>
+		</view>
+		<mp-loading tips="正在加载" show="{{isLoading}}" type="circle"/>
+	</view>
+</view>

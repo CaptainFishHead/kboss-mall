@@ -1,0 +1,133 @@
+<view class="card {{isGift && 'card-gift'}} {{(card.cardStatus === 2 || card.cardStatus === 3 || card.presentStatus === 2) ? 'card-disable' : ''}}">
+
+  <!-- 点击跳转详情 遮罩层 -->
+  <view class="card-link" bindtap="toDetailPage" wx:if="{{isLink && (card.cardStatus === 0 || card.cardStatus === 4)}}" />
+
+  <!-- 不可用状态置灰 遮罩层 -->
+  <view class="card-mask" wx:if="{{card.presentStatus === 1}}" />
+
+  <view class="card-title">
+    <text>{{card.cardName || '-'}}</text>
+    <view class="card-title-info {{(card.cardStatus === 2 || card.cardStatus === 3 || card.presentStatus === 2) ? 'card-title-info-disable' : ''}}" bindtap="showDialog" data-type="info" data-title="信息" />
+  </view>
+  <view class="card-subtitle">{{card.cardTitle || ''}}</view>
+
+  <view class="card-time">
+
+    <!-- effectType 生效方式: 1固定期限、2激活后生效 -->
+    <!-- cardIsActivate 是否激活: 0未激活、1已激活 -->
+    <block wx:if="{{card.effectType === 2 && card.cardIsActivate === 0}}">
+      <text>激活后{{card.effectAddDay}}天有效</text>
+    </block>
+    <block wx:else>
+      <text>{{card.effectStartDate + '-' + card.effectEndDate}}</text>
+    </block>
+
+    <block wx:if="{{isLink}}">
+      <view class="btn btn-active" wx:if="{{card.cardStatus === 0 && card.cardIsActivate === 0}}" bindtap="showDialog" data-title="激活">立即激活</view>
+      <view class="btn btn-use" wx:if="{{card.cardStatus === 4}}" bindtap="toDetailPage">去使用</view>
+    </block>
+    <view class="btn btn-use btn-cancle" wx:if="{{card.presentStatus === 1}}" bindtap="showDialog" data-title="撤销">撤销赠送</view>
+
+  </view>
+
+  <slot />
+
+  <!-- presentStatus 是赠送状态: 1赠送中、2已赠送 -->
+  <!-- cardStatus 卡片状态: 0初始化、1赠送中、2已用完、3已过期、4可使用 -->
+  <view class="card-foot">
+    <text>仅可兑换指定商品</text>
+    <view class="btn" bindtap="toGivePage" wx:if="{{card.cardStatus === 0 && card.cardIsActivate === 0}}">
+      去转赠
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-share.png" mode="aspectFit" style="margin-left: 8rpx;" />
+    </view>
+    <view class="btn" bindtap="showDialog" data-type="info" data-title="消费记录" wx:if="{{card.cardStatus === 2}}">
+      消费记录
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-arrow-disable.png" mode="aspectFit" />
+    </view>
+    <view class="btn" bindtap="showDialog" data-type="info" data-title="赠送记录" wx:if="{{card.presentStatus === 2}}">
+      赠送记录
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-arrow-disable.png" mode="aspectFit" />
+    </view>
+  </view>
+
+  <!-- 卡状态 icon -->
+  <block wx:if="{{card.presentStatus}}">
+    <view class="card-status" style="background-image: url('https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-status-present-{{card.presentStatus}}.png');" />
+  </block>
+  <block wx:else>
+    <view wx:if="{{card.cardStatus === 2 || card.cardStatus === 3 }}" class="card-status" style="background-image: url('https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-status-{{card.cardStatus}}.png');" />
+  </block>
+
+</view>
+
+
+<!-- -------------------------- dialog -------------------------- -->
+<mp-dialog ext-class="dialog-common {{dialogType === 'info' ? '' : 'dialog-confim'}} dialog dialog-card" show="{{dialogShow}}" title="{{isGift ? '礼品卡' : '通兑卡'}}{{dialogTitle}}" buttons="{{buttons}}" bindbuttontap="tapDialogButton" catchtouchmove="touchMove">
+  <view class="dialog-body">
+
+    <!-- 卡片信息 -->
+    <block wx:if="{{dialogTitle === '信息'}}">
+      <view class="flex between">
+        <text>卡名</text>
+        <text>{{card.cardName || '-'}}</text>
+      </view>
+      <view class="flex between mt40">
+        <text>卡号</text>
+        <view class="flex">
+          <text>{{card.cardNo}}</text>
+          <view class="copy-btn" bind:tap="copy" data-text="{{card.cardNo}}">复制</view>
+        </view>
+      </view>
+      <view class="flex between mt40">
+        <text>使用权限</text>
+        <text>仅可兑换指定商品</text>
+      </view>
+    </block>
+
+    <!-- 卡片消费记录 -->
+    <block wx:if="{{dialogTitle === '消费记录'}}">
+      <view class="title">卡号：</view>
+      <view class="flex">
+        <text>{{card.cardNo}}</text>
+        <view class="copy-btn" bind:tap="copy" data-text="{{card.cardNo}}">复制</view>
+      </view>
+      <view class="title mt50">消费记录：</view>
+      <block wx:for="{{recordList}}" wx:key="index">
+        <view class="flex mt30">
+          <text>交易单： {{item.orderCode}}</text>
+          <view class="copy-btn" bind:tap="copy" data-text="{{item.orderCode}}">复制</view>
+        </view>
+        <view class="tips mt20">{{item.createdTime || '-'}}</view>
+      </block>
+    </block>
+
+    <!-- 卡片赠送记录 -->
+    <block wx:if="{{dialogTitle === '赠送记录'}}">
+      <view class="flex between">
+        <text>领取人昵称</text>
+        <text>{{sendRecordInfo.receiveUserNickName || '-'}}</text>
+      </view>
+      <view class="flex between mt40">
+        <text>领取人手机号</text>
+        <text>{{sendRecordInfo.receiveUserMobile || '-'}}</text>
+      </view>
+      <view class="flex between mt40">
+        <text>领取时间</text>
+        <text>{{sendRecordInfo.receiveTime || '-'}}</text>
+      </view>
+    </block>
+
+    <!-- 激活 -->
+    <block wx:if="{{dialogTitle === '激活'}}">
+      <view style="margin-bottom: 30rpx;">激活后礼品卡不可以再转赠</view>
+      <view>请确认是否激活？</view>
+    </block>
+
+    <!-- 撤销 -->
+    <block wx:if="{{dialogTitle === '撤销'}}">
+      <view>请确认是否撤销？</view>
+    </block>
+
+  </view>
+</mp-dialog>

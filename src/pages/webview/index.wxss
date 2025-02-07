@@ -1,0 +1,24 @@
+
+page, .container, .box{height: 100%;}
+.userinfo {display:flex;flex-direction:column;align-items:center;}
+.userinfo-avatar {width:128rpx;height:128rpx;margin:20rpx;border-radius:50%;}
+.userinfo-nickname {color:#aaa;}
+.usermotto {margin-top:200px;}
+
+.top-wrap {position:fixed;left:0;top:0;width:100%;background-color:#fff;z-index:99;}
+swiper {height: 100vh;}
+.cells {padding: 0 30rpx;}
+.cell {padding: 30rpx 0;}
+.cell:not(:last-child) {border-bottom:1rpx solid #EDEFF2;}
+.cell-tit{margin-bottom: 20rpx;font-size: 24rpx;color: #606266;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.cell-tit image{width:24rpx;height:24rpx;margin-right: 14rpx;}
+.cell-flex{display:flex;}
+.cell__hd {font-size:0;}
+.cell__hd image {width:240rpx;height:140rpx;margin-right:20rpx;border-radius:4rpx;}
+.cell__bd {flex:1;overflow: hidden;}
+.cell__bd .name {display:block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size:30rpx;line-height:40rpx;margin-bottom:10rpx;}
+.cell__bd .des {display:block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color:#606266;font-size:24rpx;line-height:36rpx;}
+.cell__bd .des text {color: #303133;padding-right: 20rpx;}
+.cell__bd .tips {margin-top: 14rpx;}
+.cell__bd .tips text {display: inline-block;width: auto;height: 44rpx;line-height: 44rpx;padding:0 8rpx;margin-right:24rpx;font-size: 24rpx;color:#909399;border-radius:4rpx;background: #FCF3F2;}
+

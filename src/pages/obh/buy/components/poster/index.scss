@@ -1,0 +1,26 @@
+/* pages/obh/promotion/components/poster/index.wxss */
+.poster-container {
+  backdrop-filter: blur(20rpx);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  overflow: auto;
+
+
+  .poster {
+    width: 500rpx;
+    height: 800rpx;
+    margin: 160rpx 125rpx 0;
+  }
+}
+
+.canvas-container {
+  width: 500rpx;
+  height: 1000rpx;
+  position: absolute;
+  top: -1200rpx;
+  left: 0;
+}

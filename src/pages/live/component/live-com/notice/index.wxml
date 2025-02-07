@@ -1,0 +1,14 @@
+<!--plugin/components/live/notice/index.wxml-->
+<view class="notice {{showNotice && 'show'}}">
+  <view class="notice-title" bindtap="onShowNotice">
+    <image src="https://static.tojoyshop.com/images/wxapp-boss/healthBean/live-notice-icon.png" class="notice-title__icon" />
+    <view class="notice-title__txt">公告</view>
+    <image src="https://static.tojoyshop.com/images/wxapp-boss/healthBean/live-down-rows.png" class="notice-title__rows" />
+  </view>
+  <view class="notice-cont">
+    <view class="notice-cont__desc"><text>{{noticeDesc}}</text></view>
+    <view class="notice-cont__bottom" bindtap="onHideNotice">
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/healthBean/live-top-rows.png" class="notice-cont__bottom__rows" />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+<view bindtap="openDatePicker"><slot></slot></view>
+<picker-view value="{{pickerIndex}}" bindchange="onchange" class="{{visible ? 'date-picker visible' : 'date-picker hide'}}" catchtap="closeDatePicker">
+    <view class="btns">
+        <text class="cancel-text" bindtap="closeDatePicker">取消</text>
+        <text>选择日期</text>
+        <text bindtap="onCompleted">完成</text>
+    </view>
+    <picker-view-column>
+        <view  wx:for="{{years}}" wx:key="index" wx:for-item="item"  class="{{pickerIndex[0] === index? 'pick-text' : ''}}">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+        <view wx:for="{{months}}" wx:key="index" wx:for-item="item" class="{{pickerIndex[1] === index? 'pick-text' : ''}}">{{item}}</view>
+    </picker-view-column>
+</picker-view>

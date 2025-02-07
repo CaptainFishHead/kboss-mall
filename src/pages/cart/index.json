@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "goods-list":"/components/cart/goods-list/index",
+    "product-sku": "./../../components/product/sku/index",
+    "mp-checkbox-group": "weui-miniprogram/checkbox-group/checkbox-group",
+    "empty": "../../components/empty/index",
+    "product-dialog": "../../components/product/dialog/index",
+    "cart-bar":"/components/cart/cart-bar/index"
+  },
+  "disableScroll": true
+}

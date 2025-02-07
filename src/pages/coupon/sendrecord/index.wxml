@@ -1,0 +1,18 @@
+<navigation-bar title="礼品卡赠送记录" background="#fff" />
+
+<mp-tabbar ext-class="order-tab card-tab" list="{{tabList}}" current='{{current}}' bindchange="tabChange" />
+
+<view class="container">
+  <block wx:if="{{cardList && cardList.length}}" wx:for="{{cardList}}" wx:key="index">
+    <card-item card="{{item}}" isGift="{{item.cardType === 1}}" index="{{index}}" bind:cancelCard="onCancelCard" />
+  </block>
+
+  <empty wx:if="{{cardList && cardList.length === 0 && !isLoading}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-empty.png" empotyDesc="没有相关礼品卡记录" />
+
+  <mp-loading tips="正在加载" show="{{isHideLoadMore}}" type="circle" />
+</view>
+
+<!-- wetoast -->
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<global-back />

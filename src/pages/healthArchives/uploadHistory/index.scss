@@ -1,0 +1,75 @@
+@import '../../../components//toast/index.wxss';
+
+page {
+  background-color: #f6f6f6;
+}
+
+.containe {
+  padding: 28rpx 30rpx 30rpx 41rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.timeline-item {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 8rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border: 5rpx solid #09bdac;
+  border-radius: 50%;
+}
+
+.timeline-date {
+  height: 48rpx;
+  margin-left: 40rpx;
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333333;
+  line-height: 48rpx;
+  font-style: normal;
+}
+
+.timeline-content {
+  height: 90rpx;
+  padding: 10rpx;
+  margin: 30rpx 0rpx 30rpx 40rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-time,
+.timeline-action {
+  display: block;
+  margin: 0 10rpx;
+}
+
+.timeline-link {
+  position: absolute;
+  right: 50rpx;
+}
+
+/* 添加时间线线条样式（可选） */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  top: 34rpx;
+  left: 13rpx;
+  height: calc(100% - 30rpx);
+  border-left: 2rpx dashed #09bdac;
+}
+
+/* 移除最后一个时间线项后面的线条 */
+.timeline-content:last-child {
+  margin-bottom: 0rpx;
+}

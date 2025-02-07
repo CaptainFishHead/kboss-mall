@@ -1,0 +1,31 @@
+/* components/recommend/label/index.wxss */
+.recommend-label {
+  margin-right: 20rpx;
+  line-height: 1;
+    color: #CA9820;
+  text{
+    font-size: 26rpx;
+    margin-right: 20rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160rpx;
+    display: inline-block;
+    // margin-top: 10rpx;
+    line-height: 1;
+    &::before{
+      content: '#';
+      display: inline-block;
+      vertical-align: top;
+      width: 26rpx;
+      height: 26rpx;
+      line-height: 26rpx;
+      text-align: center;
+      background: linear-gradient(180deg, #EFD8A6 0%, #D1A235 100%);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 24rpx;
+      margin-right: 5rpx;
+    }
+  }
+}

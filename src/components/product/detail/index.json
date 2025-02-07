@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "product-swiper": "/components/product/swiper/index",
+    "product-recommended": "/components/product/recommended/index",
+    "product-video-entry": "/components/product/videoEntry/index",
+    "mp-html": "mp-html"
+  }
+}

@@ -1,0 +1,18 @@
+<!--components/empty/index.wxml-->
+<view class="empty-wrapper ext-class">
+    <view class="empty-container">
+        <!-- 提示图片 -->
+        <view class="empty-icon" wx:if="{{imgUrl}}">
+            <image src="{{imgUrl}}" />
+        </view>
+        <slot name="img"></slot>
+
+        <!-- 提示描述 -->
+        <view wx:if="{{empotyDesc}}" class="empty-text ext-empty-text">{{empotyDesc}}</view>
+        <slot name="desc"></slot>
+        
+        <!-- 提示内容 -->
+        <button wx:if="{{buttonTxt}}" type="primary" class="gobtn ext-gobtn" bindtap="onButton">{{buttonTxt}}</button>
+        <slot name="content"></slot>
+    </view>
+</view>

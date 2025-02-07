@@ -1,0 +1,14 @@
+<view class="address" bind:tap="toAddress">
+    <view class="address-info">
+      <view class="address-txt {{addressInfo.addressId ? 'address-default' : 'address-create'}}">
+        <text class="address-icon" wx:if="{{addressInfo.isDefault}}">默认</text>
+        {{addressInfo.addressId ? addressInfo.provinceName + addressInfo.cityName + addressInfo.areaName + addressInfo.detailAddress : '请填写收货地址'}}
+      </view>
+      <view class="address-user" wx:if="{{addressInfo.addressId}}">
+          <text>{{addressInfo.acceptName}}</text>
+          <text>{{addressInfo.receiveMobile}}</text>
+      </view>
+    </view>
+    <view class="address-edit"></view>
+</view>
+

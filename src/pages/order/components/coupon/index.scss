@@ -1,0 +1,50 @@
+.coupon {
+  .content {
+    &-list {
+      height: 750rpx;
+      background: #F6F6F6;
+      padding: 20rpx 30rpx 0;
+      box-sizing: border-box;
+    }
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-text {
+      margin-left: 40rpx;
+      font-size: 28rpx;
+      color: #000000;
+
+      &-price {
+        font-size: 36rpx;
+      }
+    }
+
+    &-btn {
+      margin: 0;
+      width: 250rpx;
+      height: 108rpx;
+      color: #333333;
+      border-radius: 0;
+    }
+    &-close{
+      margin: 0 40rpx;
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+
+}
+
+.empty{
+  height: 800rpx;
+  text-align: center;
+  background: #F6F6F6;
+}
+
+.empty-box {
+  position: absolute;
+}

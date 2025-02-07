@@ -1,0 +1,97 @@
+/* pages/order/components/afterRecord/index.wxss */
+.dialog-afterSales{
+  .product-list{
+    background-color: #ffffff;
+    border-radius: 8rpx;
+    // padding: 18rpx 30rpx calc(env(safe-area-inset-bottom) + 50rpx);
+    max-height: 800rpx;
+    padding: 18rpx 0;
+    width: auto;
+    &-item{
+      display: flex;
+      justify-content: space-between;
+      padding: 30rpx 0;
+      border-bottom:1rpx solid #F1F1F1;
+      margin: 0 30rpx;
+      &.scroll{
+        position: relative;
+        .product-scroll{
+          white-space: nowrap;
+          flex: 1;
+          .product-item{
+            width: 96rpx;
+            height: 96rpx;
+            border-radius: 4rpx;
+            overflow: hidden;
+            margin-right: 16rpx;
+            display: inline-block;
+          }
+          &-pic{
+            width: 100%;
+            height: 96rpx;
+          }
+        }
+        .product-number{
+          width: 185rpx;
+          height: 96rpx;
+          position: absolute;
+          right: 0;
+          top: 30rpx;
+          background-color: #ffffff;
+        }
+      }
+      .product-info{
+        display: flex;
+        .pic{
+          width: 96rpx;
+          height: 96rpx;
+          border-radius: 4rpx;
+          overflow: hidden;
+          margin-right: 20rpx;
+        }
+        .info{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .name{
+            font-size: 26rpx;
+            color: #333333;
+          }
+          .kind{
+            font-size: 24rpx;
+            color: #999999;
+          }
+        }
+      }
+      .product-number{
+        font-size: 26rpx;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: right;
+        .num{
+          color: #0D0E15;
+        }
+        .status{
+          color: #BC1817;
+          &::after{
+            content: "";
+            display: inline-block;
+            width: 10rpx;
+            height: 10rpx;
+            transform: rotate(45deg);
+            border-right: 2rpx solid #B1B1B1;
+            border-top: 2rpx solid #B1B1B1;
+            margin-bottom: 2rpx;
+            border-right-width: 1px;
+            border-right-style: solid;
+            border-right-color: #BC1817;
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: #BC1817;
+          }
+        }
+      }
+    }
+  }
+}

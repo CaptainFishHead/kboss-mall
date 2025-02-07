@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "share-entry": "/components/share-entry/index",
+    "searchbar": "/components/searchbar/index",
+    "tab-bar": "/components/tab-bar",
+    "audio": "/components/audio/index",
+    "service-btn": "/components/service-btn/index"
+  }
+}

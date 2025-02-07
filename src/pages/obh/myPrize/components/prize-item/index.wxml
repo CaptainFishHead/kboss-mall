@@ -1,0 +1,36 @@
+<view class="container" bind:tap="toDetails">
+    <!-- 订单号与订单状态 -->
+    <view class="order-items-head">
+        <view class="order-number">{{platformMap[prizeInfoData.platformId]}}</view>
+        <view class="order-status order-status-color-{{colorMap[prizeInfoData.claimStatus]}}">
+            {{statusTextMap[prizeInfoData.claimStatus]}}
+            <!-- 有奖品伴侣且是待兑奖状态才显示 -->
+            <view class="order-tips" wx:if="{{prizeInfoData.claimStatus === 1 && timeObj.day === '00'}}">
+                {{timeObj.hours}}:{{timeObj.minutes}}:{{timeObj.seconds}}奖品将失效
+            </view>
+        </view>
+    </view>
+    <!-- 订单列表主体 -->
+    <view class="order-items-warp" >
+        <view class="scroll-view-width">
+            <view class="order-img-area">
+                <image class="images" mode="aspectFit" src="{{prizeInfoData.rafflePrizeIcon}}"/>
+            </view>
+        </view>
+        <!-- 单个产品图时展示名称以及规格 -->
+        <view class="order-name-area">
+            <view class="order-name order-status-color-{{colorMap2[prizeInfoData.claimStatus]}}">{{prizeInfoData.rafflePrizeName}}</view>
+            <view class="order-sku">
+                <view class="order-sku-time">{{prizeInfoData.raffleTime}}</view>
+                <view class="order-sku-name">
+                    {{prizeInfoData.hotelName}}
+                </view>
+            </view>
+        </view>
+        <!-- 有奖品伴侣且是待兑奖状态才显示 -->
+        <button type="primary" class="handle-btn" wx:if="{{prizeInfoData.claimStatus === 1}}">
+					立即兑奖
+				</button>
+    </view>
+</view>
+

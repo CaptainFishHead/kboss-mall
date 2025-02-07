@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "live-data": "../component/live-data/index"
+  }
+}

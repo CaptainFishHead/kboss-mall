@@ -1,0 +1,68 @@
+<!-- wetoast -->
+<import src="../../../components/toast/index" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<navigation-bar title="{{currentMetric.indexName}}记录" background="#ffffff"></navigation-bar>
+
+<view class="container">
+  <view class="time-box">
+    <image class="clock" src="https://static.tojoyshop.com/images/wxapp-boss/healthai/time.png" mode="heightFix" />
+    <text class="time">测量时间：{{ formData['-1'] }}</text>
+    <button class="modify-btn" bindtap="handlerRecord" data-type="{{ -1 }}" data-metricId="{{ -1 }}">修改</button>
+  </view>
+  <text class="title">添加{{currentMetric.indexName}}信息</text>
+  <form id="form" class="form" catchsubmit="submitForm">
+    <view class="form-item" wx:for="{{ currentMetric.sonIndexList }}" wx:key="index" bindtap="handlerRecord" data-type="{{ item.indexDataType }}" data-metricId="{{ item.indexId }}">
+      <view class="form-item-label"><text class="label-icon"></text>{{ item.indexName }}</view>
+      <view class="form-item-input">
+        <view class="form-item-input-extra">
+          <view class="picker">
+            <!-- formData[item.indexId] 也可以等于 0，所以不能用 非判断 -->
+            <view class="txt" wx:if="{{formData[item.indexId] === ''}}">请输入</view>
+            <view class="txt dark" wx:else>{{formData[item.indexId]}}</view>
+            <text class="icon" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </form>
+</view>
+
+<view class="btn-box-bottom">
+  <button type="primary" class="success" bind:tap="submitForm" disabled="{{isDisabledSubmit}}">保存</button>
+</view>
+
+<mp-half-screen-dialog extClass="dialog-details {{ currentFormDate.isPicker ? 'health-isPicker-dialog' : 'health-label-dialog' }}" bindbuttontap="buttontap" bindclose="handlerRecord" show="{{ showDialog }}" maskClosable="{{ false }}" buttons="{{ buttons }}">
+  <text class="{{ currentFormDate.isHighProtein ? 'weui-half-screen-dialog__title_left' : '' }}" slot="title">{{ currentFormDate.isPicker ? '测量时间' : currentFormDate.title }}</text>
+  <view class="weui-half-screen-dialog__desc" slot="desc">
+    <!-- 文本 -->
+    <view wx:if="{{ currentFormDate.isHighProtein }}" class="container">
+      <textarea bindinput="onInput" class="text_container" auto-focus maxlength="{{ maxLength }}" value="{{ currentFormDate.value }}" />
+      <view class="char-counter">
+        {{currentLength}} / {{maxLength}}
+      </view>
+    </view>
+    <!-- 阴性阳性/时间 -->
+    <picker-view class="picker-view {{pickerOptions.type === -1 ? 'time' : ''}}" indicator-class="picker-indicator" mask-class="picker-mask" style="height: 400rpx;" wx:if="{{ currentFormDate.isPicker }}" value="{{ currentFormDate.value }}" bindchange="bindChange">
+      <picker-view-column class="picker-view-column" wx:for="{{ pickerOptions.list }}" wx:for-item="options" wx:for-index="optionIndex" wx:key="optionIndex">
+        <view class="picker-view-column-text {{currentFormDate.value[optionIndex] === index ? 'cur' : ''}}" wx:for="{{ options }}" wx:key="index">
+          {{item}}
+          <!-- <text class="picker-view-column-text-time">{{currentFormDate.value[optionIndex] === index ? pickerOptions.unit[optionIndex] : ''}}</text> -->
+        </view>
+      </picker-view-column>
+    </picker-view>
+    <!-- 数值 -->
+    <view class="rule-box" wx:if="{{ !currentFormDate.isHighProtein && !currentFormDate.isPicker }}">
+      <view class="rule-num">
+        <text>{{ currentFormDate.value }}</text>
+        <text class="unit">{{currentMetric.indexUnit}}</text>
+      </view>
+      <ruler bind:sendCurrentValue="handleRuler" minValue="{{ currentFormDate.minValue }}" maxValue="{{ currentFormDate.maxValue }}" initialValue="{{ formData[currentFormDate.metricId] }}" digit="{{ currentFormDate.digit }}" isShow="{{ showDialog }}"></ruler>
+      <text class="level">标准值：{{currentMetric.standard}} <block wx:if="{{ !!currentMetric.indexUnit }}">{{ currentMetric.indexUnit }}</block></text>
+    </view>
+  </view>
+  <view class="button-box" slot="footer">
+    <text bindtap="handlerRecord" data-type="{{ 0 }}" class="cancel" wx:if="{{ !currentFormDate.isProtein }}">取消</text>
+    <text class="sure" bindtap="onSure">{{ !currentFormDate.isProtein ? '完成' : '确定' }}</text>
+  </view>
+</mp-half-screen-dialog>

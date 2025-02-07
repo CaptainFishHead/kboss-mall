@@ -1,0 +1,48 @@
+.body {
+  padding: 0 40rpx;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 54rpx;
+  text-align: left;
+  font-style: normal;
+  letter-spacing: 1rpx;
+
+  /* 字符之间的间距增加2像素 */
+  .color_yellow {
+    color: rgba(181, 130, 9, 1);
+  }
+}
+
+.footer {
+  border-top: 1rpx solid #f3f3f3;
+  margin-top: 28rpx;
+  padding: 28rpx 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  &-items {
+    font-weight: 400;
+    font-size: 27rpx;
+    color: rgba(0, 0, 0, 0.75);
+    line-height: 50rpx;
+    text-align: left;
+  }
+
+  &-yellow {
+    font-weight: 600;
+    font-size: 27rpx;
+    color: #f58c00;
+    line-height: 50rpx;
+  }
+
+  &-sum {
+    margin-left:28rpx;
+    margin-right: 7rpx;
+  }
+}
+
+// 底部边框
+.footer-border {
+  margin-bottom: 60rpx;
+}

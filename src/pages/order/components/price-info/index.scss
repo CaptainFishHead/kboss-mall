@@ -1,0 +1,194 @@
+
+.orderprice {
+  padding: 30rpx 0 0;
+  background-color: #FFFFFF;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+
+  &-cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30rpx;
+    padding: 0 33rpx;
+
+    &-title {
+      font-size: 26rpx;
+    }
+
+ /*   &-message {
+      width: 504rpx;
+      height: 44rpx;
+      line-height: 44rpx;
+      text-align: right;
+      background: none;
+      border: none;
+      font-size: 26rpx;
+    }*/
+  }
+}
+
+/*优惠*/
+.used-coupon {
+  display: flex;
+  align-items: center;
+
+  &-num {
+    padding: 5rpx 10rpx;
+    border: 1px solid #B58209;
+    border-radius: 4rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22rpx;
+    color: #B58209;
+    margin-right: 10rpx;
+    line-height: 1.2;
+  }
+}
+
+.discount-handle {
+  display: flex;
+  align-items: center;
+
+  &::after {
+    content: '';
+    margin-left: 4rpx;
+    display: inline-block;
+    width: 10rpx;
+    height: 10rpx;
+    transform: rotate(45deg);
+    font-weight: bold;
+  }
+
+  &.unuse::after {
+    border-top: 4rpx solid #333;
+    border-right: 4rpx solid #333;
+    margin-bottom: 1rpx;
+  }
+
+  &.use::after {
+    border-top: 4rpx solid #CFAF65;
+    border-right: 4rpx solid #CFAF65;
+  }
+}
+
+.discount-color {
+  color: #B58209;
+  font-size: 28rpx;
+}
+
+.price {
+  font-size: 28rpx;
+}
+
+.total_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2rpx solid #f1f1f1;
+  margin-top: 20rpx;
+  margin: 0 33rpx;
+  height: 92rpx;
+
+  &-left {
+    font-size: 26rpx;
+    color: #000000;
+  }
+}
+.spacing{
+  height: 21rpx;
+}
+
+.dialog-bean {
+  &-title {
+
+    &-balance {
+      font-size: 34rpx;
+      font-weight: 400;
+      color: #000000;
+
+      text {
+        font-size: 24rpx;
+        color: #999999;
+      }
+    }
+  }
+
+  .content {
+    padding: 0 38rpx 54rpx;
+
+    &-tips {
+      font-size: 24rpx;
+      color: #999999;
+      padding: 0 0 34rpx;
+      border-bottom: 1rpx solid #F3F3F3;
+    }
+
+    &-beans {
+
+      &-discount {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 44rpx 0 60rpx;
+
+        &-num {
+          font-size: 26rpx;
+          font-weight: 400;
+          color: #000000;
+
+          text {
+            font-size: 24rpx;
+            color: #999999;
+          }
+        }
+
+        &-deduction {
+          font-size: 24rpx;
+          color: #B58209;
+          display: flex;
+          align-items: center;
+
+        }
+      }
+
+      &-real {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &-txt {
+          font-size: 26rpx;
+          color: #000000;
+        }
+
+      }
+    }
+
+  }
+
+  .half-dlg-footer {
+    display: flex;
+    align-items: center;
+    margin: 60rpx 0 20rpx;
+    padding: 0 34rpx;
+
+    .right-btn {
+      flex: 1;
+    }
+
+    button {
+      margin: 0;
+    }
+  }
+
+  .weui-half-screen-dialog__hd {
+    .weui-icon-btn_close {
+      top: 66rpx;
+      padding: 20rpx 14rpx;
+      left: -50rpx;
+    }
+  }
+
+}

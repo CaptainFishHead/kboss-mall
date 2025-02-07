@@ -1,0 +1,993 @@
+@import './mixins/dialog';
+
+/* ============= 底部半开弹窗公共样式 ============= */
+.dialog {
+  border-radius: 10rpx 10rpx 0 0;
+}
+
+.dialog-dialog--weui-dialog__root {
+  z-index: 5001 !important;
+}
+
+.dialog--weui-mask,
+.dialog-dialog--weui-mask {
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 5000;
+}
+
+.weui-half-screen-dialog {
+  border-radius: 10rpx 10rpx 0 0;
+  // padding: 0 0 calc(env(safe-area-inset-bottom) + 50rpx);
+  padding: 0 0 calc(env(safe-area-inset-bottom));
+
+  &__hd {
+    flex-direction: row-reverse;
+    height: auto;
+    padding: 0 34rpx;
+    min-height: 102rpx;
+    align-items: center;
+    justify-content: center;
+
+    &__side {
+      left: auto;
+      right: auto;
+    }
+
+    .weui-icon-btn {
+      left: 0;
+      transform: translate3d(-100%, -50%, 0);
+    }
+
+    &__main {
+      text-align: left !important;
+      padding: 34rpx 0 !important;
+    }
+
+    .weui-icon-btn_close {
+      // left: -26rpx;
+      padding: 10rpx 26rpx;
+      box-sizing: border-box;
+    }
+  }
+
+  &__bd,
+  &__ft {
+    padding: 0;
+  }
+
+  &__bd {
+    padding-bottom: 34rpx;
+  }
+
+  &__ft {
+    padding: 0 40rpx;
+  }
+
+  &__title {
+    line-height: 48rpx;
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #333;
+  }
+
+  &__subtitle {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333;
+  }
+}
+
+.screen-dialog__bd_b0 {
+  .weui-half-screen-dialog__bd {
+    padding-bottom: 0;
+  }
+
+  .weui-icon-btn_close {
+    background: url("https://static.tojoyshop.com/images/wxapp-boss/order/toggle-icon.png") no-repeat center right;
+    background-size: 70rpx 40rpx;
+  }
+}
+
+/* ============= 底部半开弹窗 售后商品列表样式 ================*/
+.dialog-afterSales {
+  .weui-half-screen-dialog__title {
+    font-size: 32rpx;
+    color: #333333;
+    font-weight: normal;
+  }
+
+  .weui-half-screen-dialog {
+    padding-bottom: 0;
+  }
+
+  .weui-half-screen-dialog__bd {
+    border-top: 1rpx solid #F1F1F1;
+  }
+}
+
+/* ============= 底部半开弹窗公共样式 ============= */
+
+// 用于 只带右上角x关闭按钮 的半弹窗
+.half-only-close {
+  .weui-half-screen-dialog__hd {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    box-sizing: border-box;
+  }
+
+  .weui-half-screen-dialog__bd {
+    padding-top: 40rpx;
+  }
+}
+
+// 用于 都是列表 的半弹窗
+.half-only-list {
+  .weui-half-screen-dialog__hd {
+    display: none;
+  }
+}
+
+// 用于 都是没有footer 的半弹窗
+.half-no-footer {
+  .weui-half-screen-dialog__ft {
+    display: none;
+  }
+}
+
+// 用于 自定义标题 的半弹窗
+.half-customize {
+  .weui-half-screen-dialog__hd {
+    align-items: start;
+    padding: 0;
+
+    &__main {
+      padding: 0 !important;
+    }
+
+    .weui-icon-btn_close {
+      z-index: 5000;
+      left: -40rpx;
+      top: 50rpx;
+      padding: 0;
+    }
+  }
+}
+
+//选择sku弹窗
+.product-sku-box {
+  .weui-half-screen-dialog {
+    padding-bottom: 0;
+  }
+}
+
+/* 授权登录 */
+.authorize {
+  padding: 0;
+  background: linear-gradient(150deg, #C7EBB6 -26%, #FFFFFF 45%);
+
+  .weui-half-screen-dialog__hd {
+    display: none;
+  }
+
+}
+
+.half-qs_multiple {
+  .weui-half-screen-dialog__hd {
+    background: linear-gradient( to bottom, #CBF2E5 0%, #FFFFFF 100%);
+  }
+}
+
+/* ============= 顶部导航样式 ============= */
+.theme-1 .weui-navigation-bar {
+  color: #ffffff;
+}
+
+.theme-2 .weui-navigation-bar {
+  color: #000000;
+}
+
+.weui-navigation-bar .weui-navigation-bar__center text {
+  display: block;
+  font-size: 34rpx;
+  max-width: 300rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.weui-navigation-bar__inner .weui-navigation-bar__left .weui-navigation-bar__btn_goback {
+  width: 45rpx;
+  mask-size: auto;
+  -webkit-mask-size: auto;
+}
+
+.product-nav {
+  .weui-navigation-bar__inner {
+    .weui-navigation-bar__left {
+      .weui-navigation-bar__btn_goback {
+        background: url("https://static.tojoyshop.com/images/wxapp-boss/icons/back.png") no-repeat center center transparent;
+        background-size: 100% auto;
+        -webkit-mask: none;
+        mask: none;
+      }
+    }
+  }
+}
+
+/* ============= 顶部导航样式 ============= */
+
+/* ============= 底部导航 ============= */
+.tabbar {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.98);
+  // box-shadow: inset 0 1rpx 0 0 #eeeeee;
+  // backdrop-filter: blur(10rpx);
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+
+  .weui-tabbar__item {
+    padding: 17rpx 0 calc(20rpx + env(safe-area-inset-bottom));
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .weui-tabbar__label {
+    font-size: 24rpx;
+    line-height: 24rpx;
+    color: #333;
+  }
+
+  .weui-tabbar__icon {
+    height: 48rpx;
+    width: 48rpx;
+    margin-bottom: 10rpx;
+  }
+
+  .weui-tabbar__item:nth-child(3) .weui-tabbar__icon {
+    width: 152rpx;
+    height: 152rpx;
+    position: absolute;
+    left: 50%;
+    top: -50rpx;
+    transform: translate(-50%, 0);
+  }
+
+  .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
+    color: #000;
+  }
+}
+
+.black-bar {
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: none;
+
+  .weui-tabbar__label,
+  .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
+    color: #888;
+  }
+}
+
+/* ============= 底部导航 ============= */
+
+/* ============= 省市区级联 ============= */
+.city-modal {
+  .weui-half-screen-dialog__hd {
+    padding: 0;
+
+    .weui-half-screen-dialog__hd__main {
+      padding: 34rpx 0 0 !important;
+    }
+  }
+
+  .weui-half-screen-dialog__ft {
+    padding: 0;
+
+    .weui-btn {
+      position: fixed;
+      right: 0;
+      top: 0;
+      font-size: 30rpx;
+      width: auto;
+      padding: 40rpx 30rpx;
+      background-color: transparent;
+    }
+
+    .complete-gray-btn {
+      color: #999;
+    }
+
+    .weui-btn {
+      color: #000;
+    }
+  }
+}
+
+/* ============= 省市区级联 ============= */
+
+/* ============= 订单中心导航 ============= */
+.order-tab {
+  position: fixed;
+  height: 72rpx;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: calc(var(--height) + 44px + env(safe-area-inset-top));
+  top: calc(var(--height) + 44px + constant(safe-area-inset-top));
+  background-color: #ffffff;
+  border-bottom: 1rpx solid #f3f3f3;
+}
+
+.card-tab {
+  padding-top: 20rpx;
+}
+
+.order-tab::before {
+  content: "";
+  border-top: none;
+}
+
+.order-tab .weui-tabbar__item {
+  padding-top: 0rpx;
+  padding-bottom: 0rpx;
+}
+
+.order-tab .weui-tabbar__icon {
+  display: none;
+}
+
+.order-tab .weui-tabbar__label {
+  font-size: 30rpx;
+  color: #888888;
+  line-height: 72rpx;
+  display: inline-block;
+  height: 72rpx;
+}
+
+.order-tab .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
+  color: #B58209;
+  position: relative;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.order-tab .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: block;
+  width: 40rpx;
+  height: 8rpx;
+  background: #B58209;
+}
+
+.order-tab .weui-tabbar__item .weui-badge {
+  border-radius: 16rpx 16rpx 16rpx 0rpx;
+  bottom: 10rpx;
+  left: 88rpx;
+  position: absolute;
+  z-index: 1;
+  height: 26rpx;
+  min-width: 18rpx;
+  background-color: #dd1921;
+  color: #fff;
+  font-size: 19rpx;
+  border: 2rpx solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6rpx;
+}
+
+/* ============= 订单中心导航 ============= */
+
+/*优惠券弹窗-tab*/
+.coupon {
+  .weui-half-screen-dialog__bd {
+    padding: 0;
+  }
+
+  .coupon-tab {
+    position: inherit;
+    font-weight: normal;
+
+    .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
+      font-weight: normal;
+    }
+  }
+}
+
+/*服务导航-tab*/
+.services-tab {
+  position: initial !important;
+}
+
+.services-tab .weui-tabbar__item{
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #888888;
+  flex: none !important;
+  padding-left: 45rpx;
+  padding-right: 45rpx;
+}
+
+/* ============= 收货地址列表样式 ============= */
+.address-unit .default-btn,
+.address-unit .delete-btn {
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.address-unit .default-btn {
+
+  &,
+  & .weui-slideview__btn {
+    color: #000;
+    background: linear-gradient(180deg, #efd8a6 0%, #cfaf65 100%);
+  }
+}
+
+.address-unit .delete-btn {
+
+  &,
+  & .weui-slideview__btn {
+    background-color: #dd1921;
+  }
+}
+
+.address-unit .weui-slideview__btn-group_default~.weui-slideview__btn-group_default::before {
+  display: none;
+}
+
+.del-address-dialog {
+  z-index: 1111;
+}
+
+/* ============= 收货地址列表样式 ============= */
+
+.order-cancel-dialog {
+  width: 630rpx;
+  // height: 411rpx;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 10rpx;
+}
+
+.order-cancel-dialog .weui-dialog__ft {
+  margin-bottom: 55rpx;
+  min-height: auto;
+}
+
+.order-cancel-dialog .weui-dialog__ft::after {
+  border-top: none;
+}
+
+.order-cancel-dialog .weui-dialog__hd {
+  padding-top: 58rpx;
+  padding-bottom: 56rpx;
+}
+
+.order-cancel-dialog .weui-dialog__hd .weui-dialog__title {
+  text-align: left;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #000;
+}
+
+.order-cancel-dialog .weui-dialog__bd {
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #000;
+  text-align: left;
+  margin-bottom: 62rpx;
+  overflow-y: initial;
+}
+
+.order-cancel-dialog .weui-dialog__ft .weui-dialog__btn {
+  width: 265rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border: 2rpx solid #666;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  border-radius: 4rpx;
+  padding: 0;
+}
+
+.order-cancel-dialog .weui-dialog__ft .weui-dialog__btn_default {
+  margin-left: 40rpx;
+  margin-right: 10rpx;
+  box-sizing: border-box;
+  border-radius: 4rpx;
+}
+
+.order-cancel-dialog .weui-dialog__ft .weui-dialog__btn_primary {
+  margin-left: 10rpx;
+  margin-right: 40rpx;
+  background: linear-gradient(180deg, #efd8a6 0%, #cfaf65 100%);
+  color: #333;
+  border: none;
+  border-radius: 4rpx;
+}
+
+.order-alert-dialog .weui-dialog .weui-dialog__ft {
+  display: none;
+}
+
+.order-alert-dialog .dialog-dialog--weui-dialog {
+  overflow: visible;
+  border-radius: 0;
+}
+
+.order-alert-dialog .weui-dialog__title {
+  text-align: left;
+}
+
+.order-alert-dialog .weui-dialog__bd {
+  padding: 0;
+  overflow-y: visible;
+}
+
+.dialog-exchange .weui-dialog__bd {
+  overflow-y: visible;
+}
+
+/* =========================== 公用 dialog-common - 带主题背景 =========================== */
+.dialog-common {
+  z-index: 9999;
+
+  .dialog-dialog--weui-dialog,
+  .dialog--weui-dialog,
+  &.weui-dialog,
+  .weui-dialog,
+  .weui-dialog__bd {
+    border-radius: 10rpx;
+  }
+
+  .dialog-dialog--weui-dialog {
+    animation: showDialog 0.3s;
+  }
+
+  .weui-dialog__bd {
+    max-height: 600rpx;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-size: 28rpx;
+    color: #000;
+  }
+
+  .weui-dialog__hd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34rpx;
+    height: 142rpx;
+    padding: 0;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    background: #000 url(https://static.tojoyshop.com/images/wxapp-boss/commission/ex-bg.png) no-repeat;
+    background-size: cover;
+  }
+
+  &.no-header-bg {
+    .weui-dialog__hd {
+      background: unset;
+    }
+  }
+
+  .weui-dialog__ft {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40rpx 30rpx;
+  }
+
+  .weui-dialog__ft::after {
+    display: none;
+  }
+
+  .weui-dialog__btn {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48%;
+    height: 90rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #333;
+    background: transparent;
+    border: 1px solid #666;
+    border-radius: 4rpx;
+    box-sizing: border-box;
+
+    &.only-one-btn {
+      width: 60%;
+      height: 80rpx;
+      margin-left: 0 !important;
+    }
+
+    &.only-two-btn {
+      width: 60%;
+      height: 80rpx;
+      margin-left: 0 !important;
+      background: linear-gradient(180deg, #A2E4DE 0%, #3DCEC0 100%) !important;
+    }
+  }
+
+  .weui-dialog__btn:last-child {
+    margin-left: 10rpx;
+    background: linear-gradient(180deg, #efd8a6 0%, #cfaf65 100%);
+    /*color: #fff;*/
+    border: none;
+  }
+}
+
+@keyframes showDialog {
+  from {
+    transform: scale(0.8) translateY(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateY(-50%);
+    opacity: 1;
+  }
+}
+
+.dialog-confim {
+  .weui-dialog__hd {
+    display: none;
+  }
+
+  .weui-dialog__bd {
+    padding: 20rpx 10rpx 0;
+    font-size: 30rpx;
+    overflow-y: visible;
+  }
+
+  .weui-dialog__btn.btn-block {
+    width: 94%;
+    margin: 0;
+  }
+}
+
+.dialog-noheader {
+  .weui-dialog__hd {
+    display: none;
+  }
+}
+
+.dialog-nofooter {
+  .weui-dialog__ft {
+    display: none;
+  }
+}
+
+.dialog-tips {
+  .weui-dialog__bd {
+    padding: 60rpx 50rpx 0;
+  }
+}
+
+.dialog-overflow-visible {
+
+  .dialog-dialog--weui-dialog,
+  .dialog--weui-dialog,
+  .weui-dialog,
+  .weui-dialog__bd {
+    overflow: visible !important;
+  }
+}
+
+.dialog-desc {
+  .weui-dialog__bd {
+    padding: 46rpx 40rpx 0;
+  }
+
+  .weui-dialog__ft {
+    padding: 20rpx 30rpx 30rpx;
+  }
+}
+
+//康豆弹窗专用
+.dialog-beans {
+  .dialog-dialog--weui-dialog {
+    overflow: visible;
+  }
+
+  .weui-dialog__hd {
+    height: 130rpx;
+    color: #01617a;
+    background-color: #fff;
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/healthBean/tips-bg.png);
+    border-radius: 10rpx 10rpx 0 0;
+  }
+
+  .weui-dialog__bd {
+    max-height: 650rpx;
+  }
+}
+
+//标题无背景，文字靠左
+.receipt-dialog {
+  .dialog-dialog--weui-dialog {
+    overflow: visible;
+  }
+
+  .weui-dialog__hd {
+    background: none;
+    display: inherit;
+    height: auto;
+    padding: 40rpx;
+    text-align: left;
+    justify-content: inherit;
+  }
+
+  .weui-dialog__hd .weui-dialog__title {
+    text-align: left;
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .weui-dialog__bd {
+    font-size: 30rpx;
+    margin-bottom: 42rpx;
+    overflow-y: initial;
+    padding: 0 40rpx;
+  }
+
+}
+
+//优惠券弹窗专用
+.dialog-voucher {
+
+  .weui-dialog__hd {
+    height: 130rpx;
+    color: #4C4024;
+    background-color: #fff;
+    background-size: 100% 100%;
+    border-radius: 10rpx 10rpx 0 0;
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/coupon/voucher-dialog-hd.png);
+  }
+
+  .weui-dialog__btn {
+    font-weight: normal;
+    color: #333333;
+  }
+
+}
+
+.dialog-list-coupon {
+  .weui-half-screen-dialog__title {
+    color: #333;
+  }
+}
+
+
+//领取优惠券弹窗
+.dialog-receive-coupon {
+
+  .weui-dialog {
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 600rpx;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .weui-dialog__bd {
+    margin: 0 auto;
+    padding: 0;
+    transform: scale(0);
+    animation: zoom 0.8s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes zoom {
+    from {
+      transform: scale(0);
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+
+}
+
+.dialog-bean-balance {
+  .weui-dialog {
+    padding: 40rpx;
+    overflow: inherit;
+    box-sizing: border-box;
+  }
+
+  .weui-dialog__bd {
+    padding: 0;
+    margin: 0;
+    font-size: 30rpx;
+    overflow-y: visible;
+  }
+
+  .weui-dialog__ft {
+    padding: 0;
+    margin: 0;
+
+    &::after {
+      height: 0;
+      display: none;
+    }
+  }
+
+  .weui-dialog__btn {
+    width: 266rpx;
+
+    &+.weui-dialog__btn {
+      margin-left: 20rpx;
+    }
+  }
+}
+
+.dialog-card {
+  .weui-dialog__hd .weui-dialog__title {
+    color: #FFFFFF;
+  }
+}
+
+/* =========================== 公用 dialog-common - 带主题背景 =========================== */
+
+/* ============= checkbox ============= */
+checkbox {
+  width: 44rpx;
+  height: 44rpx;
+
+  .wx-checkbox-input {
+    width: 40rpx;
+    height: 40rpx;
+    border: 2rpx solid #bcbcbc;
+    border-radius: 4rpx;
+    background: #fff;
+    box-sizing: border-box;
+
+    &-disabled {
+      border-color: #d2d2d2;
+      background: #f4f4f4;
+    }
+
+    &-checked {
+      border-color: #b58209;
+    }
+  }
+}
+
+// checkbox 小号
+.checkbox-sm checkbox {
+  width: 30rpx;
+  height: 30rpx;
+
+  .wx-checkbox-input {
+    width: 26rpx;
+    height: 26rpx;
+
+    &-checked::before {
+      line-height: 26rpx !important;
+      font-size: 26rpx !important;
+    }
+  }
+}
+
+// 购物车checkbox
+.cart_checkbox checkbox {
+  margin-right: 16rpx;
+}
+
+// 康豆checkbox
+.bean_checkbox checkbox {
+  margin-left: 10rpx;
+}
+
+// 优惠券checkbox
+.coupon_checkbox checkbox {
+
+  .wx-checkbox-input {
+    background: #fff;
+
+    &-disabled {
+      border-color: #d2d2d2;
+      background: #f4f4f4;
+    }
+
+    &-checked {
+      border-color: #fff;
+      background: #C38A24;
+    }
+  }
+}
+
+/* ============= checkbox ============= */
+
+.weui-loadmore {
+  width: 100%;
+}
+
+/*============= 首页客服弹框背景 =============*/
+.services.weui-half-screen-dialog {
+  width: 100%;
+  min-height: 563rpx;
+  background: #fff url('https://static.tojoyshop.com/images/wxapp-boss/home/bg-service-dialog.png') no-repeat;
+  background-size: 100% auto;
+  box-sizing: border-box;
+}
+
+/*============= 兑奖物流弹框背景 =============*/
+.logistics.weui-half-screen-dialog {
+  background-color: #F8F8F8;
+  padding: 0;
+}
+
+.logistics .weui-half-screen-dialog__bd {
+  padding: 0;
+}
+
+//.weui-half-screen-dialog__hd .weui-icon-btn {
+//  left: auto;
+//  right: auto;
+//  transform: translate3d(-40rpx, 40rpx, 0);
+//}
+/*============= 申请售后 商品列表半弹窗 =============*/
+.refund-dialog {
+  padding: 0;
+}
+
+
+
+.checkin-popup {
+  border-radius: 30rpx 30rpx 0 0;
+  background: linear-gradient(to bottom, #D5FFFC 5%, #F4FFFE 20%, #FDFFFF 30%, #FFFFFF);
+  padding: 0;
+  padding-bottom: calc(constant(safe-area-inset-bottom));
+  padding-bottom: calc(env(safe-area-inset-bottom));
+
+  .weui-half-screen-dialog__hd {
+    display: none;
+  }
+
+}
+
+
+.share-popup-container {
+  border-radius: 30rpx 30rpx 0 0;
+  padding: 0;
+
+  .weui-half-screen-dialog__hd {
+    display: none;
+  }
+}
+
+@include dialog();
+
+/* =======  健康模块半开窗 ====== */
+.health-label-dialog {
+  background: linear-gradient(195deg, rgb(203, 242, 229, 0.7) 0%, #FFFFFF 20%);
+}
+.health-isPicker-dialog {
+  background: linear-gradient(180deg, rgb(203, 242, 229, 0.7) 0%, #FFFFFF 10%);
+}
+
+
+.health-dialog {
+  .weui-dialog__bd {
+    margin: 0 !important;
+  }
+}

@@ -1,0 +1,63 @@
+<!--components/recommend/video-content/index.wxml-->
+<wxs module="filter" src="../../../utils/filter.wxs"/>
+<view class="recommend-detail_content">
+  <!-- 商品 -->
+  <view
+    class="recommend-detail_goods"
+    wx:if="{{videoInfo.goods.spuId}}"
+    data-goodsid="{{videoInfo.goods.spuId}}"
+    data-recommentid="{{videoInfo.recommendId}}"
+    data-recommendtitle="{{videoInfo.title}}"
+    data-title="{{videoInfo.title}}"
+    catchtap="goDetail"
+  >
+    <view class="recommend-detail_goods_pic">
+      <image src="{{videoInfo.goods.imageUrl}}" mode="aspectFill" />
+    </view>
+    <view class="recommend-detail_goods_info">
+      <view class="recommend-detail_goods_info_name">{{videoInfo.goods.name}}</view>
+      <view class="recommend-detail_goods_info_edit">
+        <SmallPrice id="small_price" info="{{videoInfo.goods.skuList[0]}}" />
+        <button type="primary" class="recommend-detail_goods_info_edit_btn">去购买</button>
+      </view>
+    </view>
+  </view>
+  <!-- 介绍 -->
+  <view class="recommend-detail_intro">
+    <text class="recommend-detail_intro_title">{{videoInfo.title}}</text>
+    <scroll-view scroll-y class="recommend-detail_intro_scroll {{ visible && 'visible'}}">
+      <view class="txt">
+        <mp-html wx:if="{{isShow}}" content="{{videoInfo.remark}}" lazy-load class="recommend-detail_intro_desc"/>
+        <rich-text
+          wx:else
+          nodes="{{videoInfo.remark}}"
+          space="nbsp"
+          class="recommend-detail_intro_desc hide"
+        ></rich-text>
+      </view>
+    </scroll-view>
+    <view class="recommend-detail_intro_edit">
+      <!-- <view class="recommend-detail_intro_edit_label" wx:if="{{isShow || !isMore}}">
+        <block
+          wx:for="{{videoInfo.tagList}}"
+          wx:key="index"
+          wx:for-item="value"
+          wx:if="{{videoInfo.tag}}"
+        >
+          <text>{{value}}</text>
+        </block>
+      </view> -->
+      <view class="recommend-detail_intro_edit_view">
+        <image class="eye" src="https://static.tojoyshop.com/images/wxapp-boss/recommend/eye.png" mode="aspectFill"/>
+        <text class="view-num">浏览 {{videoInfo.pv}}</text>
+      </view>
+      <view
+        class="recommend-detail_intro_edit_btn"
+        catchtap="handleShowCont"
+        wx:if="{{isMore}}"
+      >{{isShow ? '收起' : '展开'}}
+      </view>
+    </view>
+  </view>
+</view>
+

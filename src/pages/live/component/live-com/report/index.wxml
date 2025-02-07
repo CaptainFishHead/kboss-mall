@@ -1,0 +1,18 @@
+<view class="report" catch:tap wx:if="{{step === 0}}">
+  <view class="report-info">
+    <view class="text" bindtap="onCallTel">客服</view>
+    <view class="line"></view>
+    <view class="text" bindtap="showReport">举报</view>
+  </view>
+  <view class="cancel" bindtap="close">
+    取消
+  </view>
+</view>
+<view class="report position" wx:else catch:tap>
+  <view class="report-title">请选择违规类型</view>
+  <image class="report-close" bindtap="close" src="https://static.tojoyshop.com/images/wxapp-boss/live/report-close.png" />
+  <view class="report-content">
+    <view wx:for="{{types}}" class="{{ item.isSelect ? 'active' : ''}}" wx:key="index" wx:for-item="item" data-id="{{item.id}}" bindtap="bindType">{{item.name}}</view>
+  </view>
+  <button class="report-submit {{selectIds.length > 0 ? 'active' : ''}}" bindtap="submitReport">提交</button>
+</view>

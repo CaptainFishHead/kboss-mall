@@ -1,0 +1,20 @@
+<!--省市区三级级联组件-->
+<slot></slot>
+<mp-half-screen-dialog ext-class="dialog city-modal" class="city-modal" show="{{isVisible}}" closabled="{{false}}" buttons="{{buttons}}" bindbuttontap="onConfirm">
+	<view slot="title" class="selcted-city">
+		<text wx:if="{{provinceData.length}}" class="selcted-city-item {{!selectedNavIndex && 'on' }}" data-id="{{0}}" bindtap="onTab">{{selectedAddress.provinceName || '请选择'}}</text>
+		<text wx:if="{{cityData.length}}" class="selcted-city-item {{selectedNavIndex === 1 && 'on' }}" data-id="{{1}}" bindtap="onTab">{{selectedAddress.cityName || '请选择'}}</text>
+		<text wx:if="{{areaData.length}}" class="selcted-city-item {{selectedNavIndex === 2 && 'on' }}" data-id="{{2}}" bindtap="onTab">{{selectedAddress.areaName || '请选择'}}</text>
+	</view>
+	<scroll-view scroll-y="true" slot="desc" class="city-container">
+		<view class="city-list" wx:if="{{!selectedNavIndex}}">
+			<view wx:for="{{provinceData}}" wx:key="index" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onCheckedProvince" class="city-item {{selectedAddress.provinceId === item.id && 'on'}}">{{item.name}}</view>
+		</view>
+		<view class="city-list" wx:if="{{selectedNavIndex === 1}}">
+			<view wx:for="{{cityData}}" wx:key="index" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onCheckedCity" class="city-item {{selectedAddress.cityId === item.id && 'on'}}">{{item.name}}</view>
+		</view>
+		<view class="city-list" wx:if="{{selectedNavIndex === 2}}">
+			<view wx:for="{{areaData}}" wx:key="index" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onCheckedArea" class="city-item {{selectedAddress.areaId === item.id && 'on'}}">{{item.name}}</view>
+		</view>
+	</scroll-view>
+</mp-half-screen-dialog>

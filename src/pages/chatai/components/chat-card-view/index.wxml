@@ -1,0 +1,27 @@
+<import src="../../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<view class="aicard" bind:tap="onCardClick">
+	<image class="aicard-img" src="{{info.img}}"></image>
+	<view class="aicard-right">
+		<text class="aicard-title">{{info.title}}</text>
+		<text class="aicard-desc">{{info.desc}}</text>
+		<view class="aicard-bottom">
+			<!--价格-->
+			<block wx:if="{{info.type == CHAT_TYPE.GOODS}}">
+				<view style="display: flex; align-items: flex-end;">
+					<view class="aicard-prices" style="font-size: 28rpx;margin-bottom: 8rpx;">￥</view>
+					<view class="aicard-prices">{{info.price}}</view>
+				</view>
+			</block>
+			<!--风险评估 或医生标签-->
+			<block wx:if="{{info.type == CHAT_TYPE.DOCTOR}}">
+				<view class="aicard-cp">{{info.tag}}</view>
+			</block>
+			<!--文章-->
+			<block wx:if="{{info.type == CHAT_TYPE.ARTICLE}}">
+				<view class="aicard-praise">点赞 {{info.tag}}</view>
+			</block>
+			<view class="aicard-btn">{{info.btnText}}</view>
+		</view>
+	</view>
+</view>

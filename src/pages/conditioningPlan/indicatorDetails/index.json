@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "quota-card":"../components/quota-card/index",
+    "indicator-card":"../components/indicator-card/index"
+  }
+}

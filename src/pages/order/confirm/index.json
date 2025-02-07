@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "warm-doctor-info": "../components/warm-doctor-info/index",
+    "goods-list": "../components/pregoodslist/index",
+    "address":"../components/address/index",
+    "price-info": "../components/price-info/index",
+    "pay-bar": "../components/pay-bar/index",
+    "bean-balance": "../components/bean-balance/index",
+    "empty": "../../../components/empty/index",
+    "doctor-appttime": "../../../components/order/doctor-appttime/index"
+  },
+  "disableScroll": true
+}

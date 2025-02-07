@@ -1,0 +1,19 @@
+<block wx:if="{{(skipScene === 'app' || skipScene === 'mini') && isShowIcon}}">
+    <view class="back_cont">
+        <view class="flex-warp">
+            <image class="arrow_img" src="https://static.tojoyshop.com/images/wxapp-boss/back.png" mode="widthFix"/>
+            <text>返回</text>
+            <image class="back_cont_img" src="https://static.tojoyshop.com/images/wxapp-boss/back-icons/{{source}}.png"
+                   binderror="imgLoadFail"/>
+        </view>
+        <button wx:if="{{skipScene === 'app'}}" class="back_cont_btn" open-type="launchApp" app-parameter="wechat"
+                binderror="launchAppError" bindtap="backAppHandle"/>
+        <button wx:elif="{{skipScene === 'mini'}}" class="back_cont_btn" bindtap="backMiniProHandle"/>
+    </view>
+</block>
+<block wx:elif="{{deviceId && isShowScan}}">
+    <navigator url="/pages/obh/buy/index?deviceId={{deviceId}}&buyPopInfo=1" class="enter_device {{isScrolling?'scrolling':''}}">
+        <!-- 166-64px -->
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/back-icons/obh_enter_device.gif" mode="aspectFit"></image>
+    </navigator>
+</block>

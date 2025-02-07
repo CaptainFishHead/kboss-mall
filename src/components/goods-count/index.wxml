@@ -1,0 +1,9 @@
+<view class="count">
+    <button class="btns count-reduce" catch:tap="changeNum" data-type="1">
+        <image class="count-reduce-icon" src="https://static.tojoyshop.com/images/wxapp-boss/cart/{{productNum>minNum?'ic_jian.png':'ic_dis_jian.png'}}"/>
+    </button>
+    <input class="count-num" value="{{productNum}}" bindblur="onBlurProdNum" disabled="{{disabledInput}}" maxlength="3" type="number" catchtap="catchIput" cursor-spacing="{{28}}"/>
+    <button class="btns count-add" catch:tap="changeNum" data-type="2">
+        <image class="count-add-icon" src="https://static.tojoyshop.com/images/wxapp-boss/cart/{{productNum<_maxNum?'ic_add.png':'ic_dis_add.png'}}"/>
+    </button>
+</view>

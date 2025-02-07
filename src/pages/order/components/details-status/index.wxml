@@ -1,0 +1,60 @@
+<wxs module="proFilter" src="../../../../utils/productFilter.wxs"/>
+<view class="status">
+    <view class="status-head">
+        <view class="status-head-type">{{orderInfo.orderStatusDesc}}</view>
+        <button class="status-head-call" bindtap="showCancelReason" wx:if="{{orderInfo.orderStatus === 10}}">取消订单</button>
+        <block wx:if="{{orderInfo.orderStatus === 20 || orderInfo.orderStatus === 30 }}">
+          <button class="status-head-call" wx:if="{{orderInfo.cardType===PRODUCT_TYPE.VIRTUAL_CARD || orderInfo.cardType===PRODUCT_TYPE.REAL_CARD}}" open-type="contact" bindtap="onService">联系客服</button>
+          <button class="status-head-call" bindtap="onShowSale" wx:if="{{proFilter.afterSalesing(orderInfo.storeList) && orderInfo.isReal && !orderInfo.cardType }}">申请售后</button>
+        </block>
+        <button class="status-head-call" bindtap="handleShowTips" wx:if="{{orderInfo.orderStatus === 60 || orderInfo.orderStatus === 70 || orderInfo.orderStatus === 80}}">删除订单</button>
+        <button class="status-head-call" wx:if="{{orderInfo.orderStatus === 50 && !orderInfo.isReal}}" open-type="contact" bindtap="onService">联系客服</button>
+    </view>
+    <view class="status-area">
+        <view class="status-area-timer" wx:if="{{orderInfo.orderStatus === 10}}">
+            订单将于<text class="status-area-timer-count">{{countDown}}</text>后自动关闭
+        </view>
+        <view class="status-area-timer" wx:if="{{orderInfo.orderStatus === 60 || orderInfo.orderStatus === 70 || orderInfo.orderStatus === 80}}">交易已关闭，期待您再次选择</view>
+        <view class="status-logis" wx:if="{{orderInfo.orderStatus===30 && orderInfo.packNum > 1}}">您的订单被分成多个包裹发出</view>
+    </view>
+</view>
+<!-- 温馨提示弹窗 -->
+<tips-dialog id="tipsDialog" bind:confirm="handleDelete" />
+<mp-dialog
+  ext-class="order-cancel-dialog"
+  show="{{deterVisible}}"
+  bindbuttontap="deterTap"
+  buttons="{{deterBtns}}"
+  title="温馨提示"
+>
+  <view>
+    <view class="title">奖品伴侣订单暂不支持线上售后申请，如需售后请联系平台客服处理</view>
+  </view>
+</mp-dialog>
+
+<!-- 申请售后弹窗 -->
+<mp-half-screen-dialog
+        class="aftersale"
+        maskClosable="{{false}}"
+        bindclose="closeServiceType"
+        show="{{dialogShow}}"
+        title="选择服务类型"
+        catchtouchmove="touchMove">
+    <view slot="desc">
+        <view class="content">
+            <view class="content-cell" bind:tap="checkServiceType" data-type="{{1}}">
+                <text class="content-cell-title">仅退款（无需退货）</text>
+            </view>
+            <view class="content-cell" bind:tap="checkServiceType" data-type="{{3}}" wx:if="{{orderInfo.orderStatus === 30}}" wx:if="{{shipList.length}}">
+                <text class="content-cell-title">我要退货退款</text>
+            </view>
+        </view>
+    </view>
+</mp-half-screen-dialog>
+<!-- 取消订单原因弹窗 -->
+<cancel-reason id="cancelReason" bind:confirm="cancelOrder" />
+<!-- 售后商品弹窗 -->
+<refund-list id="afterSale" bind:success="onChooseAfterSale"/>
+<!-- 售后错误弹窗 -->
+
+

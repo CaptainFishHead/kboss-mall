@@ -1,0 +1,9 @@
+<mp-half-screen-dialog ext-class="health-label-dialog" title="{{title}}" show="{{visible}}" bindclose="close" catchtouchmove="touchMove">
+  <view slot="desc">
+    <view class="list">
+      <label class="list-item {{item.checked ? 'checked' : ''}}" wx:for="{{data}}" wx:key="index">
+        <text>{{item}}</text>
+      </label>
+    </view>
+  </view>
+</mp-half-screen-dialog>

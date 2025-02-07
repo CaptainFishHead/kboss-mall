@@ -1,0 +1,119 @@
+/* components/recommend/special-card/index.wxss */
+@import "./../../../styles/mixins";
+.recommend-special{
+  &_block{
+  margin: 0 32rpx;
+  padding-bottom: 50rpx;
+  margin-top: 21rpx;
+  &_video{
+    width: 400rpx;
+    height: 490rpx;
+    border-radius: 6rpx;
+    position: relative;
+    overflow: hidden;
+    image{
+      width: 100%;
+    }
+    &::before{
+      content: "";
+      width: 116rpx;
+      height: 116rpx;
+      display: block;
+      // background-color: rgba(0,0,0,.2);
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-image: url(https://static.tojoyshop.com/images/wxapp-boss/recommend/play-icon.png);
+      background-position: center center;
+      background-size: 47rpx 54rpx;
+      background-repeat: no-repeat;
+    }
+  }
+  &_pic{
+    margin:0 -10rpx;
+    position: relative;
+    &_item{
+      width: 337rpx;
+      height: 337rpx;
+      display: inline-block;
+      margin: 0 8rpx;
+      border-radius: 6rpx;
+      overflow: hidden;
+      position: relative;
+      .img{
+        // min-width: 100%;
+        // // width: auto !important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        // height: auto;
+        // width: auto;
+        // height: 337rpx;
+        // display: block;
+      }
+      &.first{
+        width: 400rpx;
+        height: 490rpx;
+        .img{
+          width: 400rpx;
+          height: 490rpx;
+        }
+        // max-height: 490rpx;
+      }
+    }
+    &_num{
+      font-size: 50rpx;
+      color: #fff;
+      position: absolute;
+      right: 15rpx;
+      bottom: 5rpx;
+    }
+  }
+  &_live{
+    position: relative;
+    width: 400rpx;
+    &_pic{
+      width: 100%;
+      // height: 490rpx;
+      border-radius: 6rpx;
+      overflow: hidden;
+      image{
+        width: 100%;
+      }
+    }
+    &_status{
+      position: absolute;
+      right: 0;
+      top: 12rpx;
+    }
+  }
+  &_title{
+    font-size: 30rpx;
+    color: #333333;
+    line-height: 42rpx;
+    margin-top: 18rpx;
+    font-weight: bold;
+  }
+  &_desc{
+    font-size: 26rpx;
+    color: #666666;
+    line-height: 40rpx;
+    margin-top: 12rpx;
+    @include text-max-rows(2);
+    // rich-text {
+    //   display: block;
+    //   font-size: 26rpx;
+      
+    // }
+  }
+  &_data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 17rpx;
+  }
+}
+}

@@ -1,0 +1,36 @@
+<view class="containerCommonBox">
+  <view class="page-body">
+    <!-- 3 => 性别题 -->
+    <block wx:if="{{questionType == 3}}">
+      <quest-gender bind:updateData="handleQuestion" dataCode="{{testData}}" dataIndex="{{testIndex}}" />
+    </block>
+    <!-- 4 => 生日题 -->
+    <block wx:elif="{{questionType == 4}}">
+      <quest-datePick bind:updateData="handleQuestion" dataCode="{{testData}}" dataIndex="{{testIndex}}" />
+    </block>
+    <!-- 7 => BMI题 -->
+    <block wx:elif="{{questionType == 7}}">
+      <quest-BIMweight bind:updateData="handleQuestion" dataCode="{{testData}}" dataIndex="{{testIndex}}" />
+    </block>
+    <!-- 5 => 单项数字题 -->
+    <block wx:elif="{{questionType == 5}}">
+      <quest-singleSelect bind:updateData="handleQuestion" dataCode="{{testData}}" dataIndex="{{testIndex}}" />
+    </block>
+    <!-- 1 => 单选题 -->
+    <block wx:elif="{{questionType == 1}}">
+      <quest-single bind:updateData="handleQuestion" dataCode="{{testData}}" dataIndex="{{testIndex}}" dataAll="{{dataAll}}" />
+    </block>
+    <!-- 2 => 多选题 -->
+    <block wx:elif="{{questionType == 2}}">
+      <quest-multiple bind:updateData="handleQuestion" dataCode="{{testData}}" dataIndex="{{testIndex}}" />
+    </block>
+    <!-- 6 => 多项数字题 -->
+    <block wx:elif="{{questionType == 6}}">
+      <quest-multipleSelect bind:updateData="handleQuestion" dataCode="{{testData}}" dataIndex="{{testIndex}}" />
+    </block>
+    <!-- 8 => 日期题 -->
+    <block wx:elif="{{questionType == 8}}">
+      <quest-dateSelect bind:updateData="handleQuestion" dataCode="{{testData}}" dataIndex="{{testIndex}}" />
+    </block>
+  </view>
+</view>

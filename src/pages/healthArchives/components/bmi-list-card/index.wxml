@@ -1,0 +1,13 @@
+<view class="content-box">
+  <view class="content">
+    <view class="left">
+      <text class="name">{{ metric.indexName }}</text>
+      <text class="num_value" wx:if="{{metric.indexId !== 'cm' && metric.indexId !== 'kg'}}">标准值：{{ standard }}<block wx:if="{{ !!metric.indexUnit }}">{{ metric.indexUnit }}</block></text>
+    </view>
+    <view class="right">
+      <text wx:if="{{ metric.indexDataType === 3 }}" class="details" bind:tap="sendCurrentDetailToParent">查看详情</text>
+      <text wx:elif="{{metric.indexData}}" class="price {{className}}">{{ metric.indexData }}</text>
+      <text wx:else class="details" bind:tap="navigateToUpdateMetric">去记录</text>
+    </view>
+  </view>
+</view>

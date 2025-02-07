@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "mp-loading": "weui-miniprogram/loading/loading",
+    "card-item":"./../../../components/coupon/card-item/index",
+    "mp-tabbar": "weui-miniprogram/tabbar/tabbar",
+    "empty": "./../../../components/empty/index"
+  }
+}

@@ -1,0 +1,70 @@
+<wxs module="proFilter" src="../../../../utils/productFilter.wxs"/>
+<!--orderStatus 待付款：10, 待发货：20 待收货：30, 已完成-待收货：40, 已完成：50, 已取消：60 ,已超时：70 ,已退款：80 -->
+<view class="button-container-box {{orderInfo.orderStatus === 10 && 'button-container-padd'}}">
+    <!-- 待支付  -->
+    <pay-bar orderPayInfo="{{orderInfo}}" bind:payhandle="orderPayHandle" wx:if="{{orderInfo.orderStatus === 10}}" txt="继续支付"/>
+
+    <view class="button-container {{(orderInfo.orderStatus === 50 && orderInfo.isReal) && 'over-btns'}}" wx:else>
+      <!-- 待发货  -->
+      <block wx:if="{{orderInfo.orderStatus === 20}}">
+        <button type="primary" class="btns" open-type="contact" wx:if="{{orderInfo.storeList[0].orderStatusRefund === 1}}" bindtap="onService">联系客服</button>
+        <button type="primary" class="btns" wx:else bind:tap="handleRemind">提醒发货</button>
+      </block>
+
+      <!-- 待收货 -->
+      <block wx:if="{{orderInfo.orderStatus === 30}}">
+        <button type="default" class="btns" wx:if="{{orderInfo.isReal}}" bind:tap="onLogistics">查看物流</button>
+        <button type="primary" class="btns" open-type="contact" wx:if="{{!orderInfo.isReal || !proFilter.afterSalesing(orderInfo.storeList)}}" bindtap="onService">联系客服</button>
+        <button type="primary" class="btns" bind:tap="showConfirmReceipt" wx:else>确认收货</button>
+      </block>
+
+      <!-- 已完成 -->
+      <block wx:if="{{orderInfo.orderStatus > 30}}">
+
+        <!-- 实体品-->
+        <block wx:if="{{orderInfo.isReal}}">
+          <button type="default" class="btns" wx:if="{{orderInfo.orderStatus === 50}}" bind:tap="onLogistics">查看物流</button>
+          <button type="default" class="btns" open-type="contact" wx:if="{{orderInfo.orderStatus === 50 }}" bindtap="onService">联系客服</button>
+          <button type="default" class="btns" wx:if="{{orderInfo.orderStatus === 70}}" bind:tap="handleShowTips">删除订单</button>
+          <button type="primary" class="btns"
+                  wx:if="{{(orderInfo.orderStatus===50||orderInfo.orderStatus=== 60 || orderInfo.orderStatus === 70 || orderInfo.orderStatus === 80)}}"
+                  bind:tap="handleAgain">再次购买</button>
+        </block>
+
+        <!-- 虚拟品	核销方式-> 0: 无 | 1: 兑换码（暂不支持）| 2: 其他 | 3: 虚拟商品卡 | 4: 线上服务 | 5: 线下服务-->
+        <block wx:else>
+          <block wx:if="{{orderInfo.orderStatus === 50}}">
+            <!-- 虚拟品-线上线下服务 -->
+            <block wx:if="{{orderInfo.chargeOffType===4||orderInfo.chargeOffType===5}}">
+                <button type="default" class="btns" bind:tap="handleAgain">再次购买</button>
+                <button type="primary" class="btns" bind:tap="handleService">我的服务</button>
+            </block>
+
+            <!--  虚拟商品卡的商品 核销方式 3: 虚拟商品卡-->
+            <block wx:elif="{{orderInfo.chargeOffType===3||(orderInfo.buyCards && orderInfo.buyCards.length)}}">
+                <button type="primary" class="btns" bind:tap="goCardPackage">去卡包</button>
+            </block>
+
+            <!-- 虚拟品-其他商品 -->
+            <button wx:else type="primary" class="btns" bind:tap="handleAgain">再次购买</button>
+
+          </block>
+
+          <block wx:else>
+            <button type="primary" class="btns" bind:tap="handleAgain">再次购买</button>
+          </block>
+    <!--      <block wx:if="{{(orderInfo.orderStatus=== 60 || orderInfo.orderStatus === 70)}}">
+              <button type="primary" class="btns" bind:tap="handleAgain">再次购买</button>
+          </block>-->
+
+        </block>
+
+      </block>
+    </view>
+    
+    <!-- 虚拟品-线上线下服务-气泡提示 -->
+    <view class="bubble" wx:if="{{!orderInfo.isReal&&orderInfo.orderStatus===50&&(orderInfo.chargeOffType===4||orderInfo.chargeOffType===5)&&orderInfo.storeType==='1'}}">点击这里去使用服务</view>
+</view>
+
+<!-- 确认收货提示 -->
+<receipt-dialog id="receiptDialog" bind:confirm="onReceipt"/>

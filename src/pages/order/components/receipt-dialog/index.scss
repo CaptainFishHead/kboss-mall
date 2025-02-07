@@ -1,0 +1,10 @@
+/* pages/order/components/receipt-dialog/index.wxss */
+.icon-close {
+  position: absolute;
+  top: -20rpx;
+  right: 0;
+  z-index: 100;
+  transform: translate3d(0, -100%, 0);
+  width: 44rpx;
+  height: 44rpx;
+}

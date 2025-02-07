@@ -1,0 +1,23 @@
+<!--components/audio/audio.wxml-->
+<wxs src="../../utils/filter.wxs" module="filter"/>
+<view class='audioPlayer' id="audioPlayer">
+  <view class='player'>
+    <view class='audioControls'>
+      <view class='bottom' catchtap='playAudio'>
+        <!-- 按钮 -->
+        <view wx:if="{{isPlayAudio}}">
+          <image src='https://static.tojoyshop.com/images/wxapp-boss/icons/column_suspend.png' />
+        </view>
+        <view wx:else>
+          <image src='https://static.tojoyshop.com/images/wxapp-boss/icons/column_play.png' />
+        </view>
+      </view>
+      <view class="timeLeft">{{filter.formatSeconds(showTime1)}}</view>
+      <view class='slider'>
+      <!-- audioTime -->
+        <slider min="0" max="{{audioDuration}}" step="{{0.1}}" bindchange='sliderChange' block-color="#09BDAC" activeColor='#333333' backgroundColor="#F1F1F1" block-size="12" value='{{showTime1}}' />
+      </view>
+      <view class="timeRight">{{filter.formatSeconds(audioDuration)}}</view>
+    </view>
+  </view>
+</view>

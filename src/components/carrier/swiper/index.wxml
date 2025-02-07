@@ -1,0 +1,30 @@
+<swiper class="column column-{{column.componentId}}" autoplay circular indicator-dots style="{{column.style}}">
+	<block wx:for="{{column.cells}}" wx:for-item="cell" wx:key="elementId" wx:for-index="commodity_index">
+		<swiper-item>
+			<view class="cell" style="{{cell.style}}">
+				<block wx:for="{{column.functional}}" wx:key="label" wx:for-item="item">
+          <button
+            class="like"
+            wx:if="{{item.value && cell.link.productId}}"
+          >
+            <view style="color:{{item.default}}" class="icon">
+              <image lazy-load mode="widthFix" class="icon-favorite"
+                     src="https://static.tojoyshop.com/images/wxapp-boss/icon-favorite-{{cell.link.isFavorite}}.svg"/>
+              <view class="text">{{item.label}}</view>
+            </view>
+          </button>
+				</block>
+				<image
+					src="{{cell.designerImageUrl.src}}"
+					lazy-load mode="widthFix"
+					data-link="{{cell.link}}"
+					data-module_id="{{column.columnId}}"
+					data-element_id="{{cell.elementId}}"
+					data-commodity_index="{{commodity_index}}"
+					data-reboot="{{cell.reboot}}"
+					bind:tap="navigateTo"
+				/>
+			</view>
+		</swiper-item>
+	</block>
+</swiper>

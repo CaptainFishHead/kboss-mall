@@ -1,0 +1,6 @@
+<!--components/recommend/scroll-tabbar/index.wxml-->
+<scroll-view class="scroll-tabbar ext-class {{!isRecommend && 'news-tabbar'}}" scroll-x="true">
+  <block wx:for="{{list}}" wx:for-item="item" wx:key="recommendCategoryId">
+    <view class="scroll-tabbar_item {{item.recommendCategoryId === categoryId && 'on'}}" data-id="{{item.recommendCategoryId}}" data-name="{{item.categoryName}}" bindtap="handleTab">{{item.categoryName}}</view>
+  </block>
+</scroll-view>

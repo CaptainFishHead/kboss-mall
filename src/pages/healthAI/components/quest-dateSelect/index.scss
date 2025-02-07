@@ -1,0 +1,46 @@
+@import "../../../../styles/animfade.scss";
+.containerCommonBox {
+  width:100%;
+  height:auto;
+  overflow: hidden;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-top: 33rpx;
+  background-color: #fff;
+  .containerCommonFooter {
+    width: 100%;
+    box-sizing: border-box;
+    padding:38rpx 75rpx;
+  }
+}
+.success {
+  height: 94rpx;
+  background: linear-gradient( 180deg, #A2E4DE 0%, #09BDAC 100%);
+  border-radius: 4rpx;
+  font-weight: 700;
+  font-size: 30rpx;
+  color: #333333;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.pickCase {
+  background-color: #09BDAC;
+  display: flex;
+  align-items: center;
+}
+.dateValueItem {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  .markUnit {
+    margin-left:24rpx;
+  }
+  .noneDateValue {
+    color:#fff;
+  }
+}
+
+.timeText {
+  margin-left: 250rpx;
+}

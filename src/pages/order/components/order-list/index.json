@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents":{
+    "cancel-reason": "../cancel-reason/index",
+    "receipt-dialog": "../receipt-dialog/index",
+    "tips-dialog": "../tips-dialog/index"
+  }
+}

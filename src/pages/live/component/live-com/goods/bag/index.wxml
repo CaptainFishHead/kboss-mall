@@ -1,0 +1,41 @@
+<flex direction="column" wrap="nowrap" class="bag-info" style="{{style}}">
+	<flex-item shrink="0" basis="65rpx" style="width:100%;">
+		<flex justifyContent="space-between" alignItems="flex-end" class="bag-info-top" bindtap="hideBag">
+			<flex-item class="bag-info-packup">
+				<image class="bag-info-packup-icon"
+				       src="https://static.tojoyshop.com/images/wxapp-boss/live/bag-packup-icon.png"/>
+			</flex-item>
+			<flex-item class="bag-info-title" style="margin-right:auto;">
+				<text>商品列表（{{productList.length}}）</text>
+			</flex-item>
+			<flex-item style="margin-left:auto;" class="bag-info-cart" catch:tap="toCart">
+				<view class="bag-info-icon-box">
+					<text class="bag-info-cart-num" wx:if="{{cartCount > 0}}">{{cartCount}}</text>
+					<image class="bag-info-icon bag-info-cart-icon"
+					       src="https://static.tojoyshop.com/images/wxapp-boss/live/bag-cart-icon.png"/>
+				</view>
+				<text class="text">购物车</text>
+			</flex-item>
+			<flex-item style="margin-left:30rpx;" class="bag-info-order" catch:tap="toOrder">
+				<image class="bag-info-icon bag-order-cart-icon"
+				       src="https://static.tojoyshop.com/images/wxapp-boss/live/bag-order-icon.png"/>
+				<text class="text">订单</text>
+			</flex-item>
+		</flex>
+	</flex-item>
+	<flex-item grow="1" basis="0" style="overflow-y: auto;width:100%;" id="goodsList">
+		<!-- <view class="bag-info-title"><text>商品列表（{{productList.length}}）</text></view> -->
+		<scroll-view scroll-y scroll-into-view="{{prefix}}_{{activeId}}" enhanced show-scrollbar="{{false}}" class="bag-goods" wx:if="{{productList.length}}"
+		             style="height:100%">
+			<view id="{{prefix}}_{{item.spuId}}" wx:for="{{productList}}" wx:key="spuId" class="bag-goods-item o_{{item.spuId}}">
+				<goods catch:go-buy="nextAction" catch:createGoodsObserver="createGoodsObserver" goods="{{item}}"></goods>
+			</view>
+		</scroll-view>
+		<flex wx:else class="bag-empty" direction="column" alignItems="center">
+			<flex-item class="bag-empty-icon">
+				<image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/live-bag-empty.png"/>
+			</flex-item>
+			<flex-item class="bag-empty-text">主播暂时没有上架商品</flex-item>
+		</flex>
+	</flex-item>
+</flex>

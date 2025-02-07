@@ -1,0 +1,268 @@
+/* pages/recommend/detail/index.wxss */
+@import "./../../../components/toast/index.wxss";
+.navigation{
+  &.fixed {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  }
+}
+.page-container {
+  height: 100vh;
+  &.recommend {
+    background-color: #fff;
+  }
+  &.zixun {
+    background-color: transparent;
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/recommend/zixun-bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 0 0;
+    .recommend-detail_intro {
+      margin: 22rpx 30rpx 0 40rpx;
+      .recommend-detail_intro_title {
+        margin-bottom: 18rpx;
+        font-size: 42rpx;
+        color: rgba(0,0,0,0.9);
+        line-height: 59rpx;
+        letter-spacing: 1px;
+      }
+      .recommend-detail_intro_desc {
+        margin-top: 30rpx;
+      }
+    }
+  }
+}
+.recommend-detail{
+  padding-bottom: 192rpx;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  &_box{
+   overflow: hidden;
+  }
+  &_swiper{
+    height: calc(var(--swiperHei) + 30rpx);
+    &_item{
+      overflow: hidden;
+      image{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .wx-swiper-dots{
+      position: absolute;
+      bottom: 0rpx;
+    }
+    .wx-swiper-dot{
+      width: 9rpx;
+      height: 9rpx;
+      margin: 0 2rpx;
+    }
+  }
+  &_goods{
+    background-color: #FFF6E3;
+    margin: 24rpx 32rpx 0;
+    display: flex;
+    padding: 14rpx 21rpx 14rpx 15rpx;
+    &_pic{
+      width: 169rpx;
+      height: 169rpx;
+      border-radius: 6rpx;
+      overflow: hidden;
+      image{
+        width: 100%;
+        height: 169rpx;
+      }
+    }
+    &_info{
+      flex: 1;
+      margin-left: 30rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 1rpx;
+      &_name{
+        font-size: 30rpx;
+        color: #333333;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+      &_desc{
+        font-size: 26rpx;
+        color: #858585;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+      &_edit{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15rpx;
+        &_price{
+          font-size: 30rpx;
+          color: #B58209;
+          .num{
+            font-size: 40rpx;
+          }
+        }
+        &_btn{
+          width: 143rpx;
+          height: 60rpx !important;
+          font-size: 28rpx !important;
+          color: #333333FF !important;
+          font-weight: normal !important;
+          margin: 0;
+          padding: 0 28rpx;
+        }
+      }
+    }
+  }
+  &_intro{
+    margin: 56rpx 32rpx 0;
+    &_title{
+      color: rgba(51, 51, 51, 0.90);
+      font-size: 36rpx;
+      font-weight: bold;
+    }
+    &_audio{
+      width: 680rpx;
+      height: 208rpx;
+      background: #F7F7F7;
+      border-radius: 10rpx;
+      margin-top: 35rpx;
+      padding: 27rpx 30rpx 14rpx;
+      box-sizing: border-box;
+      .audio{
+        display: flex;
+        justify-content: space-between;
+        &-logo{
+          width: 78rpx;
+          height: 78rpx;
+          background: #64BC36;
+          border-radius: 6rpx;
+        }
+        &-desc{
+          font-size: 30rpx;
+          color: #666666;
+          margin-left: 19rpx;
+          line-height: 38rpx;
+        }
+        &-btn{
+          width: 72rpx;
+          height: 72rpx;
+          background: #FFFFFF;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &-icon {
+            width: 44rpx;
+            height: 44rpx;
+          }
+        }
+        &_slider{
+          margin: 20rpx 0 0;
+        }
+        &_time{
+          font-size: 22rpx;
+          color: #999999;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+    &_desc{
+      font-size: 32rpx;
+      line-height: 54rpx;
+      color: #000;
+      margin-top: 37rpx;
+    }
+  }
+  .service {
+    padding: 30rpx 0;
+    position: relative;
+    .opacity-code {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      z-index: 2;
+    }
+    &-wrap {
+      padding: 25rpx;
+      background: linear-gradient( 129deg, #E2FFF9 0%, #FFFFFF 37%, #FFF8EA 100%);
+      border-radius: 10rpx;
+      border: 2rpx solid #FFF8EA;
+      display: flex;
+    }
+    &-code {
+      font-size: 0;
+      &-img {
+        width: 152rpx;
+        height: 152rpx;
+      }
+    }
+    &-info {
+      width: 100%;
+      padding-left: 25rpx;
+      padding-right: 20rpx;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &-desc {
+        .desc {
+          font-size: 28rpx;
+          color: #333333;
+          line-height: 45rpx;
+        }
+      }
+      &-img {
+        width: 106rpx;
+        height: 106rpx;
+      }
+      &-btn {
+        width: 145rpx;
+        height: 56rpx;
+        line-height: 56rpx;
+        text-align: center;
+        background: linear-gradient( 180deg, #FFEAC9 0%, #FFC569 100%);
+        border-radius: 30rpx;
+        font-weight: 500;
+        font-size: 26rpx;
+        color: #554623;
+        margin-right: 15rpx;
+      }
+    }
+  }
+  .more{
+    position: absolute;
+    bottom: calc(99rpx + env(safe-area-inset-bottom));
+    left: 0;
+    right: 0;
+    height: 190rpx;
+    background: linear-gradient( 180deg, rgba(255,255,255,0) 0%, rgba(255,255,255, 0.9) 37%, #FFFFFF 100%);
+    text-align: center;
+    .service-btn {
+      background-color: transparent;
+      line-height: unset;
+    }
+    text{
+      border-radius: 4rpx;
+      border: 1rpx solid #979797;
+      font-size: 26rpx;
+      color: #666666;
+      text-align: center;
+      padding: 12rpx 18rpx;
+      display: inline-block;
+      margin-top: 100rpx;
+      background-color: #fff;
+    }
+  }
+}

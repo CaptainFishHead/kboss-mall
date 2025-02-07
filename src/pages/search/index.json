@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "searchbar": "/components/searchbar/index",
+    "mp-loading": "weui-miniprogram/loading/loading",
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "login-page": "/components/LoginPage/index",
+    "mp-html": "mp-html"
+  },
+  "disableScroll": true
+}

@@ -1,0 +1,8 @@
+<view class="container" style="--max-height:{{expandedHeight}}px">
+  <view class="container_box">
+    <slot></slot>
+  </view>
+  <view class="btn-box" wx:if="{{ maxHeight > minHeight && !isHideExpand }}">
+    <text class="btn {{ isExpand ? 'expand' : 'retract' }}" bind:tap="changeIsExpand">{{ isExpand ? retract : expand }}</text>
+  </view>
+</view>

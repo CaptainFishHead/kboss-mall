@@ -1,0 +1,7 @@
+<!--custom-tab-bar/index.wxml-->
+<mp-tabbar
+  ext-class="tabbar{{isBlack? ' black-bar' : ''}}"
+  list="{{isBlack? listBlack : list}}"
+  bindchange="switchTab"
+  current="{{selected}}"
+/>

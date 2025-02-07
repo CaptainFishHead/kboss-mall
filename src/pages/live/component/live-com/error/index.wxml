@@ -1,0 +1,18 @@
+<view class="error">
+  <flex class="error-info" direction="column" alignItems="center">
+    <flex-item class="error-info-default"><image class="icon"  src="https://static.tojoyshop.com/images/wxapp-boss/live/live-crowded.png"/></flex-item>
+    <flex-item class="error-info-text" wx:if="{{errorType === 5}}">直播间被挤爆啦，请重试</flex-item>
+    <flex-item class="error-info-text" wx:elif="{{errorType === 6}}">直播间加载失败，请重新加载</flex-item>
+    <flex-item class="error-info-text" wx:elif="{{errorType === 7}}">直播间不存在或已被删除</flex-item>
+    <flex-item class="error-info-btn" wx:if="{{errorType === 5}}">
+      <button class="error-info-btn-normal palin" bindtap="back">回首页</button>
+      <button class="error-info-btn-normal" bindtap="retry">重试</button>
+    </flex-item>
+    <flex-item class="error-info-btn retry" wx:elif="{{errorType === 6}}">
+      <button class="error-info-btn-normal" bindtap="retry">重新加载</button>
+    </flex-item>
+    <flex-item class="error-info-btn retry" wx:elif="{{errorType === 7}}">
+      <button class="error-info-btn-normal palin" bindtap="back">回首页</button>
+    </flex-item>
+  </flex>
+</view>

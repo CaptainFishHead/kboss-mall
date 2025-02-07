@@ -1,0 +1,38 @@
+<view class="container-obh">
+  <view class="obh-wrap">
+    <myTopBar showHeight="{{true}}" fixed="{{true}}" titleText=" " iconHeight="24" iconWidth="24" bind:back="backHandler" background="rgba(0,0,0,0)" backIcon="https://static.tojoyshop.com/images/wxapp-obh/common/icon-back-black.png" />
+
+    <view class="head">
+      <image src="https://static.tojoyshop.com/images/wxapp-obh/success/icon-right.png" class="head-icon"></image>
+      <view class="head-text0">服务购买成功</view>
+      <view class="head-text1">氧吧服务会自动开启，请注意关注</view>
+      <view class="head-item">
+        <view class="head-item1">付款金额：</view>
+        <view class="head-item2">¥{{money}}</view>
+      </view>
+      <view class="head-item">
+        <view class="head-item1">服务产品：</view>
+        <view class="head-item2 line1hidden">{{name}}</view>
+      </view>
+      <view class="head-line"></view>
+    </view>
+    <view class="cnt">
+      <view class="title">氧吧服务说明</view>
+      <view class="item1">服务购买成功后，系统自动开启氧吧设备且开始计时，中途若您手动关闭设备系统会依然计时，请您注意</view>
+      <view class="item1">按每晚收费的服务，您付款后设备服务开始计时，中午12点设备服务关闭。</view>
+      <view class="item2">服务购买成功后若设备未自动开启：</view>
+      <view class="item2-list">
+        <view class="item2-li">1）检查设备是否连通电源（设备点亮代表有电源）</view>
+        <view class="item2-li">2）请手动开启氧吧开关</view>
+        <view class="item2-li">3）若①②均操作无效，请联系您入住的酒店前台</view>
+      </view>
+    </view>
+    <view class="btn-box">
+      <view class="btn-wrap">
+        <view class="btn" catchtap="goRecord">服务购买记录</view>
+        <view class="btn on" catchtap="buyProduct">直接购买氧吧设备</view>
+      </view>
+      <iphoneXBottomHeight />
+    </view>
+  </view>
+</view>

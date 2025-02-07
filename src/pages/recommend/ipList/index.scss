@@ -1,0 +1,93 @@
+.container {
+    background: url(https://static.tojoyshop.com/images/wxapp-boss/recommend/ip-bg.png?v=1.0.9) no-repeat;
+    background-size: 100% 100%;
+    padding-top: 211rpx;
+    min-height: 100vh;
+    justify-content: flex-start;
+}
+.navigation {
+    position: fixed;
+}
+.container-title {
+    font-family: FZZZHONGJW;
+    font-size: 54rpx;
+    letter-spacing: 3px;
+    line-height: 61rpx;
+}
+.container-content {
+    padding: 0 14rpx;
+    padding-top: 39rpx;
+    padding-bottom: 88rpx;
+    width: 100%;
+    box-sizing: border-box;
+    .ip-list {
+        background-color: rgba($color: #fff, $alpha: 0.79);
+        border-radius: 20rpx;
+        padding: 0 40rpx;
+        overflow: hidden;
+        .ip-item {
+            margin: 40rpx 0;
+            display: flex;
+            align-items: center;
+            font-size: 0;
+            .ip-img-wrap {
+                background-color: #fff;
+                border-radius: 10rpx;
+                background-image: url(https://static.tojoyshop.com/images/wxapp-boss/recommend/ip-item-bg.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 160rpx;
+                height: 160rpx;
+            }
+            .ip-img {
+                width: 160rpx;
+                height: 160rpx;
+                border-radius: 10rpx;
+                overflow: hidden;
+            }
+            .ip-info {
+                width: 100%;
+                padding-left: 43rpx;
+                .ip-name {
+                    font-size: 32rpx;
+                    font-weight: 500;
+                    color: #333333;
+                    line-height: 45rpx;
+                    letter-spacing: 1px;
+                    margin-bottom: 11rpx;
+                }
+                .ip-class {
+                    font-size: 24rpx;
+                    color: #666666;
+                    line-height: 33rpx;
+                    margin-bottom: 17rpx;
+                }
+                .ip-tabs {
+                    .ip-tab {
+                        padding: 0 12rpx;
+                        display: inline-block;
+                        height: 32rpx;
+                        background: linear-gradient( 90deg, #E1F5F6 0%, #FFFFFF 100%);
+                        border-radius: 4rpx;
+                        border: 1rpx solid #E1F5F6; 
+                        margin-right: 10rpx;   
+                        font-size: 22rpx;
+                        color: #039399;
+                        line-height: 32rpx;
+                        margin-bottom: 10rpx;
+                    }
+                }
+            }
+        }
+    }
+}
+.one-line {
+    max-width: 431rpx;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;				//溢出内容隐藏
+    text-overflow: ellipsis;		//文本溢出部分用省略号表示
+    display: -webkit-box;			//特别显示模式
+    -webkit-line-clamp: 1;			//行数
+    line-clamp: 1;
+    -webkit-box-orient: vertical;	//盒子中内容竖直排列
+}

@@ -1,0 +1,35 @@
+.live-data {
+  background-color: #1F1F22;
+  // padding-top: 160rpx;
+  // padding-bottom: 100rpx;
+  box-sizing: border-box;
+  height: 100vh;
+  .tab {
+    height: 109rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 1rpx solid rgba(255,255,255,0.4);
+    &-item {
+      font-size: 30rpx;
+      height: 109rpx;
+      line-height: 109rpx;
+      color: #fff;
+      position: relative;
+      &.active {
+        color: #CFAF65;
+        &::after {
+          content: ' ';
+          display: inline-block;
+          width: 40rpx;
+          height: 8rpx;
+          background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+}

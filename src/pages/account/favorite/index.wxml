@@ -1,0 +1,56 @@
+<!-- wetoast -->
+<import src="../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<navigation-bar ext-class="navigation" title="关注的商品({{favoriteNum}})" background="#FFF" />
+
+<view class="container">
+  <view class="pro" wx:if="{{favoriteList && favoriteList.length}}">
+    <view class="pro-item" wx:for="{{favoriteList}}" wx:key="index">
+      <view class="icon-btn" bindtap="onFavorite" data-item="{{item}}" data-index="{{index}}">
+        <image class="icon-favorite" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-favorite-{{item.productInfoVo.isFavorite}}.png" />
+      </view>
+      <view bindtap="toProduct" data-id="{{item.productInfoVo.productId}}" data-type="{{item.subjectType}}">
+        <!-- 加购小球 -->
+        <image src="{{sku.imgurl}}" mode="aspectFill" wx:if="{{ballDisplay && product.spuId === item.productInfoVo.productId}}" class="ball" style="top:{{top}};left:{{left}}" />
+        <view class="pro-pic {{(!item.productInfoVo.productStatus||item.productInfoVo.isDeleted) && 'pro-off'}}">
+          <image src="{{item.productInfoVo.productImg}}" mode="aspectFill" class="{{product.spuId === item.productInfoVo.productId ? 'before-position' : ''}}" />
+          <view class="pro-off-text">{{item.productInfoVo.isDeleted?'已删除':!item.productInfoVo.productStatus?'已失效':''}}</view>
+        </view>
+        <view class="pro-text">{{item.productInfoVo.productName || '-'}}</view>
+        <view class="pro-text pro-price price" wx:if="{{item.subjectType === 1}}">￥ <text>{{item.productInfoVo.salePrice || 0}}</text></view>
+      </view>
+
+      <block wx:if="{{item.subjectType === 1}}">
+        <button bindtap="addCart" class="btn-add" wx:if="{{item.productInfoVo.isReal && !!item.productInfoVo.productStatus}}" data-id="{{item.productInfoVo.productId}}">
+          <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-cart-add.png" />
+          加购
+        </button>
+      </block>
+
+    </view>
+  </view>
+
+  <empty wx:if="{{favoriteList.length === 0 && !isLoading}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/empty-favorite.png?v=1.0.0" empotyDesc="暂无关注的商品" buttonTxt="去逛逛" bindbuttonTap="restart" />
+
+  <mp-loading tips="正在加载" show="{{isHideLoadMore}}" type="circle" />
+</view>
+
+<!-- 悬浮按钮 -->
+<view class="fixed-box">
+  <view class="cart-box" bindtap="toCartList">
+    <image mode="widthFix" class="after-position {{ballDisplay ? 'shake-animation' : ''}}" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-cart.png" />
+    <block wx:if="{{cartNum > 0}}">
+      <view class="cart-dot"></view>
+      <view class="cart-num">{{cartNum > 99 ? '99+' : cartNum}}</view>
+    </block>
+  </view>
+</view>
+
+
+<!-- 收藏组件 -->
+<favorite id="favoriteBtn" bind:success="favoriteSuccess" />
+<!-- 加购组件 -->
+<cart-add id="addCartBtn" bind:success="addCartSuccess" bind:getDetail="getDetail" bind:getPosition="getBallPosition" showAnimation />
+
+<global-back />

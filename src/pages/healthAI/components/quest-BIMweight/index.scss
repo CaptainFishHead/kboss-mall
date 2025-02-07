@@ -1,0 +1,120 @@
+@import "../../../../styles/animfade.scss";
+.containerCommonBox {
+  width:100%;
+  height:auto;
+  overflow: hidden;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-top: 33rpx;
+  background-color: #fff;
+  .containerCommonFooter {
+    width: 100%;
+    box-sizing: border-box;
+    padding:38rpx 75rpx;
+  }
+.success {
+  height: 94rpx;
+  background: linear-gradient( 180deg, #A2E4DE 0%, #09BDAC 100%);
+  border-radius: 4rpx;
+  font-weight: 700;
+  font-size: 30rpx;
+  color: #333333;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.pickCase {
+  background-color: #09BDAC;
+  display: flex;
+  align-items: center;
+}
+.dateValueItem {
+  display:flex;
+  align-items: center;
+  // padding-left: 40rpx;
+  box-sizing: border-box;
+  justify-content: flex-end;
+  // justify-content: center;
+  // .markUnit {
+  //   margin-left:24rpx;
+  // }
+  .noneDateValue {
+    color:#fff;
+  }
+  
+  // .markSpace {
+  //   margin-left:36rpx;
+  //   margin-right:36rpx;
+  // }
+}
+.heightItem{
+  padding-right: 70rpx;
+}
+.wl {
+  display:flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right:40rpx;
+  box-sizing: border-box;
+}
+.wr {
+  display:flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right:150rpx;
+}
+
+.heightUnit{
+  position: absolute;
+  left: 164rpx;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.markSpace {
+  width: 8rpx;
+  height: 8rpx;
+  background: #333333;
+  border-radius: 50%;
+  position: absolute;
+  right: 219rpx;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.weightUnit{
+  position: absolute;
+  right: 58rpx;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.BMITableHeader {
+  width:100%;
+  height:60rpx;
+  box-sizing: border-box;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  .height {
+    flex:1;
+    height:60rpx;
+    text-align: right;
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .weight {
+    flex:2;
+    height:60rpx;
+    text-align: center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .height,.weight {
+    display:flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 30rpx;
+    color: #007469;
+  }
+}
+}

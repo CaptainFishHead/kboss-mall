@@ -1,0 +1,23 @@
+.doctor-prompt{
+  padding: 55rpx 54rpx;
+  background-color: #FFFBF2;
+  border-radius: 10rpx;
+  line-height: 1;
+  width: 690rpx;
+  box-sizing: border-box;
+  margin-top: 69rpx;
+  &-item{
+    font-size: 28rpx;
+    margin-top: 30rpx;
+    &:first-child{
+      margin-top: 0;
+    }
+    .name{
+      color: rgba(0, 0, 0, 0.60);
+    }
+    .text{
+      color: #333333;
+      font-weight: bold;
+    }
+  }
+}

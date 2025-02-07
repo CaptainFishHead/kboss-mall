@@ -1,0 +1,28 @@
+<!-- 自动领取优惠券 弹层 -->
+<!-- <block wx:if="{{visible}}">
+  <root-portal> -->
+    <mp-dialog ext-class="dialog-receive-coupon dialog-noheader dialog-nofooter dialog-overflow-visible" class="dialog" mask-closable="{{false}}" show="{{visible}}" catchtouchmove="touchMove">
+      <view class="dialog-wrap">
+        <view class="dialog-box">
+          <view class="dialog-box-head">
+            <view class="dialog-box-head-lt" />
+            <view class="dialog-box-head-ct">送您{{totalCouponAmount}}元优惠券</view>
+            <view class="dialog-box-head-rt" />
+          </view>
+          <scroll-view scroll-y class="dialog-box-cont">
+            <block wx:for="{{couponList}}" wx:for-item="coupon" wx:key="couponId">
+              <sm-coupon couponItem="{{coupon}}" index="{{index}}" scene="1" bind:tapCurItem="onTapCurItem" />
+            </block>
+          </scroll-view>
+          <image class="dialog-box-bottom" src="https://static.tojoyshop.com/images/wxapp-boss/product/bg-dialog-bottom.png?t=1" mode="widthFix" />
+          <image bindtap="close" class="dialog-box-close" src="https://static.tojoyshop.com/images/wxapp-boss/order/close.png" mode="widthFix" />
+        </view>
+        <image class="dialog-bg-light {{couponList.length > 1 ? 'big-light' : 'small-light'}}" src="https://static.tojoyshop.com/images/wxapp-boss/product/bg-coupon-dialog-light.png" mode="aspectFit" />
+        <image class="dialog-bg-fireworks" src="https://static.tojoyshop.com/images/wxapp-boss/product/bg-coupon-dialog-fireworks.png" mode="widthFix" />
+        <image class="dialog-bg-star {{couponList.length > 1 ? 'big-star' : 'small-star'}}" src="https://static.tojoyshop.com/images/wxapp-boss/product/bg-coupon-dialog-star.png" mode="widthFix" />
+      </view>
+    </mp-dialog>
+  <!-- </root-portal>
+</block> -->
+
+<authorize ext-class="authorize-btn" isShowAuth id="authCouponComp" bind:success="onReceive" />

@@ -1,0 +1,134 @@
+.searchbar-box {
+  .searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 60rpx;
+    box-sizing: border-box;
+    transition: all 0.3s;
+
+    &-input {
+      position: relative;
+      z-index: 22;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      input {
+        flex: 1;
+        flex-shrink: 1;
+        flex-grow: 1;
+        background: transparent;
+        font-size: 26rpx;
+      }
+
+      .icon-search,
+      .icon-clear {
+        padding: 10rpx 16rpx;
+      }
+    }
+
+    &-lf {
+      position: relative;
+      flex: 1;
+      flex-shrink: 1;
+      flex-grow: 1;
+      height: 100%;
+      background: #f5f5f5;
+      border-radius: 4rpx;
+    }
+
+    &-rg {
+      flex-basis: 120rpx;
+      padding-left: 16rpx;
+
+      button[size="mini"] {
+        &,
+        &.button-hover {
+          height: 60rpx;
+          line-height: 26rpx;
+          font-size: 26rpx;
+          padding: 0;
+          margin: 0;
+        }
+        &[plain] {
+          &,
+          .button-hover {
+            border-color: transparent !important;
+            background: transparent !important;
+          }
+          &.button-hover {
+            color: #333 !important;
+          }
+        }
+      }
+    }
+
+    .icon-search,
+    .icon-clear {
+      width: 28rpx;
+      height: 28rpx;
+      background: url(https://static.tojoyshop.com/images/wxapp-boss/search/icon-search-v2-1.png)
+        center center no-repeat;
+      background-size: 28rpx 28rpx;
+    }
+    .icon-clear {
+      background-image: url(https://static.tojoyshop.com/images/wxapp-boss/search/icon-close.png);
+    }
+  }
+
+  .swiper {
+    position: absolute;
+    z-index: 12;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 26rpx 0 60rpx;
+    box-sizing: border-box;
+    swiper-item {
+      -webkit-font-smoothing: antialiased;
+    }
+    .swiper-item {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      font-size: 26rpx;
+      line-height: 1;
+      color: #666;
+      font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+
+  &.isLink {
+    .searchbar-lf {
+      display: flex;
+      align-items: center;
+    }
+    .swiper {
+      padding-left: 56rpx;
+    }
+  }
+
+  &.isBlack {
+    .searchbar-lf {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    &.isLink {
+      .icon-search {
+        background-image: url(https://static.tojoyshop.com/images/wxapp-boss/search/icon-search-1.png);
+      }
+    }
+    .swiper-item {
+      color: #fff;
+    }
+  }
+}

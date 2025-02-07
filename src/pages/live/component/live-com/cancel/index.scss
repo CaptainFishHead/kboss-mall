@@ -1,0 +1,62 @@
+page .cancel {
+  position: absolute;
+  top: 500rpx;
+  left: 0;
+  width: 100%;
+  // background-color: #000;
+  &-info {
+    &-default {
+      height: 210rpx;
+      width: 300rpx;
+      margin-bottom: 36rpx;
+      .icon {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &-text {
+      font-size: 36rpx;
+      font-weight: bold;
+      line-height: 47rpx;
+      letter-spacing: 2rpx;
+      color: #fff;
+      margin-bottom: 14rpx;
+    }
+    &-tips {
+      font-size: 30rpx;
+      color: #fff;
+      line-height: 42rpx;
+      margin-bottom: 69rpx;
+    }
+    &-guide {
+      height: 51rpx;
+      width: 82rpx;
+      margin-bottom: 70rpx;
+      animation: lookGoods 0.8s linear 0s infinite alternate; 
+      .icon {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.live-list {
+  padding: 100rpx 27rpx 50rpx 27rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &-item {
+    margin-bottom: 20rpx;
+  }
+}
+
+@keyframes lookGoods {
+  from { 
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(14rpx);
+  }
+}

@@ -1,0 +1,23 @@
+<navigation-bar title="服务券码" background="#FFF" id="navbar" />
+<view class="container">
+  <view class="code-product">
+    <view class="code-product-img">
+      <image src="{{codeInfo.serviceImage}}" class="code-img"></image>
+    </view>
+    <view class="code-product-info">
+      <view class="code-product-info-title">{{codeInfo.serviceName}}</view>
+    </view>
+  </view>
+  <view class="qr-code">
+    <view class="code-box">
+      <view class="code-box-img">
+        <image src="{{base64ImgUrl}}" class="img" mode="aspectFit"></image>
+      </view>
+      <view class="code-box-title">
+        <text class="text">{{spaced}}</text>
+        <view class="copy" bind:tap="copyCode" data-wechart="{{codeInfo.chargeOffCode}}">复制</view>
+        <view class="prompt">请出示该码给店铺业务员</view>
+      </view>
+    </view>
+  </view>
+</view>

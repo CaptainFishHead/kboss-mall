@@ -1,0 +1,20 @@
+<view class="item" bind:tap="onTap">
+  <view class="item-left">
+    <view class="item-left-box">
+      <view class="price item-left-box-price"><text style="padding-right: 4rpx">¥</text>{{couponItem.couponAmount}}</view>
+      <view class="item-left-box-limit">
+        <block wx:if="{{couponItem.useType===1}}">无门槛立减</block>
+        <block wx:else>单价满<text class="price">{{couponItem.moneyLimit-0}}</text>元可用</block>
+      </view>
+    </view>
+  </view>
+  <view class="item-line">
+    <view class="item-line-dashed"></view>
+  </view>
+  <view class="item-cont">
+    <view class="item-cont-name">{{couponItem.couponName}}</view>
+    <view class="item-cont-date" wx:if="{{couponItem.timeType===2}}">自领取之日起{{couponItem.validityDays}}天可用</view>
+    <view class="item-cont-date" wx:else>{{couponItem.startTime}}-{{couponItem.endTime}}</view>
+  </view>
+  <image class="item-right" src="https://static.tojoyshop.com/images/wxapp-boss/product/tag-coupon-{{couponItem.isReceived?'received':'unreceive'}}.png" mode="aspectFill" />
+</view>

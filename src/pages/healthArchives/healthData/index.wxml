@@ -1,0 +1,24 @@
+<!-- wetoast -->
+<import src="../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<!-- 导航栏 -->
+<navigation-bar background="#FFF" title="健康数据" />
+<view class="navigateBox flexCenter" wx:if="{{isHidden}}">
+  <nav-tabs list="{{ healthData }}" active="{{activeIndex}}" customStyle="width:100%;display: flex; justify-content: space-around;overflow-x: auto;" bind:change="jumpTo"></nav-tabs>
+</view>
+<view class="archives-box">
+  <scroll-view class="scroll-box-content" scroll-top="{{top}}" scroll-with-animation="true" enhanced="{{ true }}" scroll-y="true" bindscroll="toScroll" binddragend="endScroll" bindscrolltolower="onScrolltolower">
+    <!-- 内容按需求 -->
+    <view wx:for="{{ healthData }}" wx:key="index" class="health-data">
+      <view class="content">
+        <text class="title">{{item.categoryName}}</text>
+        <view class="data-box">
+          <view class="data-con {{metric.solt ? 'data-con-only' : ''}}" wx:for="{{ item.content }}" wx:for-item="metric" wx:for-index="metricIndex" wx:key="metricIndex">
+            <health-card metric="{{ metric }}" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

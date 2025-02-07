@@ -1,0 +1,11 @@
+<scroll-view scroll-y="true" style="height: 100vh;width:750rpx" enhanced>
+<view class="cancel">
+  <flex class="cancel-info" direction="column" alignItems="center">
+    <flex-item class="cancel-info-default"><image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/live-cancel-default.png"/></flex-item>
+    <flex-item class="cancel-info-text">直播已取消</flex-item>
+    <flex-item class="cancel-info-tips">去看看其他精彩直播吧～</flex-item>
+    <!-- <flex-item class="cancel-info-guide" wx:if="{{liveList.length}}"><image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/goods-guide-arrow.png"/></flex-item> -->
+  </flex>
+  <slot name="cancel-recommend" class="live-list"></slot>
+</view>
+</scroll-view>

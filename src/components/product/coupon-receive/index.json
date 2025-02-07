@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "sm-coupon":"../../../components/coupon/sm-coupon/index"
+  }
+}

@@ -1,0 +1,45 @@
+<import src="../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<view class="healthwrap">
+  <!-- style="padding-top:{{navBar.navBarHeight + 14}}px;" -->
+  <scroll-view class="homescroll" scroll-y enhanced fast-deceleration show-scrollbar="{{false}}" bind:scroll="pageScrolling">
+    <navigation-bar bindback="goBack" title="{{ istitle ? heaName : '' }}" background="{{istitle ? background : ''}}"/>
+    <view class="headBg">
+      <!-- title_adjustment.png -->
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/assessment/title_adjustment.png" mode="" />
+    </view>
+    <view class="headTitle">
+      <view class="headTitle-title">健康评估</view>
+      <view class="headTitle-titleText">专业精准测评</view>
+    </view>
+    <view class="content">
+      <!-- <scroll-view class="homescroll" scroll-y enhanced fast-deceleration show-scrollbar="{{false}}"> -->
+      <block wx:for="{{healthProblemsList}}" wx:key="index">
+        <view class="content-li" data-item="{{item}}" bind:tap="toQuestionsStart">
+          <image class="content-li-contontImg" src="{{item.imgUrl}}" mode="" />
+          <view class="content-li-cont">
+            <view class="content-li-cont-title">
+              <view class="content-li-cont-title-name">{{item.name}}</view>
+              <view class="content-li-cont-title-label jian" wx:if="{{item.type == '1'}}">极简版</view>
+              <view class="content-li-cont-title-label jing" wx:if="{{item.type == '2'}}">精准版</view>
+            </view> 
+            <view class="content-li-cont-contBtom">
+              <text>{{item.questionCount}}题</text>
+              <text class="content-li-cont-contBtom-xian">l</text>
+              <text>{{item.costTime}}分钟</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!-- </scroll-view> -->
+    </view>
+  </scroll-view>
+
+  <view class="footer">
+    <button class="btn history" bind:tap="onclickHistory">历史记录</button>
+    <button open-type="share" type="primary" class="btn share success" wx:if="{{isLogged}}">分享好友</button>
+    <button type="primary" class="btn share success" bind:tap="onclickshare" wx:else>分享好友</button>
+  </view>
+</view>
+<global-back />
+<authorize ext-class="authorize-btn" isShowAuth id="authHealthCoponents" bind:success="onReceive" />

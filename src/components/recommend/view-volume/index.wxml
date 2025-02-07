@@ -1,0 +1,2 @@
+<wxs module="filter" src="../../../utils/filter.wxs"/>
+<text class="view-volume">{{filter.transformNum(value)}} 浏览</text>

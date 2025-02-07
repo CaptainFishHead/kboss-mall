@@ -1,0 +1,32 @@
+<import src="../../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<view class="store">
+  <view class="store-head">
+    <view class="store-head-title">{{outletsInfo.agentStoreName || ''}}</view>
+    <view class="store-head-time">服务时段：{{outletsInfo.businessHours||"09:00-21:30"}}</view>
+  </view>
+  <view class="store-items">
+    <view class="store-items-left">
+      <view class="store-items-left-address">{{outletsInfo.provinceName || ''}}{{outletsInfo.cityName || ''}}{{outletsInfo.countyName || ''}}{{outletsInfo.agentStoreAddress || ''}}</view>
+      <view class="store-items-left-distance" wx:if="{{outletsInfo.distance}}">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/services/icon-coordinate.png" class="label_img"></image>
+        <text class="store-items-left-distance-text">距离您 {{filter.formatDistance(outletsInfo.distance)}}</text>
+      </view>
+    </view>
+    <view class="store-items-right">
+      <view class="store-items-right-iocn" bind:tap="debounceHandleNav">
+        <view class="store-items-right-iocn-box">
+          <image src="https://static.tojoyshop.com/images/wxapp-boss/services/icon-nav.png" class="label_img"></image>
+        </view>
+        <text class="store-items-right-iocn-text" selectable="false">导航</text>
+      </view>
+      <view class="store-items-right-iocn" bind:tap="onCallTel">
+        <view class="store-items-right-iocn-box">
+          <image src="https://static.tojoyshop.com/images/wxapp-boss/services/icon-phone.png" class="label_img"></image>
+        </view>
+        <text class="store-items-right-iocn-text" selectable="false">联系方式</text>
+      </view>
+    </view>
+  </view>
+</view>

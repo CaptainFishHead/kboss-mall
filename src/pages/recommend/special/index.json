@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "view-volume": "/components/recommend/view-volume/index",
+    "operation": "/components/recommend/operation/index",
+    "empty": "/components/empty/index",
+    "special-card": "/components/recommend/special-card/index"
+  }
+}

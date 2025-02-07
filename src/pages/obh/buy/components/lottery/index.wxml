@@ -1,0 +1,19 @@
+<view class="container" style="width: {{size.width}};height: {{size.height}};">
+  <canvas class="turn" canvas-id="turn" id="turn">
+  </canvas>
+
+  <block wx:if="{{canvasImgUrl}}">
+    <image class="canvas-img" id="canvas-img" src="{{canvasImgUrl}}" style="background: url('{{mainConfig.largeTurntableBackgroundImg}}'); background-size: 100% 100%; background-repeat: no-repeat;"></image>
+    
+    <authorize ext-class="pointer" wx:if="{{canvasImgUrl && !typeStr}}" optimization bind:logged="luckDrawHandle" bind:success="queryLotteryTimes" data-login-type="1" pageSource="22">
+      <image src="{{mainConfig.startLotteryButtonImg}}" class="{{!isAnim ? 'wrapper' : 'wrapper-noanim'}}"/>
+    </authorize>
+    <view wx:else class="preview-pointer">
+      <image src="{{mainConfig.startLotteryButtonImg}}" class="{{!isAnim ? 'wrapper' : 'wrapper-noanim'}}"/>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="init">初始化中...</view>
+  </block>
+</view>

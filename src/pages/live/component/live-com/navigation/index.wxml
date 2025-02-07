@@ -1,0 +1,21 @@
+
+<view wx:if="{{!fixed}}" class="navigation fixed">
+	<view class="navigation-status" style="height:{{statusBarHeight}}px"></view>
+	<view class="fixed-title"></view>
+</view>
+
+<view class="navigation" style="background-color:rgba({{bgRgb}},{{navigatorTransparency}});color:{{frontColor}};{{style}};" catch:tap>
+	<view class="navigation-status" style="height:{{statusBarHeight}}px"></view>
+	<flex class="navigation-body" alignItems="center" alignContent="center">
+		<flex-item wx:if="{{isShowBack}}" class="navigation-back" basis="84rpx" self="center" catch:tap="tapBack">
+			<view class="navigation-back-icon" data-src="url('https://static.tojoyshop.com/images/wxapp-boss/bosshealth/nav-back.png')">
+<!--				<image src="https://static.tojoyshop.com/images/wxapp-boss/bosshealth/nav-back.png" mode="widthFix"></image>-->
+			</view>
+		</flex-item>
+		<flex-item wx:else></flex-item>
+		<flex-item grow="1" basis="0" class="navigation-title">
+			<slot></slot>
+		</flex-item>
+		<flex-item shrink="0" basis="96px"></flex-item>
+	</flex>
+</view>

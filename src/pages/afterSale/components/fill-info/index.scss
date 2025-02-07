@@ -1,0 +1,105 @@
+
+
+.address {
+  padding: 60rpx 0 80rpx;
+  margin: 0 30rpx;
+  border-bottom: 1rpx solid #E4E4E4;
+
+  &-des {
+    font-size: 26rpx;
+    color: #999999;
+    padding: 0 0 30rpx;
+  }
+
+  &-cnt {
+    padding: 0 0 0 83rpx;
+    background: url(https://static.tojoyshop.com/images/wxapp-boss/refund/addr-shou.png) no-repeat 0 5rpx;
+    background-size: 62rpx auto;
+    min-height: 70rpx;
+
+    &-title {
+      display: flex;
+      padding: 2rpx 0 16rpx;
+
+      &-name {
+        font-size: 32rpx;
+        font-weight: bold;
+        color: #333333;
+        line-height: 45rpx;
+        margin-right: 17rpx;
+      }
+
+      &-mobile {
+        font-size: 34rpx;
+        font-weight: bold;
+        color: #0D0E15;
+        line-height: 45rpx;
+      }
+    }
+
+    &-detail {
+      font-size: 26rpx;
+      color: #999999;
+    }
+  }
+}
+
+.code {
+  padding: 80rpx 0 0;
+  margin: 0 30rpx;
+
+  &-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333333;
+  }
+
+  &-cnt {
+    padding: 10rpx 30rpx;
+    border: 1rpx solid #999999;
+    border-radius: 4rpx;
+    position: relative;
+    margin-top: 30rpx;
+
+    &-input {
+      display: block;
+      height: 70rpx;
+      font-size: 30rpx;
+      color: #0D0E15;
+    }
+    .del-btn{
+      width: 50rpx;
+      height: 100%;
+      background: url(https://static.tojoyshop.com/images/wxapp-boss/refund/del.png) no-repeat left center;
+      background-size: 36rpx 36rpx;
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding-right: 14rpx;
+      box-sizing: border-box;
+      z-index: 2;
+    }
+  }
+  &-create{
+    font-size: 30rpx;
+    color: #CFAF65;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 18rpx 0;
+    &::before{
+      content: "";
+      background: url(https://static.tojoyshop.com/images/wxapp-boss/refund/add.png) no-repeat left center;
+      background-size: 28rpx 28rpx;
+      width: 28rpx;
+      height: 28rpx;
+      margin-right: 5rpx;
+      
+    }
+  }
+}
+
+
+
+
+

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "goods-item":"../components/goods-item/index",
+    "logistics":"../components/logistics/index",
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "empty": "/components/empty/index",
+    "refund-price": "../components/refund-price/index"
+  }
+}

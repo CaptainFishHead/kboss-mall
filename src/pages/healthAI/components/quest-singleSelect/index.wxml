@@ -1,0 +1,37 @@
+<view class="containerCommonBox" wx:if="{{!isShow}}">
+  <view class="page-body">
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;position:relative; padding: 0 24rpx;box-sizing: border-box;" value="{{defaultDateList}}" bindchange="bindChange">
+      <picker-view-column>
+        <view
+          wx:for="{{valueIntList}}"
+          wx:for-item="item"
+          wx:key="index"
+          data-index="{{index}}"
+          style="line-height: 50px; text-align: center;"
+        >
+          <view class="dateValueItem valueLeft">
+            <view>{{item}}</view>
+          </view>
+        </view>
+      </picker-view-column>
+      <view class="valueDot"></view>
+      <picker-view-column>
+        <view
+          wx:for="{{valueFloatList}}"
+          wx:for-item="item"
+          wx:key="index"
+          data-index="{{index}}"
+          style="line-height: 50px; text-align: center;"
+        >
+          <view class="dateValueItem valueRight">
+            <view>{{item}}</view>
+          </view>
+        </view>
+      </picker-view-column>
+      <view class="markUnit">{{unit}}</view>
+    </picker-view>
+  </view>
+  <view class="containerCommonFooter">
+    <button class="success" bind:tap="handleSingleSelect">确认</button>
+  </view>
+</view>

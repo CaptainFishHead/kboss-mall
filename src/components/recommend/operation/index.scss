@@ -1,0 +1,14 @@
+.recommend-fabulous{
+  display: flex;
+  align-items: center;
+  &_icon{
+    width: 30rpx;
+    height: 30rpx;
+  }
+  &_num{
+    color: #999999;
+    font-size: 24rpx;
+    margin-left: 8rpx;
+  }
+  
+}

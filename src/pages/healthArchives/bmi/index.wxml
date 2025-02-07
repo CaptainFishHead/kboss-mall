@@ -1,0 +1,49 @@
+<!-- wetoast -->
+<import src="../../../components/toast/index" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<navigation-bar title="{{ currentMetric.indexName }}数据" background="#ffffff"></navigation-bar>
+
+<view class="container">
+  <view class="history">
+    <view class="list-title">
+      <view class="leftBox">
+        <view class="left">{{ currentMetric.indexName }}</view>
+        <view class="ctr">更新时间 {{ currentMetric.createdTime }}</view>
+      </view>
+      <view class="right" bindtap="navigateToHistory">历史记录</view>
+    </view>
+    <shrink expand="查看全部" maxHeight="{{ maxHeight }}" minHeight="{{ minHeight }}">
+      <block wx:for="{{ currentMetric.sonIndexList }}" wx:key="index">
+        <bmi-list-card class="list-card" bind:sendCurrentDetailToParent="setCurrentDetail" bind:navigateToUpdateMetric="navigateToUpdateMetric" metric="{{ item }}" />
+      </block>
+    </shrink>
+  </view>
+
+  <view class="analysis">
+    <view class="analysis-cont">
+      <text class="title">指标解析</text>
+      <view class="loading-view" wx:if="{{!answerStatus}}">
+        <chat-loading-view></chat-loading-view>
+      </view>
+        <text class="content" wx:else>{{answer}}</text>
+    </view>
+  </view>
+
+  <view class="adviser">
+    <image class="head_img" src="{{!assistantData.isBind ? 'https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/consult_defult.png' : assistantData.consultantAvatar}}" mode="aspectFit" />
+    <view class="introduce">
+      <!-- <text class="title">{{ assistantData.consultantTitle }}</text> -->
+      <!-- <text>{{ assistantData.tagList }}</text> -->
+      <text class="title">健康管家数据解读</text>
+      <text>一对一免费解读</text>
+    </view>
+    <view class="contact" bind:tap="advatar">立即联系</view>
+  </view>
+</view>
+
+<view class="btn-box-bottom">
+  <button type="primary" class="success" bind:tap="navigateToUpdateMetric">手动记录</button>
+</view>
+
+<mp-half-screen-dialog extClass="dialog-details health-label-dialog" bindbuttontap="buttontap" bindclose="setCurrentDetail" show="{{ !!currentDetail }}" maskClosable="{{false}}" title="{{ currentDetail.indexName }}" desc="{{ currentDetail.indexData }}" buttons="{{ buttons }}"></mp-half-screen-dialog>

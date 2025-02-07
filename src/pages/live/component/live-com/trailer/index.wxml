@@ -1,0 +1,27 @@
+<!--plugin/components/live-goods-card.wxml-->
+<view class="trailer" style="top: calc(102rpx + 88rpx + {{statusBarHeight}}px)">
+  <view class="trailer-title">{{roomInfo.title}}直播预告</view>
+  <view class="trailer-remind">
+    <text class="trailer-remind-time">{{countdownText}}</text>
+    <!-- <button class="trailer-remind-btn" bindtap="btnHandler">开播提醒</button> -->
+    <!-- <button class="trailer-remind-btn trailer-remind-over" bindtap="btnHandler">已提醒</button> -->
+  </view>
+  <view class="trailer-info">
+    <video 
+      class="trailer-info-video"
+      wx:if="{{roomInfo.imRoomConfigQueryVo.videoUrl}}"
+      id="myVideo"
+      controls="{{false}}"
+      autoplay="{{true}}"
+      loop="{{true}}"
+      src="{{roomInfo.imRoomConfigQueryVo.videoUrl}}" 
+      binderror="videoErrorCallback"
+      bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+      bindleavepictureinpicture='bindVideoLeavePictureInPicture'
+    ></video>
+    <!-- aspectFill 缩放模式，保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取-->
+    <image wx:else class="trailer-info-banner" src="{{roomInfo.coverUrl}}"/>
+    
+    <view class="trailer-info-content"><text>{{roomInfo.remark}}</text></view>
+  </view>
+</view>

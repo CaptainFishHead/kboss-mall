@@ -1,0 +1,14 @@
+<view class="card {{spu.disabled ? 'disabled' : ''}} {{spu.checked ? 'checked' : ''}}">
+  <view bindtap="changeCheckbox" data-pid="{{spu.spuId}}">
+    <view class="card-checkbox" wx:if="{{!spu.disabled && showCheckbox}}">
+      <mp-checkbox-group ext-class="checkbox-sm" multi="{{false}}">
+        <checkbox color="#B58209" checked="{{spu.checked && !spu.disabled}}" disabled="{{spu.disabled===0}}" />
+      </mp-checkbox-group>
+    </view>
+    <view class="card-img">
+      <image src="{{spu.imageUrl}}" mode="aspectFit" />
+    </view>
+  </view>
+  <view class="card-name">{{spu.spuName || '-'}}</view>
+  <view class="card-price price">￥ <text>{{spu.sellPrice || 0}}</text></view>
+</view>

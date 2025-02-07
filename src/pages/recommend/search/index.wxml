@@ -1,0 +1,60 @@
+<!--pages/recommend/search/index.wxml-->
+<!-- wetoast -->
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<navigation-bar title="搜索" ext-class="navigation" />
+
+<view class="container">
+
+  <view class="searchbar">
+    <searchbar hotPosition="1" id="searchbar" bind:search="onSearch" bind:edit="onEdit" inputVal="{{keyword}}" showBtn bind:open-page="searchbarOpenPage" />
+  </view>
+
+  <view class="container-result">
+    <!-- 搜索词列表 -->
+    <view class="list list-box" wx:if="{{lenovoList && lenovoList.length > 0}}" style="top: {{statusHeight + 44 + 60}}px">
+      <block wx:for="{{lenovoList}}" wx:key="index">
+        <view class="list-text" bindtap="onSelectResult" data-text="{{item.keyword}}" data-type="2">
+          <mp-html content="{{item.showText}}"/>
+        </view>
+      </block>
+    </view>
+
+    <!-- 搜索结果列表 -->
+    <view class="list" wx:if="{{showResultPage}}" style="top: {{statusHeight + 44 + 60}}px">
+      <scroll-view bindscrolltolower="onReachScrollBottom" scroll-y enable-back-to-top wx:if="{{resultList && resultList.length > 0}}">
+        <block wx:for="{{resultList}}" wx:key="index">
+          <!-- <view class="list-pro" bindtap="toProduct" data-name="{{item.productName}}" data-id="{{item.productId}}">
+            <view class="list-pro-lf">
+              <image src="{{item.imgUrl}}" mode="aspectFill" />
+            </view>
+            <view class="list-pro-rg">
+              <view class="list-pro-rg-top">
+                <view class="title">{{item.productName || '-'}}</view>
+                <view class="subtitle">{{item.productSubhead || '-'}}</view>
+              </view>
+              <view class="list-pro-rg-bottom">
+                <view class="price">￥ <text>{{item.sellPrice || 0}}</text></view>
+                <view class="num">已售 <text>{{item.sellNum || 0}}</text></view>
+              </view>
+            </view>
+          </view> -->
+        </block>
+        <view class="no-more" wx:if="{{resultList.length === totalCount && !isHideLoadMore}}">
+          <text>没有更多了</text>
+        </view>
+        <mp-loading tips="正在加载" show="{{isHideLoadMore}}" type="circle" />
+      </scroll-view>
+
+      <!-- 无结果 -->
+      <view class="empty" wx:if="{{resultList && resultList.length === 0 && !isLoading}}">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/search/empty-search.png" mode="aspectFit" />
+        <view>搜索无结果</view>
+      </view>
+
+    </view>
+
+  </view>
+
+</view>

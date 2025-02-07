@@ -1,0 +1,93 @@
+page {
+    background: #FFF8EF;
+}
+.container {
+    display: block;
+    padding-bottom: 110rpx;
+    .ip-card {
+        width: 100%;
+        padding: 0 55rpx;
+        padding-top: 172rpx;
+        padding-bottom: 76rpx;
+        display: flex;
+        font-size: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+        background: linear-gradient( 180deg, #E5F5F5 0%, #FFF8EF 100%);
+        .ip-img-wrap {
+            width: 224rpx;
+            height: 302rpx;
+            align-self: flex-end;
+        }
+        .ip-img {
+            width: 224rpx;
+            height: 302rpx;
+            // border-radius: 10rpx;
+            // overflow: hidden;
+        }
+        .ip-info {
+            width: 100%;
+            padding-left: 26rpx;
+            .ip-name {
+                font-size: 34rpx;
+                font-weight: 500;
+                color: #333333;
+                line-height: 48rpx;
+                letter-spacing: 1px;
+                margin-bottom: 12rpx;
+                margin-top: 76rpx;
+            }
+            .ip-class {
+                font-size: 24rpx;
+                color: #666666;
+                line-height: 33rpx;
+                margin-bottom: 17rpx;
+            }
+            .ip-tabs {
+                .ip-tab {
+                    padding: 0 12rpx;
+                    display: inline-block;
+                    height: 32rpx;
+                    background: linear-gradient( 90deg, #E1F5F6 0%, #FFFFFF 100%);
+                    border-radius: 4rpx;
+                    border: 1rpx solid #E1F5F6; 
+                    margin-right: 10rpx;   
+                    font-size: 22rpx;
+                    color: #039399;
+                    line-height: 32rpx;
+                    margin-bottom: 10rpx;   
+                }
+            }
+        }
+    }
+    .ip-content {
+        margin: 0 14rpx;
+        padding: 37rpx;
+        margin-top: -76rpx;
+        border-radius: 20rpx;
+        background: #fff;
+        box-sizing: border-box;
+        .content {
+            margin-bottom: 30rpx;
+            font-size: 28rpx;
+            color: #666666;
+            line-height: 48rpx;
+            .blod {
+                font-weight: bold;
+            }
+        }
+    }
+}
+.navigation {
+    position: fixed;
+}
+.one-line {
+    max-width: 381rpx;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;				//溢出内容隐藏
+    text-overflow: ellipsis;		//文本溢出部分用省略号表示
+    display: -webkit-box;			//特别显示模式
+    -webkit-line-clamp: 1;			//行数
+    line-clamp: 1;
+    -webkit-box-orient: vertical;	//盒子中内容竖直排列
+}

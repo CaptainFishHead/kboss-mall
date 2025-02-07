@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "steps": "../components/step/index",
+    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet"
+  }
+}

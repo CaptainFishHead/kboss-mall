@@ -1,0 +1,18 @@
+<view class="core" wx:if="{{detailList.length}}">
+  <view class="core-title">
+    <text>详细数据</text>
+  </view>
+  <view class="core-container">
+    <view class="core-container-indicator indicator" wx:for="{{detailList}}" wx:key="index" bind:tap="handleToDetails" data-id="{{item.parentIndexId}}">
+      <view class="core-container-indicator-dict">
+        <image class="core-container-indicator-dict-icon" src="{{detailListImg[item.indexName]}}" />
+        <view class="core-container-indicator-dict-text">{{item.indexName}}（{{item.indexUnit}}）</view>
+      </view>
+      <report-progress min="{{item.indexRange[0]}}" max="{{item.indexRange[1]}}" value="{{item.indexData}}" />
+    </view>
+  </view>
+</view>
+<view class="refer">
+  <image class="refer-icon" src="https://static.tojoyshop.com/images/wxapp-boss/healthai/prompt.png" />
+  <text >检测结果可为医护人员提供参考，但不作为临床诊断依据。</text>
+</view>

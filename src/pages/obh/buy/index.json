@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "scrollList": "./components/scrollList/index",
+    "myTopBar": "../components/myTopBar/index",
+    "openPopup": "./components/openPopup/index",
+    "loginPopup": "./components/loginPopup/index",
+    "checkinPopup": "./components/checkinPopup/index"
+  }
+}

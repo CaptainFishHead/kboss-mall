@@ -1,0 +1,78 @@
+/* components/audio/audio.wxss */
+.flex {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+.audioPlayer {
+  width: 100%;
+  // height: 82rpx;
+  border-radius: 10rpx;
+  border: 1px solid #C2C2C2;
+  box-sizing: border-box;
+  // padding: 4rpx 5rpx 6rpx 21rpx;
+  background: #FFFFFF;
+}
+
+.player {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.audioBack {
+  width: 100%;
+  height: 100%;
+}
+
+.audioControls {
+  width: 100%;
+  height: 80rpx;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+
+.audioControls .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 26rpx;
+}
+
+.audioControls .bottom image {
+  width: 67rpx;
+  height: 67rpx;
+}
+
+.audioControls .slider {
+  flex: 1;
+  height: 100%;
+}
+
+.slider slider {
+  // width: 95%;
+  // margin-left: 4%;
+  // margin-right: 0;
+}
+
+
+
+.timeLeft {
+  font-weight: 400;
+  font-size: 26rpx;
+  color: #333333;
+  margin-left: 37rpx;
+}
+
+.timeRight {
+  font-weight: 400;
+  font-size: 26rpx;
+  color: #333333;
+  margin-right: 28rpx;
+}
+
+page {
+  background: #ffffff;
+}

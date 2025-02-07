@@ -1,0 +1,228 @@
+.voucher {
+  position: relative;
+  margin-bottom: 30rpx;
+  box-sizing: border-box;
+  width: 690rpx;
+  overflow: hidden;
+
+  //遮罩层
+  &-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 110;
+    width: 100%;
+    height: 100%;
+    background-color: #F6F6F6;
+    opacity: .5;
+  }
+
+  &-contain {
+    display: flex;
+    width: 690rpx;
+
+    &-left {
+      width: 240rpx;
+      height: 210rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url(https://static.tojoyshop.com/images/wxapp-boss/coupon/voucher-left.png) no-repeat center;
+      background-size: 100% 100%;
+
+      &-price {
+        font-size: 56rpx;
+        color: #4C4024;
+        line-height: 1;
+
+        text {
+          font-size: 30rpx;
+          margin-right: 6rpx;
+        }
+      }
+
+      &-limit {
+        font-size: 24rpx;
+        line-height: 30rpx;
+        color: #4C4024;
+        margin-top: 16rpx;
+        text-align: center;
+        opacity: .9;
+      }
+    }
+
+    &-right {
+      flex: 1;
+      height: 210rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #ffffff;
+      position: relative;
+      border-radius: 0 4rpx 4rpx 0;
+      padding: 24rpx 24rpx 24rpx 14rpx;
+      box-sizing: border-box;
+
+      &-overdue {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 22rpx;
+        color: #BC1817;
+        background-color: #FAE9E9;
+        border-radius: 0 4px 0 6px;
+        padding: 5rpx 8rpx;
+      }
+
+      &-info {
+        &-name {
+          font-size: 30rpx;
+          font-weight: bold;
+          color: #333333;
+          text-align: left;
+          line-height: 1;
+        }
+
+        &-date {
+          font-size: 24rpx;
+          color: #666666;
+          margin: 20rpx 0 0;
+          text-align: left;
+        }
+      }
+
+      &-area {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        line-height: 1;
+
+        &-rule {
+          display: flex;
+          align-items: center;
+          font-size: 24rpx;
+          color: #999999;
+          height: 100%;
+          width: 200rpx;
+
+          &-arrow {
+            width: 24rpx;
+            height: 24rpx;
+            margin-left: 10rpx;
+          }
+        }
+
+        &-btn {
+          background: linear-gradient(180deg, #EFD8A6 0%, #CEAF65 100%);
+          border-radius: 4rpx;
+          width: 140rpx;
+          height: 50rpx;
+          font-size: 26rpx;
+          color: #333333;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+        }
+
+      }
+
+      &-reason {
+        font-size: 24rpx;
+        color: #B58209;
+        display: flex;
+        margin-top: 14rpx;
+
+        &-icon {
+          width: 21rpx;
+          height: 21rpx;
+          display: flex;
+          align-items: center;
+          border-radius: 50%;
+          justify-content: center;
+          border: 2rpx solid #B58209;
+          font-weight: bold;
+          font-size: 18rpx;
+          margin-right: 8rpx;
+          margin-top: 4rpx;
+        }
+
+        &-text{
+          width: 354rpx;
+          line-height: initial;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      &-status {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100rpx;
+        height: 100rpx;
+
+        &-icon {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+    }
+  }
+
+
+  &-rules {
+    color: #666666;
+    background-color: #ffffff;
+    border-top: 2rpx solid #F1F1F1;
+    border-radius: 0 0 4rpx 4rpx;
+    line-height: 1.5;
+    text-align: left;
+    box-sizing: border-box;
+    max-height: 0;
+    font-size: 24rpx;
+  }
+
+}
+
+.show-anim {
+  padding: 16rpx 34rpx 22rpx;
+  max-height: 200rpx;
+  box-sizing: border-box;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;;
+}
+
+.close-anim {
+  padding: 0rpx 34rpx 0rpx;
+  max-height: 0;
+  box-sizing: border-box;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.position-reason {
+  position: absolute;
+  z-index: 110;
+}
+
+.btn-opacity {
+  opacity: .5;
+}
+
+.top-arrow {
+  background: url(https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-coupon-stow.png) no-repeat center;
+  background-size: 100% 100%;
+
+}
+
+.bottom-arrow {
+  background: url(https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-coupon-open.png) no-repeat center;
+  background-size: 100% 100%;
+}
+
+.zindex-112 {
+  z-index: 110;
+}
+

@@ -1,0 +1,59 @@
+<import src="./../../../components/toast/index" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<view class="content">
+<navigation-bar background="#FAEBDE"></navigation-bar>
+  <view class="counselor">
+    <flex class="counselor-intro">
+      <flex-item class="counselor-intro-imgbox ">
+        <image mode="aspectFill" src="{{waiterData.consultantAvatar||''}}" />
+      </flex-item>
+      <flex-item class="counselor-scheme" wx:if="{{scheme===1}}">
+        <view class="scheme">您的专属 <text>健康管家</text> 
+        正在为您【订制方案】</view>
+        <view class="wait">
+        <view class="wait-texts">稍后，您的专属管家将电话联系您，请保持手机畅通</view>
+        <view class="wait-time">服务时间：09:00——21:30</view>
+        </view>
+      </flex-item>
+      <flex-item class="counselor-intro-imgbox title" wx:else>
+        <image mode="aspectFill" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/counselor/title.png?v=2" />
+      </flex-item>
+    </flex>
+    <flex class="counselor-intro box" justifyContent="space-between">
+      <view class="text-box">
+        <view class="name">{{waiterData.consultantName||''}}</view>
+        <view class="title-boxs">
+          <view class="title-box">
+            <view class="title-box-icon"></view>
+            <view class="title-box-text">{{waiterData.consultantTitle||''}}</view>
+          </view>
+        </view>
+        <view class="text">{{waiterData.consultantBrief||''}}</view>
+        <flex class="tags">
+          <flex-item class="tags-item" wx:for="{{waiterData.tagList||[]}}" wx:key="index">
+            <view class="com">{{item}}</view>
+          </flex-item>
+        </flex>
+      </view>
+      <flex-item class="counselor-intro-imgbox qrcode">
+        <image show-menu-by-longpress="true" mode="aspectFill" src="{{waiterData.consultantQrCode||''}}" />
+        <view class="qrcode-text">
+          <view>长按识别二维码</view>
+          <view>主动与管家取得联系</view>
+        </view>
+      </flex-item>
+
+    </flex>
+    <view class="counselor-detail">
+      <view class="counselor-detail-title">个人介绍</view>
+      <view class="counselor-detail-text">{{waiterData.consultantIntro||''}}</view>
+    </view>
+  </view>
+  <flex justifyContent="center" class="btn-box" bindtap="onCallTel">
+    <flex-item>
+      <image mode="aspectFill" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/counselor/icon-phone.png" />
+    </flex-item>
+    <flex-item style="margin-top: -25rpx;">打电话</flex-item>
+  </flex>
+</view>

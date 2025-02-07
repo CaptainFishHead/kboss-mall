@@ -1,0 +1,19 @@
+<!-- 视频讲解 -->
+<view class="trailer" style="height: calc(100vh - var(--height) - {{statusBarHeight}}px)">
+  <navigation-bar title="直播讲解" background="#ffffff"/>
+  <view class="trailer-info">
+    <video 
+      class="trailer-info-video"
+      wx:if="{{productVideo.introUrl}}"
+      id="myVideo"
+      controls="{{true}}"
+      autoplay="{{true}}"
+      loop="{{true}}"
+      object-fit="contain"
+      src="{{productVideo.introUrl}}" 
+      binderror="videoErrorCallback"
+      bindtimeupdate="videoTimeUpdate"
+    ></video>
+    <!-- aspectFill 缩放模式，保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取-->
+  </view>
+</view>

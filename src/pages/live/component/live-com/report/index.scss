@@ -1,0 +1,111 @@
+@import "./../../../style/mixins";
+
+.report {
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  overflow: hidden;
+  background: #F6F6F6;
+  box-sizing: content-box;
+
+  &.position {
+    background: #ffffff;
+    height: 600rpx;
+    @include safe(('bottom'));
+  }
+
+  &-info {
+    padding-top: 10rpx;
+    background: #fff;
+
+    .text {
+      height: 98rpx;
+      line-height: 98rpx;
+      font-size: 30rpx;
+      font-weight: 400;
+      color: #000000;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .line {
+      width: 670rpx;
+      height: 1rpx;
+      border-bottom: 1rpx solid #E4E4E4;
+      margin: 0 auto;
+    }
+  }
+
+  .cancel {
+    margin-top: 13rpx;
+    background: #fff;
+    @include safe(('bottom'));
+    line-height: 90rpx;
+    font-size: 30rpx;
+    font-weight: 400;
+    color: #000000;
+    text-align: center;
+  }
+
+  &-title {
+    width: 100%;
+    text-align: center;
+    margin-top: 30rpx;
+    font-size: 32rpx;
+    font-weight: 500;
+    position: relative;
+  }
+
+  &-close {
+    position: absolute;
+    top: 30rpx;
+    right: 42rpx;
+    width: 40rpx;
+    height: 40rpx;
+  }
+
+  &-content {
+    margin: 26rpx 48rpx 0 48rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    view {
+      margin-top: 40rpx;
+      width: 200rpx;
+      height: 72rpx;
+      line-height: 72rpx;
+      text-align: center;
+      background: #F7F7F7;
+      border: 1px solid #F7F7F7;
+      border-radius: 4rpx;
+      font-size: 28rpx;
+      font-weight: 400;
+      color: #333333;
+    }
+
+    .active {
+      background: #F4F4F4;
+      border: 2rpx solid #B58209;
+      color: #B58209;
+    }
+  }
+
+  &-submit {
+    width: 346rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+    border-radius: 4rpx;
+    font-weight: 500;
+    color: #333333;
+    margin: 50rpx auto;
+    opacity: 0.49;
+    justify-content: center;
+    font-size: 30rpx;
+  }
+
+  .active {
+    opacity: 1;
+  }
+}

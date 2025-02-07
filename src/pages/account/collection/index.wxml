@@ -1,0 +1,57 @@
+<import src="./../../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+<view class="recommend {{templateType === 1 && 'bg'}}" wx:if="{{columnList.length}}">
+  <navigation-bar ext-class="navigation" title="我的收藏" background="linear-gradient( 180deg, #FFF8E8 0%, #FFFFFE 100%);"/>
+  
+  <!-- 栏目下分类 -->
+  <view class="recommend-tabbar" style="--top:{{topHei}}px" id="tabbar" wx:if="{{columnList && columnList.length}}">
+    <scroll-tabbar ext-class="{{isFixed && 'fixed'}}" list="{{columnList}}" bindchange="changeClassify"/>
+  </view>
+
+  <!-- 横版列表 -->
+  <view class="recommend-list" wx:if="{{templateType === 1}}">
+    <block wx:for="{{collectionData.list}}" wx:key="index" wx:for-index="index">
+      <imgText-card
+        direction="{{templateType}}"
+        info="{{item}}"
+        imgClass="{{(!index && templateType === 3) && 'first-recommend'}}"
+        bind:go="goDetail"
+      >
+        <release-time time="{{item.createdTime}}" />
+      </imgText-card>
+    </block>
+  </view>
+
+  <!-- 固定瀑布式、自由瀑布式 -->
+  <view class="recommend-waterfall" wx:else>
+    <view class="recommend-clumns" wx:for="{{2}}" wx:for-index="column" wx:key="column">
+      <block wx:for="{{collectionData.list}}" wx:key="index" wx:for-index="index" wx:if="{{ index%2 === column}}">
+        <imgText-card
+          direction="{{templateType}}"
+          info="{{item}}"
+          imgClass="{{(!index && templateType === 3) && 'first-recommend'}}"
+          bind:go="goDetail"
+        >
+          <view class="operation-btn" wx:if="{{item.type !== 3}}" catch:tap>
+            <view-volume value="{{item.pv}}"></view-volume>
+            <operation
+              icon="https://static.tojoyshop.com/images/wxapp-boss/recommend/fabulous-{{item.isLike ? 'active' : 'grey'}}.png"
+              num="{{item.likeCount}}"
+              data-item="{{item}}"
+              bind:operation="onPraise"
+            />
+          </view>
+        </imgText-card>
+      </block>
+    </view>
+  </view>
+
+  <!-- 全部加载完样式 -->
+  <view class="recommend-more" wx:if="{{collectionData.currPage >= collectionData.totalPage}}">没有更多了</view>
+</view>
+<block wx:elif="{{!loading}}">
+  <navigation-bar ext-class="navigation" title="我的收藏" background="#fff"/>
+  <empty imgUrl="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/content-empty.png" empotyDesc="暂无资讯" />
+</block>
+
+<login-promise id="authorize" removeSlot/>

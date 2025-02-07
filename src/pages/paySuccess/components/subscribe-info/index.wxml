@@ -1,0 +1,19 @@
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<view class="doctor-prompt">
+  <view class="doctor-prompt-item">
+    <text class="name">温馨提示：</text>
+    <text class="text">{{info.tip}}</text>
+  </view>
+  <view class="doctor-prompt-item">
+    <text class="name">预约医生：</text>
+    <text class="text">{{info.doctorName}} 主任医师</text>
+  </view>
+  <view class="doctor-prompt-item">
+    <text class="name">预约时间：</text>
+    <text class="text">{{info.time}}</text>
+  </view>
+  <view class="doctor-prompt-item" wx:if="{{isPayMoeny}}">
+    <text class="name">支付金额：</text>
+    <text class="text">￥{{filter.formatAmount(info.orderPayPrice)}}</text>
+  </view>
+</view>

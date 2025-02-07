@@ -1,0 +1,42 @@
+<!--pages/order/components/afterRecord/index.wxml-->
+<mp-half-screen-dialog
+  ext-class="dialog-afterSales screen-dialog__bd_b0"
+  class="dialog-afterSales"
+  show="{{ visible }}"
+  title="{{title}}({{totalNumber}})"
+>
+    <scroll-view scroll-y view slot="desc" class="product-list">
+        <block wx:for="{{skus}}" wx:key="refundCode">
+        <!-- 多层数据 -->
+          <block wx:if="{{item.skuList}}">
+            <view class="product-list-item scroll" wx:if="{{item.skuList.length > 1}}">
+              <scroll-view scroll-x class="product-scroll">
+                <view class="product-item" wx:for="{{item.skuList}}" wx:key="skuId" wx:for-item="sku">
+                  <image src="{{sku.skuImg}}" class="product-scroll-pic"/>
+                </view>
+              </scroll-view>
+              <view class="product-number" data-refundcode="{{item.refundCode}}" catch:tap="goAfterDetail">
+                <text class="num">共{{item.total || 0}}件</text>
+                <text class="status">{{item.refundStatus !== 30 ? '售后中': '退款完成'}}</text>
+              </view>
+            </view>
+            
+            <block wx:else="{{item.skuList.length === 1}}">
+              <view class="product-list-item" wx:for="{{item.skuList}}" wx:key="skuId" wx:for-item="sku">
+                <view class="product-info" >
+                  <image src="{{sku.skuImg}}" class="pic"/>
+                  <view class="info">
+                    <text class="name">{{sku.spuName}}</text>
+                    <text class="kind">{{sku.skuDesc}}</text>
+                  </view>
+                </view>
+                <view class="product-number" data-refundcode="{{item.refundCode}}" catch:tap="goAfterDetail">
+                  <text class="num">x{{sku.skuNum}}</text>
+                  <text class="status">{{item.refundStatus !== 30 ? '售后中': '退款完成'}}</text>
+                </view>
+              </view>
+            </block>
+          </block>
+        </block>
+    </scroll-view>
+</mp-half-screen-dialog>

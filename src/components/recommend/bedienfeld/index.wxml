@@ -1,0 +1,20 @@
+<view class="recommend-footer {{theme}} {{themeInfo.position}}" style="background-color: {{themeInfo.background}}">
+  <view class="recommend-bedienfeld">
+    <!-- 收藏按钮 -->
+    <operation bind:operation="handleFavorite" color="{{themeInfo.color}}" icon="{{themeInfo.stars[isFavorite?'active':'normol']}}" num="{{favoriteNum}}" icon-class="icon-class" num-class="num-class"/>
+    <!-- 点赞按钮 -->
+    <operation bind:operation="handleLike" color="{{themeInfo.color}}" icon="{{themeInfo.fabulous[isLike?'active':'normol']}}" num="{{likeNum}}" icon-class="icon-class" num-class="num-class"/>
+    <share-entry
+      targetId="{{info.recommendId}}"
+      position="recb"
+      pageId="{{info.recommendId}}"
+      pageName="{{info.title}}" 
+      bind:createPoster="createPoster"
+      bind:createShareCode="createShareCode"
+    >
+      <!-- 分享按钮 -->
+      <operation bind:operation="handleShare" color="{{themeInfo.color}}" icon="{{themeInfo.share['normol']}}" num="{{shareNum}}" icon-class="icon-class" num-class="num-class"/>
+    </share-entry>
+  </view>
+</view>
+<login-promise id="authorize" removeSlot/>

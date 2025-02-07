@@ -1,0 +1,53 @@
+@import "./../../../styles/mixins";
+.recommend-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .recommend-bedienfeld{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 53rpx;
+    display: flex;
+    justify-content: space-between;
+    z-index: 200;
+    align-items: center;
+    .recommend-bedienfeld_btn{
+      flex: 1;
+      background:none;
+      line-height: inherit;
+      padding: 0;
+    }
+    button[type=default]{
+      background:none;
+      line-height: inherit;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100rpx;
+    @include safe('bottom');
+  }
+
+  &.static {
+    position: static;
+    bottom: auto;
+    height: 100%;
+  }
+  .icon-class {
+    width: 40rpx;
+    height: 40rpx;
+  }
+  .num-class {
+    font-size: 30rpx;
+    margin-left: 5rpx;
+  }
+}
+.placeholder {
+  @include safe('bottom');
+}
+
+

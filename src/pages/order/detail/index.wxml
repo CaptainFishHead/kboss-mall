@@ -1,0 +1,19 @@
+<!-- wetoast -->
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<view class="page-container">
+	<navigation-bar title="订单详情" background="#FFF" bindback="goBack" />
+	<details-status orderInfo="{{orderInfo}}" bind:refresh="findOrderFn" />
+	<address orderInfo="{{orderInfo}}" ext-class="detail-address" wx:if="{{orderInfo.isReal}}"/>
+<!--	核销方式-> 0: 无 | 1: 兑换码（暂不支持）| 2: 其他 | 3: 虚拟商品卡 | 4: 线上服务 | 5: 线下服务-->
+	<health-seivices orderInfo="{{orderInfo}}" serviceList="{{serviceList}}"  storeList="{{storeList}}" wx:if="{{orderInfo.chargeOffType===4||orderInfo.chargeOffType===5}}"/>
+
+	<product-area orderInfo="{{orderInfo}}"/>
+	<total-order-details orderInfo="{{orderInfo}}" />
+  <order-info orderInfo="{{orderInfo}}"/>
+  <view class="spacing"></view>
+</view>
+<button-area orderInfo="{{orderInfo}}" btnCode="{{orderInfo.orderStatus}}" orderId="{{orderInfo.id}}" isReal="{{isReal}}" bind:refresh="findOrderFn"/>
+<global-back/>
+

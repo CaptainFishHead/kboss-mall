@@ -1,0 +1,19 @@
+<import src="../../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+<navigation-bar title="售后/退款" back="{{false}}" background="#fff">
+  <!-- 添加自定义返回按钮 用于解决跳转的页面会闪烁订单详情问题 bindback会执行返回再执行自定义函数 -->
+  <view slot="left" class="back-icon" bind:tap="goBack"></view>
+</navigation-bar>
+<mp-tabbar ext-class="order-tab" list="{{tabsList}}" current='{{currentIndex}}' bindchange="tabChange"/>
+<block wx:if="{{isLogged}}">
+    <block wx:if="{{list.length>0}}" >
+      <return-goods list="{{list}}" tabIndex="{{currentIndex}}"/>
+      <mp-loading tips="正在加载" show="{{currPage < totalPage}}" type="circle"/>
+    </block>
+    <empty wx:else imgUrl="https://static.tojoyshop.com/images/wxapp-boss/order/empty-order.png?v=1.0.0" empotyDesc="暂无售后哦～" />
+</block>
+<view class="login" wx:else>
+    <login bind:success="bindSuccess" bind:fail="bindFail" bind:close="bindClose" hideClose/>
+</view>
+<global-back/>
+

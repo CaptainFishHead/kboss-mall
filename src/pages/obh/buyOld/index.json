@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "氧吧服务",
+  "navigationStyle":"custom",
+  "disableScroll": true,
+  "usingComponents": {
+    "iphoneXBottomHeight": "../components/iphoneXBottomHeight/index",
+    "myTopBar": "../components/myTopBar/index",
+    "popDialog": "../components/popDialog/index",
+    "errorImg": "../components/errorImg/index",
+    "navBanner": "./components/navBanner/index"
+  }
+}

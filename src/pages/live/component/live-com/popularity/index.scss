@@ -1,0 +1,43 @@
+/* plugin/components/live/popularity/index.wxss */
+.popularity{
+  max-width: 372rpx;
+  height: 80rpx;
+  background: rgba(0,0,0,.39);
+  border-radius: 40rpx;
+  overflow: hidden;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding-right: 35rpx;
+  // margin-top: 12rpx;
+  &__logo{
+    width: 69rpx;
+    height: 69rpx;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-left: 6rpx;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+  &__info{
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    margin-left: 7rpx;
+    &__name,&__num{
+      display: block;
+    }
+    &__name{
+      font-size: 26rpx;
+      color: #fff;
+      line-height: 37rpx;
+    }
+    &__num{
+      font-size: 22rpx;
+      color: #fff;
+      opacity: .59;
+      line-height: 30rpx;
+    }
+  }
+}

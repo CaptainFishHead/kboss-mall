@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "instructions": "../instructions/index",
+    "mp-loading": "weui-miniprogram/loading/loading"
+  }
+}

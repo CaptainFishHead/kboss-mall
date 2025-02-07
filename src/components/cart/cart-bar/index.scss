@@ -1,0 +1,67 @@
+
+.cart-bar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 108rpx;
+  color: #000000;
+  font-size: 28rpx;
+  background-color: #FFF;
+  z-index: 1;
+
+  &-lt {
+    font-size: 28rpx;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    padding-left: 30rpx;
+
+    &-all {
+      display: block;
+      margin-bottom: -2rpx;
+    }
+  }
+
+  &-rt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+    font-size: 30rpx;
+    flex: 1;
+
+
+    .warp{
+      margin-left: 30rpx;
+    }
+    .price-sum {
+      height: inherit;
+      padding-right: 15rpx;
+      display: flex;
+      align-items: center;
+      margin-bottom: -2rpx;
+
+      &-txt {
+        font-size: 32rpx;
+      }
+    }
+    .tips{
+      font-size: 24rpx;
+      color: #999999;
+    }
+
+    .account_btn {
+      margin: 0;
+      &, &.button-hover {
+        border: 4rpx 0 0 4rpx;
+        height: inherit !important;
+      }
+    }
+
+  }
+}
+
+.dis_btn {
+  opacity: .5;
+}

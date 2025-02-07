@@ -1,0 +1,50 @@
+.share-users {
+    // height: 72rpx;
+    border-radius: 4rpx;
+    padding: 20rpx 0 0 12rpx;
+    display: flex;
+    align-items: center;
+}
+.user-avater {
+    font-size: 0;
+    display: flex;
+    align-items: center;
+}
+.avater-list {
+    font-size: 0;
+    display: inline-block;
+    margin-right: 18rpx;
+}
+.user-avater-icon {
+    height: 49rpx;
+    width: 49rpx;
+    border-radius: 50rpx;
+    overflow: hidden;
+    border: 1rpx solid #fff;
+}
+.margin-offset {
+    margin-right: -18rpx;
+    float: right;
+}
+.share-text {
+    color: #FA463D;
+    line-height: 33rpx;
+    font-size: 24rpx;
+    padding-left: 10rpx;
+}
+.max-width {
+    max-width: 435rpx;
+}
+.points {
+    height: 49rpx;
+    display: inline-flex;
+    width: 43rpx;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.points-item {
+    width: 7rpx;
+    height: 7rpx;
+    background: #D8D8D8;
+    border-radius: 50%;
+}

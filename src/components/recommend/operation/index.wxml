@@ -1,0 +1,6 @@
+<!--components/recommend/fabulous/index.wxml-->
+<wxs module="filter" src="../../../utils/filter.wxs"/>
+<view class="recommend-fabulous" bind:tap="onPraise">
+  <image src="{{icon}}" class="recommend-fabulous_icon icon-class" />
+  <view class="recommend-fabulous_num num-class" style="color: {{color}}">{{filter.transformNum(num)}}</view>
+</view>

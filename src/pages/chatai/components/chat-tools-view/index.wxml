@@ -1,0 +1,34 @@
+<!--pages/chatai/components/chat-tools-view/index.wxml-->
+<view class="tools-root">
+	<view class="tools-root-item" bind:tap="onToolsClick" data-type="0">
+		<image class="tools-root-icon" src="{{counselorIcon}}"></image>
+		<text class="tools-root-title">健康管家</text>
+	</view>
+
+	<view class="tools-root-line" />
+
+	<block wx:if="{{isLogged}}">
+		<view class="cuslayout">
+			<view class="tools-root-item">
+				<image class="tools-root-icon" src="{{serviceIcon}}"></image>
+				<text class="tools-root-title">在线客服</text>
+			</view>
+			<button class="tools-root-contact" open-type="contact"></button>
+		</view>
+	</block>
+	<block wx:else>
+		<view class="tools-root-item" bind:tap="onToolsClick" data-type="1">
+			<image class="tools-root-icon" src="{{serviceIcon}}"></image>
+			<text class="tools-root-title">在线客服</text>
+		</view>
+	</block>
+
+
+	<view class="tools-root-line" />
+
+	<view class="tools-root-item" bind:tap="onToolsClick" data-type="2">
+		<image class="tools-root-icon" src="{{phoneIcon}}"></image>
+		<text class="tools-root-title">电话客服</text>
+	</view>
+</view>
+<view class="tools-root-bottom"></view>

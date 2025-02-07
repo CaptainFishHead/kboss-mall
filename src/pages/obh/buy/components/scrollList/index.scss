@@ -1,0 +1,47 @@
+.scroll-list {
+  position: relative;
+  width: 100vw;
+  height: 57rpx;
+  margin-bottom: 22rpx;
+  .scroll-list-wrap {
+    transform: translateX(750rpx);
+    white-space: nowrap;
+    position: absolute;
+    height: 57rpx;
+    top: 0;
+    left: 0;
+    &.wrap1 {
+      animation: scroll 16s linear 0s infinite;
+    }
+    &.wrap2 {
+      animation: scroll 16s linear 0s infinite;
+    }
+    .scroll-item {
+      display: inline-block;
+      border-radius: 30rpx;
+      margin-right: 40rpx;
+      color: #fff;
+      font-size: 26rpx;
+      padding: 0 30rpx;
+      text-align: center;
+      height: 57rpx;
+      line-height: 57rpx;
+      opacity: 0.75;
+      background: linear-gradient(270deg, #16A87F 0%, #42D890 69%, #20C5B6 100%);
+      // border: 2rpx solid;
+      // border-image: linear-gradient(90deg, rgba(41, 202, 172, 1), rgba(220, 255, 241, 1), rgba(26, 173, 129, 1)) 2 2;
+      .prize-name {
+        color: #FFE7B1;
+      }
+    }
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(750rpx);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

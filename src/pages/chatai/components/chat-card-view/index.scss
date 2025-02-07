@@ -1,0 +1,84 @@
+@import "../../../../components/toast/index.wxss";
+.aicard {
+	display: flex;
+	width: auto;
+	background: linear-gradient( 180deg, rgba(255,248,232,0.13) 0%, #FFF8EF 100%);
+	border-radius: 8rpx 20rpx 20rpx 20rpx;
+	height: 211rpx;
+	margin-right: 27rpx;
+	margin-left: 27rpx;
+	border: 1rpx solid #FFE8C7;
+	margin-top: 24rpx;
+	align-items: center;
+	padding-right: 33rpx;
+
+	&-img {
+		flex-shrink: 0;
+		width: 140rpx;
+		height: 140rpx;
+		background-color: #646464;
+		border-radius: 10rpx;
+		margin-left: 33rpx;
+	}
+
+	&-right {
+		display: flex;
+		flex-direction: column;
+		margin-left: 20rpx;
+		flex-grow: 1;
+		overflow: hidden;
+	}
+
+	&-title {
+		color: #333333;
+		font-size: 29rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-weight: 400;
+	}
+
+	&-desc {
+		color: #666666;
+		font-size: 23rpx;
+		margin-top: 7rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&-bottom {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	&-praise {
+		margin-top: 18rpx;
+		color: #727272;
+		font-size: 28rpx;
+	}
+
+	&-cp{
+		color: #039399;
+		font-size: 28rpx;
+		margin-top: 18rpx;
+	}
+	&-prices{
+		color: #B58209;
+		font-size: 40rpx;
+		margin-top: 10rpx;
+	}
+
+	&-btn {
+		width: 144rpx;
+		height: 46rpx;
+		background: linear-gradient(180deg, #FFEAC9 0%, #FFC569 100%);
+		border-radius: 30rpx;
+		color: #554623;
+		font-size: 25rpx;
+		text-align: center;
+		line-height: 46rpx;
+		margin-top: 15rpx;
+	}
+}

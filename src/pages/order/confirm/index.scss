@@ -1,0 +1,229 @@
+@import "../../../components/toast/index.wxss";
+
+.order-flex {
+  background-color: #F6F6F6;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--barHeight) - constant(safe-area-inset-bottom));
+  height: calc(100vh - var(--barHeight) - env(safe-area-inset-bottom));
+  // overflow: hidden;
+}
+.order-address, .confirm-footer{
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.order-flex__item{
+  flex: 1;
+  overflow-y: auto;
+}
+
+.scroll_hei {
+  height: 100%;
+  margin-top: 16rpx;
+  position: relative;
+  z-index: 1;
+}
+
+/*收货地址*/
+.address-add {
+  width: 140rpx !important;
+  height: 68rpx;
+  line-height: 68rpx;
+  background: #fff;
+  border-radius: 4rpx;
+  border: 2rpx solid #DBDCDB;
+  padding: 0;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #000000;
+}
+
+
+
+/*收货地址*/
+
+.discount-color {
+  color: #B58209;
+  font-size: 28rpx;
+}
+
+.bean-size {
+  font-size: 30rpx;
+}
+
+
+.radio {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  border: 2rpx solid #999999;
+  margin-left: 10rpx;
+  box-sizing: border-box;
+}
+
+.radio-checked {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  background-color: #B58209;
+  margin-left: 10rpx;
+  box-sizing: border-box;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    content: '';
+    display: inline-block;
+    width: 10rpx;
+    height: 20rpx;
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: 0 4rpx 4rpx 0;
+    transform: rotate(45deg);
+
+  }
+}
+
+
+.dialog-exchange {
+  box-sizing: border-box;
+
+  .close {
+    position: absolute;
+    top: -6rpx;
+    right: 0;
+    z-index: 100;
+    transform: translate3d(0, -100%, 0);
+
+    image {
+      width: 40rpx;
+    }
+  }
+
+  .dialog-balance {
+    color: #0D0E15;
+
+    &-title {
+      font-size: 34rpx;
+      font-weight: bold;
+      margin: 10rpx 0 50rpx;;
+    }
+
+    &-desc {
+      margin-bottom: 40rpx;
+      font-size: 30rpx;
+    }
+  }
+
+  &.weui-dialog, .weui-dialog {
+    padding: 40rpx;
+    overflow: inherit;
+    box-sizing: border-box;
+
+    .weui-dialog__bd {
+      padding: 0;
+      margin: 0;
+      font-size: 30rpx;
+    }
+
+    .weui-dialog__ft {
+      padding: 0;
+      margin: 0;
+
+      .weui-dialog__btn {
+        width: 266rpx;
+
+        & + .weui-dialog__btn {
+          margin-left: 20rpx;
+        }
+      }
+
+      &::after {
+        height: 0;
+        display: none;
+      }
+    }
+  }
+}
+
+.price {
+  font-size: 28rpx;
+}
+
+button[type=default].authorize-btn {
+  background: none;
+  color: inherit;
+  width: 100%;
+  padding: 0;
+  line-height: inherit;
+}
+
+button[type=default].authorize-btn::after {
+  border: none;
+}
+/* 立即支付按钮*/
+.pay-btn {
+    position: fixed;
+    bottom: 0;
+}
+
+
+.empty{
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  &-desc{
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #333333;
+  }
+  &-cont{
+    font-size: 26rpx;
+    color: #666666;
+    text-align: center;
+    width: 310rpx;
+    margin-top: 36rpx;
+  }
+  &-btn{
+    width: 188rpx;
+    box-sizing: border-box;
+    margin-top: 32rpx;
+  }
+}
+
+.goods-cont{
+  font-size: 28rpx;
+  width: 400rpx;
+  margin: 58rpx 0;
+}
+.back-btn{
+  width: 280rpx;
+}
+
+// 可约时间段半弹窗
+.dialog-details{
+  border-radius: 10rpx 10rpx 0rpx 0rpx;
+  .weui-half-screen-dialog__bd{
+    padding-left: 33rpx;
+  }
+  .weui-half-screen-dialog__ft{
+    padding: 0 33rpx;
+  }
+  .time-slots{
+    margin-right: 33rpx;
+    max-height: 400rpx;
+    width: auto;
+  }
+  .btns{
+    display: flex;
+    justify-content: space-between;
+    button { flex: 1;}
+    .know-btn{
+      width: 320rpx;
+      flex: none;
+    }
+  }
+}

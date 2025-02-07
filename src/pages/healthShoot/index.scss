@@ -1,0 +1,207 @@
+@import "../../components/toast/index.wxss";
+@import "../../styles/carrier.scss";
+
+Page {
+  width: 100%;
+  min-height: 100%;
+  background: url('https://static.tojoyshop.com/images/wxapp-boss/healthai/bg_jkp.png') no-repeat;
+  background-size: 100% 100%;
+}
+
+.nav-bar {
+  .logo {
+    display: block;
+    min-width: 100%;
+    height: 44rpx;
+  }
+}
+
+.health {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  &-title {
+    box-sizing: border-box;
+    margin-top: 64rpx;
+    width: 586rpx;
+    height: 174rpx;
+    background: url('https://static.tojoyshop.com/images/wxapp-boss/healthai/bg_text.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  &-content {
+    min-width: 100%;
+    height: 909rpx;
+    position: relative;
+    box-sizing: border-box;
+
+    .bubble {
+      width: 145rpx;
+      height: 144rpx;
+      background-image: url('https://static.tojoyshop.com/images/wxapp-boss/healthai/bg_bubble.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &-text {
+        font-size: 34rpx;
+        font-weight: 600;
+        color: #FFFFFF;
+      }
+    }
+
+    .oxygen {
+      top: 94rpx;
+      left: 99rpx;
+      animation: moveBackground 4s linear 0.2s infinite;
+    }
+
+    .press {
+      width: 149rpx;
+      height: 148rpx;
+      top: 89rpx;
+      left: 461rpx;
+      animation: moveBackground 3s linear 0.8s infinite;
+    }
+
+    .breathe {
+      width: 126rpx;
+      height: 125rpx;
+      top: 192rpx;
+      left: 272rpx;
+      animation: moveBackground 5s linear 0.4s infinite;
+    }
+
+    .pressure {
+      width: 112rpx;
+      height: 111rpx;
+      top: 343rpx;
+      left: 70rpx;
+      animation: moveBackground 3s linear 0.6s infinite;
+    }
+
+    .rate {
+      width: 134rpx;
+      height: 133rpx;
+      top: 302rpx;
+      left: 550rpx;
+      animation: moveBackground 3s linear 0.8s infinite;
+    }
+
+    .midleBox {
+      width: 631rpx;
+      height: 531rpx;
+      background: url('https://static.tojoyshop.com/images/wxapp-boss/healthai/bg_ai.png') no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 30rpx;
+    }
+  }
+
+  &-btm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-btn {
+      width: 602rpx;
+      height: 88rpx;
+      text-align: center;
+      line-height: 88rpx;
+      background: url('https://static.tojoyshop.com/images/wxapp-boss/healthInfo/baseInfo/btn-create-health.png') no-repeat;
+      background-size: 100% 100%;
+      font-weight: 500;
+      font-size: 39rpx;
+      color: #333333;
+      font-weight: 500;
+      letter-spacing: 2px;
+      display: flex;
+      justify-content: center;
+
+      .price {
+        font-weight: 400;
+        font-size: 24rpx;
+        color: #333333;
+        line-height: 88rpx;
+        text-align: left;
+        font-style: normal;
+        text-decoration-line: line-through;
+      }
+    }
+
+    &-title {
+      text-align: center;
+      margin: 0rpx 0 28rpx;
+      font-weight: 400;
+      font-size: 30prx;
+      color: #007469;
+      line-height: 42rpx;
+      padding-top: 31rpx;
+      display: flex;
+      justify-content: center;
+
+      &-icon {
+        margin: 0 10rpx;
+      }
+    }
+
+    &-prompt {
+      font-size: 23rpx;
+      color: #007469;
+      line-height: 32rpx;
+      text-align: center;
+      opacity: 0.6;
+    }
+  }
+}
+
+@keyframes moveBackground {
+  0% {
+    transform: translateY(0rpx)
+  }
+
+  25% {
+    transform: translateY(5rpx)
+  }
+
+  50% {
+    transform: translateY(15rpx)
+  }
+  75% {
+    transform: translateY(20rpx)
+  }
+
+  75% {
+    transform: translateY(10rpx)
+  }
+  100% {
+    transform: translateY(0rpx)
+  }
+}
+
+.jkp-dialog {
+  &-text {
+    font-size: 32rpx;
+    color: #0D0E15;
+    text-align: left;
+    font-style: normal;
+
+  }
+}
+
+.back-icon{
+  width: 40rpx;
+  height: 40rpx;
+  background-image: url(https://static.tojoyshop.com/images/wxapp-boss/top-back.png);
+  background-size: 40rpx 40rpx;
+}

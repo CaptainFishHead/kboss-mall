@@ -1,0 +1,25 @@
+<!-- 老版本组件 已弃用 -->
+<view class="status-des">
+    <view class="countdown" wx:if="{{prizeInfoData.claimStatus===1 && timeObj.day === '00'}}">
+        <view class="countdown-tips">
+            <view class="countdown-tips-text">奖品即将失效</view>
+            <view class="countdown-tips-time">
+                <view class="time-item">{{timeObj.hours}}</view>
+                <view class="time-point">:</view>
+                <view class="time-item">{{timeObj.minutes}}</view>
+                <view class="time-point">:</view>
+                <view class="time-item">{{timeObj.seconds}}</view>
+            </view>
+        </view>
+        <image class="countdown-purse" src="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/qiandaizi.gif?v=1.0.0" mode="aspectFit"/>
+    </view>
+    <view >
+        <view class="status-name">
+            {{nameMap[prizeInfo.claimStatus]}}
+        </view>
+        <view class="status-des-text">
+            <text >{{prizeInfo.claimStatus === 7 ? prizeInfo.cancelReason : statusPressMap[prizeInfo.claimStatus == 1 && timeObj.day != '00' ? 0 : prizeInfo.claimStatus]}}</text>
+        </view>
+    </view>
+</view>
+

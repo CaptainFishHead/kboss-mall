@@ -1,0 +1,91 @@
+@import "./../../components/toast/index.wxss";
+
+page {
+  background: #F6F6F6;
+}
+
+.head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding:26rpx 30rpx 30rpx;
+  box-sizing: border-box;
+  &-num{
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333333;
+  }
+
+  &-desc{
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    color: #B58209;
+
+    &::after{
+      content: '?';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 26rpx;
+      height: 26rpx;
+      border-radius: 50%;
+      border: 2rpx solid;
+      font-size: 19rpx;
+      margin-left: 8rpx;
+      box-sizing: border-box;
+      font-weight: bold;
+    }
+  }
+}
+.container {
+  padding: 0rpx 30rpx 170rpx;
+  padding-bottom: calc(170rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(170rpx + env(safe-area-inset-bottom));
+}
+
+.history-btn{
+  width: 100%;
+  height: 46rpx;
+  font-size: 32rpx;
+  color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10rpx 0;
+
+  &::after{
+    content: '';
+    display: inline-block;
+    width: 14rpx;
+    height: 14rpx;
+    transform: rotate(45deg);
+    border-right: 2rpx solid #000;
+    border-top: 2rpx solid #000;
+  }
+
+}
+
+.dialog {
+  &-box {
+    padding: 20rpx 50rpx 0;
+    font-size: 26rpx;
+    text-align: justify;
+
+    view {
+      margin-top: 20rpx;
+    }
+  }
+}
+
+button[type=default].authorize-btn{
+  background: none;
+  color: inherit;
+  width: 100%;
+  padding: 0;
+  line-height: inherit;
+}
+button[type=default].authorize-btn::after{
+  border: none;
+}

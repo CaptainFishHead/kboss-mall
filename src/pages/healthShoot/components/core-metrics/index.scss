@@ -1,0 +1,90 @@
+.core {
+  // width: 702rpx;
+  background: #ffffff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  margin-top: 50rpx;
+
+  &-title {
+    height: 94rpx;
+    font-weight: 600;
+    font-size: 34rpx;
+    color: #333333;
+    border-radius: 10rpx 10rpx 0rpx 0rpx;
+    // background: linear-gradient(225deg, #d9f5ef 0%, #bdefe3 100%);
+    background: url('https://static.tojoyshop.com/images/wxapp-boss/healthai/top.png') no-repeat;
+    background-size: 100% 100%;
+
+    text {
+      padding-left: 42rpx;
+      line-height: 94rpx;
+    }
+  }
+
+  &-desc {
+    font-size: 28rpx;
+    border-radius: 8rpx;
+    color: #666666;
+    line-height: 40rpx;
+    letter-spacing: 1px;
+    margin-top: 12rpx;
+  }
+
+  &-container {
+    height: auto;
+    overflow: hidden;
+    border-bottom: 1rpx solid #f1f1f1;
+    // max-height: 750rpx;
+    transition: max-height 0.3s ease;
+    padding: 30rpx 24rpx 20rpx;
+    margin: 0 24rpx;
+
+    &-indicator {
+      &-dict {
+        padding-top: 40rpx;
+        display: flex;
+        align-items: center;
+
+        &-icon {
+          width: 36rpx;
+          height: 36rpx;
+          margin-right: 10rpx;
+          margin-bottom: 3rpx;
+        }
+
+        &-text {
+          font-weight: 600;
+          font-size: 30rpx;
+          color: #333333;
+          // line-height: 42rpx;
+        }
+      }
+
+      &:first-child .core-container-indicator-dict {
+        border-top: none;
+      }
+    }
+  }
+}
+
+.refer {
+  margin-top: 20rpx;
+  height: 66rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #ffe8c7;
+  background: linear-gradient(180deg, #fffdfb 0%, #ffefd8 100%);
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #b58209;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-icon {
+    width: 25rpx;
+    height: 24rpx;
+    margin-left: 10rpx;
+    margin-right: 5rpx;
+    // margin-top: 2rpx;
+  }
+}

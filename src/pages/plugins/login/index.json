@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "login": "./../../../components/login/index"
+  },
+  "navigationBarTitleText": "授权登录"
+}

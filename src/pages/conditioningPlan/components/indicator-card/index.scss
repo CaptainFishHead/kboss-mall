@@ -1,0 +1,22 @@
+.card{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .title{
+    font-weight: 600;
+    font-size: 34rpx;
+    color: #333333;
+    line-height: 34rpx;
+    margin: 40rpx 0 24rpx 0;
+  }
+  .describe{
+    font-weight: 400;
+    font-size: 30rpx;
+    color: #333333;
+    line-height: 50rpx;
+    background: #F2F9F9;
+    border-radius: 4rpx;
+    padding: 24rpx 27rpx;
+    box-sizing: border-box;
+  }
+}

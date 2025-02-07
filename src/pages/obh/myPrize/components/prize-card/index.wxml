@@ -1,0 +1,24 @@
+<view class="prize-card {{prizeType}}">
+    <view class="order-items-warp" bind:tap="toDetails">
+        <view class="scroll-view-width">
+            <view class="order-img-area">
+                <image wx:if="{{prizeType==='banlv'}}" class="images" mode="aspectFit" src="{{prizeInfoData.orderProductPic}}"/>
+                <image wx:else class="images" mode="aspectFit" src="{{prizeInfoData.rafflePrizeIcon}}"/>
+            </view>
+        </view>
+        <view class="order-name-area">
+            <view class="order-name" wx:if="{{prizeType==='banlv'}}">{{prizeInfoData.orderProductName}}</view>
+            <view class="order-name"  wx:else>{{prizeInfoData.rafflePrizeName}}</view>
+            <view class="order-sku">
+                <view class="order-sku-time" wx:if="{{prizeType==='banlv'}}">购买时间: {{prizeInfoData.payDate}}</view>
+                <view class="order-sku-time"  wx:else>中奖时间: {{prizeInfoData.raffleTime}}</view>
+                
+                <view class="order-sku-name" wx:if="{{prizeType!=='banlv'}}"> 中奖地点: {{prizeInfoData.hotelName}}</view>
+            </view>
+        </view>
+        <!-- <view class="prize-btn" bindtap="prizeIngDes" wx:if="{{prizeType==='ing'}}">兑奖说明</view> -->
+        <button type="primary" class="prize-btn" bindtap="viewOrder" wx:if="{{prizeType==='banlv'}}">查看订单</button>
+        <button type="primary" class="prize-btn" bindtap="prizeDes" wx:else>奖品说明</button>
+    </view>
+</view>
+

@@ -1,0 +1,23 @@
+/* pages/commission/empty/index.wxss */
+.empty{
+    /* margin-top: 1rpx; */
+    text-align: center;
+}
+.commission-empty{
+    height: 600rpx;
+    text-align: center;
+}
+.empty-pic{
+    width: 300rpx;
+    height: 210rpx;
+    margin: 200rpx auto 0;
+    display: block;
+    background-size: 300rpx 210rpx;
+}
+.empty-desc{
+    font-size: 28rpx;
+    color: #000;
+    margin-top: 40rpx;
+    display: block;
+    text-align: center;
+}

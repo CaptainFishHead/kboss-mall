@@ -1,0 +1,47 @@
+@import "./../../../components/toast/index.wxss";
+
+.container {
+  padding: 50rpx 40rpx;
+  padding: 50rpx 40rpx;
+  text-align: left;
+}
+
+.title {
+  width: 100%;
+  margin-bottom: 40rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #000;
+}
+
+#form {
+  width: 100%;
+}
+
+.form-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &-error {
+    position: absolute;bottom: -86rpx;left: 0;
+    height: 70rpx;line-height: 1.4;
+    font-size: 24rpx;
+    color: #DD1921;
+  }
+}
+
+input {
+  padding: 20rpx 0;
+  font-size: 30rpx;
+  border-bottom: 1px solid #f1f1f1;
+
+  .phcolor {
+    color: #aaa;
+  }
+}
+
+button[type=primary] {
+  width: 540rpx;
+  margin: 100rpx auto 0;
+}

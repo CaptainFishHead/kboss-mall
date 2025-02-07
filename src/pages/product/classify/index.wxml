@@ -1,0 +1,3 @@
+<navigation-bar ext-class="navigation" title="分类" />
+
+<include src="../../../components/classify/page/index.wxml" />

@@ -1,0 +1,15 @@
+<!--pages/poster/index.wxml-->
+<import src="./../../components/toast/index.wxml" />
+<view class="poster" wx:if="{{posterImage}}">
+  <navigation-bar title="" background="#f6f6f6"/>
+  <view class="poster-box">
+    <image class="poster-img" src="{{posterImage}}" mode="widthFix" />
+    <view class="poster-footer">
+      <button type="primary" open-type="share" wx:if="{{posterType === 1}}">分享给好友</button>
+      <button type="default" bindtap="shareToFriend" wx:if="{{posterType === 1}}">保存海报到相册</button>
+      <button type="primary" bindtap="shareToFriend" wx:else>保存到相册</button>
+    </view>
+  </view>
+</view>
+<!-- wetoast -->
+<template is="toast" data="{{...tj_toast}}" />

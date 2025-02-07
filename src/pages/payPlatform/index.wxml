@@ -1,0 +1,60 @@
+<import src="./../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+<navigation-bar background="#FFFFFF" title="收银台" bindback="goBackCustomize"/>
+
+<view class="cashier" wx:if="{{orderStatus===10||orderStatus===0}}">
+    <view class="cashier-main">
+        <view class="cashier-main-countdown">支付剩余时间
+            <text>{{countDown}}</text>
+        </view>
+        <view class="cashier-main-price">¥
+            <text class="price">{{orderCashPrice}}</text>
+        </view>
+        <!-- orderPayPrice -->
+    </view>
+    <view class="cashier-paymethod">
+        <view class="cashier-paymethod-title">请选择支付方式</view>
+        <view class="cashier-paymethod-wechart">
+            <view class="cashier-paymethod-wechart-box">
+                <image class="cashier-paymethod-wechart-box-icon"
+                       src="https://static.tojoyshop.com/images/wxapp-boss/cart/ic_weixin.png"></image>
+                <text class="cashier-paymethod-wechart-box-txt">微信支付</text>
+            </view>
+            <image class="cashier-paymethod-wechart-ic_check"
+                   src="https://static.tojoyshop.com/images/wxapp-boss/refund/select-on.v2.png"></image>
+        </view>
+    </view>
+    <!-- 底部操作行 -->
+    <view class="btn-box-bottom">
+        <button type="primary" bind:tap="wxPayHandle">微信支付
+            <text class="price-text price">{{orderCashPrice}}</text> 元
+        </button>
+    </view>
+</view>
+
+<view class="order" wx:else>
+    <image class="order-fail"
+           src="https://static.tojoyshop.com/images/wxapp-boss/order/{{orderStatus===60||orderStatus===70?'icon-order-close.png':'icon-success.png'}}"/>
+    <view class="order-text">{{orderStatusMap[orderStatus].orderResult}}</view>
+    <button class="order-btn" type="primary" bind:tap="toOrderList">查看订单</button>
+</view>
+
+<mp-dialog
+        class="dialog-payplat"
+        ext-class="dialog-common dialog-confim dialog-tips dialog-nofooter"
+        show="{{visible}}"
+        mask-closable="{{false}}">
+    <view class="dialog-payplat-title">温馨提示</view>
+    <view class="desc">
+        <text wx:if="{{orderStatus===10}}">您的订单在 {{countDown}} 内未支付，将被取消，请尽快支付</text>
+        <text wx:else>{{orderStatusMap[orderStatus].orderResult}}</text>
+    </view>
+    <view class="dialog-payplat-footer">
+        <button plain type="primary" open-type="launchApp" app-parameter="{{payCallback}}"
+                bindlaunchapp="exit" binderror="launchAppError">返回APP
+        </button>
+        <button type="primary" wx:if="{{orderStatus===10}}" bind:tap="close">继续支付</button>
+        <button type="primary" wx:else bind:tap="toOrderList">订单列表</button>
+    </view>
+</mp-dialog>
+

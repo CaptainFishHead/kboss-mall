@@ -1,0 +1,33 @@
+<!--pages/order/components/order-info/index.wxml-->
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<view class="order-info">
+    <view class="order-info-title">订单信息</view>
+    <view class="order-info-content">
+        <view class="rows">
+            <view class="rows-label">订单编号</view>
+            <view class="rows-value rows-number">
+              <text wx:if="{{orderInfo.orderStatus === 10 || !orderInfo.orderStatusPay}}">{{orderInfo.orderCode}}</text>
+              <text wx:else>{{orderInfo.storeList[0].storeOrderCode}}</text>
+              <text class="copy-btn" data-orderCode="{{orderInfo.orderStatus === 10 || !orderInfo.orderStatusPay ? orderInfo.orderCode :orderInfo.storeList[0].storeOrderCode}}" bind:tap="onCopy">复制</text>
+            </view>
+        </view>
+        <view class="rows">
+            <view class="rows-label">下单时间</view>
+            <view class="rows-value">{{orderInfo.orderDate}}</view>
+        </view>
+        <view class="rows" wx:if="{{orderInfo.orderStatus !== 10 && orderInfo.orderStatus !== 60}}">
+            <view class="rows-label">付款时间</view>
+            <view class="rows-value">{{orderInfo.payDate || '--'}}</view>
+        </view>
+        <view class="rows" wx:if="{{(orderInfo.orderStatus === 30 || orderInfo.orderStatus === 50 || orderInfo.orderStatus === 80) && orderInfo.isReal && orderInfo.shipDate}}">
+            <view class="rows-label">发货时间</view>
+            <view class="rows-value">{{orderInfo.shipDate || '--'}}</view>
+        </view>
+        <view class="rows" wx:if="{{orderInfo.orderStatus === 50}}">
+            <view class="rows-label">交易完成时间</view>
+            <view class="rows-value">{{orderInfo.completeDate || '--'}}</view>
+        </view>
+    </view>
+</view>
+
+

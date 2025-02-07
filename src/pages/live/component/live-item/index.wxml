@@ -1,0 +1,17 @@
+<!-- 直播列表卡片 -->
+<view class="live class" bindtap="joinRoom">
+  <view class="live-cover">
+    <view class="live-cover-status" wx:if="{{liveInfo.liveState === 0}}">
+      <image class="live-cover-avatar" mode="aspectFit" src="https://static.tojoyshop.com/images/wxapp-boss/live/live-before-icon.png"></image>
+      <text wx:if="{{liveInfo.liveState === 0}}">直播预告</text>
+    </view>
+    <view class="live-cover-status" wx:if="{{liveInfo.liveState === 1}}">
+      <image class="live-cover-avatar" mode="aspectFit" src="https://static.tojoyshop.com/images/wxapp-boss/live/living-icon.png"></image>
+      <text wx:if="{{liveInfo.liveState === 1}}">正在直播</text>
+    </view>
+    <image class="live-cover-img" mode="aspectFill" src="{{liveInfo.coverUrl}}"></image>
+  </view>
+  <view class="live-info">
+    <view class="live-info-title one-line"><text>{{liveInfo.roomName}}</text></view>
+  </view>
+</view>

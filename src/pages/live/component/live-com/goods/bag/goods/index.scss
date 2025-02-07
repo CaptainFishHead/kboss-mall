@@ -1,0 +1,140 @@
+/* plugin/components/hello-component.wxss */
+.goods {
+  width: 100%;
+  height: 200rpx;
+  background: #fff;
+  // padding: 32rpx 24rpx;
+  box-sizing: border-box;
+  &-tag {
+    height: 36rpx;
+    min-width: 46rpx;
+    position: absolute;
+    padding: 0 4rpx;
+    top: 0;
+    left: 0;
+    border-radius: 0px 0px 14rpx 0px;
+    color: #fff;
+    background-color: rgba($color: #333333, $alpha: 0.69);
+    font-size: 26rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-hot {
+      width: 58rpx;
+      background-color: rgba($color: #E54A4A, $alpha: 0.89);
+      font-size: 22rpx;
+    }
+  }
+  &-speaking {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 44rpx;
+    line-height: 44rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #fff;
+    background-color: rgba($color: #000, $alpha: 0.62);
+  }
+  &-buy {
+    width: 160rpx;
+    height: 60rpx;
+    background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+    border-radius: 4rpx;
+    font-size: 26rpx;
+    color: #333333;
+    line-height: 60rpx;
+    padding: 0;
+    display: inline-block;
+    margin: 0;
+    font-weight: bold;
+  }
+  &-over {
+    &-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28rpx;
+      color: #fff;
+      background-color: rgba($color: #000, $alpha: 0.41);
+    }
+    &-btn {
+      background: #F1F1F1;
+      color: #999;
+      font-size: 26rpx;
+    }
+  }
+}
+
+.goods-box {
+  width: 200rpx;
+  height: 200rpx;
+  float: left;
+  position: relative;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.goods-img {
+  width: 100%;
+  height: 100%;
+}
+
+.goods-info {
+  padding-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.goods-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+  line-height: 40rpx;
+  height: 80rpx;
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;				//溢出内容隐藏
+	text-overflow: ellipsis;		//文本溢出部分用省略号表示
+	display: -webkit-box;			//特别显示模式
+	-webkit-line-clamp: 2;			//行数
+	line-clamp: 2;					
+	-webkit-box-orient: vertical;	//盒子中内容竖直排列
+}
+
+// .goods-des {
+//   font-size: 26rpx;
+//   color: #B58209;
+//   line-height: 39rpx;
+// }
+
+.goods-bottom {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items:flex-end;
+  justify-content: space-between;
+}
+
+.goods-price {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #B58209;
+  line-height: 34rpx;
+  padding-bottom: 2rpx;
+  font-family: "DIN Alternate";
+}
+
+.goods-price-uni {
+  font-size: 24rpx;
+}
+
+.goods-buy::after {
+  display: none;
+}

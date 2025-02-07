@@ -1,0 +1,67 @@
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+
+<view class="total">
+    <view class="total-title">价格信息</view>
+    <view class="total-content">
+        <view class="rows">
+            <view>商品总价</view>
+            <view class="price">¥ {{filter.formatAmount(orderInfo.orderProductPrice)}}</view>
+        </view>
+        <view class="rows">
+            <view>配送邮费</view>
+            <view class="price">¥ {{filter.formatAmount(orderInfo.orderPostagePrice)}}</view>
+        </view>
+        <view class="rows" wx:if="{{orderInfo.orderPromotionPrice>0}}">
+            <view>活动优惠</view>
+            <view class="price bean-text">- ¥ {{filter.formatAmount(orderInfo.orderPromotionPrice)}}</view>
+        </view>
+        <view class="rows" wx:if="{{orderInfo.orderCouponPrice>0}}">
+            <view>优惠券</view>
+            <view class="price bean-text">- ¥ {{filter.formatAmount(orderInfo.orderCouponPrice)}}</view>
+        </view>
+        <view class="rows" wx:if="{{orderInfo.orderBeanPrice&&orderInfo.orderBeanPrice>0}}">
+            <view>康豆优惠</view>
+            <text class="price bean-text">- ¥ {{filter.formatAmount(orderInfo.orderBeanPrice)}}</text>
+        </view>
+        <view class="rows pay" wx:if="{{orderInfo.orderStatus !== 60 && orderInfo.orderStatus !== 70}}">
+            <view>支付方式</view>
+            <view>
+                {{orderInfo.cardType === PRODUCT_TYPE.VIRTUAL_CARD || orderInfo.cardType === PRODUCT_TYPE.REAL_CARD ? '礼品卡兑换' : '微信支付'}}
+            </view>
+        </view>
+    </view>
+    <view class="service-warp" wx:if="{{orderInfo.channelName===SDK_APPLET}}">
+        <image class="service-warp-qrcode" src="https://static.tojoyshop.com/images/wxapp-boss/order/service-qrcode.png"
+               show-menu-by-longpress="{{true}}" mode="aspectFill"/>
+        <view class="service-warp-text">
+            <view class="service-warp-text-t1">添加售后微信</view>
+            <view class="service-warp-text-t2">您的私人售后管家</view>
+        </view >
+        <image class="service-warp-icon" src="https://static.tojoyshop.com/images/wxapp-boss/order/service-icon.png"
+                mode="aspectFill"/>
+    </view>
+    <view class="rows-plus">
+        <view wx:if="{{orderInfo.orderStatus === 10}}">合计需付款</view>
+        <block wx:else>
+          <view wx:if="{{orderInfo.orderStatusPay}}">合计实付款</view>
+          <view wx:else>合计应付款</view>
+        </block>
+        <view class="total-price price">¥
+            <text>{{filter.formatAmount(orderInfo.orderPayPrice)}}</text>
+        </view>
+    </view>
+</view>
+<!--    isVirtualCard 是否是虚拟卡 1：是 0：否" 显示礼品卡号-->
+<view class="total-card" wx:if="{{orderInfo.buyCards.length}}">
+    <view class="gift-card">
+        <view class="gift-card-name">礼品卡号</view>
+        <view class="gift-card-list" id="cardList" style="height:{{maxHeight}}rpx;">
+            <view wx:for="{{orderInfo.buyCards}}" wx:for-item="itm" wx:key="itm" class="gift-card-list-num">{{itm}}</view>
+        </view>
+    </view>
+    <view class="gift-card-show" bind:tap="viewMore" wx:if="{{orderInfo.buyCards.length>3}}">
+        {{!isShowMore ? '查看更多' : '收起'}}
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/order/icon-{{!isShowMore?'down':'up'}}.png"
+                mode="aspectFill"/>
+    </view>
+</view>

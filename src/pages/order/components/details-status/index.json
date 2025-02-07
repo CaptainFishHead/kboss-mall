@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents":{
+    "refund-list": "../refund-list/index",
+    "cancel-reason": "../cancel-reason/index",
+    "tips-dialog": "../tips-dialog/index",
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog"
+  }
+ 
+}

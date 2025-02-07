@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "details-status":"../components/details-status/index",
+    "address":"../components/address-detail/index",
+    "product-area":"../components/product/index",
+    "total-order-details":"../components/total-order-details/index",
+    "order-info":"../components/order-info/index",
+    "button-area":"../components/button/index",
+    "health-seivices":"../components/health-seivices/index"
+  }
+}

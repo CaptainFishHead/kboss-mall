@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "plan-tab":"./components/plan-tab/index",
+    "quota-card":"./components/quota-card/index",
+    "goods-card":"./components/goods-card/index",
+    "rich":"./components/rich/index",
+    "empty": "/components/empty/index",
+    "login": "/components/login/index"
+  }
+}

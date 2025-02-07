@@ -1,0 +1,14 @@
+<view class="prize-des">
+  <navigation-bar title="奖品说明" background="#FFF" />
+  <view class="tab">
+    <view class="tab-item {{activeType == 1 ? 'active' : ''}}" catch:tap="tabChange" data-type="1">
+      奖品详情
+    </view>
+    <view class="tab-item {{activeType == 2 ? 'active' : ''}}" catch:tap="tabChange" data-type="2">
+      兑奖说明
+    </view>
+  </view>
+  <view class="html-content">
+    <mp-html content="{{content}}" lazy-load />
+  </view>
+</view>

@@ -1,0 +1,89 @@
+
+.footer {
+  // flex-basis: 108rpx;
+  // flex-shrink: 0;
+  // flex-grow: 0;
+  height: 108rpx;
+  // padding-bottom: env(safe-area-inset-bottom);
+  background: #FFFFFF;
+  width: 100%;
+  position: relative;
+
+  &-pay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &-txt {
+      font-size: 28rpx;
+      color: #000000;
+      padding-left: 34rpx;
+
+      &-price {
+        font-size: 36rpx;
+      }
+    }
+    &-btn {
+      background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+      font-size: 30rpx;
+      font-weight: bold;
+      color: #000;
+      padding: 32rpx 64rpx;
+      box-sizing: border-box;
+    }
+  }
+
+  &-stock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28rpx;
+    height: 64rpx;
+    background: #000000;
+    opacity: 0.7;
+    font-size: 24rpx;
+    color: #FFFFFF;
+    position: absolute;
+    top: -62rpx;
+    width: 100%;
+    box-sizing: border-box;
+
+    &-service {
+      color: #FFFFFF;
+      font-size: 24rpx;
+
+      &-icon {
+        width: 20rpx;
+        height: 20rpx;
+      }
+    }
+  }
+}
+
+
+.discount-color {
+  color: #B58209;
+  font-size: 28rpx;
+  .price {
+    font-size: 28rpx;
+    color: #B58209;
+  }
+}
+.unit{
+  font-size: 36rpx;
+  color: #333;
+  font-weight: bold;
+}
+.price {
+  font-size: 38rpx;
+  color: #333333;
+}
+
+.dis_btn {
+  background: #D8D8D8;
+}
+
+
+
+

@@ -1,0 +1,28 @@
+<view class="container-obh">
+  <navigation-bar title="氧吧酒店" background="#fff" />
+  <view class="obh-wrap">
+    <image wx:for="{{images}}" wx:key="index" src="{{item}}" class="land-image" mode="widthFix" />
+    <view class="bottom-container-fake">
+      <view class="bottom-item" style="opacity: 0;">
+        <image class="bottom-item-img" />
+        <view class="bottom-item-text"></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="obh-wrap">
+  <view class="bottom-container">
+    <view class="bottom-item">
+      <image src="https://static.tojoyshop.com/images/obh/device_code/ic_home_selected.png" class="bottom-item-img" mode="widthFix" />
+      <view class="bottom-item-text">首页</view>
+    </view>
+    <view class="bottom-item" catchtap="gotoScan">
+      <image src="https://static.tojoyshop.com/images/obh/device_code/ic_scan_normal.png" class="bottom-item-img" mode="widthFix" />
+      <view class="bottom-item-text">扫码体验</view>
+    </view>
+    <view class="bottom-item" catchtap="gotoBuy">
+      <image src="https://static.tojoyshop.com/images/obh/device_code/ic_buy_normal.png" class="bottom-item-img" mode="widthFix" />
+      <view class="bottom-item-text">购买</view>
+    </view>
+  </view>
+</view>

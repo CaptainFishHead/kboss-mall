@@ -1,0 +1,44 @@
+<wxs module="filter" src="../../../../utils/filter.wxs"/>
+<view class="title-info">
+    <view>退款原因*</view>
+    <view class="reason-text {{reasonResult?'on':''}}" catchtap="reasonShow">{{reasonResult || '请选择'}}</view>
+</view>
+<view class="title-info" style="border-bottom: none; margin-right: 20rpx;">
+    <text>退款总额</text>
+    <view class="price allprice">{{filter.formatAmount(totalRefundFormat)}}</view>
+</view>
+
+<view class="refund-info">
+    <view class="refund-info-amount">
+        <text>退款商品金额</text>
+        <text class="unit-price price">{{filter.formatAmount(amoutRefundFormat)}}</text>
+    </view>
+    <view class="refund-info-bean">
+        <text>退还配送邮费</text>
+        <text class="unit-price price">{{filter.formatAmount(PostagePriceFormat)}}</text>
+    </view>
+    <view class="refund-info-bean">
+        <text>退还康豆</text>
+        <text class="price">{{beanRefundFormat || 0}}</text>
+    </view>
+    <view class="refund-info-tips">
+        退款总额为系统预估，实际退款金额以到账为准，退款后将扣除您本单获赠康豆，【如康豆余额不足时，我们将按照1:1的比例从您现金货款中扣除】，请您悉知，如有疑问请联系客服。
+    </view>
+</view>
+<!-- 售后原因 -->
+<mp-half-screen-dialog ext-class="dialog" closabled="{{false}}" title="退款原因" subTitle="请选择售后原因（必选）" show="{{returnReasonVisible}}" class="dialog-reason">
+    <view slot="desc" class="dialog-reason-cnt">
+      <scroll-view scroll-y="true" class="dialog-reason-cnt-scroll">
+        <view class="dialog-reason-cnt-list">
+            <view class="dialog-reason-cnt-list-item" wx:for="{{reasonList}}" wx:key="index" data-index="{{index}}"
+                  data-item="{{item}}" catchtap="selectHandler">
+                <view class="dialog-reason-cnt-list-item-li">{{item.text}}</view>
+                <checkbox color="#B58209" checked="{{item.select}}"/>
+            </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view slot="footer">
+      <button type="primary" class="confirm-btn" bindtap="confirmReason">确认</button>
+    </view>
+</mp-half-screen-dialog>

@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "flex": "../../../../../components/flex/index",
+        "flex-item": "../../../../../components/flex/item/index",
+        "live-remind": "../remind/index"
+    }
+}

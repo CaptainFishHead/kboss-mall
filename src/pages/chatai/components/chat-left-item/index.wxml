@@ -1,0 +1,45 @@
+<import src="../../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<wxs src="../../../../utils/filter.wxs" module="filters" />
+<view class="chat-root">
+	<view class="chat-root-item">
+		<view class="chat-root-top">
+			<!--内容-->
+			<view class="chat-root-text">
+			<text>{{chatContent}}</text>
+				<!-- <block wx:if="{{chatContent.length > subcount && !isMore}}">
+					{{filters.getSubstring(chatContent, subcount)}}...
+				</block>
+				<block wx:else>
+					{{chatContent}}
+				</block> -->
+		</view>
+			<!--推荐-->
+			<!-- <scroll-view scroll-x="true" wx:if="{{false}}">
+				<view class="chat-root-relayout">
+					<block wx:for="{{[1,2,3,4]}}" wx:key="index">
+						<text class="chat-root-reItem">三高问题饮食上该怎么调理？</text>
+					</block>
+				</view>
+			</scroll-view> -->
+			<block wx:if="{{btnInfo}}">
+				<view class="chat-root-btn" bind:tap="onBtnClicl">{{btnInfo.btn}}</view>
+				<view class="chat-root-btndesc">{{btnInfo.text}}</view>
+			</block>
+			<!-- <block wx:if="{{ chatContent.length > subcount && !isMore}}">
+				<view class="chat-root-more" bind:tap="onMoreEvent">
+					展开全部<image class="chat-root-bottomicon" src="{{closeIcon}}"></image>
+				</view>
+			</block> -->
+		</view>
+		<!--赞踩-->
+		<!-- <view class="chat-root-bottom" wx:if="{{false}}">
+			<view class="chat-root-bottom-layout">
+				<image class="chat-root-bottom-layout-praise" src="{{praiseIcon}}"></image>
+				<text class="chat-root-praise-text">有用</text>
+				<text class="chat-root-unpraise-line">|</text>
+				<image class="chat-root-unpraise-icon" src="{{unpraiseIcon}}"></image>
+			</view>
+		</view> -->
+	</view>
+</view>

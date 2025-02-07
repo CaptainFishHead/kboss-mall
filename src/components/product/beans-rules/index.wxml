@@ -1,0 +1,23 @@
+<!-- 康豆奖励明细 弹层 -->
+<mp-half-screen-dialog ext-class="half-customize" class="beans-dialog" show="{{ visible }}" bindclose="close" catchtouchmove="touchMove">
+  <view slot="title" class="beans-dialog-title">
+    <image mode="heightFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/beans-dialog-title.png" />
+    <view class="desc">购买该商品可享受{{rewardType === 1 ? '商品活动' : (levelName + '权益')}}奖励，预估奖励：</view>
+    <view class="price"><text>{{awardNum}}</text> 康豆</view>
+  </view>
+  <view slot="desc" class="beans-dialog-body">
+    <scroll-view scroll-y>
+      <view class="beans-dialog-body-h2">{{beansRules.buyRewardRules.title}}</view>
+      <block wx:for="{{beansRules.buyRewardRules.list || []}}" wx:key="index">
+        <view>{{item}}</view>
+      </block>
+      <view class="beans-dialog-body-h2">{{beansRules.beansRules.title}}</view>
+      <block wx:for="{{beansRules.beansRules.list || []}}" wx:key="index">
+        <view>{{item}}</view>
+      </block>
+    </scroll-view>
+  </view>
+  <view slot="footer">
+    <button type="primary" bindtap="close">我知道了</button>
+  </view>
+</mp-half-screen-dialog>

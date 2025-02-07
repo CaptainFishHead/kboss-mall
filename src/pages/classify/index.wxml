@@ -1,0 +1,8 @@
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<navigation-bar ext-class="navigation" title="分类" back="{{false}}" />
+
+<include src="../../components/classify/page/index.wxml" />
+
+<!-- 底部tab -->
+<!--<tab-bar />-->

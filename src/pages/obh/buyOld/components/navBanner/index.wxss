@@ -1,0 +1,183 @@
+.red {
+  color: rgba(220, 47, 47, 1) !important;
+}
+.font28{
+  font-size: 28rpx !important;
+}
+
+/* 超出一行省略号显示 */
+.line1hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+
+.select {
+  display: block;
+  width: 54rpx;
+  height: 44rpx;
+  position: absolute;
+  right: 0rpx;
+  bottom: 0rpx;
+}
+
+/* 图标模块 */
+.recommend {
+  display: block;
+  width: 94rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 0rpx;
+  top: -13rpx;
+}
+
+.second-module-allicon {
+  background: transparent;
+  border-radius: 0px;
+  position: relative;
+  height: 400rpx;
+  overflow: hidden;
+  padding: 0 0 0 0rpx;
+}
+
+.second-module-allicon.off {
+  height: 400rpx;
+}
+
+/* 去除滚动条 */
+.nav-bar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.nav-bar-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 13rpx 0 0;
+}
+.nav-bar-wrap-center{
+  justify-content: center;
+}
+.nav-bar-wrap-center .nav-bar-item.nav-bar-item-one{
+  margin-left:10rpx;
+}
+.place-w1 {
+  height: 150rpx;
+  flex-shrink: 0;
+  width: 30rpx;
+}
+
+.nav-bar-item {
+  position: relative;
+  width: 220rpx;
+  height: 150rpx;
+  margin: 0 10rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+  text-align: center;
+  background: url('https://static.tojoyshop.com/images/wxapp-obh/buy/select0-bg-off.png') no-repeat center/218rpx 150rpx;
+}
+
+.nav-bar-item.nav-bar-item-one {
+  margin-left: 30rpx;
+}
+
+.nav-bar-item.on .nav-bar-text {
+  color: #fff;
+}
+
+.nav-bar-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-bar-text2 {
+  height: 150rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  line-height: 150rpx;
+}
+
+.nav-bar-text0 {
+  height: 83rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  line-height: 48rpx;
+  padding: 35rpx 0 0;
+}
+
+.nav-bar-text1 {
+  height: 42rpx;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  line-height: 42rpx;
+}
+
+.nav-bar-text3 {
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: bold;
+  line-height: 40rpx;
+  margin: 37rpx 0 8rpx;
+}
+
+.nav-bar-text4 {
+  height: 34rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  line-height: 34rpx;
+  width: 108rpx;
+  padding:0 24rpx 0 0;
+  margin: 0 auto;
+  background: url('https://static.tojoyshop.com/images/wxapp-obh/buy/right-white.png') no-repeat right 5rpx/24rpx auto;
+}
+
+.tip {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 33rpx;
+  text-align: center;
+  position: absolute;
+  top: 200rpx;
+  left:0;
+  width:100%;
+  padding:0 30rpx;
+}
+
+.tip-on {
+  top: 240rpx;
+}
+
+.slider-wrap {
+  height: 6rpx;
+  position: absolute;
+  top: 205rpx;
+  left: 50%;
+  width: 170rpx;
+  transform: translateX(-50%);
+  background: rgba(240, 240, 240, 0.44);
+  border-radius: 4rpx;
+}
+
+/* 滑块滑动模拟 */
+.slider-inside-location {
+  border-radius: 4rpx;
+  background: rgba(255, 255, 255, 0.57);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50rpx;
+  height: 6rpx;
+}

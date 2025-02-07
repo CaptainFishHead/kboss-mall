@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "服务购买记录",
+  "usingComponents": {
+    "popDialog": "../components/popDialog/index",
+    "errorImg": "../components/errorImg/index"
+  }
+}

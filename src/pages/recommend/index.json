@@ -1,0 +1,14 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ad-swiper": "/components/recommend/ad-swiper/index",
+    "scroll-tabbar": "/components/recommend/scroll-tabbar/index",
+    "imgText-card": "/components/recommend/imgText-card/index",
+    "empty": "/components/empty/index",
+    "operation": "/components/recommend/operation/index",
+    "release-time": "/components/recommend/release-time/index",
+    "view-volume": "/components/recommend/view-volume/index"
+    
+    
+  }
+}

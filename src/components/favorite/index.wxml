@@ -1,0 +1,4 @@
+<!-- 收藏 按钮 -->
+<view class="{{ extClass }}">
+	<slot />
+</view>

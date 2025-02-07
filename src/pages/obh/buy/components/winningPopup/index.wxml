@@ -1,0 +1,51 @@
+<!--pages/obh/promotion/components/winningPopup/index.wxml-->
+<!-- <view class="winning-popup-container" wx:if="{{lotteryResult.awardsPrizeType == 1}}">
+  <image src="https://static.tojoyshop.com/images/obh/lottery/result/bg-lottery-result.png" class="winning-popup-background" mode="scaleToFill"/>
+  <view class="winning-popup-title"><text>{{promptMsg}}</text></view>
+
+  <view class="winning-popup-circle-outter"></view>
+  <view class="winning-popup-light"></view>
+  <view class="winning-popup-boom"></view>
+  <view class="winning-popup-flash"></view>
+  <view class="winning-popup-gifts"></view>
+  <view class="winning-popup-gift1"></view>
+  <view class="winning-popup-gift2"></view>
+  <image src="{{lotteryResult.prizeIcon}}" class="winning-popup-gift" mode="aspectFill"/>
+
+  <view class="winning-popup-gift-name">{{lotteryResult.prizeName}}</view>
+  <view class="winning-popup-gift-tips">{{lotteryResult.prizePartnerType == 1 ? '该奖品需购买奖品伴侣后赠送' : '请耐心等待客服联系兑奖（1-3个工作日）'}}</view>
+  <view class="winning-popup-bottom">
+    <view class="{{((lotteryCount > 0) || (lotteryCount <= 0 && shareTimes < 3)) ? 'winning-popup-options' : 'winning-popup-options-one'}}">
+      <image src="https://static.tojoyshop.com/images/obh/lottery/result/btn-lottery-goon.png" class="options-left" mode="heightFix" wx:if="{{lotteryCount > 0}}" catch:tap="closePopup" style="z-index: 11000;"/>
+      <image src="https://static.tojoyshop.com/images/obh/lottery/result/btn-lottery-share.png" class="options-left" mode="heightFix" wx:if="{{lotteryCount <= 0 && shareTimes < 3}}" catch:tap="onPopupShare" style="z-index: 11000;"/>
+      <image src="https://static.tojoyshop.com/images/obh/lottery/result/btn-lottery-goto-gift.png" class="options-right" mode="heightFix"  catch:tap="gotoGift" style="z-index: 11000;"/>
+    </view>
+    <image src="https://static.tojoyshop.com/images/obh/lottery/result/ic-lottery-result-close.png" class="options-close" catch:tap="closePopup" style="z-index: 11000;"/>
+  </view>
+</view> -->
+
+<view class="not-winning-popup-container">
+  <image src="https://static.tojoyshop.com/images/obh/lottery/result/bg-lottery-result.png" class="not-winning-popup-background" mode="scaleToFill"/>
+  <view class="not-winning-popup-title"><text></text></view>
+
+  <view class="not-winning-popup-circle-outter"></view>
+  <!-- <view class="not-winning-popup-circle-inner"></view> -->
+  <view class="not-winning-popup-light"></view>
+  <view class="not-winning-popup-boom"></view>
+  <view class="not-winning-popup-flash"></view>
+  <view class="not-winning-popup-gifts"></view> 
+  <view class="not-winning-popup-gift1"></view>
+  <view class="not-winning-popup-gift2"></view>
+  <image src="{{lotteryResult.noPrizeIcon}}" class="not-winning-popup-gift" mode="aspectFill"/>
+
+  <view class="not-winning-popup-gift-name">谢谢参与</view>
+  <view class="not-winning-popup-gift-tips">{{noWinningMsg}}</view>
+  <view class="not-winning-popup-bottom">
+    <view class="not-winning-popup-options">
+      <image src="https://static.tojoyshop.com/images/obh/lottery/result/btn-lottery-share.png" class="options-left" mode="heightFix" wx:if="{{lotteryCount <= 0 && shareTimes < 3}}" style="z-index: 11000;" catch:tap="onPopupShare"/>
+      <image src="https://static.tojoyshop.com/images/obh/lottery/result/btn-lottery-goon.png" class="options-left" mode="heightFix" catch:tap="closePopup" wx:if="{{lotteryCount > 0}}" style="z-index: 11000;"/>
+    </view>
+    <view class="not-winning-popup-tips" style="opacity: {{lotteryCount <= 0 && shareTimes < 3 ? 1 : 0}};">抽奖机会已用完</view>
+    <image src="https://static.tojoyshop.com/images/obh/lottery/result/ic-lottery-result-close.png" class="options-close" catch:tap="closePopup" style="z-index: 11000;"/>
+  </view>
+</view>

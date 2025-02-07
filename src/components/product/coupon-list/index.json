@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "voucher-item": "../../../components/coupon/voucher-item/index",
+    "empty": "../../../components/empty/index"
+  }
+}

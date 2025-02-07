@@ -1,0 +1,132 @@
+@import "./../../../components/toast/index.wxss";
+
+Page {
+  background: linear-gradient(180deg, #BCFDE5 0%, #FFFFFF 90%, #00B79F 91%, #00B79F 100%);
+}
+
+.nav-bar {
+
+  .logo {
+    display: block;
+    min-width: 100%;
+    height: 44rpx;
+  }
+}
+
+.health {
+  position: relative;
+
+  .bg-circle {
+    width: 108rpx;
+    height: 108rpx;
+    background: url('https://static.tojoyshop.com/images/wxapp-boss/healthInfo/createInfo/bg-circle.png') no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    left: 51rpx;
+  }
+
+  &-title {
+    width: 650rpx;
+    margin-left: 51rpx;
+    padding: 77rpx 0rpx 44rpx 30rpx;
+
+    &-text {
+      width: 593rpx;
+      height: 152rpx;
+      background: url('https://static.tojoyshop.com/images/wxapp-boss/healthInfo/createInfo/img-title.png') no-repeat;
+      background-size: 100% 100%;
+      position: relative;
+    }
+  }
+
+  &-midle {
+    width: 100%;
+    height: 585rpx;
+    background: url('https://static.tojoyshop.com/images/wxapp-boss/healthInfo/createInfo/bg-people.png') no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+
+    .btn {
+      height: 53rpx;
+      position: absolute;
+      animation: scaleAni 1s ease .5s forwards;
+
+      .img {
+        display: block;
+        width: auto;
+        height: 53rpx;
+      }
+    }
+
+    .btn1 {
+      width: 167rpx;
+      top: 297rpx;
+      left: 32rpx;
+
+    }
+
+    .btn2 {
+      width: 167rpx;
+      top: 400rpx;
+      left: 108rpx;
+    }
+
+    .btn3 {
+      width: 221rpx;
+      top: 350rpx;
+      left: 502rpx;
+    }
+  }
+
+  &-btm {
+    padding: 0 55rpx 0;
+    background: #00B79F;
+    padding-bottom: calc(100rpx + env(safe-area-inset-bottom));
+
+    &-title {
+      text-align: center;
+      margin: 0rpx 0 28rpx;
+      font-weight: 600;
+      font-size: 38prx;
+      color: #FFFFFF;
+      line-height: 32rpx;
+      padding-top: 31rpx;
+    }
+
+    &-text {
+      font-weight: 400;
+      font-size: 29rpx;
+      color: #FFFFFF;
+      line-height: 42rpx;
+      text-align: left;
+    }
+
+    &-btn {
+      margin: 70rpx auto 0;
+      width: 600rpx;
+      height: 88rpx;
+      text-align: center;
+      line-height: 88rpx;
+      background: url('https://static.tojoyshop.com/images/wxapp-boss/healthInfo/baseInfo/btn-create-health.png') no-repeat;
+      background-size: 100% 100%;
+      font-weight: 500;
+      font-size: 39rpx;
+      color: #333333;
+    }
+  }
+}
+
+@keyframes scaleAni {
+  0% {
+    transform: scale(1.4);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}

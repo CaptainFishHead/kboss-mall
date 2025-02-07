@@ -1,0 +1,11 @@
+<navigation-bar title="重点监测指标" background="rgba({{bgRgb}}, 1)">
+</navigation-bar>
+
+<view class="indicator-box">
+  <view class="indicator">
+    <quota-card class="quota-card-box" hideModeBtn="{{ true }}" quotaInfo="{{ quotaInfo }}"/>
+    <block wx:for="{{ list }}" wx:key="{{ index }}">
+      <indicator-card detailItem="{{ item }}" />
+    </block>
+  </view>
+</view>

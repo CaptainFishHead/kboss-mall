@@ -1,0 +1,36 @@
+<view class="prize-info {{classMap[prizeInfoData.claimStatus]}}">
+    <image class="zhuhe-img dh-zhuhe" src="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/zhuhe.png" mode="aspectFit"/>
+    <view class="zhuhe-text">
+        <view class="zhuhe-title dashed-text">亲爱的<view class="nickname">{{nickname}}</view>:</view>
+        <view class="zhuhe-content">
+            <view class="dashed-text">{{tips}}</view>
+            <block wx:if="{{prizeInfoData.claimStatus===1 && timeObj.day === '00'}}">
+                <view class="solid-text">在 </view>
+                <view class="time-wrap solid-text">
+                    <!-- 隐形时间器 文字透明，仅显示下划线 保持与父级字体和大小一致 解决时间块下划线短节问题 -->
+                    <view class="hide">00:00:00</view>
+                    <!-- 定位时间器 和设计图保持一致 无下划线 -->
+                    <view class="countdown-tips-time pos">
+                        <text class="time-item">{{timeObj.hours}}</text>
+                        <text class="time-point">:</text>
+                        <text class="time-item">{{timeObj.minutes}}</text>
+                        <text class="time-point">:</text>
+                        <text class="time-item">{{timeObj.seconds}}</text>
+                    </view>
+                </view>
+                <view class="solid-text"> 前购买下方任一【氧吧产品】即可获得奖品哦～</view>
+            </block>
+        </view>
+    </view>
+    <view class="prize-wrap">
+        <view class="prize-img-wrap">
+            <view class="prize-img">
+                <image class="img" src="{{prizeInfo.rafflePrizeIcon}}" mode="aspectFit"/>
+            </view>
+            <image class="prize-brage" src="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/{{imgMap[prizeInfo.claimStatus]}}-brage.png" mode="aspectFit"/>
+        </view>
+    </view>
+    <view class="prize-name">{{prizeInfo.rafflePrizeName}}</view>
+    <image class="prize-btn" bindtap="prizeDes" src="https://static.tojoyshop.com/images/obh/lottery/my_prize_detail/des-btn-bg.png" mode="aspectFit"/>
+</view>
+

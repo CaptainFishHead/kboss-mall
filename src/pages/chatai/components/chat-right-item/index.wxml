@@ -1,0 +1,5 @@
+<view class="chat-root">
+	<view class="chat-root-item">
+		{{chatContent}}
+	</view>
+</view>

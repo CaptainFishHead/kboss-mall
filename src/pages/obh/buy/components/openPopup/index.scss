@@ -1,0 +1,81 @@
+/* pages/obh/promotion/components/openPopup/index.wxss */
+.open-popup-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #0008;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.open-popup-container .popup-dialog {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.open-popup-container .popup-dialog .popup-img {
+  width: 330rpx;
+  height: 196rpx;
+  background: url('https://static.tojoyshop.com/images/obh/lottery/ic-open-tips-dialog.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  top: -100rpx;
+  position: absolute;
+}
+
+
+.open-popup-container .popup-dialog .popup-content {
+  background: linear-gradient(to bottom, #D5FFFC 0%, #F4FFFE 15%, #FDFFFF 30%, #FFFFFF);
+  width: 550rpx;
+  height: 400rpx;
+  border-radius: 30rpx;
+  padding-top: 90rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.open-popup-container .popup-dialog .popup-content .open-btn {
+  background: linear-gradient(to right, #12CB74, #00D9C7);
+  width: 356rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  font-size: 35rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 43rpx;
+}
+
+.open-popup-container .popup-dialog .popup-content .popup-title {
+  font-size: 42rpx;
+  margin-bottom: 39rpx;
+  color: #333;
+  
+}
+
+.open-popup-container .popup-dialog .popup-content .popup-des {
+  font-size: 36rpx;
+  color: #0C0C0C;
+
+  text {
+    color: #ED4E42;
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 38rpx;
+  right: 38rpx;
+  width: 50rpx;
+  height: 50rpx;
+  background: url('https://static.tojoyshop.com/images/obh/lottery/ic-checkin-close.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}

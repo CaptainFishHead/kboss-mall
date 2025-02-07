@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "logistics-goods": "../components/logistics-goods/index"
+  }
+}

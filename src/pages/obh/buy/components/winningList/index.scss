@@ -1,0 +1,61 @@
+/* pages/obh/promotion/components/winningList/index.wxss */
+.notice {
+  width: 710rpx;
+  height: 475rpx;
+  padding: 120rpx 50rpx 50rpx;
+  box-sizing: border-box;
+  margin: 63rpx auto 0;
+  position: relative;
+}
+
+.notice__inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.notice__empty {
+  width: 100%;
+  height: 412rpx;
+  text-align: center;
+  line-height: 412rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #666;
+
+  position: absolute;
+  top: 63rpx;
+  left: 0;
+}
+
+.notice__box {
+  animation: roll 20s linear infinite;
+}
+
+.notice__item {
+  width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+  padding: 10rpx 0;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile {
+  font-family: "DIN Alternate";
+}
+
+@keyframes roll {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}

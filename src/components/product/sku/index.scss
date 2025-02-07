@@ -1,0 +1,264 @@
+.product-sku-box {
+  font-weight: normal;
+
+  .title {
+    margin-bottom: 28rpx;
+    line-height: 40rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #262626;
+  }
+}
+
+.product-info {
+  display: flex;
+  padding: 0 34rpx 30rpx 34rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #666;
+  word-break: break-all;
+
+  .imgurl {
+    width: 200rpx;
+    height: 200rpx;
+    margin-right: 20rpx;
+    min-width: 200rpx;
+    border-radius: 4rpx;
+    background: #f6f6f6;
+  }
+
+  .money {
+    margin: 20rpx 0 10rpx;
+    font-size: 24rpx;
+    color: #000;
+
+    text {
+      line-height: 56rpx;
+      font-size: 44rpx;
+    }
+  }
+
+  .top {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+
+    .money-line {
+      margin-left: 8rpx;
+      font-size: 28rpx;
+      color: #999;
+      text-decoration: line-through;
+    }
+
+    image {
+      width: 114rpx;
+      height: 40rpx;
+      border-radius: 4rpx;
+      margin-right: 6rpx;
+    }
+  }
+
+  .sku-coupon {
+    display: flex;
+    align-items: center;
+
+    &-after {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      padding: 2rpx 20rpx;
+      color: #4C4024;
+      position: relative;
+      height: 46rpx;
+      background: linear-gradient(90deg, #FFF4E3 0%, #E8CAA3 100%);
+      border-radius: 20rpx 50rpx 50rpx 0;
+      margin-left: 10rpx;
+
+      &-corner {
+        position: absolute;
+        z-index: -1;
+        left: -14rpx;
+        bottom: -1rpx;
+        width: 14rpx;
+        height: 28rpx;
+        background: url(https://static.tojoyshop.com/images/wxapp-boss/product/icon-coupon-price-left1.png) no-repeat center;
+        background-size: 100% 100%;
+      }
+
+      &-tag {
+        margin-right: 5rpx;
+        font-size: 28rpx;
+        line-height: 1;
+      }
+
+      &-money {
+        font-size: 24rpx;
+        line-height: 1;
+        margin-top: 4rpx;
+
+        text {
+          font-size: 40rpx;
+        }
+
+      }
+    }
+  }
+
+  .beans {
+    margin-bottom: 16rpx;
+
+    &-enabled {
+      font-size: 28rpx;
+      color: #b58209;
+    }
+
+    &-disabled {
+      font-size: 26rpx;
+      color: #999;
+    }
+  }
+}
+
+.product-sku-scroll {
+  max-height: 400rpx;
+}
+
+.product-sku {
+  padding: 10rpx 0 16rpx;
+  margin: 0 34rpx;
+  box-sizing: border-box;
+
+  &-list {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+  }
+
+  &-item {
+    position: relative;
+    margin-bottom: 30rpx;
+    font-size: 28rpx;
+
+    image {
+      position: absolute;
+      top: -16rpx;
+      right: 0;
+      transform: translate3d(50%, 0, 0);
+      width: 90rpx;
+      height: 32rpx;
+    }
+
+    text {
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      min-width: 100rpx;
+      padding: 10rpx 32rpx;
+      color: #333;
+      background: #f6f6f6;
+      border-radius: 4rpx;
+      border: 1px solid transparent;
+    }
+
+    &.active,
+    &.empty {
+      image {
+        display: none;
+      }
+    }
+
+    &.active text {
+      font-weight: bold;
+      color: #b58209;
+      background: #fff;
+      border-color: #b58209;
+    }
+
+    &.empty text {
+      color: #999;
+
+      ::after {
+        content: "缺货";
+        position: absolute;
+        top: -8rpx;
+        right: -50rpx;
+        padding: 0 10rpx;
+        font-size: 24rpx;
+        color: #fff;
+        line-height: 33rpx;
+        background: #d8d8d8;
+        border-radius: 12rpx 0 12rpx 0;
+        border: 1px solid #fff;
+      }
+    }
+  }
+
+  //&::after {
+  //  content: '';
+  //  position: absolute;
+  //  bottom: 0;
+  //  left: 50%;
+  //  transform: translate3d(-50%,0,0);
+  //  height: 1px;
+  //  width: calc(100% - 68rpx);
+  //  background: #E4E4E4;
+  //}
+}
+
+.product-num {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 34rpx 20rpx;
+
+  .title {
+    margin: 0;
+  }
+
+  .activity-tip {
+    position: absolute;
+    top: -40rpx;
+    right: 30rpx;
+    z-index: 13;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rpx 10rpx;
+    font-size: 24rpx;
+    line-height: 28rpx;
+    color: #4c4024;
+    border-radius: 4rpx;
+    background: linear-gradient(180deg, #fff9f1 0%, #fff0cf 100%);
+    border: 1rpx solid #e2cc9d;
+
+    &::before {
+      box-sizing: content-box;
+      position: absolute;
+      bottom: -10rpx;
+      right: 78rpx;
+      z-index: 14;
+      content: "";
+      display: block;
+      width: 19rpx;
+      height: 10rpx;
+      background: url(https://static.tojoyshop.com/images/wxapp-boss/product/activity-tip-icon.png) no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+.btns {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom:60rpx;
+
+  button[type="primary"] {
+    width: 100%;
+  }
+}

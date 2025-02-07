@@ -1,0 +1,118 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top:160rpx;
+  padding: 34rpx  0;
+  background: white;
+  z-index: 9;
+  &-child{
+    width: 316rpx;
+    height: 67rpx;
+    background: #F3F4F6;
+    border-radius: 4rpx;
+    text-align: center;
+    line-height: 67rpx;
+    font-size: 30rpx;
+    color: #333333;
+    border-radius: 4rpx;
+    .picker{
+      font-weight: 600;
+      .up{
+        width: 20rpx;
+        height: 20rpx;
+      }
+    }
+  }
+}
+.main{
+  width: 100%;
+  background: #FFFFFF;
+  padding: 34rpx 48rpx;
+  box-sizing: border-box;
+  .content{
+    display: flex;
+    justify-content: space-between;
+    padding: 34rpx 0;
+    &:nth-of-type(1){
+      padding-top: 0px;
+    }
+    .content-left{
+      width: 160rpx;
+      height: 160rpx;
+      background: #C8C8C8;
+      border-radius: 10rpx;
+      overflow: hidden;
+      .image-doctor{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .content-right{
+      width: 456rpx;
+      height: 160rpx;
+      padding: 14rpx 0  0;
+      box-sizing: border-box;
+      &-top{
+        height: 42rpx;
+        font-size: 30rpx;
+        color: #333333;
+        line-height: 42rpx;
+        letter-spacing: 1px;
+        text-align: left;
+        margin-bottom: 10rpx;
+      }
+      &-middle{
+        width: 100%;
+        height: 33rpx;
+        font-size: 24rpx;
+        color: #666666;
+        line-height: 33rpx;
+        text-align: left;
+        margin-bottom: 16rpx;
+        overflow: hidden;
+        white-space: nowrap;  
+        text-overflow: ellipsis;
+      }
+      &-bottom{
+        display: flex;
+        justify-content: space-between;
+        .department{
+          font-size: 28rpx;
+          color: #039399;
+          line-height: 40rpx;
+          text-align: left;
+        }
+        .btn{
+          width: 145rpx;
+          height: 46rpx;
+          text-align: center;
+          line-height: 46rpx;
+          background: linear-gradient( 180deg, #FFEAC9 0%, #FFC569 100%);
+          border-radius: 30rpx;
+          font-weight: 500;
+          font-size: 26rpx;
+          color: #554623;
+        }
+      }
+    }
+  }
+}
+.none-content{
+  font-family: PingFangSC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 40rpx;
+  letter-spacing: 1px;
+  text-align: center;
+  font-style: normal;
+  padding-top: 120rpx;
+  .image-none-content{
+    width: 300rpx;
+    height: 210rpx;
+  }
+}
+.main{
+  padding-top: 0rpx;
+}

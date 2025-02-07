@@ -1,0 +1,32 @@
+<view class="goods" bindtap="checkShareFn">
+    <view class="goods-img-warp">
+        <image class="goods-img" mode="aspectFill" src="{{goodsInfo.productImg}}" />
+    </view>
+    <view class="goods-info-warp">
+        <view class="goods-name">{{goodsInfo.productName}}</view>
+        <view class="goods-price">
+            <!-- 售价: -->
+            <view class="goods-price-value price"> <view class="unit">¥</view> {{goodsInfo.productMinPrice}}</view>
+        </view>
+        <view class="other-info">
+            <view class="other-info-jdprice">某东价:¥{{goodsInfo.jdPrice}}</view>
+            <!-- <view class="other-info-sales">已售 {{goodsInfo.jdPrice}}</view> -->
+        </view>
+        <button type="primary" class="prize-btn">立即购买</button>
+    </view>
+</view>
+<mp-dialog ext-class="order-cancel-dialog"
+           mask-closable="{{false}}"
+           title="温馨提示"
+           buttons="{{buttons}}"
+           show="{{showCheck}}"
+           bindbuttontap="buttontap"
+           catchtouchmove="touchMove">
+    <view class="dialog-box">
+        <!-- <view class="dialog-title">温馨提示</view> -->
+        <view class="title">{{errMsg}}</view>
+    </view>
+</mp-dialog>
+
+
+

@@ -1,0 +1,83 @@
+<!-- wetoast -->
+<import src="../../components/toast/index" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<view class="navi-box">
+  <navigation-bar background="rgb(175 230 224 / {{ naviTransparent }})"></navigation-bar>
+
+  <view class="plan-title-box">
+    <text class="title">调理方案</text>
+    <text class="dec">针对性健康管理</text>
+  </view>
+  <view class="headImg">
+    <image src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/plan/title_bg.png" mode=""/>
+  </view>
+</view>
+<block wx:if="{{isLogged}}">
+<block wx:if="{{!showEmpty}}">
+<view class="contBox">
+  <scroll-view scroll-x scroll-left="{{ scrollLeft }}">
+    <view class="plan-box">
+      <block wx:for="{{ plans }}" wx:key="index">
+        <plan-tab class="plan-tab-card" planTabItem="{{ item }}" current="{{ currentPlan }}" bind:setCurrentPlan="handleCurrentPlan"/>
+      </block>
+    </view>
+  </scroll-view>
+
+  <view class="generalize-box">
+    <view class="generalize">
+      <view class="g-top">
+        <view class="g-left">
+          <text class="title">{{ currentPlan.programmeName }}</text>
+          <text class="time">{{ currentPlan.updatedTime }}</text>
+        </view>
+        <image class="g-img" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/plan/note.png" mode="widthFix"/>
+      </view>
+    </view>
+  </view>
+
+  <block wx:for="{{ planDetails.moduleVoList }}" wx:key="index">
+    <view class="recommend-detail-box">
+      <view class="recommend-detail">
+        <text class="recommend-title {{item.moduleType === 2 ? 'titletype' : ''}}">{{ item.moduleName }}</text>
+        <view class="recommend-contbox {{item.moduleType === 2 ? 'contboxs' : ''}} {{item.productVoList.length ? 'contboxVo' : ''}}">
+          
+            <block wx:if="{{item.moduleType === 2}}">
+              <view class="quotabox" wx:for="{{ item.indexVoList }}"  wx:for-item="quotaItem" wx:for-index="quotaIndex" wx:key="quotaIndex"> 
+                <quota-card  class="quota-card-box" quotaInfo="{{ quotaItem }}" />
+              </view>
+            </block>
+            <block wx:else>
+              <rich content="{{ item.moduleText }}" />
+            </block>
+          
+          
+            <block wx:if="{{ item.productVoList.length }}">
+              <view class="goodsList">
+                <view class="goods-title">好物推荐</view>
+                
+                <view class="srcollList">
+                  <view class="goods-list">
+                    <block wx:for="{{ item.productVoList }}" wx:key="index">
+                    <view class="goods-list-card">
+                      <goods-card goodItem="{{ item }}"/>
+                    </view>
+                    </block>
+                  </view>
+                </view>
+              </view>
+            </block>
+          
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+</block>
+
+<empty wx:else ext-empty-text="empty-text-box" ext-gobtn="ext-gobtn-box" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/plan/empty_plan@2x.png" empotyDesc="{{errMsg||'暂时没有调理方案您可以联系您的专属管家'}}" buttonTxt="免费获取调理方案" bindbuttonTap="navigateToWaiter" />
+</block>
+
+<view class="login" wx:else>
+    <login bind:success="bindSuccess" bind:fail="bindFail" hideClose/>
+</view>

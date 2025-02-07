@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "cart-add": "./../../../components/cart-add/index",
+    "favorite": "./../../../components/favorite/index",
+    "empty": "./../../../components/empty/index"
+  }
+}

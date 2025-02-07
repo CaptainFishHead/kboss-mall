@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "share-entry": "/components/share-entry/index",
+    "operation": "/components/recommend/operation/index"
+  }
+}

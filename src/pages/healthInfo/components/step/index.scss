@@ -1,0 +1,54 @@
+// step
+.step {
+  &-num {
+    width: 30rpx;
+    height: 30rpx;
+    background: rgb(255, 255, 255, 0.7);
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 26rpx;
+    color: rgb(8, 162, 141, 0.7);
+    line-height: 30rpx;
+    text-align: center;
+    letter-spacing: 2rpx;
+
+  }
+
+  &-text {
+    padding-left: 10rpx;
+    font-weight: 400;
+    font-size: 32rpx;
+    color: rgb(255, 255, 255, 0.7);
+    line-height: 32rpx;
+    letter-spacing: 1rpx;
+  }
+
+  &.active &-num {
+    width: 34rpx;
+    height: 34rpx;
+    line-height: 34rpx;
+    color: #08A28D;
+    background: #FFFFFF;
+  }
+
+  &.active &-text {
+    color: #FFFFFF;
+    font-size: 36rpx;
+    line-height: 36rpx;
+    font-weight: 600;
+  }
+}
+
+.step {
+  &.active::after {
+    content: '';
+    position: absolute;
+    width: 28rpx;
+    height: 28rpx;
+    left: 52%;
+    bottom: -58rpx;
+    border-top-left-radius: 5rpx;
+    background: linear-gradient(315deg, transparent 50%, #FFFFFF 50%);
+    transform: rotate(45deg);
+  }
+}

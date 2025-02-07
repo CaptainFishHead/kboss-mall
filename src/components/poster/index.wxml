@@ -1,0 +1,11 @@
+
+<view class="poster">
+	<image class="poster-img" wx:if="{{shareImage}}" src="{{shareImage}}" mode="widthFix" />
+	<canvas type="2d" id="poster" wx:else canvas-id="poster"></canvas>
+	<view class="poster-footer" wx:if="{{shareImage}}">
+		<!--  bindtap="shareToFriend" -->
+		<button type="primary" open-type="share">分享给好友</button>
+		<!-- bindtap="saveImage"   -->
+		<button type="default" bindtap="shareToFriend">保存海报到相册</button>
+	</view>
+</view>

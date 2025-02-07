@@ -1,0 +1,72 @@
+.coupon {
+  .content {
+    
+    &-list {
+      height: 736rpx;
+      // height: calc(100% - 0.01rpx);
+      padding: 20rpx 30rpx 0;
+      display: flex;
+      width: auto;
+      .goods-list{
+        display: flex;
+          align-items: center;
+          margin-bottom: 53rpx;
+          padding-bottom: 20rpx;
+          
+          .goods-rt{
+            display: flex;
+            flex: 1;
+            .prod-warp{
+              display: flex;
+              justify-content: space-between;
+              width: 100%;
+              &-img{
+                width: 200rpx;
+                height: 200rpx;
+                background-color: #F6F5F3;
+                border-radius: 4rpx;
+                overflow: hidden;
+              }
+              &-info{
+                flex: 1;
+                margin-left: 32rpx;
+                .name{
+                  font-size: 26rpx;
+                  color: #333333;
+                  font-weight: bold;
+                }
+                .kind{
+                  font-size: 24rpx;
+                  color: #666666;
+                  margin-top: 18rpx;
+                }
+                .price{
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 52rpx;
+                  align-items: flex-end;
+                  .number{
+                    font-size: 33rpx;
+                    color: #333333;
+                  }
+                }
+              }
+            }
+        }
+      }
+    }
+    .footer-btn{
+      padding: 0 40rpx 59rpx;
+    }
+  }
+
+}
+
+.empty{
+  height: 800rpx;
+  text-align: center;
+}
+
+.empty-box {
+  position: absolute;
+}

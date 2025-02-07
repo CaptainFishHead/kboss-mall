@@ -1,0 +1,12 @@
+<view class="live-data">
+  <view class="tab" wx:if="{{liveState === 2}}">
+    <view class="tab-item {{activeType === 'live' ? 'active' : ''}}" catch:tap="tabChange" data-type="live">
+      直播效果数据
+    </view>
+    <view class="tab-item {{activeType === 'goods' ? 'active' : ''}}" catch:tap="tabChange" data-type="goods">
+      商品销售数据
+    </view>
+  </view>
+  <live-effect wx:if="{{activeType === 'live' && liveState === 2 }}" roomId="{{roomId}}"></live-effect>
+  <goods-sales wx:if="{{(activeType === 'goods' && liveState === 2) || liveState === 1}}" roomId="{{roomId}}"></goods-sales>
+</view>

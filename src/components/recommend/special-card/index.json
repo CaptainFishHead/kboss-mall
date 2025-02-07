@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "live-status": "/components/recommend/live-status/index"
+  }
+}

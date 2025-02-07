@@ -1,0 +1,54 @@
+<import src="../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<view class="container-wrap">
+  <navigation-bar title="售后/退款" background="#fff" />
+  <empty ext-class="empty-box" wx:if="{{showEmpty}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722" empotyDesc="{{errMsg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="reloadHandler" />
+  <view class="container-box" wx:else>
+    <!-- refundStatus	退款状态（10：待审核、20：财务待审核、30：退款完成、40：申请驳回、50：申请撤销、 60：客服审核(退款中)，70：待用户上传物流(待退货),80:退货中） -->
+    <view class="title">
+      <view class="title-header">{{refundStatusMap[detailInfo.refundStatus].title}}</view>
+      <view class="title-desc" wx:if="{{refundStatusMap[detailInfo.refundStatus].desc}}">{{refundStatusMap[detailInfo.refundStatus].desc}}</view>
+      <view class="title-desc" wx:if="{{detailInfo.refundStatus === 30}}">{{detailInfo.refundCompletedDate}}</view>
+      <view class="title-desc" wx:if="{{detailInfo.refundStatus === 50 || detailInfo.refundStatus === 40}}">{{detailInfo.refundCancelTime}}</view>
+      <view class="reason-des" wx:if="{{detailInfo.refundStatus === 40 && detailInfo.remark}}">驳回原因：{{detailInfo.remark}}</view>
+    </view>
+    <refund-price detailInfo="{{detailInfo}}" wx:if="{{detailInfo.refundStatus !== 70}}" />
+    <logistics logisticsCode="{{logisticsCode}}" detailInfo="{{detailInfo}}" logisticsName="{{logisticsName}}" />
+    <view class="title-text">退货信息</view>
+    <view class="goods-box">
+      <goods-item wx:for="{{list}}" wx:key="index" item="{{item}}" refundType="{{detailInfo.refundType}}"/>
+    </view>
+    <view class="info-box">
+      <view class="info-box-item" style="margin-top:50rpx;">
+        <view>服务单号：</view>
+        <view>
+          {{detailInfo.refundCode}}
+          <text class="copy-btn" bindtap="copyServeNum">复制</text>
+        </view>
+      </view>
+      <view class="info-box-item">
+        <view>订单编号：</view>
+        <view>
+          {{orderCode || ''}}
+          <text class="copy-btn" bindtap="copyOrderNum">复制</text>
+        </view>
+      </view>
+      <view class="info-box-item">
+        <view>申请时间：</view>
+        <view>{{detailInfo.createTime}}</view>
+      </view>
+    </view>
+    <view class="btn-box">
+      <button type="default" class="btn" plain  data-refundCode="{{detailInfo.refundCode}}"  catchtap="findOrderProductPackList" wx:if="{{detailInfo.refundStatus===80}}">查看物流</button>
+      <button type="default" class="btn" plain wx:if="{{detailInfo.refundStatus===10||detailInfo.refundStatus===20 ||detailInfo.refundStatus===60 || detailInfo.refundStatus===80}}" catchtap="goRemind">提醒退款</button>
+      <button type="default" class="btn" plain wx:if="{{detailInfo.refundStatus===70 && !detailInfo.canCancelled }}" catchtap="goCancel">取消申请</button>
+      <button type="default" class="btn" plain open-type="contact" session-from="{{sessionFrom}}" bindtap="onService">联系客服</button>
+      <button type="primary" class="btn" plain wx:if="{{detailInfo.refundStatus===10 && !detailInfo.canCancelled}}" catchtap="goCancel">取消申请</button>
+      <button type="primary" class="btn" plain wx:if="{{detailInfo.refundStatus===70}}" catchtap="goFill">货物寄回</button>
+    </view>
+  </view>
+  <mp-dialog ext-class="order-cancel-dialog" show="{{dialogShow}}" bindbuttontap="goCancelConfirm" buttons="{{buttons}}" title="温馨提示">
+    <view>确认取消申请？</view>
+  </mp-dialog>
+</view>
+<global-back />

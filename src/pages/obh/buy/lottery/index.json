@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "lottery": "../components/lottery/index",
+    "winningList": "../components/winningList/index",
+    "lotteryEmpty": "../components/lotteryEmpty/index",
+    "sharePopup": "../components/sharePopup/index",
+    "winningPopup": "../components/winningPopup/index",
+    "winningPopupv1": "../components/winningPopupv1/index",
+    "poster": "../components/poster/index",
+    "myTopBar": "../../components/myTopBar/index"
+  }
+}

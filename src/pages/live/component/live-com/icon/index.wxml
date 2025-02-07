@@ -1,0 +1,3 @@
+<view class="mt-icon class" style="--icon-height:{{height}};--src:url({{baseURL+dir+src}});--brightness:{{colorReversed?0:brightness}};color:{{color}};height:{{height}};width:{{width}};{{style}}">
+<!--	<image src="{{baseURL+dir+src}}" mode="{{mode}}" lazy-load="{{lazyLoad}}"></image>-->
+</view>

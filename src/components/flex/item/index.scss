@@ -1,0 +1,11 @@
+.flex-item {
+  position: relative;
+  z-index: 10;
+  order: var(--order);
+  align-self: var(--align-self);
+  flex-grow: var(--flex-grow);
+  flex-shrink: var(--flex-shrink);
+  flex-basis: var(--flex-basis);
+  box-sizing: border-box;
+  margin: var(--flex-item-margin);
+}

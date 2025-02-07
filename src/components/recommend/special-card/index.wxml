@@ -1,0 +1,40 @@
+<wxs src="./../../../utils/filter.wxs" module="filter" />
+<view class="recommend-special_block">
+    <!-- 图文 -->
+    <view class="recommend-special_block_pic" wx:if="{{info.type === 1}}" bindtap="goDetail">
+      <!-- 种草栏目下的图文图片会有多张和单张的展示  -->
+      <block wx:if="{{info.imgList.length}}">
+        <block wx:for="{{info.imgList}}" wx:key="index" wx:for-item="img" wx:if="{{index <= 1 || isMulti}}">
+          <view class="recommend-special_block_pic_item {{info.imgList.length === 1 ? 'first' : ''}}">
+            <image src="{{img}}" mode="aspectFill" class="img"/>
+          </view>
+        </block>
+        <text class="recommend-special_block_pic_num" wx:if="{{info.imgList && (info.imgList.length > 2) && !isMulti}}">+{{info.imgList.length - 2}}</text>
+      </block>
+      <!-- 普通资讯的图文只展示封面图 -->
+      <block wx:elif="{{info.coverImgUrlV}}">
+        <view class="recommend-special_block_pic_item first">
+          <image src="{{info.coverImgUrlV}}" mode="aspectFill" class="img"/>
+        </view>
+      </block>
+    </view>
+    <!-- 视频 -->
+    <view class="recommend-special_block_video" wx:if="{{info.type === 2}}" bindtap="goDetail">
+      <image src="{{info.coverImgUrlV}}" mode="widthFix" />
+    </view>
+    <!-- 直播 -->
+    <view class="recommend-special_block_live"  wx:if="{{info.type === 3}}" bindtap="goDetail">
+      <view class="recommend-special_block_live_pic">
+        <image src="{{info.coverImgUrlV}}" mode="widthFix" />
+      </view>
+      <view class="recommend-special_block_live_status">
+        <live-status state="{{info.liveState}}"/>
+      </view>
+    </view>
+    
+    <view class="recommend-special_block_title" bindtap="goDetail">{{info.title || ''}}</view>
+    <view  class="recommend-special_block_desc">{{info.abstractTitle || ''}}</view>
+    <view class="recommend-special_block_data">
+      <slot></slot>
+    </view>
+  </view>

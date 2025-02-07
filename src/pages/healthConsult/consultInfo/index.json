@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "adviser": "../../../components/health-consult/adviser/index"
+  }
+}

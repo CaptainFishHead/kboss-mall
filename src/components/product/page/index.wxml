@@ -1,0 +1,353 @@
+<!-- 网络错误 -->
+<empty ext-class="empty-box" wx:if="{{showEmpty}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722" empotyDesc="{{errMsg||'网络错误'}}" buttonTxt="返回首页" bindbuttonTap="backHandler" />
+
+<block wx:else>
+  <navigation-bar title="" show="{{!show}}" bindback="goBack" ext-class="product-nav" />
+  <navigation-bar ext-class="product-nav" title="{{ product.name }}" background="#F6F5F3" show="{{show}}" animated="{{true}}" bindback="goBack" />
+
+  <!-- product -->
+  <product id="product" sku="{{sku}}" pointParamsBase="{{pointParamsBase}}" pointParamsSubmit="{{pointParamsSubmit}}" isPage
+           isSuit="{{isSuit}}" isLogged="{{isLogged}}" totalPrice="{{totalPrice}}" bind:success="getProductDetail" bind:empty="empty" bind:error="error">
+
+    <!-- 分享 -->
+    <share-entry slot="share" pageId="{{product.code}}" pageName="{{product.name}}" bind:createPoster="createPoster" bind:createShareCode="createShareCode" bind:shareFriend="shareFriend">
+      <view class="share">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-share.png" mode="aspectFit" />
+        分享
+      </view>
+    </share-entry>
+
+    <!-- ============= 组合品、随心配 包含商品 ============= -->
+    <block wx:if="{{isSuit || product.spuKind === 1}}">
+      <block wx:if="{{product.spuKind === 1}}">
+        <!-- 可抵扣康豆 -->
+        <view class="beans-usable" slot="beans-usable" >
+          <view class="beans-usable-enabled" wx:if="{{sku.kangBossActivityInfo.usableNum}}">
+            最多可用
+            <text class="price">{{sku.kangBossActivityInfo.usableNum || '0'}}</text>
+            康豆
+          </view>
+          <view class="beans-usable-disabled" wx:else>此商品不支持使用康豆抵扣</view>
+        </view>
+        <!-- 康豆返利规则 -->
+       <!-- <view class="beans-tip" slot="beans-tip" wx:if="{{sku.kangBossActivityInfo.awardNum}}">
+          <view>
+            <image mode="heightFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-crown.png" />
+            <view>会员购买本商品，预估奖励
+              <text class="price">{{sku.kangBossActivityInfo.awardNum || '0'}}</text>
+              康豆
+            </view>
+          </view>
+          <view class="beans-tip-more" bindtap="showBeansRules"
+                  data-awardnum="{{sku.kangBossActivityInfo.awardNum}}"
+                  data-rewardtype="{{sku.kangBossActivityInfo.rewardType}}"
+                  data-levelname="{{levelName}}">详情</view>
+        </view>-->
+      </block>
+
+      <view class="combination" slot="combination">
+        <view class="combination-title">包含商品
+          <text>（共{{subSkuDtoList.length}}件商品）</text>
+        </view>
+        <view class="combination-list">
+          <block wx:for="{{subSkuDtoList}}" wx:key="index">
+            <view class="combination-list-item {{item.disabled ? 'disabled' : ''}}">
+
+              <block wx:if="{{isSuit}}">
+                <view class="img">
+<!--                  可替换商品数量-->
+                  <block wx:if="{{item.replaceNum > 0}}">
+                    <view class="tips" bindtap="showReplaceList" data-spu="{{item}}" data-index="{{index}}">
+                      <text>换一个</text>
+                    </view>
+                  </block>
+                  <image mode="aspectFit" src="{{item.imageUrl}}" bindtap="{{item.disabled ? '' : 'showProduct'}}" data-id="{{item.spuId}}" />
+                </view>
+                <view class="title">{{item.productName}}</view>
+                <view class="price">￥<text>{{item.sellPrice}}</text></view>
+              </block>
+
+              <block wx:else>
+                <view class="img">
+                  <image
+                    mode="aspectFit"
+                    src="{{item.skuImage}}"
+                    bindtap="{{item.disabled ? '' : 'showProduct'}}"
+                    data-skuid="{{item.skuId}}"
+                  />
+                </view>
+                <view class="title">{{item.name}}</view>
+                <view class="desc">数量 x{{item.skuCount}}</view>
+              </block>
+
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+
+    <!-- ============= 单品 ============= -->
+    <block wx:else>
+      <!-- 活动（isJoinPromotion: 0不参加 1参加） -->
+      <!-- 参加活动 -->
+      <block wx:if="{{sku.kangBossActivityInfo.isJoinPromotion && isLogged}}">
+        <view class="activity" slot="activity">
+          <view class="activity-lf">
+            <view class="activity-lf-money">
+              <view class="money price">
+                <text class="unit">￥</text>
+                <text wx:for="{{filter.moneyArr(filter.moneyNumber(sku.kangBossActivityInfo.promotionSkuPrice || '0'))}}" wx:key="index"><text>{{index ? '.' : ''}}</text>
+                  <text>{{item}}</text>
+                </text>
+              </view>
+              <view class="money-line price">
+                <text>￥{{sku.sellPrice || '0'}}</text>
+              </view>
+            </view>
+            <!-- 可抵扣康豆 -->
+            <view class="beans">
+              <view wx:if="{{sku.kangBossActivityInfo.usableNum}}">
+                最多可用
+                <text class="price">{{sku.kangBossActivityInfo.usableNum || '0'}}</text>
+                康豆
+              </view>
+              <view class="beans-disabled" wx:else>此商品不支持使用康豆抵扣</view>
+            </view>
+          </view>
+          <view class="activity-rg">
+            <image mode="heightFix" src="{{sku.kangBossActivityInfo.promotionInfoUrl}}" />
+            <view class="num">已售 {{product.sellNum || '0'}}</view>
+          </view>
+        </view>
+      </block>
+      <!-- 不参加活动 -->
+      <block wx:else>
+        <!-- 可抵扣康豆 -->
+        <view class="beans-usable" slot="beans-usable">
+          <view class="beans-usable-enabled" wx:if="{{sku.kangBossActivityInfo.usableNum}}">
+            最多可用
+            <text class="price">{{sku.kangBossActivityInfo.usableNum || '0'}}</text>
+            康豆
+          </view>
+          <view class="beans-usable-disabled" wx:else>此商品不支持使用康豆抵扣</view>
+        </view>
+      </block>
+
+      <!-- 优惠券 -->
+      <block wx:if="{{sku.couponGoodsDetailDto.isHasCoupon}}">
+        <view class="coupon" slot="coupon">
+          <view class="coupon-top">
+            <view class="coupon-top-unit">￥</view>
+            <view class="coupon-top-money price">
+              <text class="money" wx:for="{{filter.moneyArr(filter.moneyNumber(sku.sellPrice || '0'))}}" wx:key="index">
+                <text>{{index ? '.' : ''}}</text>
+                <text class="{{index ? 'decimal' : ''}}">{{item}}</text>
+              </text>
+            </view>
+            <view class="coupon-top-after">
+              <view class="coupon-top-after-corner"></view>
+              <view class="coupon-top-after-tag">券后</view>
+              <view class="coupon-top-after-unit">￥</view>
+              <view class="coupon-top-after-money price">
+                <text class="money" wx:for="{{filter.moneyArr(filter.moneyNumber(sku.couponGoodsDetailDto.skuCouponPrice || '0'))}}" wx:key="index">
+                  <text>{{index ? '.' : ''}}</text>
+                  <text>{{item}}</text>
+                </text>
+              </view>
+            </view>
+          </view>
+          <view class="coupon-bottom">
+            <view class="coupon-bottom-tags">
+              <view class="coupon-bottom-tags-item" wx:for="{{sku.couponGoodsDetailDto.couponList.length>2 ?[sku.couponGoodsDetailDto.couponList[0],sku.couponGoodsDetailDto.couponList[1]]:sku.couponGoodsDetailDto.couponList}}" wx:for-item="couponItem" wx:key="couponId">
+                <block wx:if="{{!(couponItem.moneyLimit - 0)}}">立减<text class="price">{{couponItem.couponAmount - 0}}</text>元</block>
+                <block wx:else>单价满<text class="price">{{couponItem.moneyLimit - 0}}</text>减<text class="price">{{couponItem.couponAmount - 0}}</text></block>
+              </view>
+            </view>
+            <view class="coupon-bottom-btn" bindtap="showCouponList">领券</view>
+          </view>
+        </view>
+      </block>
+
+      <!-- 康豆返利规则 -->
+      <!-- <view class="beans-tip" slot="beans-tip" wx:if="{{sku.kangBossActivityInfo.awardNum}}">
+        <view>
+          <image mode="heightFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-crown.png" />
+          <view>会员购买本商品，预估奖励
+            <text class="price">{{sku.kangBossActivityInfo.awardNum || '0'}}</text>
+            康豆
+          </view>
+        </view>
+        <view class="beans-tip-more" bindtap="showBeansRules" data-awardnum="{{sku.kangBossActivityInfo.awardNum}}" data-rewardtype="{{sku.kangBossActivityInfo.rewardType}}" data-levelname="{{levelName}}">详情
+        </view>
+      </view> -->
+
+      <block wx:if="{{!isReal && product.virtualData.chargeOffType===5&&storeList.length}}">
+        <!-- 线下服务-门店 -->
+        <view class="offline-stores" slot="offline-stores" catch:tap="viewStores">
+          查看支持门店
+          <!-- 其他{{storeList.length||0}}家支持门店 -->
+        </view>
+      </block>
+
+      <!-- 规格 -->
+      <authorize
+            slot="sku"
+            ext-class="btn-select"
+            optimization
+            bind:logged="showSku"
+            bind:success="onLogged"
+            bind:fail="authFail"
+            data-submit="0"
+            data-frombtn="{{false}}"
+            data-stocknums="{{product.disabled&&product.isShelf === 1}}"
+            wx:if="{{product.isShelf !== 0}}"
+        >选择</authorize>
+
+      <!-- 地址 -->
+      <view class="type-box address" slot="address">
+        <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-address.png" />
+        <text class="title">送至</text>
+        <authorize ext-class="btn-select" optimization bind:logged="addressSelect" bind:success="onLogged" bind:fail="authFail" data-submit="0" data-frombtn="{{false}}">{{address ? '编辑': '新增'}}
+        </authorize>
+        <view class="name">{{address || '请选择配送地址'}}</view>
+      </view>
+    </block>
+
+  </product>
+
+  <!-- 底部操作行 -->
+  <view class="btn-box btn-box-bottom">
+    <authorize ext-class="btn-chat" optimization bind:success="onLogged" bind:fail="authFail">
+      <button wx:if="{{isLogged}}"  open-type="contact" class="btn-contact" session-from="{{sessionFrom}}" bindtap="onService">
+        <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-chat.png" />
+        客服
+      </button>
+      <button class="btn-contact" wx:else>
+        <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-chat.png" />
+        客服
+      </button>
+    </authorize>
+
+<!--    分佣-是否展示推广信息-->
+    <block wx:if="{{commission.isShared}}">
+      <authorize ext-class="btn-chat" disabled="{{product.disabled}}" optimization bind:logged="showSku"
+        bind:success="onLogged" bind:fail="authFail" data-submit="2" data-frombtn="{{true}}" wx:if="{{isReal}}">
+        <view class="cart-box">
+          <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-cart{{cartNum > 0 ? '' : '-add'}}.png" />
+          <block wx:if="{{cartNum > 0}}">
+            <view class="cart-dot"></view>
+            <view class="cart-num">{{cartNum > 99 ? '99+' : cartNum}}</view>
+          </block>
+        </view>
+        加购物车
+      </authorize>
+      <view class="disabled-tip" wx:if="{{product.disabled&&product.isShelf === 1}}">
+        <text>商品库存不足，去看看别的吧～</text>
+        <view bindtap="tapNavBack">去逛逛</view>
+      </view>
+      <view class="btns" style="{{isReal ? '' : 'width: 580rpx'}}">
+<!--        商品下架按钮展示-->
+        <block wx:if="{{product.isShelf === 0}}">
+          <view style="width: 480rpx;">
+            <authorize class="btn" optimization bind:logged="tapNavBack" bind:success="onLogged"
+                       bind:fail="authFail" type="primary">商品已下架，看看别的吧
+            </authorize>
+          </view>
+        </block>
+        <block wx:else>
+          <authorize class="btn" disabled="{{product.disabled}}" optimization bind:logged="showSku" bind:success="onLogged" bind:fail="authFail"
+                     data-submit="1" data-frombtn="{{true}}" type="primary" plain style="{{isReal ? 'width: 160rpx' : 'width: 280rpx'}}">
+            购买
+          </authorize>
+          <authorize class="btn" disabled="{{product.disabled}}" optimization bind:logged="toSharePage"
+                     bind:success="onLogged" bind:fail="authFail" type="primary" style="width: 280rpx">
+            立即推广
+          </authorize>
+        </block>
+      </view>
+    </block>
+
+    <block wx:else>
+      <authorize ext-class="btn-chat" optimization bind:logged="toCartList" bind:success="onLogged" bind:fail="authFail" wx:if="{{isReal}}">
+        <view class="cart-box">
+          <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-cart.png" />
+          <block wx:if="{{cartNum > 0}}">
+            <view class="cart-dot"></view>
+            <view class="cart-num">{{cartNum > 99 ? '99+' : cartNum}}</view>
+          </block>
+        </view>
+        购物车
+      </authorize>
+      <view class="disabled-tip" wx:if="{{product.disabled&&product.isShelf === 1}}">
+        <text>商品库存不足，去看看别的吧～</text>
+        <view bindtap="tapNavBack">去逛逛</view>
+      </view>
+      <!--        商品下架按钮展示-->
+      <block wx:if="{{product.isShelf === 0}}">
+        <view style="{{isReal?'width: 480rpx':'width: 540rpx'}}">
+          <authorize optimization bind:logged="tapNavBack" bind:success="onLogged"
+                     bind:fail="authFail" type="primary" >商品已下架，看看别的吧
+          </authorize>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="btns" style="{{isReal ? '' : 'width: 580rpx'}}">
+          <authorize class="btn" disabled="{{product.disabled}}" optimization bind:logged="showSku" bind:success="onLogged"
+                     bind:fail="authFail" data-submit="2" data-frombtn="{{true}}" type="primary" plain wx:if="{{isReal}}">
+            加入购物车
+          </authorize>
+          <authorize class="btn" disabled="{{product.disabled}}" optimization bind:logged="showSku" bind:success="onLogged"
+                     bind:fail="authFail" data-submit="1" data-frombtn="{{true}}" type="primary" style="{{isReal ? '' : 'width: 100%'}}">
+            {{sku.couponGoodsDetailDto.isReceiveCoupon&&isLogged?'领券购买':'立即购买'}}
+          </authorize>
+        </view>
+      </block>
+    </block>
+
+    <!-- 悬浮按钮 -->
+    <view class="fixed-box" style="bottom: {{product.disabled ? '280rpx' : '220rpx'}}">
+      <view class="fixed-box-btn {{showTop ? 'show-animation' : 'hide-animation'}}" bindtap="goTop">
+        <image src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-top.png?v=20220905" mode="aspectFit" />
+        顶部
+      </view>
+      <authorize ext-class="fixed-box-btn" optimization bind:logged="onFavorite" bind:success="loginAfterFavorite" bind:fail="authFail">
+        <image class="{{isFavorite ? 'favorite-add-animation' : 'favorite-off-animation'}}" animation="{{favoriteAnimation}}" src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-favorite-{{isFavorite}}.png" mode="aspectFit" />
+        关注
+      </authorize>
+    </view>
+
+  </view>
+</block>
+
+<!-- 收藏组件 -->
+<favorite id="favoriteBtn" bind:success="favoriteSuccess" />
+
+<!-- 随心配选择 -->
+<product-suit id="suitComponents" bind:success="selectProductSuccess" bind:showDetails="showProduct" />
+
+<!-- 商品详情弹层 -->
+<product-dialog id="detailComponents" />
+
+<!-- 替换商品 -->
+<product-replace id="replaceComponents" bind:success="replaceProductSuccess" spuList="{{product.subSkuDtoList}}" />
+
+<!-- 规格选择 -->
+<product-sku bind:submit="selectTypeSubmit" bind:select="selectType" bind:close="closeToShowCoupon" id="skuComponents" skuList="{{skuList}}" skuId="{{sku.id}}" commission="{{commission}}" />
+
+<!-- 康豆规则弹层 -->
+<beans-rules id="beansComponents" />
+
+<!-- 优惠券列表半屏弹层 -->
+<product-coupon id="listCouponComp" bind:tapCurCoupon="receiveListCoupon" />
+
+<!-- 领取优惠券弹层 -->
+<coupon-receive isLogged="{{isLogged}}" id="dialogCouponComp" bind:receiveCurCoupon="receiveDialogCoupon" />
+
+<global-back isScrolling="{{isScrolling}}" isShowScan="{{true}}" />
+
+<mp-dialog class="dialog-deleted" ext-class="order-cancel-dialog dialog-deleted" show="{{deleteGoodsDialogVis}}" mask-closable="{{false}}"
+           bindbuttontap="tapNavBack" buttons="{{actionButtons}}" title="温馨提示">
+  <text>商品已删除，去看看别的吧～</text>
+</mp-dialog>
+
+

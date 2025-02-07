@@ -1,0 +1,16 @@
+<navigation-bar title="中医体质测评" background="#fff" />
+
+<view class="card">
+  <view class="animated-block"></view>
+</view>
+
+
+<view class="weui-flex">
+  <view class="weui-flex__item">
+    <button class="placeholder" bind:tap="handlePrve">上一提</button>
+  </view>
+  <view class="weui-flex__item">
+    <button class="placeholder" bind:tap="handleSubmit" wx:if="{{currentQsItem.questionId === mustQuestions[mustQuestions.length - 1].questionId}}">完成提交</button>
+    <button class="placeholder" bind:tap="handleNext" wx:else>下一题</button>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<!--pages/recommend/special/index.wxml-->
+<import src="./../../../components/toast/index.wxml"/>
+<wxs src="./../../../utils/filter.wxs" module="filter" />
+
+<navigation-bar ext-class="navigation" title="{{!topicInfo.state ? topicInfo.topicName : ''}}" color="{{!topicInfo.state ? '#000' : '#FFF'}}" bindback="goBack"/>
+<view class="recommend-special" wx:if="{{topicInfo.state}}">
+  <scroll-view class="recommend-special-scroll" scroll-y bindscrolltolower="scrolltolower">
+    <!-- 头图+标题  -->
+    <view class="recommend-special_headimg">
+      <image src="{{topicInfo.coverImg}}" mode="widthFix"/>
+    </view>
+
+    <!-- 内容列表  -->
+    <block wx:for="{{topicData.list}}" wx:key="recommendId" wx:for-index="index">
+      <special-card info="{{item}}" bind:go="goDetail">
+        <view-volume value="{{item.pv}}"></view-volume>
+        <operation
+          icon="https://static.tojoyshop.com/images/wxapp-boss/recommend/fabulous-{{item.isLike ? 'active' : 'grey'}}.png"
+          num="{{item.likeCount}}"
+          data-item="{{item}}"
+          bind:operation="onPraise"
+        />
+      </special-card>
+    </block>
+    
+    <!-- 加载更多 -->
+    <view class="recommend-special-more" wx:if="{{topicData.currPage >= topicData.totalPage}}">没有更多了</view>
+  </scroll-view>
+</view>
+<empty wx:else imgUrl="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/empty-recommend.png" empotyDesc="糟糕，内容不见了" buttonTxt="返回" bindbuttonTap="handBack"/>
+<!-- wetoast -->
+<template is="toast" data="{{...tj_toast}}" />
+
+<login-promise id="authorize" removeSlot/>

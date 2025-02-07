@@ -1,0 +1,27 @@
+<import src="../../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+<navigation-bar title="申请退款" background="#fff"/>
+
+<view class="container-box" wx:if="{{!showEmpty}}">
+    <view class="interval-block"/>
+    <refund-reason
+      bind:checkedreason="checkedReason"
+      orderPoint="{{info.orderPoint}}"
+      totalRefundFormat="{{totalRefundFormat}}"
+      amoutRefundFormat="{{amoutRefundFormat}}"
+      beanRefundFormat="{{beanRefundFormat}}"
+      PostagePriceFormat="{{PostagePriceFormat}}"
+    />
+    <goods-list storeInfo="{{storeInfo}}" goodsList="{{afterGoodsList}}"/>
+    <describe bind:bindinputdes="inputDes"/>
+    <view class="btn-box-bottom">
+        <button type="primary" plain="true" open-type="contact" session-from="{{sessionFrom}}" bindtap="onService">
+            联系客服
+        </button>
+        <button type="primary" catchtap="submitHandler">提交申请</button>
+    </view>
+</view>
+<empty ext-class="empty-box" wx:else
+       imgUrl="https://static.tojoyshop.com/images/wxapp-boss/refund/network-error.png?v=202205261722"
+       empotyDesc="{{errMsg||'网络错误'}}" buttonTxt="重新加载" bindbuttonTap="reloadHandler"/>
+<global-back/>

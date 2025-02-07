@@ -1,0 +1,40 @@
+.logistics {
+  padding: 55rpx 0;
+  margin: 0 30rpx;
+  border-bottom: 2rpx solid #E4E4E4;
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15rpx 0;
+    font-size: 30rpx;
+    color: #0D0E15;
+
+    &-cnt {
+      display: flex;
+
+      &-code {
+        max-width: 390rpx;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+      }
+
+      &-copy {
+        font-size: 26rpx;
+        font-weight: bold;
+        padding: 3rpx 0rpx;
+        border: 2rpx solid #DBDCDB;
+        margin-left: 16rpx;
+        width: 84rpx;
+        text-align: center;
+        box-sizing: border-box;
+      }
+    }
+
+  }
+}
+
+
+

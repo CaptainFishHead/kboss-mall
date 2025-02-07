@@ -1,0 +1,90 @@
+
+.item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 146rpx;
+  margin-bottom: 20rpx;
+  &-line {
+    height: 100%;
+    width: 4rpx;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    &-dashed {
+      width: 2rpx;
+      height: 94rpx;
+      opacity: 0.23;
+      border-left: 2rpx dashed #B58209;
+    }
+  }
+  &-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200rpx;
+    height: 100%;
+    background-color: #ffffff;
+
+    &-box{
+      width: 100%;
+      border-right: 1rpx dotted #B58209;
+
+      &-price{
+        font-size: 50rpx;
+        color: #4C4024;
+        text{
+          font-size: 28rpx;
+        }
+      }
+
+      &-limit{
+        font-size: 20rpx;
+        color: #666666;
+
+        text {
+          display: inline-block;
+        }
+      }
+    }
+
+
+  }
+
+  &-cont {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: #ffffff;
+    padding-left: 10rpx;
+
+    &-name{
+      font-size: 28rpx;
+      font-weight: bold;
+      color: #333333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 280rpx;
+      text-align: left;
+    }
+
+    &-date{
+      font-size: 22rpx;
+      color: #666666;
+      margin-top: 10rpx;
+      text-align: left;
+    }
+  }
+
+  &-right{
+    height: 100%;
+    width: 80rpx;
+  }
+
+}

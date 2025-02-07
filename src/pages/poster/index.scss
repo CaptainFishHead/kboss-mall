@@ -1,0 +1,59 @@
+/* pages/poster/index.wxss */
+@import "./../../components/toast/index.wxss";
+
+.poster {
+  min-height: 100vh;
+  position: relative;
+  padding-top: 180rpx;
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #f6f6f6;
+}
+
+.poster-img {
+  display: block;
+  margin: 0 auto 70rpx;
+  width: 600rpx;
+  height: 1000rpx;
+  border-radius: 10rpx;
+}
+.poster-footer {
+  display: flex;
+  flex-direction: column;
+  // padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+}
+
+.poster-footer button:not([size=mini]) {
+  width: 300rpx;
+  height: 94rpx;
+  line-height: 94rpx;
+  padding: 0;
+  margin: 0 auto 15rpx;
+  font-size: 30rpx;
+  border-radius: 4rpx;
+  color: #333;
+  border-color: #000;
+  background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+  font-weight: 500;
+}
+
+.poster-footer button:not([size=mini]).button-hover {
+  color: #ddd;
+  border-color: #111;
+  background: #333;
+}
+
+.poster-footer button[type=default] {
+  color: #333;
+  background: transparent;
+  font-weight: 500;
+}
+
+.poster-footer button[type=default].button-hover {
+  color: #333;
+  border-color: #666;
+  background: rgba(0, 0, 0, .05);
+}

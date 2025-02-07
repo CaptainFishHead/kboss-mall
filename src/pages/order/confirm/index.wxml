@@ -1,0 +1,74 @@
+<import src="../../../components/toast/index.wxml"/>
+<navigation-bar title="{{!showBuyDialog?'订单确认':''}}" back="{{true}}" id="navbar" background='#fff'/>
+
+<view wx:if="{{!showBuyDialog && !loading}}" class="order-flex" style="--barHeight: {{barHeight}}px">
+  <!-- 商品 -->
+  <view class="order-address" wx:if="{{!doctorId}}">
+    <address addressInfo="{{addressInfo}}" bind:chooseAddress="onEditAddress" wx:if="{{isReal}}"></address>
+  </view>
+  <view class="order-flex__item">
+    <!-- 温暖医生 -->
+    <warm-doctor-info
+     wx:if="{{doctorId}}"
+     doctorInfo="{{doctorInfo}}"
+     goodsList="{{storeList}}" 
+     reducibleDateInfo="{{reducibleDateParams}}"
+     bind:openDatePopup="openDatePopup"
+     bind:oneditmessage="onEditMessage"
+    />
+    <goods-list goodsList="{{storeList}}" isReal="{{isReal}}" bind:oneditmessage="onEditMessage" showMsg="{{showMsg}}" wx:else/>
+    <price-info
+      bind:checkedcoupon="checkedCoupon"
+      bind:handlededuction="handleDeduction"
+      bind:showCouponDialog="toggleCouponDialog"
+      bind:closeCouponDialog="toggleCouponDialog"
+      orderPayInfo="{{orderPayInfo}}"
+      orderCouponInfo="{{orderCouponInfo}}"
+      orderBeanInfo="{{orderBeanInfo}}"
+      productList="{{productList}}"
+      systemInfo="{{systemInfo}}"
+      type="{{type}}"
+    />
+  </view>
+  <pay-bar
+    ext-class="confirm-footer"
+    orderPayInfo="{{orderPayInfo}}"
+    isNotEnough="{{isNotEnough}}"
+    type="{{type}}"
+    bind:payhandle="onPay"
+  />
+</view>
+
+<!-- 不在配送范围内展示页面 -->
+<empty wx:if="{{showBuyDialog && !loading}}" ext-class="empty" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/empty-confrim.png">
+  <view slot="desc" class="empty-desc">商品购买失败</view>
+  <view slot="content">
+      <block wx:if="{{ errorCase===errorCodeMaps.errorAddress}}">
+          <view class="empty-cont">当前收货地址不支持配送<view>请更换地址后重试</view></view>
+          <button type="primary" class="empty-btn" bind:tap="onEditAddress">更换地址</button>
+      </block>
+      <block wx:if="{{ errorCase===errorCodeMaps.errorStockNums}}">
+          <view class="empty-cont goods-cont">很抱歉，您购买的商品：<text style="color:#B58209;">{{errorGoodsName}}</text> 库存不足，请修改后重新下单</view>
+          <button type="primary" class="empty-btn back-btn" bind:tap="onBackCart">返回购物({{countDown}})</button>
+      </block>
+  </view>
+</empty>
+
+<!-- 康豆余额弹层 -->
+<bean-balance visibleBalance="{{orderBeanInfo.visibleBalance}}" bind:tapclosedialog="tapCloseDialog"/>
+
+<!-- 温暖医生可预约段 -->
+<mp-half-screen-dialog extClass="dialog-details health-label-dialog" title="可约时段" show="{{timeVisible}}" bindclose="closeTimeDialog">
+  <doctor-appttime slot="desc" time-class="time-slots" id="appttime" bindchildEvent="handleChildEvent"/>
+  <view class="btns" slot="footer">
+    <block wx:if="{{isReducibleTime}}">
+      <button type="primary" plain catch:tap="closeTimeDialog">取消</button>
+      <button type="primary" catch:tap="onConfirmTime">确定</button>
+    </block>
+    <button type="primary" class="know-btn" catch:tap="closeTimeDialog" wx:else>我知道了</button>
+  </view>
+</mp-half-screen-dialog>
+
+<template is="toast" data="{{...tj_toast}}"/>
+<global-back/>
+

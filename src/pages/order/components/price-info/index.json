@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-checkbox-group": "weui-miniprogram/checkbox-group/checkbox-group",
+    "order-coupon": "../coupon/index"
+  }
+}

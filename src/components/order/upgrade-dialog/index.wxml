@@ -1,0 +1,17 @@
+<!-- 会员升级 弹层 -->
+<mp-dialog ext-class="dialog-common dialog-noheader dialog-overflow-visible dialog" class="dialog" mask-closable="{{false}}" show="{{show}}" buttons="{{buttons}}" bindbuttontap="tapDialogButton" catchtouchmove="touchMove">
+  <view class="dialog-box">
+    <view class="dialog-box-title">
+      <image mode="widthFix" src="{{memberInfo.url}}" />
+    </view>
+    <view class="dialog-box-text">
+      <view>恭喜您，您升级为 <text>{{memberInfo.name}}</text></view>
+      <view>将享受更高等级的会员权益</view>
+    </view>
+  </view>
+  <view class="dialog-firework">
+    <block wx:for="{{8}}" wx:key="index">
+      <image mode="widthFix" src="https://static.tojoyshop.com/images/wxapp-boss/mine/icon-firework.png" />
+    </block>
+  </view>
+</mp-dialog>

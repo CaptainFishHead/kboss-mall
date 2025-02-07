@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "bedienfeld": "/components/recommend/bedienfeld/index",
+    "empty": "/components/empty/index",
+    "video-content": "/components/recommend/video-content/index",
+    "login": "/components/login/index"
+  }
+}

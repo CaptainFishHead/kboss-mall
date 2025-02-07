@@ -1,0 +1,79 @@
+<!--pages/obh/promotion/lottery/index.wxml-->
+
+<view class="background" style="height: {{pageHeight}}px;">
+  <image src="{{item}}" mode="widthFix" wx:for="{{topImgs}}" wx:key="index"/>
+  <view style="background: linear-gradient(to bottom, {{mainConfig.bottomBackgroundStartColor}}, {{mainConfig.bottomBackgroundEndColor}}); flex: 1;"></view>
+</view>
+<view class="root">
+  <view style="height: 70rpx;"></view>
+  <view class="icons-container" style="background: url('{{lotteryDetail.exposureImg}}'); background-size: 100% 100%; background-repeat: no-repeat; opacity: {{(lotteryDetail && lotteryDetail.exposureStatus == 1) ? 1 : 0}};">
+    <image src="{{lotteryDetail.hotelLogo || 'https://static.tojoyshop.com/images/wxapp-obh/buy/ic-default-hotel-logo.png'}}" class="icon" mode="aspectFit"/>
+    <image src="https://static.tojoyshop.com/images/obh/lottery/ic-oo-hotel-logo.png" class="icon"  mode="aspectFit"/>
+  </view>
+
+  <image src="{{lotteryDetail.raffleTitleImg}}" class="lottery-title" mode="widthFix" />
+
+  <view style="display: flex; align-items: center; justify-content: center;">
+
+    <image src="https://static.tojoyshop.com/images/obh/lottery/new-lottery/bg-lottery-circle.png" class="lottery-circle1" wx:if="{{showAnimCircle}}"/>
+    <image src="https://static.tojoyshop.com/images/obh/lottery/new-lottery/bg-lottery-circle.png" class="lottery-circle2" wx:if="{{showAnimCircle}}"/>
+
+    <lottery data="{{lotteryDetail.awardsVoList}}" openId="{{openId}}" prize-id="{{prizeId}}" count="{{surplusRaffleNum}}" mainConfig="{{mainConfig}}" enable="{{lotteryEnable}}" typeStr="{{type}}" bind:showAnimCircle="onShowAnimCircle"
+      config="{{config}}" bindLuckDraw="onLuckDrawHandle" bind:queryLotteryTimes="queryLotteryTimes" bindNotEnough="onNotEnoughHandle" bindLuckDrawFinish="onLuckDrawFinishHandle" bindLoaded="onLuckLoaded"></lottery>
+  </view>
+
+  <view class="times-container" style="background: url('{{mainConfig.lotteryAreaBackgroundImg}}'); background-size: 100% 100%; background-repeat: no-repeat; color: {{mainConfig.lotteryOpportunityColor}};">您还有<text style="color: {{mainConfig.lotteryNumberColor}};">{{surplusRaffleNum}}</text>次抽奖机会</view>
+
+  <authorize ext-class="share-container" optimization bind:logged="onShareClick" bind:success="onShareClick1" pageSource="氧吧转盘" wx:if="{{!type}}">
+    <view class="share-icon" style="background: url('{{mainConfig.shareButtonImg}}'); background-size: 100% 100%; background-repeat: no-repeat;"></view>
+  </authorize>
+  <view class="share-icon" wx:else style="background: url('{{mainConfig.shareButtonImg}}'); background-size: 100% 100%; background-repeat: no-repeat;"></view>
+
+  <view wx:if="{{lotteryDetail.winningListStatus == 1}}">
+    <winningList activity="{{activity}}" backgroundImg="{{lotteryDetail.winningListImg}}" txtColor="{{lotteryDetail.winningListColour}}"/>
+  </view>
+
+  <view class="notice-container">
+    <image src="{{item}}" wx:for="{{raffleIllustrates}}" mode="widthFix" wx:key="index"/>
+  </view>
+
+  <button class="close-container-btn" wx:if="{{type && type == 'preview'}}" open-type="launchApp" app-parameter="wechat" binderror="launchAppError" bindtap="backAppHandle">关闭抽奖活动</button>
+  <view class="close-container" catch:tap="backHandler" data-type="{{1}}" wx:else>关闭抽奖活动</view>
+
+
+  <view wx:if="{{type}}" class="stop-preview-fake"></view>
+  <view wx:if="{{type}}" class="stop-preview">
+    <button class="stop-preview-btn" open-type="launchApp" app-parameter="wechat" binderror="launchAppError" bindtap="backAppHandle">退出预览</button>
+  </view>
+
+  <authorize ext-class="gift-container" optimization bind:logged="gotoGift" bind:success="gotoGift1" pageSource="氧吧转盘" wx:if="{{!type}}">
+    <view class="gift-btn" style="background: url('{{lotteryDetail.prizeEnterImg}}'); background-repeat: no-repeat; background-size: 100% 100%;"></view>
+  </authorize>
+  <view wx:else class="gift-container">
+    <view class="gift-btn" style="background: url('{{lotteryDetail.prizeEnterImg}}'); background-repeat: no-repeat; background-size: 100% 100%;"></view>
+  </view>
+
+
+  <sharePopup id="sharePopup" bind:createPoster="onCreatePoster" bind:closeShare="onCloseShare" bind:shareFriend="onShareFriend" bind:savePoster="onSavePoster"/>
+</view>
+
+<view class="obh-loading-masker" wx:if="{{!isLoaded}}" catch:touchmove="touchMove">
+  <view class="loading-masker-cnt">
+    <view class="loading-masker-circle"></view>
+    <view class="loading-masker-text">资源加载中...</view>
+  </view>
+</view>
+
+<lotteryEmpty catch:touchmove="touchMove" wx:if="{{lotteryEmpty}}"/>
+
+<winningPopup bind:onPopupShare="onShareClick" catch:touchmove="touchMove" lotteryResult="{{lotteryResult}}" wx:if="{{lotteryResultShow && lotteryResult.awardsPrizeType != 1}}" bind:closePopup="closeLotteryResultPopup"  noWinningMsg="{{promptMsg}}" bind:gotoGift="gotoGift" lotteryCount="{{surplusRaffleNum}}" shareTimes="{{shareTimes}}"/>
+<winningPopupv1 wx:if="{{lotteryResultShow && lotteryResult.awardsPrizeType == 1}}" bind:onPopupShare="onShareClick" catch:touchmove="touchMove" lotteryResult="{{lotteryResult}}" promptMsg="{{promptMsg}}" bind:closePopup="closeLotteryResultPopup" bind:gotoGift="gotoGift" lotteryCount="{{surplusRaffleNum}}" shareTimes="{{shareTimes}}"/>
+
+<poster exposureStatus="{{lotteryDetail.exposureStatus}}" wx:if="{{showPoster}}" posterData="{{posterData}}" id="posterPopup" bind:closeShare="onCloseShare" bind:showPoster="onShowPoster"/>
+
+
+<myTopBar showHeight="{{false}}" wx:if="{{!type}}" fixed="{{true}}" titleText="" iconHeight="24" iconWidth="24" bind:back="backHandler" style="z-index: 10001;" background="rgba(0,0,0,0)" backIcon="{{'https://static.tojoyshop.com/images/wxapp-obh/common/icon-back-black.png'}}" />
+
+<privacy id="privacy" />
+
+<view class="privact-mask" wx:if="{{showPrivacy}}" catch:tap="showPrivacyFn"></view>

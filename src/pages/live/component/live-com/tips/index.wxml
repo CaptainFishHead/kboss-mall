@@ -1,0 +1,34 @@
+<!-- 热卖提示 -->
+<view class="hot" wx:if="{{hotTip}}" bindtap="{{hotClickHandle}}">
+  <view class="hot-number">x{{hotTip.productNum > 9999 ? 9999 : hotTip.productNum}}</view>
+  <view class="hot-info">
+    <!-- <view class="hot-info-avtar">
+      <view class="hot-info-avtar-box box1">
+        <image class="avtar avtar1" src="https://static.tojoyshop.com/images/wxapp-boss/live/wechat.png"/>
+        <image class="avtar avtar2" src="https://static.tojoyshop.com/images/wxapp-boss/live/wechat.png"/>
+      </view>
+      <view class="hot-info-avtar-box box2">
+        <image class="avtar avtar1" src="https://static.tojoyshop.com/images/wxapp-boss/live/wechat.png"/>
+        <image class="avtar avtar2" src="https://static.tojoyshop.com/images/wxapp-boss/live/wechat.png"/>
+      </view>
+    </view> -->
+    <view class="hot-info-text">
+      <text class="hot-info-text-number">{{hotTip.productUvPerson}}人抢到了</text>
+      <text class="hot-info-text-name one-line">{{hotTip.name}}</text>
+    </view>
+    <view class="hot-info-arrow">
+      <image class="hot-info-arrow-img" src="https://static.tojoyshop.com/images/wxapp-boss/live/live-tips-arrow.png"/>
+    </view>
+  </view>
+</view>
+<view class="tips {{wrapClass}}" wx:if="{{list.length > 0}}" bindtap="{{clickHandle}}">
+  <view class="tips-circle ">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="tips-circle-item" style="{{item.style}}">
+        <image class="image" wx:if="{{item.type === 'img'}}" src="{{item.url}}"/>
+        <text class="text {{item.id === 1 || item.id === 12 ? 'one-line' : ''}}" wx:if="{{item.type === 'text'}}">{{item.slot ? item.slot : '' }}{{ item.text}}</text>
+        <view class="btn {{item.subClass || '' }}" wx:if="{{item.type === 'btn'}}">{{item.text}}</view>
+      </view>
+    </block>
+  </view>
+</view>

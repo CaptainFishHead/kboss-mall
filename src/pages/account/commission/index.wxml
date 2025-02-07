@@ -1,0 +1,61 @@
+<import src="../../../components/toast/index.wxml"/>
+<navigation-bar ext-class="navigation" title="我的收益" background="#FFFFFF" />
+<view class="commission-wrapper">
+    <view class="commission-head">
+        <view class="total">
+            <image src="https://static.tojoyshop.com/images/wxapp-boss/commission/money.png" class="total-pic" />
+            <!-- 分佣说明 -->
+            <explain title="分佣说明">
+                <view slot="btns">
+                    <view class="explain-btn">
+                        分佣说明<text class="explain-icon" />
+                    </view>
+                </view>
+                <view slot="content">
+                    <text>1. 此模块分佣收益仅针对“康老板”业务，与其他业务及项目无关；</text>
+                    <text>2. 此页面所有的收益仅做展示，具体奖励分配方式，以各集团组织架构层级分配的规则文件为准；</text>
+                    <text>3. 此佣金分配最终发放以最终集团文件为准，并根据业绩结算由客户管理中心进行核算。</text>
+                </view>
+            </explain>
+            <text class="total-txt">佣金预估总收益(元)</text>
+            <text class="number">{{profit}}</text>
+        </view>
+        <view class="month">
+            <view class="month-total">本月预估总计：{{monthlyTotal}}元</view>
+            <date-picker bindchange="onChangeDate">
+                <view class="select-container">{{currentDate}}</view>
+            </date-picker>
+        </view>
+    </view>
+    <view class="commission-body">
+        <view wx:if="{{commissionList.length}}">
+            <view class="commission-unit" wx:for="{{commissionList}}" wx:key="index">
+                <view class="commission-info">
+                    <view class="user-info">
+                        <text class="name">{{item.buyerName}}</text>
+                        <text class="mobile">{{item.buyerPhone}}</text>
+                    </view>
+                    <view class="goods-name">{{item.goodName}}</view>
+                    <view class="goods-desc">订单金额：¥{{item.orderTotalPrice}}</view>
+                    <view class="goods-desc">分佣比例：{{item.commissionRate}}%</view>
+                    <view class="goods-desc order-number">
+                        订单编号：{{item.orderNo}}<text class="copy" data-num="{{item.orderNo}}" bindtap="copyOrderNum">复制</text></view>
+                    <view class="goods-desc">{{item.orderStateObj.timeDesc}}：{{item.orderStateObj.time}}</view>
+                </view>
+                <view class="commission-num {{item.orderStateObj.commissionClass}}">
+                    <view class="number">
+                        <image src="https://static.tojoyshop.com/images/wxapp-boss/commission/lock.png" wx:if="{{!item.orderStateObj.unit}}" />
+                        <text wx:else>{{item.orderStateObj.unit}}</text>
+                        <text>{{item.commissionPrice}}</text>
+                    </view>
+                    <view class="state-desc">{{item.orderStateObj.commissionDesc}}</view>
+                </view>
+            </view>
+            <view class="loading" wx:if="{{commissionList.length > 2}}">{{page.index < page.pages ? '加载中...' : '没有更多了'}}</view>
+        </view>
+        <!-- 无数据组件 -->
+        <empty wx:else />
+    </view>
+</view>
+<!-- wetoast -->
+<template is="toast" data="{{...tj_toast}}"/>

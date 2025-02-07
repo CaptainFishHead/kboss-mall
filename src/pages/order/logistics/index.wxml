@@ -1,0 +1,63 @@
+<import src="../../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+
+<navigation-bar title="查看物流" background="#fff"></navigation-bar>
+
+<view class="express-container">
+    <view class="wrap-title">您的订单包含{{logisticsList.length>1?'多':'1'}}个包裹：</view>
+    <scroll-view  type="list" class="scroll-wrap" scroll-x="{{true}}" style="width: 100%;"
+                  scroll-with-animation='true' scroll-into-view="{{prefix}}_{{activedIndex}}">
+        <view wx:for="{{logisticsList}}" wx:key="expressNumber" style="display: inline-block;"
+              id="{{prefix}}_{{index}}">
+            <view class="scroll-wrap-item {{index === activedIndex ? 'actived':''}}"
+            data-index="{{index}}" data-expnum="{{item.expressNumber}}" data-companycode="{{item.expressCompanyCode}}" bind:tap="changeLogistics">
+                <view class="scroll-wrap-item-left">
+                    <view class="bag">包裹{{index+1}}</view>
+                    <view wx:if="{{item.skuList && item.skuList.length}}">共{{item.skuList.length}}件</view>
+                </view>
+                <view class="scroll-wrap-item-right" wx:if="{{item.skuList}}" wx:key="index">
+                    <view class="scroll-wrap-item-right-box" wx:for="{{item.skuList}}" wx:for-item="sku" wx:key="skuId" wx:if="{{index < 3}}">
+                        <image class="scroll-wrap-item-right-box-img" src="{{sku.skuImg}}"/>
+                    </view>
+                    <view wx:if="{{item.skuList.length>3}}" class="scroll-wrap-item-right-mask"
+                          data-skulist="{{item.skuList}}" catch:tap="tapAllSku">查看全部</view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<block wx:for="{{logisticsList}}" wx:key="index">
+  <view class="logistics-head" wx:if="{{activedIndex === index && item.expressNumber}}">
+      <view class="logistics-head-row">物流单号：{{item.expressNumber}}
+          <text class="logistics-head-row-copy" data-expnum="{{item.expressNumber}}" bindtap="bindCopy">复制</text>
+      </view>
+      <view class="">物流公司：{{item.comName}}</view>
+  </view>
+</block>
+
+<block wx:if="{{expressList.length > 0}}">
+    <scroll-view scroll-y class="logistics-box">
+        <view class="logistics-box-group" wx:for="{{expressList}}" wx:key="unique">
+            <view class="logistics-box-group-left">
+                <image src="https://static.tojoyshop.com/images/wxapp-boss/orderTrack/track-1.png"
+                       class="logistics-box-group-left-pic"/>
+                <view class="logistics-box-group-left-dot"/>
+            </view>
+            <view class="logistics-box-group-right">
+                <view class="text">{{item.context}}</view>
+                <view>{{item.time}}</view>
+            </view>
+        </view>
+    </scroll-view>
+</block>
+<block wx:else>
+    <view class="empty">
+        <view class="empty-pic"></view>
+        <view class="empty-t1">抱歉，未查到此运单信息</view>
+        <view class="empty-t2">请到物流官网查询或联系客服</view>
+        <view class="empty-t2">400-101-0505</view>
+    </view>
+</block>
+
+<logistics-goods id="logisticsGoods" />
+<global-back/>

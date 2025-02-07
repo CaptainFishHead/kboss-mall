@@ -1,0 +1,6 @@
+  <view class="view-list">
+    <image class="icon" src="https://static.tojoyshop.com/images/wxapp-boss/live/goods-guide-arrow.png"/>
+  </view>
+  <view class="live-list">
+    <live-item class="live-list-item" wx:for="{{liveList}}" liveInfo="{{item}}"/>
+  </view>

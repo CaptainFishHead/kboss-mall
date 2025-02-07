@@ -1,0 +1,9 @@
+<!--pages/obh/promotion/components/lotteryEmpty/index.wxml-->
+<view class="lottery-empty-container">
+  <view class="img-container">
+    <image src="https://static.tojoyshop.com/images/obh/lottery/bg-lottery-empty.png" class="img-background" mode="widthFix"/>
+    <image src="https://static.tojoyshop.com/images/obh/lottery/ic-lottery-empty.png" class="img-front" mode="widthFix"/>
+  </view>
+  <view class="empty-txt1">活动维护中</view>
+  <view class="empty-txt2">请稍后再试</view>
+</view>

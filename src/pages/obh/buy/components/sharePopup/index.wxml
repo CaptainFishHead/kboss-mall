@@ -1,0 +1,20 @@
+<!-- 规格选择 弹层 -->
+<mp-half-screen-dialog ext-class="share-popup-container screen-dialog__bd_b0" class="share-popup-container" show="{{visible}}">
+  <view slot="desc">
+    <view class="share-title">分享到<image src="https://static.tojoyshop.com/images/obh/lottery/ic-checkin-close.png" class="share-close" mode="widthFix" catch:tap="closeShare"/></view>
+    <view class="share-list">
+      <button open-type="share" class="share-list-item" bindtap="onShareFriend">
+        <image mode="widthFix" src="https://static.tojoyshop.com/images/obh/lottery/ic-share-wechat.png" />
+        <text>分享给好友</text>
+      </button>
+      <button class="share-list-item" bindtap="onCreatePoster" wx:if="{{!showPoster}}">
+        <image mode="widthFix" src="https://static.tojoyshop.com/images/obh/lottery/ic-share-img.png" />
+        <text>生成海报</text>
+      </button>
+      <button class="share-list-item" bindtap="onSavePoster" wx:else>
+        <image mode="widthFix" src="https://static.tojoyshop.com/images/obh/lottery/ic-share-download.png" />
+        <text>保存海报至相册</text>
+      </button>
+    </view>
+  </view>
+</mp-half-screen-dialog>

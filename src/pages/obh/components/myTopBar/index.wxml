@@ -1,0 +1,20 @@
+
+
+<view class="nav{{fixed?' fixed':''}}" style='height: {{status + navHeight}}px'>
+  <view class='status' style='height: {{status}}px;{{containerStyle}}'></view>
+  <view class='navbar' style='height:{{navHeight}}px;{{containerStyle}}'>
+    <view class='back-icon' wx:if="{{backIcon}}" bindtap='back'>
+      <image class='image' src='{{backIcon}}' style='{{iconStyle}}'></image>
+    </view>
+    <view class='home-icon' wx:if="{{homeIcon}}" bindtap='home'>
+      <image class='image' src='{{homeIcon}}' style='{{iconStyle}}'></image>
+    </view>
+    <view class='nav-icon' wx:if="{{titleImg}}" bindtap='titleImage'>
+      <image class='image' src='{{titleImg}}' style='{{iconStyle}}'></image>
+    </view>
+    <view class='nav-title' style='{{titleStyle}}' wx:if="{{titleText && !titleImg}}" bindtap='titleHandler'>
+      <view class="nav-title-text" style='{{textStyle}}'>{{titleText}}</view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{showHeight}}" class="nav-h" style='height: {{status + navHeight}}px'></view>

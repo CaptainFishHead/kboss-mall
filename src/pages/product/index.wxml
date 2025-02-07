@@ -1,0 +1,7 @@
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<wxs src="./../../utils/filter.wxs" module="filter" />
+
+<include src="./../../components/product/page/index.wxml" />

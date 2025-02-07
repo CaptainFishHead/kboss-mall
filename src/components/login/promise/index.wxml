@@ -1,0 +1,8 @@
+<!-- 微信授权手机号登录 -->
+<mp-half-screen-dialog
+  ext-class="authorize"
+  show="{{visible}}"
+  bindclose="hideDialog"
+>
+  <login slot="desc" bind:success="successHandler" bind:fail="failHandler" bind:close="closeHandler" pageSource="{{pageSource}}"/>
+</mp-half-screen-dialog>

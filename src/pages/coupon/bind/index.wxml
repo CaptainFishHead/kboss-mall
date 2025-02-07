@@ -1,0 +1,22 @@
+<navigation-bar ext-class="navigation" background="#FFFFFF" bindback="goBack" />
+
+<view class="container">
+  <view class="title">绑定礼品卡</view>
+  <mp-form id="form" rules="{{rules}}" models="{{form}}">
+    <mp-cells>
+      <mp-cell class="form-item" prop="password" title="电话">
+        <input bindinput="formInputChange" value="{{form.password}}" data-field="password" maxlength="19" placeholder="请输入密码，注意不分大小写" placeholder-class="phcolor" />
+        <view class="form-item-error">{{errorMsg}}</view>
+      </mp-cell>
+    </mp-cells>
+    <view>
+      <t-captcha id="captcha" app-id="{{appId}}" bindverify="handlerVerify" binderror="handlerError" />
+      <button type="primary" bindtap='submitForm'>立即绑定</button>
+    </view>
+  </mp-form>
+</view>
+
+<!-- wetoast -->
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<global-back />

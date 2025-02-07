@@ -1,0 +1,14 @@
+<!-- 自动领取优惠券 弹层 -->
+<mp-dialog ext-class="dialog-receive-coupon dialog-noheader dialog-nofooter dialog-overflow-visible dialog"
+           mask-closable="{{false}}"
+           show="{{show}}" catchtouchmove="touchMove">
+    <view class="dialog-box">
+        <sm-coupon couponItem="{{couponItem}}"/>
+        <button class="dialog-box-btn" type="primary" bindtap="toProductInfo">立即使用</button>
+        <image bindtap="close" class="dialog-box-close"
+               src="https://static.tojoyshop.com/images/wxapp-boss/order/close.png" mode="widthFix"/>
+    </view>
+    <image class="dialog-bg-light" src="https://static.tojoyshop.com/images/wxapp-boss/product/bg-coupon-dialog-light.png" mode="widthFix"/>
+    <image class="dialog-bg-fireworks" src="https://static.tojoyshop.com/images/wxapp-boss/product/bg-coupon-dialog-fireworks.png" mode="widthFix"/>
+    <image class="dialog-bg-star" src="https://static.tojoyshop.com/images/wxapp-boss/product/bg-coupon-dialog-star.png" mode="widthFix"/>
+</mp-dialog>

@@ -1,0 +1,10 @@
+<!--pages/address/delete-dialog/index.wxml-->
+<mp-half-screen-dialog ext-class="dialog" closabled="{{false}}" show="{{visible}}" >
+    <view slot="title" class="title">
+      <text class="wranning">是否确认删除该地址？</text>
+      <image src="https://static.tojoyshop.com/images/wxapp-boss/address/close-icon.png"  class="close-btn" bindtap="onCloseDelDialog" />
+    </view>
+	<view slot="footer" class="content">
+		<button type="primary" class="del-btn" bindtap="onDelAddress">确认删除</button>
+	</view>
+</mp-half-screen-dialog>

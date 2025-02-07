@@ -1,0 +1,46 @@
+<mp-dialog ext-class="dialog-v2" title="温馨提示" show="{{visiblePrivacy}}" catch:tap catchtouchmove="touchMove">
+  <view class="v2_dialog">
+    <view class="v2_dialog-title">温馨提示</view>
+    <view class="v2_dialog-body">
+      <view wx:if="{{quadratic}}">
+        如果不同意<button class="link" bindtap="handleOpenPrivacyContract">{{privacyContractName}}</button>，只能浏览部分内容
+      </view>
+      <block wx:else>
+        <view class="text-black">
+          在您使用“BossHealth康老板小程序”服务之前，请仔细阅读
+          <button
+            class="link" bindtap="handleOpenPrivacyContract"
+          >{{privacyContractName}}
+          </button>
+        </view>
+        <view>如您同意此政策，请点击“同意并继续”开始使用我们的产品和服务。</view>
+      </block>
+    </view>
+    <view class="v2_dialog-footer">
+      <flex justifyContent="space-between">
+        <flex-item shrink="0" basis="260rpx">
+          <button
+            wx:if="{{quadratic}}"
+            type="default"
+            id="disagree-btn"
+            bindtap="handleAgreePrivacyAuthorization">仍不同意
+          </button>
+          <button
+            wx:else
+            type="default"
+            id="disagree-btn"
+            bindtap="handleAgreePrivacyAuthorization">不同意
+          </button>
+        </flex-item>
+        <flex-item shrink="0" basis="260rpx">
+          <button
+            id="agree-btn"
+            type="primary"
+            open-type="agreePrivacyAuthorization"
+            bindagreeprivacyauthorization="handleAgreePrivacyAuthorization">同意并继续
+          </button>
+        </flex-item>
+      </flex>
+    </view>
+  </view>
+</mp-dialog>

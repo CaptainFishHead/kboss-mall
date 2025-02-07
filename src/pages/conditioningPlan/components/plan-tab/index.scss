@@ -1,0 +1,30 @@
+.plan_container{
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  background: #fff;
+  padding: 0 20rpx;
+  box-shadow: 0rpx 2rpx 9rpx 0rpx rgba(37,124,38,0.16);
+  border-radius: 10rpx;
+  .img_ico{
+    width: 45rpx;
+    height: 45rpx;
+    margin-right: 20rpx;
+  }
+  .txt{
+    line-height: 75rpx;
+    font-size: 32rpx;
+    color: #333;
+    white-space: nowrap;
+    font-weight: 400;
+  }
+}
+
+.active{
+  background: linear-gradient(to right, #A2E4DE, #09BDAC);
+  box-shadow: 0rpx 2rpx 9rpx 0rpx rgba(37,124,38,0.16);
+  .txt{
+    color: #fff;
+    font-weight: 600;
+  }
+}

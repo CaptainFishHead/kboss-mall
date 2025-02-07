@@ -1,0 +1,13 @@
+<mp-half-screen-dialog title="使用说明" ext-class="" show="{{ visible }}" bindclose="close" catchtouchmove="touchMove">
+  <view slot="desc" class="body">
+    <view wx:for="{{explainList}}" wx:key="index">{{item}}</view>
+    <view class="footer">
+      <view class="footer-items" wx:for="{{mergedList}}" wx:key="index">
+        <text>·使用期限 {{item.expirationDate}}</text>
+        <text class="footer-sum">{{item.sum}}次</text>
+        <text class="footer-yellow" wx:if="{{item.serviceUseStatus==1}}">即将到期</text>
+      </view>
+    </view>
+  </view>
+    <view slot="desc" class="footer-border" />
+</mp-half-screen-dialog>

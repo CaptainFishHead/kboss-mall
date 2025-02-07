@@ -1,0 +1,598 @@
+@import '../../components//toast/index.wxss';
+
+.nav-bar {
+  .logo {
+    display: block;
+    min-width: 100%;
+    height: 44rpx;
+  }
+}
+
+.archives-box {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background: #f3fffe
+    url(https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/head_bg.png);
+  background-size: 100% 760rpx;
+  background-repeat: no-repeat;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+
+  .archives-title-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20rpx 24rpx 40rpx;
+    color: #007469;
+    box-sizing: border-box;
+
+    .title {
+      font-weight: 600;
+      font-size: 56rpx;
+      line-height: 56rpx;
+      margin-bottom: 15rpx;
+    }
+
+    .dec {
+      font-weight: 400;
+      font-size: 30rpx;
+      line-height: 30rpx;
+    }
+  }
+
+  .base-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 24rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    box-sizing: border-box;
+
+    .person-info {
+      display: flex;
+      align-items: center;
+      padding-bottom: 24rpx;
+      box-sizing: border-box;
+
+      .head-img {
+        width: 121rpx;
+        height: 121rpx;
+        border-radius: 50%;
+        margin-right: 23rpx;
+        background: #c5efec;
+      }
+
+      .right {
+        display: flex;
+        flex-direction: column;
+        font-weight: 400;
+        font-size: 30rpx;
+        color: #313131;
+        line-height: 30rpx;
+
+        .person-name {
+          font-weight: 600;
+          font-size: 36rpx;
+          color: #313131;
+          line-height: 36rpx;
+          margin-bottom: 24rpx;
+        }
+
+        .sex {
+          position: relative;
+          margin-right: 40rpx;
+        }
+
+        .sex::after {
+          display: block;
+          content: '';
+          width: 2rpx;
+          height: 24rpx;
+          background-color: #313131;
+          position: absolute;
+          top: 6rpx;
+          right: -20rpx;
+        }
+      }
+    }
+
+    .bottom-box {
+      display: flex;
+      font-weight: 600;
+      font-size: 32rpx;
+      color: #404040;
+      line-height: 32rpx;
+
+      .navigator {
+        flex: 1;
+        background: #f2f9f9;
+        border-radius: 4rpx;
+        padding: 24rpx 25rpx 26rpx 25rpx;
+
+        .bim-box {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 20rpx;
+          font-weight: 600;
+          font-size: 30rpx;
+          color: #404040;
+          line-height: 32rpx;
+
+          .num {
+            color: #07a495;
+            font-size: 34rpx;
+          }
+
+          .no_bmi {
+            color: #666;
+          }
+
+          .status {
+            background: #bdf0e8;
+            border-radius: 4rpx;
+            font-weight: 400;
+            font-size: 26rpx;
+            color: #007469;
+            line-height: 26rpx;
+            padding: 7rpx 19rpx;
+          }
+        }
+
+        .history {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+
+          .supply {
+            position: relative;
+            font-weight: 400;
+            font-size: 26rpx;
+            color: #117b77;
+            line-height: 26rpx;
+            margin-right: 10rpx;
+          }
+
+          .supply::after {
+            width: 10rpx;
+            height: 10rpx;
+            border-top: 2rpx solid;
+            border-right: 2rpx solid;
+            border-color: #333;
+            content: '';
+            position: absolute;
+            right: -16rpx;
+            top: 8rpx;
+            transform: rotate(45deg);
+          }
+        }
+
+        .info {
+          display: block;
+          font-weight: 400;
+          font-size: 28rpx;
+          color: #666666;
+          line-height: 28rpx;
+          margin-top: 24rpx;
+        }
+      }
+
+      .navigator:first-child {
+        margin-right: 16rpx;
+      }
+    }
+  }
+
+  .sign-box {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    background-image: url('https://static.tojoyshop.com/images/wxapp-boss/healthInfo/archives/icon-heart.png?v=3.0.0'), linear-gradient(180deg, #b7f1eb 0%, #c5efec 25%, #fbffff 100%);
+    background-size: 274rpx 282rpx, cover;
+    background-position: top right;
+    background-repeat: no-repeat;
+    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(9, 189, 172, 0.16);
+    border-radius: 10rpx;
+    padding: 40rpx 24rpx 30rpx;
+    margin-top: 24rpx;
+    box-sizing: border-box;
+    justify-content: center;
+
+    .sign-core {
+      font-weight: 600;
+      font-size: 36rpx;
+      color: #333333;
+      line-height: 36rpx;
+    }
+
+    .quota {
+      font-weight: 400;
+      font-size: 28rpx;
+      color: #666666;
+      line-height: 28rpx;
+      margin: 20rpx 0 40rpx 0;
+    }
+
+    .sign-content {
+      width: 80%;
+      margin-left: 10%;
+      height: 456rpx;
+    }
+
+    .robot {
+      position: relative;
+
+      &-bg {
+        position: absolute;
+        z-index: 20;
+        top: -16rpx;
+        width: 110rpx;
+        height: 110rpx;
+        background: linear-gradient(#dafffc 16rpx, transparent 100%);
+        border-radius: 50%;
+        padding: 0 40rpx;
+      }
+
+      &-cont {
+        position: relative;
+        z-index: 21;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-bottom: 40rpx;
+        background: linear-gradient(#dafffc, #ffffff);
+        border-radius: 8rpx;
+        margin-top: -2rpx;
+      }
+
+      .title-box {
+        position: relative;
+        z-index: 22;
+        display: flex;
+        font-weight: 600;
+        font-size: 34rpx;
+        line-height: 130rpx;
+        color: #005a4e;
+        width: 100%;
+        height: 150rpx;
+        box-sizing: border-box;
+
+        .ai-header-box {
+          width: 110rpx;
+          height: 110rpx;
+          margin: -16rpx 0rpx 0 0rpx;
+          padding: 0 40rpx;
+
+          .ai-header {
+            width: 100%;
+            max-height: 100%;
+            padding-top: 10rpx;
+          }
+        }
+
+        .title-term {
+          color: #FF5700;
+        }
+      }
+      .loading-view {
+        padding-left: 26rpx;
+        box-sizing: border-box;
+      }
+      .content {
+        font-weight: 400;
+        font-size: 30rpx;
+        color: #333333;
+        line-height: 50rpx;
+        margin: 0 24rpx 30rpx 30rpx;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 7;
+      }
+
+      .term-more {
+        width: fit-content;
+        font-weight: 400;
+        font-size: 28rpx;
+        color: #666666;
+        line-height: 28rpx;
+        position: relative;
+        margin: 0 auto;
+      }
+
+      .term-more::after {
+        width: 10rpx;
+        height: 10rpx;
+        border-top: 2rpx solid;
+        border-right: 2rpx solid;
+        border-color: #333;
+        content: '';
+        position: absolute;
+        right: -16rpx;
+        top: 0rpx;
+        bottom: 0rpx;
+        margin: auto;
+        transform: rotate(45deg);
+      }
+    }
+
+    .conditioning {
+      padding-bottom: 20rpx;
+
+      &-title {
+        font-weight: 600;
+        font-size: 34rpx;
+        color: #333333;
+        line-height: 34rpx;
+        padding: 50rpx 0 20rpx 0;
+      }
+
+      scroll-view {
+        border-radius: 10rpx;
+        overflow: hidden;
+      }
+    }
+
+    .plan-box {
+      display: flex;
+      width: fit-content;
+    }
+
+    .plan-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-right: 24rpx;
+
+      .banner {
+        width: 558rpx;
+        max-height: 230rpx;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        width: 100%;
+        padding: 0 60rpx;
+        box-sizing: border-box;
+      }
+
+      .text_1 {
+        font-weight: 600;
+        font-size: 34rpx;
+        line-height: 34rpx;
+        color: #333333;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+      }
+
+      .text_2 {
+        color: #333;
+        font-size: 26rpx;
+        line-height: 26rpx;
+        margin-top: 20rpx;
+        font-weight: 400;
+      }
+
+      .btn {
+        width: 200rpx;
+        height: 45rpx;
+        background: linear-gradient( 180deg, #A2E4DE 0%, #09AE9E 100%);
+        box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(72,103,102,0.23);
+        border-radius: 23rpx;
+        border: 2rpx solid rgba(232,255,253,0.86);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 18rpx;
+        font-weight: 500;
+        font-size: 28rpx;
+        color: #FFFFFF;
+        line-height: 28rpx;
+        .more_green{
+          width: 24rpx;
+          height: 24rpx;
+          margin-left: 10rpx;
+        }
+      }
+    }
+
+    .plan-content:last-child {
+      margin-right: 0;
+    }
+
+    .consult-box {
+      display: flex;
+      width: 100%;
+      background: rgba(245, 230, 213, 0.4);
+      border-radius: 10rpx;
+      border: 2rpx solid #fde5b1;
+      margin-top: 40rpx;
+      box-sizing: border-box;
+      padding: 20rpx 0;
+      position: relative;
+
+      .person {
+        width: 130rpx;
+        height: 158rpx;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      .dec-txt {
+        font-weight: 400;
+        font-size: 26rpx;
+        color: #734800;
+        line-height: 40rpx;
+        padding: 0 20rpx 0 130rpx;
+        box-sizing: border-box;
+        position: relative;
+
+        .btn {
+          width: 104rpx;
+          height: 40rpx;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(316deg, #eeb45e 0%, #ffe6bd 51%, #ffeabe 100%);
+          border-radius: 20rpx;
+          position: absolute;
+          right: 20rpx;
+          bottom: -6rpx;
+        }
+      }
+    }
+  }
+
+  .health-data {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 24rpx;
+    background: #ffffff;
+    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(9, 189, 172, 0.16);
+    border-radius: 10rpx;
+    box-sizing: border-box;
+    padding: 40rpx 24rpx;
+
+    .title_1 {
+      font-weight: 600;
+      font-size: 36rpx;
+      color: #333333;
+      line-height: 36rpx;
+    }
+
+    .title_2 {
+      font-weight: 400;
+      font-size: 28rpx;
+      color: #666666;
+      line-height: 28rpx;
+      margin-top: 24rpx;
+      padding-bottom: 10rpx;
+    }
+
+    .health_card_list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+
+      .health_card_list_box {
+        display: inline-block;
+        width: 48.5%;
+        margin-top: 20rpx;
+      }
+
+      .health_card_list_boxs {
+        width: 100%;
+        margin-top: 20rpx;
+      }
+    }
+
+    .term-more {
+      width: fit-content;
+      font-weight: 400;
+      font-size: 28rpx;
+      color: #666666;
+      line-height: 28rpx;
+      position: relative;
+      margin: 50rpx auto 0 auto;
+    }
+
+    .term-more::after {
+      width: 10rpx;
+      height: 10rpx;
+      border-top: 2rpx solid;
+      border-right: 2rpx solid;
+      border-color: #333;
+      content: '';
+      position: absolute;
+      right: -16rpx;
+      top: 0rpx;
+      bottom: 0rpx;
+      margin: auto;
+      transform: rotate(45deg);
+    }
+  }
+
+  .report {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0rpx 2rpx 9rpx 0rpx rgba(37, 124, 38, 0.16);
+    border-radius: 10rpx;
+    margin: 24rpx 0 105rpx 0;
+    padding: 38rpx 24rpx;
+    box-sizing: border-box;
+
+    .btm-box {
+      .unscramble {
+        font-weight: 600;
+        font-size: 36rpx;
+        color: #007469;
+      }
+
+      .dec {
+        font-weight: 400;
+        font-size: 30rpx;
+        color: #333333;
+      }
+    }
+
+    .btn {
+      width: 200rpx;
+      height: 60rpx;
+      padding-left: 10rpx;
+      background: #09bdac;
+      border-radius: 4rpx;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 28rpx;
+      line-height: 60rpx;
+      color: #ffffff;
+      box-sizing: border-box;
+      .rightjian {
+        display: block;
+        width: 20rpx;
+        height: 20rpx;
+        margin-left: 10rpx;
+      }
+    }
+  }
+}
+
+.empty-box {
+  position: static !important;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center !important;
+  width: 100%;
+  transform: none !important;
+}
+
+.empty-text-box {
+  color: #666 !important;
+}
+
+.ext-gobtn-box {
+  background: linear-gradient(136deg, #a2e4de 0%, #3dcec0 100%) !important;
+  font-size: 30rpx;
+  color: #333333;
+  border-radius: 6rpx;
+}

@@ -1,0 +1,28 @@
+.body {
+  max-height: 860rpx;
+  min-height: 700rpx;
+  background: #F6F6F6;
+}
+
+.list {
+  padding: 20rpx 30rpx 0;
+  box-sizing: border-box;
+  background: #F6F6F6;
+}
+
+.footer {
+  // padding:20rpx 40rpx 20rpx;
+  .footer-btn {
+    color: #333;
+  }
+}
+
+.empty{
+  height: 700rpx;
+  text-align: center;
+  background: #F6F6F6;
+}
+
+.empty-box {
+  top: 40% !important;
+}

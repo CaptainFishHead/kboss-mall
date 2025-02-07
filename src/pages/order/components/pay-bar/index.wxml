@@ -1,0 +1,25 @@
+<!-- style="{{systemInfo.platform==='android'?'margin-bottom:30rpx;':''}}" -->
+<wxs src="../../../../utils/filter.wxs" module="filter"/>
+<view class="footer ext-class">
+    <view class="footer-pay">
+        <view class="footer-pay-txt">
+            <view style="line-height: 1.2;">
+              需付款：
+              <text class="unit">￥</text>
+              <text class="footer-pay-txt-price price">{{filter.formatAmount(orderPayInfo.orderPayPrice)}}</text>
+            </view>
+            <view class="discount-color" wx:if="{{orderPayInfo.orderDiscountPrice>0}}">
+                已优惠￥<text class="price">{{filter.formatAmount(orderPayInfo.orderDiscountPrice)}}</text>
+            </view>
+        </view>
+        <view class="footer-pay-btn {{isNotEnough&&type === 3?'dis_btn':'can_btn'}}" bindtap="payHandle">
+            {{type === 3 ? '立即兑换' : txt}}
+        </view>
+    </view>
+    <view class="footer-stock" wx:if="{{isNotEnough}}">
+        <view>您兑换的商品库存不足</view>
+        <view class="footer-stock-service" bindtap="onCallTel">联系客服
+            <image class="footer-stock-service-icon" src="https://static.tojoyshop.com/images/wxapp-boss/order/icon-arrow-right.png"/>
+        </view>
+    </view>
+</view>

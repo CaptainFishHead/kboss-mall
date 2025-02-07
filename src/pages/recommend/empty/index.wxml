@@ -1,0 +1,5 @@
+<!--pages/recommend/empty/index.wxml-->
+<view class="recommend-empty">
+  <navigation-bar ext-class="navigation" title="{{title ? title: '种草'}}" bindback="goBack"/>
+  <empty-d imgUrl="https://static.tojoyshop.com/images/wxapp-boss/empty-icons/empty-recommend.png" empotyDesc="糟糕，内容不见了" buttonTxt="返回" bindbuttonTap="handBack"/>
+</view>

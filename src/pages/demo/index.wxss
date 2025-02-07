@@ -1,0 +1,9 @@
+.demo-authorize button {
+    background: #07C160;
+		font-size: 32rpx;
+}
+
+.weui-flex {
+    width: 100%;
+    margin-bottom: 20rpx;
+}

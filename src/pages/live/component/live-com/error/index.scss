@@ -1,0 +1,51 @@
+page .error {
+  position: absolute;
+  top: 500rpx;
+  left: 0;
+  width: 100%;
+  // background-color: #000;
+  z-index: 1;
+  &-info {
+    &-default {
+      height: 210rpx;
+      width: 300rpx;
+      margin-bottom: 20rpx;
+      .icon {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &-text {
+      font-size: 28rpx;
+      line-height: 28rpx;
+      letter-spacing: 1rpx;
+      color: #fff;
+      margin-bottom: 50rpx;
+    }
+    &-btn {
+      &-normal {
+        width: 188rpx;
+        height: 76rpx;
+        background: linear-gradient(180deg, #EFD8A6 0%, #CFAF65 100%);
+        border-radius: 4rpx;
+        font-size: 30rpx;
+        font-weight: bold;
+        color: #000000;
+        line-height: 76rpx;
+        padding: 0;
+        display: inline-block;
+        margin: 0;
+        &::after {
+          display: none;
+        }
+        &.palin {
+          border: 2rpx solid #FFFFFF;
+          background: rgba(0,0,0,0);
+          color: #FFF;
+          box-sizing: border-box;
+          margin-right: 20rpx;
+        }
+      }
+    }
+  }
+}

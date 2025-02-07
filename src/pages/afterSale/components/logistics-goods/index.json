@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "goods-count": "../../../../components/goods-count/index",
+    "mp-checkbox-group": "weui-miniprogram/checkbox-group/checkbox-group",
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "empty": "../../../../components/empty/index"
+  }
+}

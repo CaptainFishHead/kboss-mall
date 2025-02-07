@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "SmallPrice": "/components/smallPrice/index",
+    "mp-html": "mp-html"
+  }
+}

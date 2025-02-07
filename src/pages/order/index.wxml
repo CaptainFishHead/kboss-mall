@@ -1,0 +1,30 @@
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml"/>
+<template is="toast" data="{{...tj_toast}}"/>
+<navigation-bar title="商城订单" background="#FFF" back="{{false}}">
+  <!-- 添加自定义返回按钮 用于解决跳转的页面会闪烁订单详情问题 bindback会执行返回再执行自定义函数 -->
+  <view slot="left" class="back-icon" bind:tap="goBackCustomize"></view>
+</navigation-bar>
+
+<mp-tabbar ext-class="order-tab" list="{{list}}" current='{{current}}' bindchange="tabChange"/>
+<block wx:if="{{isLogged}}">
+    <view class="order-tab-hide"/>
+    <view class="containers">
+      <block wx:if="{{orderData.list.length}}">
+        <view class="order-unit" wx:for="{{orderData.list}}" wx:key="index" >
+          <order-list orderInfo="{{item}}" storeType="{{storeType}}"  bind:refresh="onRefresh"/>
+        </view>
+      </block>
+      <empty wx:if="{{orderData.list.length === 0 && !isLoading}}"
+              imgUrl="https://static.tojoyshop.com/images/wxapp-boss/order/empty-order.png?v=1.0.0"
+              empotyDesc="暂无订单哦～"
+              bindbuttonTap="onCreateAddress"
+      />
+      <mp-loading tips="正在加载" show="{{orderData.currPage < orderData.totalPage}}" type="circle"/>
+    </view>
+</block>
+<view class="login" wx:else>
+    <login bind:success="bindSuccess" bind:fail="bindFail" bind:close="bindClose" hideClose/>
+</view>
+<global-back/>
+

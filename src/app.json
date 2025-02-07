@@ -1,0 +1,293 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/index",
+    "pages/carrier/index",
+    "pages/envConfig/index",
+    "pages/accountBan/index",
+    "pages/column/index",
+    "pages/mall/index"
+  ],
+  "subpackages": [
+    {
+      "root": "pages/cart/",
+      "name": "package-cart",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/classify/",
+      "name": "package-classify",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/chatai/",
+      "name": "package-chatai",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/product/",
+      "name": "package-product",
+      "pages": ["index", "classify/index", "suit/index", "explanVideo/index"]
+    },
+    {
+      "root": "pages/order/",
+      "name": "package-order",
+      "pages": ["index", "detail/index", "confirm/index", "logistics/index"]
+    },
+    {
+      "root": "pages/coupon/",
+      "name": "package-coupon",
+      "pages": ["index", "detail/index", "bind/index", "sendrecord/index", "gift/give/index", "gift/accept/index"]
+    },
+    {
+      "root": "pages/afterSale/",
+      "name": "package-afterSale",
+      "pages": [
+        "apply/index",
+        "selectService/index",
+        "applyList/index",
+        "orderTrack/orderTrack",
+        "detail/index",
+        "fill/index"
+      ]
+    },
+    {
+      "root": "pages/address/",
+      "name": "package-address",
+      "pages": ["index", "createAddress/index"]
+    },
+    {
+      "root": "pages/obh/",
+      "name": "package-obh",
+      "pages": [
+        "landing/index",
+        "shareDevice/landing",
+        "buy/index",
+        "buyOld/index",
+        "success/index",
+        "record/index",
+        "agreement/agreement",
+        "middle/index",
+        "buy/lottery/index",
+        "myPrize/index",
+        "myPrize/detail/index",
+        "myPrize/prizeDes/index"
+      ]
+    },
+    {
+      "root": "pages/paySuccess/",
+      "name": "package-paySuccess",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/payPlatform/",
+      "name": "package-payPlatform",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/healthBean/",
+      "name": "package-healthBean",
+      "pages": ["index", "detail/index", "draw/index", "draw/result/index"]
+    },
+    {
+      "root": "pages/demo/",
+      "name": "package-demo",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/account/",
+      "name": "package-account",
+      "pages": ["index", "commission/index", "favorite/index", "footPrint/index", "collection/index", "edit/index"]
+    },
+    {
+      "root": "pages/search/",
+      "name": "package-search",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/recommend/",
+      "name": "package-recommend",
+      "pages": [
+        "index",
+        "empty/index",
+        "search/index",
+        "special/index",
+        "graphicDetail/index",
+        "videoDetail/index",
+        "ipList/index",
+        "ipDetail/index"
+      ]
+    },
+    {
+      "root": "pages/live/",
+      "name": "package-live",
+      "pages": ["player/index"]
+    },
+    {
+      "root": "pages/plugins/",
+      "name": "package-plugins",
+      "pages": ["cart/index", "login/index"]
+    },
+    {
+      "root": "pages/webview/",
+      "name": "package-webview",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/voucher/",
+      "name": "package-voucher",
+      "pages": ["index", "info/index", "record/index"]
+    },
+    {
+      "root": "pages/poster/",
+      "name": "package-poster",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/healthArchives/",
+      "name": "health-archives",
+      "pages": [
+        "index",
+        "uploadHistory/index",
+        "healthWaiter/index",
+        "bmi/index",
+        "healthData/index",
+        "bloodLipidRecord/index",
+        "healthHistory/index",
+        "historyDetail/index"
+      ]
+    },
+    {
+      "root": "pages/conditioningPlan/",
+      "name": "conditioning-plan",
+      "pages": ["index", "indicatorDetails/index"]
+    },
+    {
+      "root": "pages/services/",
+      "name": "package-services",
+      "pages": ["index", "suitOutlets/index", "viewCode/index", "serviceStaff/index"]
+    },
+    {
+      "root": "pages/devices/",
+      "name": "package-devices",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/healthConsult/",
+      "name": "package-healthConsult",
+      "pages": ["index", "doctorList/index", "doctorInfo/index", "consultInfo/index"]
+    },
+    {
+      "root": "pages/healthShoot/",
+      "name": "package-healthShoot",
+      "pages": ["index", "examine/index", "healthShootResult/index"]
+    },
+    {
+      "root": "pages/healthInfo/",
+      "name": "package-healthInfo",
+      "pages": [
+        "createInfo/index",
+        "personInfo/index",
+        "fitnessInfo/index"
+      ]
+    },
+    {
+      "root": "pages/healthAI/",
+      "name": "package-healthAI",
+      "pages": [
+        "index",
+        "questionnaire/index",
+        "history/index",
+        "questionStart/index",
+        "reportResults/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["pages/product/"]
+    }
+  },
+  "requiredPrivateInfos": ["getLocation", "chooseLocation"],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于为您推荐附近的线下服务"
+    }
+  },
+  "usingComponents": {
+    "navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
+    "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "authorize": "components/authorize/index",
+    "login-promise": "components/login/promise/index",
+    "global-back": "components/global-back/index",
+    "webview": "component/webview/index",
+    "tj-player": "component/tj-player/index",
+    "tj-contact": "component/tj-contact/index",
+    "flex": "components/flex/index",
+    "flex-item": "components/flex/item/index",
+    "privacy": "components/privacy/index"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#6B6B6B",
+    "selectedColor": "#DD1A21",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/column/index",
+        "text": "专栏"
+      },
+      {
+        "pagePath": "pages/mall/index",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "resolveAlias": {
+    "@utils/*": "utils/*",
+    "@components/*": "components/*",
+    "@component/*": "component/*",
+    "@config/*": "config/*",
+    "@const/*": "const/*",
+    "@models/*": "models/*",
+    "@behaviors/*": "behaviors/*"
+  },
+  "functionalPages": {
+    "independent": true
+  },
+  "plugins": {
+    "myPlugin": {
+      "version": "1.0.3",
+      "provider": "wxb302e0fc8ab232b4"
+    },
+    "turingCore": {
+      "version": "1.0.25",
+      "provider": "wx63af045606be281d"
+    },
+    "QCloudAIVoice": {
+      "version": "2.3.2",
+      "provider": "wx3e17776051baf153"
+    }
+  },
+  "__usePrivacyCheck__": true
+}

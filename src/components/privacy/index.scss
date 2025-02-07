@@ -1,0 +1,28 @@
+@import './../../styles/mixins/dialog';
+@include dialog();
+@include v2-dialog();
+@include v2-dialog-title();
+@include v2-dialog-body();
+@include v2-dialog-footer();
+button {
+  &.link {
+    background: none;
+    color: #956A03;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    line-height: inherit;
+    font-size: 30rpx;
+  }
+}
+.v2_dialog {
+  &-body {
+    view {
+      margin: 27rpx 0;
+      color: #666;
+    }
+    .text-black {
+      color: #333;
+    }
+  }
+}

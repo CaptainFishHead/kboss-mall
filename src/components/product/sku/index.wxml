@@ -1,0 +1,89 @@
+<!-- 规格选择 弹层 -->
+<mp-half-screen-dialog ext-class="half-only-close product-sku-box" class="product-sku-box" show="{{ visible }}" bindclose="close"
+                       catchtouchmove="touchMove">
+    <view slot="desc">
+        <view class="product-info">
+            <image class="imgurl" src="{{sku.imgurl}}"/>
+            <view>
+                <!-- 参加活动isJoinPromotion: 0不参加 1参加 -->
+                <block wx:if="{{sku.kangBossActivityInfo.isJoinPromotion}}">
+                    <view class="top price">
+                        <image mode="heightFix" src="{{sku.kangBossActivityInfo.promotionSkuUrl}}"/>
+                        <view class="money">￥<text>{{sku.kangBossActivityInfo.promotionSkuPrice || '0'}}</text>
+                        </view>
+                        <view class="money-line">
+                            <text>￥{{sku.sellPrice || '0'}}</text>
+                        </view>
+                    </view>
+                </block>
+                <!-- 优惠券 isHasCoupon: 0无 1有 -->
+                <block wx:elif="{{sku.couponGoodsDetailDto.isHasCoupon}}">
+                    <view class="sku-coupon price">
+                        <view class="money">￥<text>{{sku.sellPrice || '0'}}</text>
+                        </view>
+                        <view class="sku-coupon-after">
+                            <view class="sku-coupon-after-corner"></view>
+                            <view class="sku-coupon-after-tag">券后</view>
+                            <view class="sku-coupon-after-money price">￥<text>{{sku.couponGoodsDetailDto.skuCouponPrice || '0'}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="money price">￥<text>{{sku.sellPrice || '0'}}</text>
+                    </view>
+                </block>
+
+                <view class="beans">
+                    <view class="beans-enabled" wx:if="{{sku.kangBossActivityInfo.usableNum}}">
+                        最多可用<text class="price">{{sku.kangBossActivityInfo.usableNum}}</text>康豆
+                    </view>
+                    <view class="beans-disabled" wx:else>此商品不支持使用康豆抵扣</view>
+                </view>
+                <!--        <view>商品编码:{{sku.code}}</view>-->
+            </view>
+        </view>
+        <scroll-view scroll-y class="product-sku-scroll">
+            <view class="product-sku">
+                <block wx:if="{{isReal}}">
+                    <view class="title">选择款式</view>
+                    <view class="product-sku-list">
+                        <block wx:for="{{ skuList }}" wx:key="index">
+                            <view class="product-sku-item {{item.id === sku.id ? 'active' : ''}} {{item.stockNums < (item.sinceMin || 0) ? 'empty' : ''}}">
+                                <text bindtap="{{item.stockNums < (item.sinceMin || 0)||item.spuKind===1 ? '' : 'selectSku'}}"
+                                      data-sku="{{item}}">{{item.spuKind === 1 ? item.specName||'' : item.ruleVal + ' ' + item.natureVal}}</text>
+                                <image wx:if="{{item.kangBossActivityInfo.isJoinPromotion}}" mode="heightFix"
+                                       src="{{item.kangBossActivityInfo.promotionSkuUrl}}"/>
+                                <image wx:if="{{item.couponGoodsDetailDto.isHasCoupon}}" mode="heightFix"
+                                       src="https://static.tojoyshop.com/images/wxapp-boss/product/icon-coupon-tag.png"/>
+                            </view>
+                        </block>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+        <view class="product-num" wx:if="{{!fromCart}}">
+            <view class="activity-tip"
+                  wx:if="{{sku.kangBossActivityInfo.isJoinPromotion && sku.kangBossActivityInfo.promotionSkuLimit < num}}">
+                促销价限享<text>{{sku.kangBossActivityInfo.promotionSkuLimit}}</text>件，超出数量原价购买
+            </view>
+            <view class="title">数量</view>
+            <goods-count skuId="{{sku.id}}" productNum="{{num}}" minNum="{{sku.sinceMin}}" maxNum="{{sku.sinceMax}}" stockNums="{{sku.stockNums}}"
+                         bind:changenum="changeNum"/>
+        </view>
+    </view>
+
+    <view slot="footer" class="btns" wx:if="{{fromBtn}}">
+        <button type="primary" bindtap="submit" data-submit="{{submitType}}">
+            {{submitType === '1' ? sku.couponGoodsDetailDto.isReceiveCoupon ? '领券购买' : '立即购买' : '确认'}}
+        </button>
+    </view>
+
+    <view slot="footer" class="btns" wx:else>
+        <button type="primary" bindtap="submit" data-submit="2" plain>加入购物车</button>
+        <button type="primary" bindtap="submit" data-submit="1">
+            {{sku.couponGoodsDetailDto.isReceiveCoupon ? '领券购买' : '立即购买'}}
+        </button>
+    </view>
+
+</mp-half-screen-dialog>

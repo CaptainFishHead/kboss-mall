@@ -1,0 +1,107 @@
+<import src="./../../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+
+<navigation-bar title="基本信息">
+  <view class="nav-bar" slot="left">
+    <image mode="heightFix" class="logo" src="https://static.tojoyshop.com/images/wxapp-boss/top-back.png" />
+  </view>
+</navigation-bar>
+<view class="info">
+  <view class="info-desc">说明：收集此信息仅为健康专家更全面地了解您的健康情况，信息会加密，请放心填写</view>
+  <view class="info-cont">
+    <flex justifyContent="space-between" alignItems="center" class="info-box {{source==='beans'?'three':'two'}} ">
+      <block wx:for="{{stepList}}" wx:key="index">
+        <flex-item class="step-item" wx:if="{{item.isShow}}">
+          <steps stepText="{{item.stepText}}" stepNum="{{item.stepNum}}" isActive="{{item.isActive}}" isShowArrow="{{item.isShowArrow}}" />
+        </flex-item>
+        <flex-item wx:if="{{item.isShowArrow}}">
+          <flex>
+            <flex-item class="step-arrow">
+              <image mode="heightFix" src="https://static.tojoyshop.com/images/wxapp-boss/healthInfo/baseInfo/icon-step-arrow.png" bind:tap="restart" />
+            </flex-item>
+          </flex>
+        </flex-item>
+      </block>
+    </flex>
+    <!-- base info -->
+    <view class="info-base">
+      <form id="form" class="form" catchsubmit="submitForm">
+        <view class="form-item">
+          <view class="form-item-label"><text class="label-icon"></text>姓名</view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra">
+              <input placeholder="请输入姓名" model:value="{{formData.name}}" type="text" bindinput="onNameInput" maxlength="6" />
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="form-item-label"><text class="label-icon"></text>性别</view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra form-item-input-btn">
+              <radio-group bindchange="genderChange">
+                <label class="form-item-radio {{item.checked ? 'checked' : ''}}" wx:for="{{genderItems}}" wx:key="index">
+                  <radio value="{{item.value}}" checked="{{item.checked}}" />
+                  <view class="text">
+                    <image mode="heightFix" class="logo" src="{{item.checked ? item.curImgUrl : item.imgUrl}}" />
+                  </view>
+                </label>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="form-item-label"><text class="label-icon"></text>出生日期</view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra">
+              <picker mode="date" value="{{formData.birthday}}" end="{{birthdayEnd}}" bindchange="onChangeDate">
+                <!-- <view class="{{!formData.birthday&&'picker'}}"> -->
+                <view class="picker">
+                  {{formData.birthday || '请选择出生日期'}}<text class="icon" />
+                </view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="form-item-label"><text class="label-icon"></text>手机号</view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra mobile">
+              {{formDataMoible}}
+            </view>
+          </view>
+        </view>
+
+        <view class="form-item">
+          <view class="form-item-label"><text class="label-icon"></text>体重</view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra">
+              <picker range="{{ weights }}" value="{{ defineWeight }}"  bindchange="onChangeWeight">
+                <view class="picker">
+                  {{formData.weightKg || '请选择体重'}}kg<text class="icon" />
+                </view>
+              </picker>
+            </view>
+          </view>
+        </view>
+
+        <view class="form-item">
+          <view class="form-item-label"><text class="label-icon"></text>身高</view>
+          <view class="form-item-input">
+            <view class="form-item-input-extra">
+              <picker range="{{ statures }}" value="{{ defineHeight }}" bindchange="onChangeStature">
+                <view class="picker">
+                  {{formData.heightCm || '请选择身高'}}cm<text class="icon" />
+                </view>
+              </picker>
+            </view>
+          </view>
+        </view>
+
+      </form>
+      <view class="btn-box">
+        <!-- <button type="primary" disabled="{{isBtndisable}}" class="btn" bind:tap="submitForm">下一步</button> -->
+        <button type="primary" class="btn {{isBtndisable&&'disabled'}}" bind:tap="submitForm">下一步</button>
+      </view>
+    </view>
+  </view>
+</view>

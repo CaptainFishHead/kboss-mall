@@ -1,0 +1,16 @@
+<view class="quota_container">
+  <view class="left">
+    <view class="topBox">
+      <text class="top">{{ quotaInfo.indexName }}</text>
+      <view class="right" wx:if="{{ !hideModeBtn }}">
+      <view  class="quota_more_btn" bindtap="navigateToDetails">查看详情</view>
+      </view>
+    </view>
+    <view class="bottom" wx:if="{{ indexNumStr }}">
+      <text class="tart">控制目标</text>
+      <text class="numb">{{ indexNumStr }}</text>
+      <text class="unit" wx:if="{{ quotaInfo.indexUnit }}">{{ quotaInfo.indexUnit }}</text>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,22 @@
+@import "./../../../components/toast/index.wxss";
+
+page {
+  background: #F6F6F6;
+}
+
+.container {
+  padding: 30rpx 30rpx 70rpx;
+  padding-bottom: calc(70rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(70rpx + env(safe-area-inset-bottom));
+}
+
+button[type=default].authorize-btn{
+  background: none;
+  color: inherit;
+  width: 100%;
+  padding: 0;
+  line-height: inherit;
+}
+button[type=default].authorize-btn::after{
+  border: none;
+}

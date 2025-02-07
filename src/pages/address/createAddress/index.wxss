@@ -1,0 +1,156 @@
+/* pages/address/createAddress/index.wxss */
+@import "../../../components/toast/index.wxss";
+.create-address-container {
+    margin: 30rpx 40rpx 0;
+}
+
+.section {
+    width: 666rpx;
+    height: 95rpx;
+    margin-top: 44rpx;
+    position: relative;
+}
+
+.section input {
+    height: 95rpx;
+    padding: 0 33rpx;
+    font-size: 28rpx;
+    border: 2rpx solid #999;
+    border-radius: 4rpx;
+}
+.section input:focus-within {
+  border: 2rpx solid #cfaf65;
+}
+.placeholder-style {
+    color: #888;
+}
+
+.default-edit {
+    margin-top: 44rpx;
+}
+
+.default-edit .default-text {
+    font-size: 28rpx;
+    color: #0D0E15;
+    font-weight: 700;
+    padding-top: 10rpx;
+}
+
+.address-select {
+    width: 100%;
+    height: 50rpx;
+}
+
+.select-box {
+    position: relative;
+    border: 2rpx solid #999;
+    border-radius: 4rpx;
+    box-sizing: border-box;
+}
+
+.select-box::before,
+.select-box::after {
+    content: " ";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-width: 12rpx;
+    border-style: solid;
+    position: absolute;
+    right: 0;
+    margin: 42rpx 26rpx 0 0;
+    z-index: -1;
+}
+
+.select-box::before {
+    border-color: #000 transparent transparent transparent;
+    top: 3rpx;
+}
+
+.select-box::after {
+    top: 0;
+    border-color: #fff transparent transparent transparent;
+}
+.detail-box input{
+  padding: 0 73rpx 0 33rpx;
+}
+.city-txt,
+.city-desc {
+    font-size: 28rpx;
+    line-height: 95rpx;
+    padding: 0 50rpx 0 33rpx;
+}
+
+.city-txt {
+    color: #0D0E15;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.city-desc {
+    color: #888;
+}
+.map-in{
+  width: 46rpx;
+  height: 46rpx;
+  position: absolute;
+  right: 14rpx;
+  top: 26rpx;
+  z-index: 4;
+  background-image: url(https://static.tojoyshop.com/images/wxapp-boss/address/map-icon.png);
+  background-size: 46rpx auto;
+}
+.map-in text{
+  position: absolute;
+  right: -14rpx;
+  top: -68rpx;
+  width: 345rpx;
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+  padding: 8rpx 0;
+  background-color: #666;
+}
+.map-in text::after{
+  content: '';
+  width: 0;
+  height: 0;
+  /*在三角形底边设置一个边界颜色*/
+  border-top: 10px solid #666;
+  /*其它3边设置相同颜色，*/
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  position: absolute;
+  right: 16rpx;
+  bottom: -30rpx;
+}
+.switch-box {
+    text-align: right;
+}
+
+/*swtich整体大小*/
+.switch .wx-switch-input {
+    width: 42px;
+    height: 21px;
+    border-radius: 2rpx;
+    
+}
+
+/*白色样式（false的样式）*/
+.switch .wx-switch-input::before {
+    width: 0;
+    height: 19px;
+    border-radius: 2rpx;
+}
+
+/*绿色样式（true的样式）*/
+.switch .wx-switch-input::after {
+    width: 20px;
+    height: 19px;
+    border-radius: 2rpx;
+}
+.hidden-input{
+    display: none;
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "mp-slideview": "weui-miniprogram/slideview/slideview",
+    "delete-dialog": "/components/my-address/delete-dialog/index",
+    "empty": "/components/empty/index"
+  }
+}

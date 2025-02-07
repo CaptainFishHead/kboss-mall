@@ -1,0 +1,126 @@
+.progress-container {
+  padding: 85rpx 0;
+}
+.progress-bar {
+  height: 4rpx;
+  width: 100%;
+  border-radius: 3rpx;
+  background-color: #e2e3e4;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  .low,
+  .tall,
+  .normal {
+    height: 5rpx;
+    position: relative;
+    margin-top: -1rpx;
+    border-radius: 100rpx;
+  }
+  .left,
+  .right {
+    flex: 1;
+  }
+  .low,
+  .tall {
+    background-color: #ff796b;
+    // .mark-points{
+    //   &::before{
+    //     border: 5rpx solid #FF796B;
+    //   }
+    // }
+  }
+  .normal {
+    width: 327rpx;
+    background-color: #09bdac;
+    // .mark-points{
+    //   &::before{
+    //     border: 5rpx solid #09BDAC;
+    //   }
+    //   .num{
+    //     font-size: 40rpx;
+    //     color: #049C9C;
+    //     display: inline-block;
+    //     transform: translateX(-50%);
+    //     position: absolute;
+    //     bottom: 15rpx;
+    //     font-weight: 600;
+    //   }
+    // }
+    &-min,
+    &-max,
+    &-txt {
+      font-size: 24rpx;
+      padding-top: 15rpx;
+      color: #666666;
+      position: absolute;
+    }
+    &-min {
+      left: 0;
+      transform: translateX(-50%);
+    }
+    &-txt {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &-max {
+      right: 0;
+      transform: translateX(50%);
+    }
+  }
+  .mark-points {
+    position: absolute;
+    top: -6rpx;
+    left: 0;
+    z-index: 1;
+    &::before {
+      content: '';
+      display: block;
+      width: 20rpx;
+      height: 20rpx;
+      background-color: #fff;
+      border-radius: 50%;
+      box-sizing: border-box;
+      margin-left: -10rpx;
+      border: 5rpx solid #09bdac;
+    }
+    .num {
+      font-size: 36rpx;
+      color: #049c9c;
+      display: inline-block;
+      transform: translateX(-50%);
+      position: absolute;
+      bottom: 15rpx;
+      font-weight: 600;
+
+      &-1 {
+        font-size: 30rpx;
+      }
+    }
+    &.small,
+    &.big {
+      &::before {
+        border: 5rpx solid #fe4633;
+      }
+      .num {
+        color: #fe4633;
+        &::after {
+          content: '';
+          width: 32rpx;
+          height: 32rpx;
+          display: inline-block;
+          position: absolute;
+          right: -30rpx;
+          top: 11rpx;
+          background-size: 100%;
+        }
+      }
+    }
+    &.small .num::after {
+      background-image: url(https://static.tojoyshop.com/images/wxapp-boss/healthai/arrow_top.png);
+    }
+    &.big .num::after {
+      background-image: url(https://static.tojoyshop.com/images/wxapp-boss/healthai/arrow_down.png);
+    }
+  }
+}

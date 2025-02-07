@@ -1,0 +1,2 @@
+<!--pages/agreement/agreement.wxml-->
+<web-view src="{{src_url}}"></web-view>

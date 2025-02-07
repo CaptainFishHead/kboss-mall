@@ -1,0 +1,225 @@
+/* pages/commission/index.wxss */
+@import "../../../components/toast/index.wxss";
+.commission-wrapper{
+    overflow: hidden;
+}
+.commission-head{
+    height: 312rpx;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    z-index: 1;
+}
+.commission-body{
+    margin-top: 312rpx;
+    padding-top: 5rpx;
+}
+.explain-btn{
+    font-size: 24rpx;
+    color: #F2CEB2;
+    margin-right: 31rpx;
+    position: absolute;
+    right: 0;
+    top:32rpx;
+    padding: 05rpx 15rpx;
+    background: rgba(216, 216, 216, .24);
+    border-radius: 21rpx 0 0 21rpx;
+}
+.explain-icon{
+    width: 27rpx;
+    height: 27rpx;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 4rpx;
+    margin-left: 10rpx;
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/commission/explain.png);
+    background-size: 27rpx 27rpx;
+}
+.total{
+    height: 164rpx;
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/commission/total-bg.png);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-color: #FFF;
+    background-size: 100%;
+    padding: 60rpx 87rpx 0 75rpx;
+    position: relative;
+}
+.total .total-pic{
+    width: 160rpx;
+    height: 139rpx;
+    background-size: 188rpx 162rpx;
+    display: block;
+    position: absolute;
+    right: 97rpx;
+    bottom: 3rpx;
+}
+.total .total-txt,.total .number{
+    display: block;
+}
+.total .total-txt{
+    font-size: 26rpx;
+    background: linear-gradient(180deg, #FAE1CD 0%, #F7CBA9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.total .number{
+    font-size: 60rpx;
+    font-weight: bold;
+    color: #F2CEB2;
+    text-shadow: 0 2rpx 2rpx rgba(194, 110, 19, 0.1);
+    margin-top: 1rpx;
+    font-family: "DIN Alternate";
+}
+
+.month{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 40rpx;
+    height: 88rpx;
+}
+.month .month-total{
+    font-size: 30rpx;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 09);
+}
+.select-container {
+    padding-right: 50rpx;
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/commission/select-icon.png?v=202204071635);
+    background-repeat: no-repeat;
+    background-position: 105rpx 12rpx;
+    background-size: 20rpx 20rpx;
+    margin-left: 5rpx;
+    vertical-align: middle;
+    font-size: 28rpx;
+    color: rgba(20, 20, 20, 0.9);
+  }
+
+.commission-unit{
+    width: 638rpx;
+    padding: 30rpx 26rpx;
+    background: #FFFFFF;
+    margin: 20rpx auto;
+    box-shadow: 0 0 14rpx 0 rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+}
+.commission-unit .commission-info{
+    flex: 1;
+    width: 0;
+}
+.commission-unit .user-info{
+    color: #333;
+}
+.commission-unit .name{
+    font-size: 28rpx;
+    font-weight: bold;
+}
+.commission-unit .mobile{
+    font-size: 28rpx;
+    margin-left: 16rpx;
+}
+.commission-unit .goods-name{
+    font-size: 26rpx;
+    color: #000;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    margin-top: 20rpx;
+    margin-bottom: 05rpx;
+}
+.commission-unit .goods-desc{
+    font-size: 24rpx;
+    color: #999;
+    line-height: 46rpx;
+}
+.commission-unit .order-number{
+    display: inline-block;
+    position: relative;
+    color: #999;
+    max-width: 104%;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+.commission-unit .copy{
+    width: 50rpx;
+    height: 30rpx;
+    text-align: center;
+    font-size: 18rpx;
+    color: #333;
+    position: absolute;
+    right: -60rpx;
+    top: 7rpx;
+    line-height:31rpx;
+}
+.commission-unit .copy::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #333;
+    border-radius: 15rpx;
+    box-sizing: border-box;
+    width: 200% !important;
+    height: 200% !important;
+    visibility: visible !important;
+    transform: scale(0.5);
+    transform-origin: left top;
+}
+.commission-unit .commission-num{
+    width: 240rpx;
+    text-align: right;
+    margin-top: 70rpx;
+}
+.commission-unit .commission-num .number{
+    font-size: 36rpx;
+    font-weight: bold;
+}
+.commission-unit .commission-num .state-desc{
+    display: inline-block;
+    font-size: 20rpx;
+    color: #0091FF;
+    padding: 5rpx 14rpx;
+    background: rgba(0, 145, 255, 0.08);
+    text-align: center;
+    margin-top: 5rpx;
+}
+.commission-unit .commission-num.padding .number{
+    color: #0091FF;
+}
+.commission-unit .commission-num.padding .number image{
+    width: 24rpx;
+    height: 24rpx;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 18rpx;
+    margin-right: 9rpx;
+}
+.commission-unit .commission-num.padding .state-desc{
+    color: #0091FF;
+    background: rgba(0, 145, 255, 0.08);
+}
+
+.commission-unit .commission-num.withdraw .number{
+    color: #666666;
+}
+.commission-unit .commission-num.withdraw .state-desc{
+    color: #666666;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.commission-unit .commission-num.sett .number{
+    color: #57A900;
+}
+.commission-unit .commission-num.sett .state-desc{
+    color: #57A900;
+    background: rgba(87, 169, 0, 0.1);
+}
+.loading{
+    font-size: 24rpx;
+    color: rgba(0, 0, 0, 0.24);
+    text-align: center;
+    padding-bottom: 20rpx;
+}

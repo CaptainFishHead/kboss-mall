@@ -1,0 +1,9 @@
+<page-container
+	show="{{visible}}"
+	position="bottom"
+	custom-style="background:rgba(0,0,0,0)" z-index="{{9999}}"
+	bind:afterleave="hideLogin"
+	hover-stop-propagation catchtap catchtouchmove
+>
+	<login bind:success="bindSuccess" bind:fail="bindFail" bind:close="bindClose"/>
+</page-container>

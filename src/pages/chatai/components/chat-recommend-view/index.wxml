@@ -1,0 +1,12 @@
+<view class="recommend">
+	<image class="recommend-bot-icon" src="{{botIcon}}"></image>
+	<text class="recommend-title">{{reTitle}}</text>
+	<text class="recommend-desc">{{reDesc}}</text>
+
+	<block wx:for="{{questions}}" wx:key="index" wx:for-index="index" wx:for-item="question">
+		<view class="recommend-question" bind:tap="onReQuestion" data-question="{{question}}">
+			<view class="recommend-item-text">{{question}}</view>
+			<image class="recommend-right-icon" src="{{rightIcon}}"></image>
+		</view>
+	</block>
+</view>

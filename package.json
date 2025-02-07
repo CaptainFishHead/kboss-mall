@@ -1,0 +1,39 @@
+{
+  "name": "dsf-boss",
+  "version": "2.8.1",
+  "trialVersion": "2.8.1",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env BASE_API=pre APP_ID=wxcc3540ea25b97878 node ./scripts/dev.js",
+    "dev2": "cross-env BASE_API=dev APP_ID=wxcc3540ea25b97878 node ./scripts/dev.js",
+    "dev1": "cross-env BASE_API=uat APP_ID=wx807559fb17ff41a2 node ./scripts/index.js",
+    "uat": "cross-env BASE_API=uat APP_ID=wx807559fb17ff41a2 node ./scripts/index.js",
+    "uat1_暂停使用": "cross-env BASE_API=uat1 APP_ID=wx807559fb17ff41a2 node ./scripts/index.js",
+    "uat_2": "cross-env BASE_API=uat APP_ID=wx807559fb17ff41a2 node ./scripts/index.js",
+    "uat_3_1": "cross-env BASE_API=uat APP_ID=wxe1ff3fd790bc457e node ./scripts/index.js",
+    "pre": "cross-env BASE_API=pre APP_ID=wxcc3540ea25b97878 node ./scripts/index.js",
+    "pro": "cross-env BASE_API=pro APP_ID=wxcc3540ea25b97878 node ./scripts/index.js",
+    "lint:prettier": "prettier -c --write \"src/pages/**/*.{js,ts,scss,wxss,wxml,json}\" --end-of-line auto",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src ",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "fix:prettier": "prettier --write \"src/pages/**/*.{js,ts,scss,wxss,wxml}\" --end-of-line auto"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/qs": "^6.9.7",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.8.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "miniprogram-api-typings": "^3.9.0",
+    "miniprogram-ci": "^1.8.35",
+    "prettier": "^3.3.3"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  }
+}

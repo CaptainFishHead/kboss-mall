@@ -1,0 +1,61 @@
+/* plugin/components/live/notice/index.wxss */
+.notice{
+  background: rgba(0,0,0,.39);
+  border-radius: 25rpx;
+  width: 136rpx;
+  max-height: 44rpx;
+  overflow: hidden;
+  transition: all .3s;
+  &.show{
+    max-height: 299rpx;
+    width: 196rpx;
+    .notice-title {
+      display: none;
+    }
+  }
+  &-title{
+    width: 136rpx;
+    height: 44rpx;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10rpx 0 14rpx;
+    box-sizing: border-box;
+    &__icon, &__rows{
+      height: 28rpx;
+      width: 28rpx;
+    }
+    &__txt{
+      font-size: 24rpx;
+      color: #fff;
+    }
+  }
+  &-cont{
+    overflow: hidden;
+    &__desc{
+      color: #fff;
+      font-size: 24rpx;
+      box-sizing: border-box;
+      padding: 12rpx 12rpx 10rpx;
+      width: 196rpx;
+      max-height: 263rpx;
+      overflow-y: auto;
+      text-align: center;
+      word-break: break-all;
+    }
+    &__bottom{
+      height: 36rpx;
+      width: 100%;
+      background-color: rgba(0,0,0,.5);
+      overflow: hidden;
+      &__rows{
+        width: 28rpx;
+        height: 28rpx;
+        margin: 4rpx auto;
+        display: block;
+      }
+    }
+  }
+  
+}

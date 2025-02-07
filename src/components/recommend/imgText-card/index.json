@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "live-status": "../live-status/index"
+  }
+}

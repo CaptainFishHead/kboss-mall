@@ -1,0 +1,49 @@
+@import "../../../components/toast/index.wxss";
+
+page {
+    background-color: #fff;
+    min-height: 100vh;
+}
+.weui-half-screen-dialog__subtitle{
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 8rpx;
+  font-weight: normal;
+}
+.empty-box {
+    height: calc(100vh - 100px) !important;
+}
+
+.container-box {
+    padding: 30rpx 0rpx calc(180rpx + constant(safe-area-inset-bottom)) 0rpx;
+    padding: 30rpx 0rpx calc(180rpx + env(safe-area-inset-bottom)) 0rpx;
+}
+
+.interval-block {
+    height: 20rpx;
+    width: 100%;
+    background-color: #F6F6F6;
+}
+
+.btn-box {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx 30rpx calc(20rpx + constant(safe-area-inset-bottom)) 30rpx;
+    padding: 20rpx 30rpx calc(20rpx + env(safe-area-inset-bottom)) 30rpx;
+}
+
+.submit {
+    font-size: 12rpx;
+}
+
+.submit::after, .submit::before {
+    border: none !important;
+
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "fill-info":"../components/fill-info/index",
+    "empty": "../../../components/empty/index",
+    "refund-price": "../components/refund-price/index",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
+  }
+}

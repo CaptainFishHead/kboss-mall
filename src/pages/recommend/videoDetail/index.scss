@@ -1,0 +1,105 @@
+/* pages/recommend/videoDetail/index.wxss */
+@import "./../../../components/toast/index.wxss";
+@import "./../../../styles/mixins";
+.navigation {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+.recommend-detail {
+  &_swiper {
+    height: 100vh;
+    background-color:#000
+  }
+  &_video {
+    box-sizing: border-box;
+    height: calc(100% - 100rpx - constant(safe-area-inset-bottom));
+    height: calc(100% - 100rpx - env(safe-area-inset-bottom));
+    width: 100%;
+    position: relative;
+    transition: opacity ease-in .3s;
+    display: flex;
+    align-items: center;
+  }
+}
+
+// 视频区域
+.recommend-video {
+  position: relative;
+
+  &_bg {
+    position: absolute;
+    filter: blur(10rpx);
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  &_play {
+    width: 183rpx;
+    height: 183rpx;
+    // background-color: rgba(255, 255, 255, .4);
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 101;
+    transform: translate(-50%, -50%);
+    background-image: url(https://static.tojoyshop.com/images/wxapp-boss/recommend/play-icon.png);
+    background-position: center center;
+    background-size: 66rpx 73rpx;
+    background-repeat: no-repeat;
+    will-change: opacity;
+    opacity: 0;
+    transition: opacity linear .3s .3s;
+    &_visible {
+      opacity: 1;
+    }
+  }
+
+  &_slider {
+    position: absolute;
+    bottom: 7rpx;
+    left: 30rpx;
+    right: 30rpx;
+    margin: 0rpx;
+    z-index: 103;
+    height: 36rpx;
+    box-sizing: border-box;
+  }
+}
+
+.video-container {
+  position: relative;
+  width: 750rpx;
+  height: calc(100% - 100rpx - constant(safe-area-inset-bottom));
+  height: calc(100% - 100rpx - env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  //top: 50%;
+  //transform: translate3d(0, calc(-50%  - constant(safe-area-inset-bottom)), 0);
+  //transform: translate3d(0, calc(-50%  - env(safe-area-inset-bottom)), 0);
+  height: 100%;
+  z-index: 100;
+  flex: 1;
+  object-fit:cover;
+  &_loading {
+    width: 150rpx;
+    height: 150rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.video-footer{
+  height: 100rpx;
+  @include safe('bottom');
+  background-color: #000;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 104;
+  width: 100%;
+}

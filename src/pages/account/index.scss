@@ -1,0 +1,205 @@
+@import "../../components/toast/index.wxss";
+
+page {
+  color: #000;
+  //background: #eeeee3;
+}
+
+.container {
+  background: #eeeee3;
+
+  .head {
+    position: relative;
+    z-index: 21;
+    width: 100%;
+
+    &-title {
+      width: 650rpx;
+      padding: 30rpx 0 30rpx 10rpx;
+      margin: 0 auto;
+      font-size: 30rpx;
+      line-height: 52rpx;
+      letter-spacing: 1rpx;
+
+      text {
+        font-size: 38rpx;
+        letter-spacing: 2rpx;
+      }
+    }
+
+    &-card {
+      position: relative;
+      z-index: 23;
+      width: 100%;
+      height: 182rpx;
+      padding: 0 30rpx;
+      box-sizing: border-box;
+      background-color: #eeeee3;
+      // background-repeat: no-repeat;
+      // background-size: 100%;
+      border-radius: 8rpx;
+      // margin-bottom: 40rpx;
+      &-cardImgs{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-bottom {
+      position: relative;
+      z-index: 22;
+      margin-top: -10rpx;
+      width: 100%;
+      height: 203rpx;
+      background: url(https://static.tojoyshop.com/images/wxapp-boss/mine/vip-card-bottom.png) no-repeat;
+      background-size: cover;
+    }
+  }
+
+  .cont {
+    position: relative;
+    z-index: 23;
+    width: 100%;
+    margin-top: -100rpx;
+
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 50rpx;
+      font-size: 34rpx;
+      font-weight: bold;
+      line-height: 48rpx;
+
+      image {
+        width: 35rpx;
+        height: 32rpx;
+        margin-right: 4rpx;
+      }
+    }
+
+    &-desc {
+      padding: 0 30rpx;
+      font-size: 28rpx;
+      line-height: 52rpx;
+      color: rgba(0, 0, 0, 0.8);
+      background: #fff;
+      padding-bottom: calc(constant(safe-area-inset-bottom));
+      padding-bottom: calc(env(safe-area-inset-bottom));
+      box-sizing: border-box;
+      &-title {
+        margin-bottom: 20rpx !important;
+        font-size: 32rpx;
+        font-weight: bold;
+        line-height: 42rpx;
+      }
+
+      &-list {
+        position: relative;
+        padding: 20rpx 0 10rpx;
+        line-height: 40rpx;
+
+        .level {
+          position: relative;
+          z-index: 22;
+          display: flex;
+          align-items: stretch;
+          margin-bottom: 74rpx;
+
+          &-line {
+            width: 12rpx;
+            height: 150rpx;
+            opacity: 0.69;
+            border: 2rpx solid #50525A;
+            position: absolute;
+            left: 24rpx;
+            top: 28rpx;
+            z-index: 11;
+
+            &-bot {
+              width: 4.4rpx;
+              height: 150rpx;
+              background: #50525A;
+              margin: 0 auto;
+            }
+          }
+
+          &-img {
+            z-index: 12;
+          }
+
+          &-info {
+            flex: 1;
+            font-size: 28rpx;
+            color: rgba(0, 0, 0, 0.7);
+            margin-left: 26rpx;
+
+            &-name {
+              margin-bottom: 8rpx;
+            }
+          }
+
+          image {
+            width: 188rpx;
+            height: 56rpx;
+          }
+
+          &.active {
+            margin-left: -4rpx;
+
+            image {
+              width: 215rpx;
+              height: 64rpx;
+            }
+
+            .level-info {
+              color: #000000;
+              margin-left: 6rpx;
+
+              .level-info-name{
+                font-size: 32rpx;
+                font-weight: bold;
+                margin-bottom: 12rpx;
+              }
+
+              .level-info-benefit{
+                font-size: 28rpx;
+              }
+            }
+
+            .level-line {
+              left: 28rpx;
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              z-index: -1;
+              right: 0;
+              top: -22rpx;
+              display: block;
+              width: 540rpx;
+              height: 130rpx;
+              background: linear-gradient(-90deg, #fff, #eeeee3);
+              border-radius: 4rpx;
+            }
+          }
+
+          &:last-child .level-line{
+            display: none;
+          }
+        }
+      }
+
+      rich-text {
+        font-size: 30rpx;
+        color: #606266;
+        word-break: break-word;
+      }
+
+      .image-wrap {
+        width: 100%;
+      }
+    }
+  }
+}

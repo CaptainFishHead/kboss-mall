@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents":{
+    "mp-dialog": "weui-miniprogram/dialog/dialog",
+    "pay-bar": "../../components/pay-bar/index",
+    "receipt-dialog": "../../components/receipt-dialog/index"
+  }
+}

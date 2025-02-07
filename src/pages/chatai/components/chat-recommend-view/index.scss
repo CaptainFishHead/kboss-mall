@@ -1,0 +1,62 @@
+/* pages/chatai/components/recommend/index.wxss */
+.recommend {
+	display: flex;
+	flex-direction: column;
+	width: auto;
+	margin-left: 27rpx;
+	margin-right: 27rpx;
+	margin-top: 145rpx;
+	border-radius: 20rpx;
+	padding: 30rpx 25rpx;
+	background-color: white;
+	align-items: center;
+	box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(76,144,137,0.47);
+
+	&-bot-icon {
+		width: 180rpx;
+		height: 180rpx;
+	}
+
+	&-title {
+		margin-top: 23rpx;
+		color: #535353;
+		font-style: inherit;
+		font-weight: bolder;
+		font-size: 36rpx;
+	}
+
+	&-desc {
+		margin-top: 23rpx;
+		color: #666666;
+		font-size: 30rpx;
+	}
+
+	&-question {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		background-color: #F2F9F9;
+		padding: 24rpx 25rpx;
+		margin-top: 24rpx;
+		box-sizing: border-box;
+		border-radius: 10rpx;
+	}
+
+	&-item-text {
+		flex-shrink: 1;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		color: #4A4A4A;
+		font-size: 30rpx;
+	}
+
+	&-right-icon {
+		width: 40rpx;
+		height: 40rpx;
+		flex-shrink: 0;
+	}
+
+}

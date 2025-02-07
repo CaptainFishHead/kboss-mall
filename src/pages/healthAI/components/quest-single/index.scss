@@ -1,0 +1,82 @@
+@import "../../../../styles/animfade.scss";
+.containerCommonBox {
+  width:100%;
+  height:auto;
+  max-height: 900rpx;
+  overflow: auto;
+  box-sizing: border-box;
+  padding:0 24rpx;
+
+  .containerCommonHeader {
+    width:100%;
+    height: 115rpx;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 34rpx;
+    color: #333333;
+    box-sizing: border-box;
+    padding:0 24rpx;
+    position: relative;
+    &::before {
+      content:"";
+      display:block;
+      position: absolute;
+      left:0;
+      top:44rpx;
+      width: 6rpx;
+      height: 30rpx;
+      background: #09BDAC;
+      border-radius: 10rpx;
+    }
+  }
+  .containerCommonBody {
+    width:100%;
+    height:auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding:0 24rpx;
+  }
+  .containerCommonFooter {
+    width: 100%;
+    box-sizing: border-box;
+    padding:38rpx 75rpx;
+  }
+}
+.success {
+  height: 94rpx;
+  background: linear-gradient( 180deg, #A2E4DE 0%, #09BDAC 100%);
+  border-radius: 4rpx;
+  font-weight: 700;
+  font-size: 30rpx;
+  color: #333333;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.testButton {
+  width:100%;
+  height: 100rpx;
+  border-radius: 4rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #999999;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 30rpx;
+  color: #333333;
+  margin:0 0 24rpx 0;
+  line-height: 42rpx;
+  background-color: #fff;
+  &-Selected {
+    background: #ECFFFD;
+    border-radius: 4rpx;
+    border: 2rpx solid #09BDAC;
+    font-size: 30rpx;
+    color: #007469;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

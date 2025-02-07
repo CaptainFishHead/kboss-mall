@@ -1,0 +1,110 @@
+<navigation-bar title="demo" back="{{false}}"/>
+<view class="container">
+  <authorize
+      ext-class="demo-authorize"
+      bind:success="authSuccess"
+      bind:fail="authFail"
+  >
+    <text>
+      登录/加购
+    </text>
+  </authorize>
+  <poster/>
+  <!--<view class="poster">
+    <canvas type="2d" id="poster" style="width: 300px; height: 300px;" canvas-id="canvas"></canvas>
+    <view class="poster-footer">
+      <button bindtap="clickButton">保存海报到相册</button>
+      <button>分享给好友</button>
+    </view>
+  </view>-->
+
+  <!-- flex demo -->
+  <view class="page__hd">
+    <view class="page__title">Flex</view>
+    <view class="page__desc">Flex布局</view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view>
+      <view class="placeholder">weui</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">weui</view>
+    </view>
+    <view>
+      <view class="placeholder">weui</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+  <!--  <cell styleType="{{3}}" bind:startmessage='startmessage' bind:completemessage="completemessage"
+          plugid="{{plugId}}"/>-->
+  </view>
+
+  <view class="weui-flex">
+    <button class="weui-flex__item" bindtap="getLocation">授权位置接口调试</button>
+    <view class="weui-flex__item">
+      <view> 经度:{{longitude}}</view>
+      <view> 纬度:{{latitude}}</view>
+    </view>
+  </view>
+
+  <view class="weui-flex">
+    <button bindtap="openMap">地图导航</button>
+  </view>
+
+  <view class="weui-flex">
+    <navigator url="/pages/webview/index?title=企业客服&url={{customerUrl}}">
+      <text>企业客服</text>
+    </navigator>
+
+    <navigator url="/pages/webview/index?title=testHtml&url={{testHtml}}">
+      <text>testHtml</text>
+    </navigator>
+
+  </view>
+
+
+
+  <button bindtap="showActionSheet">ActionSheet</button>
+</view>
+<mp-actionSheet bindclose="btnClick" bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}"
+                title="这是一个标题，可以为一行或者两行。"/>
+
+<tab-bar/>

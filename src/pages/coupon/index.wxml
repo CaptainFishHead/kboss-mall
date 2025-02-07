@@ -1,0 +1,34 @@
+<navigation-bar title="我的礼品卡" background="#fff" />
+
+<mp-tabbar ext-class="order-tab card-tab" list="{{tabList}}" current='{{current}}' bindchange="tabChange" />
+<block wx:if="{{isLogged}}">
+  <view class="container">
+    <block wx:if="{{cardList && cardList.length}}" wx:for="{{cardList}}" wx:key="index">
+      <card-item card="{{item}}" isLink isGift="{{item.cardType === 1}}" index="{{index}}" bind:getCurId="onGetCurId" bind:activateCard="onActivateCard" />
+    </block>
+
+    <empty wx:if="{{cardList && cardList.length === 0 && !isLoading}}" imgUrl="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-empty.png" empotyDesc="没有相关礼品卡记录" />
+
+    <mp-loading tips="正在加载" show="{{isHideLoadMore}}" type="circle" />
+  </view>
+</block>
+
+<view class="login" wx:else>
+  <login bind:success="bindSuccess" bind:fail="bindFail" hideClose/>
+</view>
+<!-- 底部操作行 -->
+<view class="btn-box-bottom">
+  <button type="primary" plain bindtap="toSendrecordPage">
+    <image src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-sendrecord.png" mode="aspectFit" />
+    赠送记录
+  </button>
+  <button type="primary" bindtap="toBindPage">
+    <image src="https://static.tojoyshop.com/images/wxapp-boss/coupon/icon-bind.png?v=1.1" mode="aspectFit" />
+    绑定新卡
+  </button>
+</view>
+
+<!-- wetoast -->
+<import src="./../../components/toast/index.wxml" />
+<template is="toast" data="{{...tj_toast}}" />
+<global-back />

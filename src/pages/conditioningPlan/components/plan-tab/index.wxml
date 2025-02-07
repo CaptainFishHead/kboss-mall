@@ -1,0 +1,4 @@
+<view class="{{ current.programmeId && current.programmeId === planTabItem.programmeId ? 'plan_container active' : 'plan_container'}}" bindtap="sendCurrentPlanToParent">
+  <image class="img_ico" src="{{ current.programmeId && current.programmeId === planTabItem.programmeId ? imgActiveUrl : imgUrl }}" mode=""/>
+  <text class="txt">{{ planTabItem.programmeShortTitle }}</text>
+</view>

@@ -1,0 +1,51 @@
+.share-popup-container {
+  .share-title {
+    text-align: center;
+    font-size: 30rpx;
+    color: #000;
+    height: 116rpx;
+    line-height: 116rpx;
+    font-weight: normal;
+    position: relative;
+
+    .share-close {
+      width: 50rpx;
+      height: 50rpx;
+      position: absolute;
+      right: 40rpx;
+      top: 30rpx;
+    }
+  }
+
+  .share-list {
+    padding: 0 30rpx;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25rpx;
+    padding-bottom: calc(40rpx + constant(safe-area-inset-bottom));
+    padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+
+    &-item {
+      text-align: center;
+      flex: 1;
+      background: transparent;
+      padding: 0;
+      font-weight: normal;
+      color: #000;
+      font-size: 0;
+      transition: all .6s;
+
+
+      image {
+        width: 96rpx;
+        height: 96rpx;
+        margin: 0 auto;
+      }
+
+      text {
+        display: block;
+        font-size: 28rpx;
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+.goods {
+    padding: 40rpx 24rpx 50rpx 24rpx;
+    padding-bottom: 50rpx;
+    // border-bottom: 1rpx solid #F1F1F1;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
+.goods-img-warp {
+    font-size: 0;
+}
+.goods-img {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 4rpx;
+}
+.goods-info-warp {
+    // padding-top: 22rpx;
+    width: 100%;
+    padding-left: 30rpx;
+    position: relative;
+}
+.goods-name {
+    font-size: 30rpx;
+    color: #333333;
+    line-height: 42rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 440rpx;
+}
+.goods-price {
+    margin-top: 48rpx;
+    font-size: 29rpx;
+    color: #333333;
+    line-height: 34rpx;
+    font-size: bold;
+    height: 41rpx;
+}
+.goods-price-value {
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #333333;
+    line-height: 34rpx;
+    padding-left: 5rpx;
+    display: inline;
+}
+.goods-price-value .unit {
+    font-size: 28rpx;
+    display: inline;
+}
+.other-info {
+    font-size: 24rpx;
+    color: #999999;
+    line-height: 33rpx;
+    height: 33rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.other-info-jdprice {
+    text-decoration: line-through;
+}
+.prize-btn {
+    position: absolute;
+    height: 60rpx !important;
+    right: 0rpx;
+    bottom: 0rpx;
+    font-size: 24rpx !important;
+    // font-weight: normal !important;
+}
